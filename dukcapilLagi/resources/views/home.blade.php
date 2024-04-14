@@ -198,10 +198,10 @@
                         untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
                 </div>
                 <div class="flex flex-col md:flex-row gap-8">
-                    <div class="">
+                    {{-- <div class="">
                         <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
-                    </div>
-                    <div class="grid md:grid-cols-2 md:gap-8 gap-4">
+                    </div> --}}
+                    <div class="grid md:grid-cols-4 md:gap-8 gap-4">
                         <div x-data="{ maxLength: 50 }" class="flex flex-col bg-background_light rounded-lg md:max-w-72">
                             <img src="dist/assets/image/Karyawan.jpg" alt=""
                                 class="w-72 md:w-full object-cover object-center rounded-t-lg">
@@ -456,9 +456,9 @@
 
                     </div>
                 </div>
-                <button
-                    class="font-nunito font-semibold text-base md:text-lg text-background_light bg-primary rounded-md px-3 py-3 md:w-56 mt-6 mx-auto">Lihat
-                    Selengkapnya</button>
+                <a href="faq"
+                    class="font-nunito font-semibold text-center text-base md:text-lg text-background_light bg-primary rounded-md px-3 py-3 md:w-56 mt-6 mx-auto">Lihat
+                    Selengkapnya</a>
 
             </div>
         </div>

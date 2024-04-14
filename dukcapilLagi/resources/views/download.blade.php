@@ -12,7 +12,7 @@
                     <div class="flex flex-col gap-4 max-w-screen-sm">
                         <div class="flex flex-col gap-2">
                             <div class="flex flex-col gap-3">
-                                <a href="" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
+                                <a href="detail-download" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
                                     Perangkat Daerah
                                     Dinas Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
                                 <p class="text-sm text-secondary_teks font-nunito">28 Februari 2024</p>
@@ -26,15 +26,15 @@
                                     Keuangan Pusat dan Daerah Ahli Muda).</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
-                                <button
+                                <a href="detail-download"
                                     class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                                    Lihat Selengkapnya</button>
+                                    Lihat Selengkapnya</a>
                             </div>
                             <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                         </div>
                         <div class="flex flex-col gap-2">
                             <div class="flex flex-col gap-3">
-                                <a href="" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
+                                <a href="detail-download" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
                                     Perangkat Daerah
                                     Dinas Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
                                 <p class="text-sm text-secondary_teks font-nunito">28 Februari 2024</p>
@@ -48,15 +48,15 @@
                                     Keuangan Pusat dan Daerah Ahli Muda).</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
-                                <button
+                                <a href="detail-download"
                                     class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                                    Lihat Selengkapnya</button>
+                                    Lihat Selengkapnya</a>
                             </div>
                             <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                         </div>
                         <div class="flex flex-col gap-2">
                             <div class="flex flex-col gap-3">
-                                <a href="" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
+                                <a href="detail-download" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
                                     Perangkat Daerah
                                     Dinas Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
                                 <p class="text-sm text-secondary_teks font-nunito">28 Februari 2024</p>
@@ -70,15 +70,15 @@
                                     Keuangan Pusat dan Daerah Ahli Muda).</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
-                                <button
+                                <a href="detail-download"
                                     class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                                    Lihat Selengkapnya</button>
+                                    Lihat Selengkapnya</a>
                             </div>
                             <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                         </div>
                         <div class="flex flex-col gap-2">
                             <div class="flex flex-col gap-3">
-                                <a href="" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
+                                <a href="detail-download" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
                                     Perangkat Daerah
                                     Dinas Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
                                 <p class="text-sm text-secondary_teks font-nunito">28 Februari 2024</p>
@@ -92,15 +92,15 @@
                                     Keuangan Pusat dan Daerah Ahli Muda).</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
-                                <button
+                                <a href="detail-download"
                                     class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                                    Lihat Selengkapnya</button>
+                                    Lihat Selengkapnya</a>
                             </div>
                             <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                         </div>
                         <div class="flex flex-col gap-2">
                             <div class="flex flex-col gap-3">
-                                <a href="" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
+                                <a href="detail-download" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
                                     Perangkat Daerah
                                     Dinas Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
                                 <p class="text-sm text-secondary_teks font-nunito">28 Februari 2024</p>
@@ -114,15 +114,15 @@
                                     Keuangan Pusat dan Daerah Ahli Muda).</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
-                                <button
+                                <a href="detail-download"
                                     class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                                    Lihat Selengkapnya</button>
+                                    Lihat Selengkapnya</a>
                             </div>
                             <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                         </div>
                         <div class="flex flex-col gap-2">
                             <div class="flex flex-col gap-3">
-                                <a href="" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
+                                <a href="detail-download" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">Forum
                                     Perangkat Daerah
                                     Dinas Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
                                 <p class="text-sm text-secondary_teks font-nunito">28 Februari 2024</p>
@@ -136,12 +136,13 @@
                                     Keuangan Pusat dan Daerah Ahli Muda).</p>
                             </div>
                             <div class="flex flex-row items-center gap-2">
-                                <button
+                                <a href="detail-download"
                                     class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                                    Lihat Selengkapnya</button>
+                                    Lihat Selengkapnya</a>
                             </div>
                             <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                         </div>
+                   
                     </div>
                 </div>
                 <aside class="md:block md:border-l-[2px] border-gray-200 md:pl-6">
