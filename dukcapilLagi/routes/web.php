@@ -11,6 +11,9 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+Route::get('/profile-admin', function () {
+    return view('auth.profile-admin');
+});
 
 Route::get('/download', function () {
     return view('download');
