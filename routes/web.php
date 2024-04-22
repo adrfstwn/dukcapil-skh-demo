@@ -21,7 +21,16 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/', function () {
-    return view('master');
+    return view('master-admin');
+});
+Route::get('/form-mitra', function () {
+    return view('admin.mitra.form-mitra');
+});
+Route::get('/form-slider', function () {
+    return view('admin.home-slider.form-slider');
+});
+Route::get('/form-berita', function () {
+    return view('admin.berita.form-berita');
 });
 
 Route::get('/register', function () {
