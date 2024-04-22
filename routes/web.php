@@ -23,6 +23,9 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', function () {
     return view('master-admin');
 });
+Route::get('/home', function () {
+    return view('home');
+});
 Route::get('/form-mitra', function () {
     return view('admin.mitra.form-mitra');
 });
