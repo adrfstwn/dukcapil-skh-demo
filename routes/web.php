@@ -20,31 +20,31 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 //
 
-Route::get('/template', function () {
+Route::get('/admin', function () {
     return view('master-admin');
 });
 Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
 });
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
-Route::get('/form-mitra', function () {
-    return view('admin.mitra.form-mitra');
+Route::get('/mitra/create', function () {
+    return view('admin.mitra.create');
 });
-Route::get('/homeSlider-edit', function () {
+Route::get('/homeslider/edit', function () {
     return view('admin.home-slider.edit');
 });
-Route::get('/homeSlider-create', function () {
+Route::get('/homeslider/create', function () {
     return view('admin.home-slider.create');
 });
-Route::get('/homeSlider-index', function () {
+Route::get('/homeslider/index', function () {
     return view('admin.home-slider.index');
 });
-Route::get('/faq-create', function () {
+Route::get('/faq/create', function () {
     return view('admin.faq.create');
 });
-Route::get('/faq-edit', function () {
+Route::get('/faq/edit/{id}', function () {
     return view('admin.faq.edit');
 });
 Route::get('/faq-index', function () {

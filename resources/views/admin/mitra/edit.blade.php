@@ -14,7 +14,7 @@
                     <input type="text" id="default-input"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                 </div>
-                <label class="block mb-2 text-base font-medium text-gray-900 dark:text-white" for="file_input">Upload
+                <label name="wawan" class="block mb-2 text-base font-medium text-gray-900 dark:text-white" for="file_input">Upload
                     file</label>
                 <input
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
