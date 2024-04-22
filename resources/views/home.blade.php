@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <!-- start hero section -->
-    <section id="hero" class="md:mb-7 md:mt-6 p-3">
+    <section id="hero" class="md:mb-7 md:mt-6 p-3 ">
         <class class="container">
-            <div class="-z-10 max-w-80 md:max-w-6xl mx-auto  relative drop-shadow-xl" x-data="{
+            <div class=" max-w-80 md:max-w-6xl mx-auto  relative drop-shadow-xl -z-10 " x-data="{
                 activeSlide: 1,
                 slides: [
                     { id: 1, title: 'hello 1', body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias suscipit', imageUrl: './dist/assets/image/Gedung.jpg' },
@@ -13,7 +13,7 @@
                 loop() {
                     setInterval(() => {
                         this.activeSlide = this.activeSlide === 3 ? 1 : this.activeSlide + 1
-                    }, 30000);
+                    }, 20000);
                 },
                 truncateText(text, limit) {
                     return text.split(' ').slice(0, limit).join(' ') + (text.split(' ').length > limit ? '...' : '');
@@ -21,7 +21,7 @@
             }"
                 x-init="loop">
                 <!-- data loop -->
-                <template x-for="slide in slides" :key="slide.id">
+                <template x-for="slide in slides" x-on:key="slide.id">
                     <div x-show="activeSlide === slide.id"
                         class="h-64 p-6 md:p-14 md:h-[560px] flex items-end drop-shadow-xl text-white rounded-3xl">
                         <img :src="slide.imageUrl" alt=""
@@ -39,9 +39,9 @@
                 </template>
 
                 <!-- next / prev -->
-                <div class="absolute inset-0 flex">
+                <div class="absolute inset-0 flex z-100">
                     <div class="flex items-center justify-start w-1/2">
-                        <button @click="activeSlide = (activeSlide === 1 ? slides.length : activeSlide - 1)"
+                        <button x-on:click="activeSlide = (activeSlide === 1 ? slides.length : activeSlide - 1)"
                             class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                 <path fill="currentColor"
@@ -50,7 +50,7 @@
                         </button>
                     </div>
                     <div class="flex items-center justify-end w-1/2">
-                        <button @click="activeSlide = (activeSlide % slides.length) + 1"
+                        <button x-on:click="activeSlide = (activeSlide % slides.length) + 1"
                             class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6">
                             <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                 <path fill="currentColor"
