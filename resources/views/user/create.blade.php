@@ -23,13 +23,13 @@
 
 <body>
     <section id="register" class=""
-        style=" background-image: url(./dist/assets/image/bg-auth.svg);
+        style=" background-image: url(../dist/assets/image/bg-auth.svg);
     background-size: cover;
     height: auto;">
         <div class="container">
             <div class="flex flex-col py-20">
                 <div class="flex mx-auto">
-                    <img src="./dist/assets/image/Logo-header.png" alt="Logo Skh" width="150px" class="">
+                    <img src="../dist/assets/image/Logo-header.png" alt="Logo Skh" width="150px" class="">
                 </div>
                 <div class=" p-6 ">
                     <div class=" bg-white rounded-lg overflow-hidden shadow-lg mx-auto max-w-screen-sm">

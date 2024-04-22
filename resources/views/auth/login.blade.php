@@ -36,14 +36,16 @@
                         <div class="p-6">
                             <h2 class="mb-2 text-2xl font-bold text-gray-800">Selamat Datang Kembali!</h2>
                             <p class="mb-6 text-gray-700">Silakan masuk ke akun Anda</p>
-                            <form class="mt-6">
+
+                            <form class="mt-6" action="{{ route('login') }}" method="POST">
+                                @csrf
                                 <div class="mb-4">
-                                    <label class="block mb-2 font-bold text-primary_teks" for="username">
+                                    <label class="block mb-2 font-bold text-primary_teks" for="emial">
                                         Email
                                     </label>
                                     <input
                                         class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="username" type="text" placeholder="Username">
+                                        id="email" type="text" name="email" placeholder="Username">
                                 </div>
                                 <div class="mb-6">
                                     <label class="block mb-2 font-bold text-gray-700" for="password">
@@ -51,7 +53,7 @@
                                     </label>
                                     <input
                                         class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="password" type="password" placeholder="Password">
+                                        id="password" type="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="flex flex-col justify-between gap-4">
                                     <div class="flex justify-end">
@@ -95,7 +97,8 @@
                                                         <div class="mb-4">
                                                             <input
                                                                 class="w-full px-4 py-3 text-gray-700 border rounded-md appearance-none lea6ding-tight focus:outline-none focus:shadow-outline"
-                                                                id="forgotpassword" type="text" placeholder="ex@gmail.com">
+                                                                id="forgotpassword" type="text"
+                                                                placeholder="ex@gmail.com">
                                                         </div>
                                                     </div>
                                                     <!-- Dialog Footer -->
@@ -112,11 +115,23 @@
                                     <div class="flex">
                                         <button
                                             class="w-full px-4 py-2 font-bold text-white rounded-sm bg-primary focus:outline-none focus:shadow-outline"
-                                            type="button">
+                                            type="submit">
                                             Sign In
                                         </button>
                                     </div>
                                 </div>
+                                @if ($errors->any())
+                                    <div class="mb-4">
+                                        <div class="font-medium text-red-600">{{ __('Whoops! Something went wrong.') }}
+                                        </div>
+
+                                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                             </form>
                         </div>
                     </div>
