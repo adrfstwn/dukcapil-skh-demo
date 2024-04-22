@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 
 // Menu Tambah Admin
-Route::get('/users', [UserController::class, 'index'])->name('user.index');
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 Route::post('/user', [UserController::class, 'store'])->name('user.store');
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
@@ -33,9 +33,6 @@ Route::get('/form-berita', function () {
     return view('admin.berita.form-berita');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
 Route::get('/profile-admin', function () {
     return view('auth.profile-admin');
 });

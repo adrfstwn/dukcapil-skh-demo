@@ -43,7 +43,7 @@
                                     </label>
                                     <input
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="username" type="text" placeholder="Username">
+                                        id="username" type="text" placeholder="Username" name="name">
                                 </div>
                                 <div class="mb-4">
                                     <label class="block text-primary_teks font-bold mb-2" for="email">
@@ -51,15 +51,7 @@
                                     </label>
                                     <input
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="username" type="text" placeholder="Username">
-                                </div>
-                                <div class="mb-6">
-                                    <label class="block text-gray-700 font-bold mb-2" for="verify-password">
-                                        Confirm Password
-                                    </label>
-                                    <input
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="password" type="password" placeholder="Password">
+                                        id="username" type="text" placeholder="Username" name="email">
                                 </div>
                                 <div class="mb-6">
                                     <label class="block text-gray-700 font-bold mb-2" for="password">
@@ -67,7 +59,15 @@
                                     </label>
                                     <input
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="password" type="password" placeholder="Password">
+                                        id="password" type="password" placeholder="Password" name="password">
+                                </div>
+                                <div class="mb-6">
+                                    <label class="block text-gray-700 font-bold mb-2" for="verify-password">
+                                        Confirm Password
+                                    </label>
+                                    <input
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        id="password" type="password" placeholder="Password" name="password">
                                 </div>
                                 <div class="flex flex-col gap-4 justify-between">
                                     <div class="flex">
