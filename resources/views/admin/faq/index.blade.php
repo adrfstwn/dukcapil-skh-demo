@@ -20,10 +20,10 @@
                             <th scope="col" class="p-4">
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Mitra
+                                Title FAQ
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Image Mitra
+                                Answer FAQ
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -40,8 +40,7 @@
                                 Apple MacBook Pro 17"
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Silver
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="homeSlider-edit"
@@ -59,8 +58,7 @@
                                 Microsoft Surface Pro
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                White
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -78,8 +76,7 @@
                                 Magic Mouse 2
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Black
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -97,8 +94,7 @@
                                 Apple Watch
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Black
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -116,8 +112,7 @@
                                 Apple iMac
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Silver
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -135,8 +130,7 @@
                                 Apple AirPods
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                White
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -154,8 +148,7 @@
                                 iPad Pro
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Gold
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -173,8 +166,7 @@
                                 Magic Keyboard
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Black
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -192,8 +184,7 @@
                                 Apple TV 4K
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Black
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"
@@ -211,8 +202,7 @@
                                 AirTag
                             </th>
                             <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-
+                                Silver
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="#"

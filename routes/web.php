@@ -32,8 +32,32 @@ Route::get('/home', function () {
 Route::get('/form-mitra', function () {
     return view('admin.mitra.form-mitra');
 });
-Route::get('/form-slider', function () {
-    return view('admin.home-slider.form-slider');
+Route::get('/homeSlider-edit', function () {
+    return view('admin.home-slider.edit');
+});
+Route::get('/homeSlider-create', function () {
+    return view('admin.home-slider.create');
+});
+Route::get('/homeSlider-index', function () {
+    return view('admin.home-slider.index');
+});
+Route::get('/faq-create', function () {
+    return view('admin.faq.create');
+});
+Route::get('/faq-edit', function () {
+    return view('admin.faq.edit');
+});
+Route::get('/faq-index', function () {
+    return view('admin.faq.index');
+});
+Route::get('/mitra-create', function () {
+    return view('admin.mitra.create');
+});
+Route::get('/mitra-edit', function () {
+    return view('admin.mitra.edit');
+});
+Route::get('/mitra-index', function () {
+    return view('admin.mitra.index');
 });
 Route::get('/form-berita', function () {
     return view('admin.berita.form-berita');
