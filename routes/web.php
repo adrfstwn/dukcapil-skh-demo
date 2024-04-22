@@ -20,8 +20,11 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 //
 
-Route::get('/', function () {
+Route::get('/template', function () {
     return view('master-admin');
+});
+Route::get('/dashboard-admin', function () {
+    return view('admin.dashboard-admin');
 });
 Route::get('/home', function () {
     return view('home');
