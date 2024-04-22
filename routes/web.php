@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeSliderController;
 
 // Menu Tambah Admin
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
@@ -18,7 +19,15 @@ Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-//
+// Home Slider
+Route::get('/homeslider', [HomeSliderController::class, 'index'])->name('homeslider.index');
+Route::get('/homeslider-create', [HomeSliderController::class, 'create'])->name('home-slider.create');
+Route::post('/homeslider', [HomeSliderController::class, 'store'])->name('home-slider.store');
+Route::get('/home-slider/{id}', [HomeSliderController::class, 'show'])->name('home-slider.show');
+Route::get('/home-slider/{id}/edit', [HomeSliderController::class, 'edit'])->name('home-slider.edit');
+Route::put('/home-slider/{id}', [HomeSliderController::class, 'update'])->name('home-slider.update');
+Route::delete('/home-slider/{id}', [HomeSliderController::class, 'destroy'])->name('home-slider.destroy');
+
 
 Route::get('/admin', function () {
     return view('master-admin');
@@ -29,18 +38,13 @@ Route::get('/dashboard-admin', function () {
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/mitra', function () {
+    return view('admin.mitra.index');
+});
 Route::get('/mitra/create', function () {
     return view('admin.mitra.create');
 });
-Route::get('/homeslider/edit', function () {
-    return view('admin.home-slider.edit');
-});
-Route::get('/homeslider/create', function () {
-    return view('admin.home-slider.create');
-});
-Route::get('/homeslider/index', function () {
-    return view('admin.home-slider.index');
-});
+
 Route::get('/faq/create', function () {
     return view('admin.faq.create');
 });

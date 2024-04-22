@@ -9,4 +9,9 @@ class HomeSlider extends Model
 {
     use HasFactory;
     protected $table = 'home_slider';
+    protected $fillable = [
+        'judul',
+        'deskripsi',
+        'gambar_slider',
+    ];
 }
