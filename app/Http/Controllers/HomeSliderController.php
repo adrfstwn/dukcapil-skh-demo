@@ -41,7 +41,7 @@ class HomeSliderController extends Controller
         ]);
 
         // Upload gambar
-        $gambarPath = $request->file('gambar_slider')->store('public/home-slider');
+        $gambarPath = $request->file('gambar_slider')->store('home-slider', 'public');
 
         $homeSlider = HomeSlider::create([
             'judul' => $validatedData['judul'],
