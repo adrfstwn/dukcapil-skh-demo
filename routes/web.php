@@ -39,6 +39,9 @@ Route::delete('/mitra-{id}', [MitraController::class, 'destroy'])->name('mitra.d
 //Home
 Route::get('/', [HomeController::class, 'index']);
 
+Route::get('/admin', function () {
+    return view('master-admin');
+});
 
 Route::get('/form-berita', function () {
     return view('admin.berita.form-berita');
