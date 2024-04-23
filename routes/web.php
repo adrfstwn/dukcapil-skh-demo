@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\FAQController;
 
 // Menu Tambah Admin
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
@@ -36,5 +37,15 @@ Route::post('/mitra', [MitraController::class, 'store'])->name('mitra.store');
 Route::get('/mitra-{id}', [MitraController::class, 'edit'])->name('mitra.edit');
 Route::put('/mitra-{id}', [MitraController::class, 'update'])->name('mitra.update');
 Route::delete('/mitra-{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+
+// FAQ
+Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');
+Route::get('/faq-create', [FAQController::class, 'create'])->name('faq.create');
+Route::post('/faq', [FAQController::class, 'store'])->name('faq.store');
+Route::get('/faq-{id}', [FAQController::class, 'edit'])->name('faq.edit');
+Route::put('/faq-{id}', [FAQController::class, 'update'])->name('faq.update');
+Route::delete('/faq-{id}', [FAQController::class, 'destroy'])->name('faq.destroy');
+
+
 //Home
 Route::get('/', [HomeController::class, 'index']);
