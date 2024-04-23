@@ -38,4 +38,3 @@ Route::put('/mitra-{id}', [MitraController::class, 'update'])->name('mitra.updat
 Route::delete('/mitra-{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
 //Home
 Route::get('/', [HomeController::class, 'index']);
-
