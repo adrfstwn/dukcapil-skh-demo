@@ -35,16 +35,16 @@ class MitraController extends Controller
     {
         // Validasi data input
         $validatedData = $request->validate([
-            'nama_mitra' => 'required',
+            'nama' => 'required',
             'logo_mitra' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Upload logo mitra
-        $path = $request->file('logo_mitra')->store('logos');
+        $path = $request->file('logo_mitra')->store('mitra', 'public');;
 
         // Simpan data mitra ke database
         $mitra = new Mitra;
-        $mitra->nama_mitra = $validatedData['nama_mitra'];
+        $mitra->nama = $validatedData['nama'];
         $mitra->logo_mitra = $path;
         $mitra->save();
 
@@ -77,21 +77,21 @@ class MitraController extends Controller
     {
         // Validasi data input
         $validatedData = $request->validate([
-            'nama_mitra' => 'required',
+            'nama' => 'required',
             'logo_mitra' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $mitra = Mitra::findOrFail($id);
 
         // Update nama mitra
-        $mitra->nama_mitra = $validatedData['nama_mitra'];
+        $mitra->nama = $validatedData['nama'];
 
         // Update logo mitra jika ada
         if ($request->hasFile('logo_mitra')) {
             // Hapus logo lama
             Storage::delete($mitra->logo_mitra);
             // Upload logo baru
-            $path = $request->file('logo_mitra')->store('logos');
+            $path = $request->file('logo_mitra')->store('mitra', 'public');;
             $mitra->logo_mitra = $path;
         }
 
