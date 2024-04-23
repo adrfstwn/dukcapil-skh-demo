@@ -36,14 +36,15 @@
                         <div class="p-6">
                             <h2 class="mb-2 text-2xl font-bold text-gray-800">Selamat Datang Kembali!</h2>
                             <p class="mb-6 text-gray-700">Silakan masuk ke akun Anda</p>
-                            <form class="mt-6">
+                            <form action="{{ route('auth') }}" method="POST">
+                                @csrf
                                 <div class="mb-4">
                                     <label class="block mb-2 font-bold text-primary_teks" for="username">
                                         Email
                                     </label>
                                     <input
                                         class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="username" type="text" placeholder="Username">
+                                        id="username" name="email" type="text" placeholder="Username">
                                 </div>
                                 <div class="mb-6">
                                     <label class="block mb-2 font-bold text-gray-700" for="password">
@@ -51,7 +52,7 @@
                                     </label>
                                     <input
                                         class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                        id="password" type="password" placeholder="Password">
+                                        id="password" name="password" type="password" placeholder="Password">
                                 </div>
                                 <div class="flex flex-col justify-between gap-4">
                                     <div class="flex justify-end">
@@ -112,7 +113,7 @@
                                     <div class="flex">
                                         <button
                                             class="w-full px-4 py-2 font-bold text-white rounded-sm bg-primary focus:outline-none focus:shadow-outline"
-                                            type="button">
+                                            type="submit">
                                             Sign In
                                         </button>
                                     </div>

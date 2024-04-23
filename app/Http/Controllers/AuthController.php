@@ -34,7 +34,7 @@ class AuthController extends Controller
         // Coba melakukan login
         if (Auth::attempt($credentials)) {
             // Jika berhasil, redirect ke dashboard atau halaman yang sesuai
-            return redirect()->intended('/profile-admin');
+            return redirect()->intended('/');
         }
 
         // Jika login gagal, kembalikan dengan pesan error

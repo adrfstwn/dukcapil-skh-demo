@@ -36,7 +36,8 @@
                         <div class="p-6">
                             <h2 class="text-2xl font-bold text-gray-800 mb-2">Selamat Datang</h2>
                             <p class="text-gray-700 mb-6">Silakan isi filed ini sesuai data anda</p>
-                            <form class="mt-6">
+                            <form action="{{ route('user.store') }}" method="POST">
+                                @csrf
                                 <div class="mb-4">
                                     <label class="block text-primary_teks font-bold mb-2" for="username">
                                         Username
@@ -62,21 +63,32 @@
                                         id="password" type="password" placeholder="Password" name="password">
                                 </div>
                                 <div class="mb-6">
-                                    <label class="block text-gray-700 font-bold mb-2" for="verify-password">
+                                    <label class="block text-gray-700 font-bold mb-2" for="confirm-password">
                                         Confirm Password
                                     </label>
                                     <input
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="password" type="password" placeholder="Password" name="password">
+                                        id="confirm-password" type="password" placeholder="Confirm Password" name="password_confirmation">
+                                    <span id="password-error" class="text-red-500"></span>
                                 </div>
+
                                 <div class="flex flex-col gap-4 justify-between">
                                     <div class="flex">
                                         <button
                                             class="bg-primary w-full rounded-sm text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
-                                            type="button">
+                                            type="submit">
                                             Register
                                         </button>
                                     </div>
+                                </div>
+                                <div class="text-red-500">
+                                    @if ($errors->any())
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 </div>
                             </form>
                         </div>

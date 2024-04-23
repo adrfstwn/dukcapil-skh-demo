@@ -1,49 +1,58 @@
 @extends('layouts.app')
 @section('content')
     <!-- start hero section -->
-
-    <section id="hero" class="md:mb-7 md:mt-6 p-3">
+    <section id="hero" class="md:mb-7 md:mt-6 p-3 relative">
         <div class="container">
             <div class="max-w-80 md:max-w-6xl mx-auto relative drop-shadow-xl -z-10">
-                <!-- data loop -->
-                @foreach ($homeSliders as $homeSlider)
-                <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end drop-shadow-xl text-white rounded-3xl">
-                    <img src="{{ asset($homeSlider->gambar_slider) }}" alt="" class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl">
-                    <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl">
-                        <h2 class="font-bold text-base md:text-2xl">{{ $homeSlider->judul }}</h2>
-                        <p class="text-xs">{{ $homeSlider->deskripsi }}</p>
+                <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- data loop -->
+                        @foreach ($homeSliders as $index => $homeSlider)
+                        <div class="swiper-slide relative h-64 md:h-[560px]">
+                            <img src="{{ asset($homeSlider->gambar_slider) }}" alt="" class="object-cover object-center w-full h-full rounded-3xl">
+                            <div class="absolute inset-0 flex items-end p-6 md:p-14 text-white rounded-3xl">
+                                <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl">
+                                    <h2 class="font-bold text-base md:text-2xl">{{ $homeSlider->judul }}</h2>
+                                    <p class="text-xs">{{ $homeSlider->deskripsi }}</p>
+                                </div>
+                                <div class="sm:hidden w-[400px] opacity-95">
+                                    <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">{{ $homeSlider->title }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
-                    <div class="sm:hidden w-[400px] opacity-95">
-                        <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">{{ $homeSlider->title }}</h2>
-                    </div>
-                </div>
-                @endforeach
-
-                <!-- next / prev -->
-                <div class="absolute inset-0 flex z-100">
-                    <div class="flex items-center justify-start w-1/2">
-                        <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
-                                <path fill="currentColor" d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="flex items-center justify-end w-1/2">
-                        <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
-                                <path fill="currentColor" d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                            </svg>
-                        </button>
-                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- end hero section -->
-
-
-
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.swiper-container', {
+                loop: true,
+                autoplay: {
+                    delay: 5000, // 5 seconds
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        });
+    </script>
     <!-- end hero section -->
 
     <!-- start service section -->

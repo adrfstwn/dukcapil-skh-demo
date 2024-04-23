@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -12,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index', compact('users'));
+        return view('user.index', compact('users'));
     }
 
     public function create()
@@ -22,26 +24,31 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        // Validasi request
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed', // Validasi konfirmasi password
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'password.confirmed' => 'The password confirmation does not match.',
         ]);
 
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']), // Menggunakan Hash untuk menyimpan password
-            'role' => 'admin', // Set nilai default role menjadi "admin"
-        ]);
+        // Buat instance user baru
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        // Hash password sebelum disimpan
+        $user->password = Hash::make($request->password);
+        $user->save();
 
-        if ($user) {
-            return redirect()->route('login')->with('success', 'User created successfully');
-        } else {
-            return back()->with('error', 'Failed to create user');
+        return redirect()->route('login')->with('success', 'User registered successfully. Please login.');
+        // Jika validasi gagal, kembalikan error
+        if ($validator->fails()) {
+            throw ValidationException::withMessages($validator->errors()->toArray());
         }
-    }
 
+
+    }
     public function show($id)
     {
         $user = User::findOrFail($id);
@@ -51,7 +58,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        return view('user.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
@@ -71,7 +78,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'User updated successfully');
+        return redirect()->route('user.index')->with('success', 'User updated successfully');
     }
 
     public function destroy($id)
