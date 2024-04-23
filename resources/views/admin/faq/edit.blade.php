@@ -7,7 +7,8 @@
                     <h2 class="text-2xl font-bold md:text-3xl font-monserrats text-primary_teks">Edit FAQ Section</h2>
                     <p class="text-base text-secondary_teks">Input for the FAQ section</p>
                 </div>
-                <form action="{{ route('faq.update', ['id' => $faq->id]) }}" method="POST">
+                <form action="{{ route('faq.update', ['id' => $faq->id]) }}"
+                    method="POST">
                     @csrf
                     @method('PUT')
                 <div class="my-2">

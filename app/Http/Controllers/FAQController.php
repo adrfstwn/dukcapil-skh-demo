@@ -35,22 +35,26 @@ class FAQController extends Controller
     }
 
     // Menampilkan formulir untuk mengedit FAQ
-    public function edit(FAQ $faq)
+    public function edit($id)
     {
+        $faq = FAQ::findOrFail($id);
         return view('admin.faq.edit', compact('faq'));
     }
 
     // Memperbarui FAQ dalam database
-    public function update(Request $request, FAQ $id)
-    {
-        $request->validate([
-            'pertanyaan' => 'required',
-            'jawaban' => 'required',
-        ]);
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'pertanyaan' => 'required',
+        'jawaban' => 'required',
+    ]);
 
-        $id->update($request->all());
+    $faq = FAQ::findOrFail($id);
+    $faq->update($request->all());
+
     return redirect()->route('faq.index')->with('success', 'FAQ updated successfully.');
-    }
+}
+
 
     // Menghapus FAQ dari database
     public function destroy($id)

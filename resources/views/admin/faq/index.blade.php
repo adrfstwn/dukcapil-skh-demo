@@ -42,7 +42,7 @@
                         {{$faq->jawaban}}
                             </td>
                             <td class="flex items-center px-6 py-4">
-                                <a href="{{ route('faq.edit', ['id' => $faq->id]) }}"
+                                <a href="{{ route('faq.update', ['id' => $faq->id]) }}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 <form action="{{ route('faq.destroy', ['id' => $faq->id]) }}"
                                     method="POST" class="inline-block">
