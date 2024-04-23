@@ -35,6 +35,27 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <td class="w-4 p-4">
+                        </td>
+                        <th scope="row"
+                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Microsoft Surface Pro
+                        </th>
+                        <td class="px-6 py-4">
+                            White
+                        </td>
+                        <td class="px-6 py-4">
+                            <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
+                        </td>
+                        <td class="flex items-center px-6 py-4">
+                            <a href="#"
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="#"
+                                class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
+                        </td>
+                    </tr>
                         @foreach($homeSliders as $homeSlider)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <td class="w-4 p-4">
@@ -50,33 +71,18 @@
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt="" class="w-40">
                             </td>
                             <td class="flex items-center px-6 py-4">
-                                <a href="homeSlider-edit"
+                                <a href="{{ route('homeslider.edit', ['id' => $homeSlider->id]) }}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                <a href=""
-                                    class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
+                                <form action="{{ route('homeslider.destroy', ['id' => $homeSlider->id]) }}"
+                                    method="POST" class="inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</button>
+                                </form>
                             </td>
                         </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="w-4 p-4">
-                            </td>
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="px-6 py-4">
-                                White
-                            </td>
-                            <td class="px-6 py-4">
-                                <img src="./dist/assets/image/Karyawan.jpg" alt="" class="w-40">
-                            </td>
-                            <td class="flex items-center px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                <a href="#"
-                                    class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</a>
-                            </td>
-                        </tr>
+
                         @endforeach
                     </tbody>
                 </table>

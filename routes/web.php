@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeSliderController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MitraController;
 
 // Menu Tambah Admin
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
@@ -23,21 +25,30 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/homeslider', [HomeSliderController::class, 'index'])->name('homeslider.index');
 Route::get('/homeslider-create', [HomeSliderController::class, 'create'])->name('home-slider.create');
 Route::post('/homeslider', [HomeSliderController::class, 'store'])->name('home-slider.store');
-Route::get('/home-slider/{id}', [HomeSliderController::class, 'show'])->name('home-slider.show');
-Route::get('/home-slider/{id}/edit', [HomeSliderController::class, 'edit'])->name('home-slider.edit');
-Route::put('/home-slider/{id}', [HomeSliderController::class, 'update'])->name('home-slider.update');
-Route::delete('/home-slider/{id}', [HomeSliderController::class, 'destroy'])->name('home-slider.destroy');
+Route::get('/homeslider-{id}', [HomeSliderController::class, 'edit'])->name('homeslider.edit');
+Route::put('/homeslider-{id}', [HomeSliderController::class, 'update'])->name('homeslider.update');
+Route::delete('/homeslider-{id}', [HomeSliderController::class, 'destroy'])->name('homeslider.destroy');
 
+// Mitra
+Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
+Route::get('/mitra-create', [MitraController::class, 'create'])->name('mitra.create');
+Route::post('/mitra', [MitraController::class, 'store'])->name('mitra.store');
+Route::get('/mitra-{id}', [MitraController::class, 'edit'])->name('mitra.edit');
+Route::put('/mitra-{id}', [MitraController::class, 'update'])->name('mitra.update');
+Route::delete('/mitra-{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+//Home
+Route::get('/', [HomeController::class, 'index']);
 
+Route::get('/admin', function () {
+    return view('master-admin');
+});
 Route::get('/admin', function () {
     return view('master-admin');
 });
 Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
 });
-Route::get('/', function () {
-    return view('home');
-});
+
 Route::get('/mitra', function () {
     return view('admin.mitra.index');
 });

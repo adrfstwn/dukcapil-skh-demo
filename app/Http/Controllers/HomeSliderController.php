@@ -83,23 +83,23 @@ class HomeSliderController extends Controller
 
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
-            'dekripsi' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:255',
             'gambar_slider' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('gambar_slider')) {
             // Upload gambar baru
-            $gambarPath = $request->file('gambar_slider')->store('public/home-slider');
+            $gambarPath = $request->file('gambar_slider')->store('home-slider', 'public');
             // Hapus gambar lama
-            Storage::delete($homeSlider->gambar);
-            $homeSlider->gambar = $gambarPath;
+            Storage::delete($homeSlider->gambar_slider);
+            $homeSlider->gambar_slider = $gambarPath;
         }
 
-        $homeSlider->nama = $validatedData['judul'];
-        $homeSlider->judul = $validatedData['deskripsi'];
+        $homeSlider->judul = $validatedData['judul'];
+        $homeSlider->deskripsi = $validatedData['deskripsi'];
         $homeSlider->save();
 
-        return redirect()->route('home-slider.index')->with('success', 'Home slider updated successfully');
+        return redirect()->route('homeslider.index')->with('success', 'Home slider updated successfully');
     }
 
     /**
@@ -109,9 +109,9 @@ class HomeSliderController extends Controller
     {
         $homeSlider = HomeSlider::findOrFail($id);
         // Hapus gambar dari storage
-        Storage::delete($homeSlider->gambar);
+        Storage::delete($homeSlider->gambar_slider);
         $homeSlider->delete();
 
-        return redirect()->route('home-slider.index')->with('success', 'Home slider deleted successfully');
+        return redirect()->route('homeslider.index')->with('success', 'Home slider deleted successfully');
     }
 }

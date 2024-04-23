@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mitra;
+use Illuminate\Support\Facades\Storage;
 
 class MitraController extends Controller
 {
@@ -11,7 +13,11 @@ class MitraController extends Controller
      */
     public function index()
     {
-        //
+        $mitras = Mitra::all();
+        foreach ($mitras as $mitra) {
+            $mitra->logo_mitra = asset(Storage::url($mitra->logo_mitra));
+        }
+        return view('admin.mitra.index', compact('mitras'));
     }
 
     /**
@@ -19,7 +25,7 @@ class MitraController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.mitra.create');
     }
 
     /**
@@ -27,7 +33,22 @@ class MitraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data input
+        $validatedData = $request->validate([
+            'nama_mitra' => 'required',
+            'logo_mitra' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        // Upload logo mitra
+        $path = $request->file('logo_mitra')->store('logos');
+
+        // Simpan data mitra ke database
+        $mitra = new Mitra;
+        $mitra->nama_mitra = $validatedData['nama_mitra'];
+        $mitra->logo_mitra = $path;
+        $mitra->save();
+
+        return redirect()->route('mitra.index')->with('success', 'Mitra berhasil ditambahkan');
     }
 
     /**
@@ -35,7 +56,9 @@ class MitraController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $mitra = Mitra::findOrFail($id);
+        $mitra->logo_mitra = asset(Storage::url($mitra->logo_mitra));
+        return view('admin.mitra.show', compact('mitra'));
     }
 
     /**
@@ -43,7 +66,8 @@ class MitraController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mitra = Mitra::findOrFail($id);
+        return view('admin.mitra.edit', compact('mitra'));
     }
 
     /**
@@ -51,7 +75,29 @@ class MitraController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Validasi data input
+        $validatedData = $request->validate([
+            'nama_mitra' => 'required',
+            'logo_mitra' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $mitra = Mitra::findOrFail($id);
+
+        // Update nama mitra
+        $mitra->nama_mitra = $validatedData['nama_mitra'];
+
+        // Update logo mitra jika ada
+        if ($request->hasFile('logo_mitra')) {
+            // Hapus logo lama
+            Storage::delete($mitra->logo_mitra);
+            // Upload logo baru
+            $path = $request->file('logo_mitra')->store('logos');
+            $mitra->logo_mitra = $path;
+        }
+
+        $mitra->save();
+
+        return redirect()->route('mitra.index')->with('success', 'Mitra berhasil diperbarui');
     }
 
     /**
@@ -59,6 +105,12 @@ class MitraController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mitra = Mitra::findOrFail($id);
+        // Hapus logo mitra
+        Storage::delete($mitra->logo_mitra);
+        // Hapus data mitra dari database
+        $mitra->delete();
+
+        return redirect()->route('mitra.index')->with('success', 'Mitra berhasil dihapus');
     }
 }
