@@ -86,9 +86,9 @@
                     </a>
                     <div x-show="open" class="block right-0 mt-2 w-full bg-white">
                         <!-- Dropdown content goes here -->
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home
+                        <a href="#" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Home
                             Slider</a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Layanan
+                        <a href="#" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Layanan
                             Terkait</a>
                     </div>
                 </div>
@@ -133,14 +133,18 @@
                     </a>
                     <div x-show="open" class="block right-0 mt-2 w-full bg-white">
                         <!-- Dropdown content goes here -->
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile
+                        <a href="#" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile
                         </a>
-                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Struktur
+                        <a href="#" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Struktur
                             Organisasi
                         </a>
                     </div>
                 </div>
             </li>
+            <li class="mt-8 w-full">
+                <div class="">
+                    <p class="px-4 text-secondary text-sm font-semibold">Manajement Tampilan Halaman</p>
+                </div>
             <li class="mt-0.5 w-full">
                 <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
                     href="./pages/sign-in.html">
@@ -168,6 +172,7 @@
                     </div>
                     <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">FAQ</span>
                 </a>
+            </li>
             </li>
             <li class="w-full mt-4">
                 <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase opacity-60">User Account</h6>
