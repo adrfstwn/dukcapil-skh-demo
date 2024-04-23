@@ -29,9 +29,6 @@ Route::put('/home-slider/{id}', [HomeSliderController::class, 'update'])->name('
 Route::delete('/home-slider/{id}', [HomeSliderController::class, 'destroy'])->name('home-slider.destroy');
 
 
-Route::get('/admin', function () {
-    return view('master-admin');
-});
 Route::get('/dashboard-admin', function () {
     return view('admin.dashboard-admin');
 });
