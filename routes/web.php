@@ -39,41 +39,7 @@ Route::delete('/mitra-{id}', [MitraController::class, 'destroy'])->name('mitra.d
 //Home
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/admin', function () {
-    return view('master-admin');
-});
-Route::get('/admin', function () {
-    return view('master-admin');
-});
-Route::get('/dashboard-admin', function () {
-    return view('admin.dashboard-admin');
-});
 
-Route::get('/mitra', function () {
-    return view('admin.mitra.index');
-});
-Route::get('/mitra/create', function () {
-    return view('admin.mitra.create');
-});
-
-Route::get('/faq/create', function () {
-    return view('admin.faq.create');
-});
-Route::get('/faq/edit/{id}', function () {
-    return view('admin.faq.edit');
-});
-Route::get('/faq-index', function () {
-    return view('admin.faq.index');
-});
-Route::get('/mitra-create', function () {
-    return view('admin.mitra.create');
-});
-Route::get('/mitra-edit', function () {
-    return view('admin.mitra.edit');
-});
-Route::get('/mitra-index', function () {
-    return view('admin.mitra.index');
-});
 Route::get('/form-berita', function () {
     return view('admin.berita.form-berita');
 });
