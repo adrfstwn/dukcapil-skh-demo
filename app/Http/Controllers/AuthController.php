@@ -33,8 +33,10 @@ class AuthController extends Controller
 
         // Coba melakukan login
         if (Auth::attempt($credentials)) {
+
+            $request->session()->put('login_time', now());
             // Jika berhasil, redirect ke dashboard atau halaman yang sesuai
-            return redirect()->intended('/');
+            return redirect()->intended('/admin');
         }
 
         // Jika login gagal, kembalikan dengan pesan error
