@@ -23,20 +23,6 @@
                         <input type="text" id="deskripsi" name="email" value="{{ $user->email }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                     </div>
-                    <div class="my-2">
-                        <label for="default-input"
-                            class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Password
-                        </label>
-                        <input type="password" id="deskripsi" name="password"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                    </div>
-                    <div class="my-2">
-                        <label for="default-input"
-                            class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Confirmation Password
-                        </label>
-                        <input type="password" id="deskripsi" name="password_confirmation"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                    </div>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>

@@ -7,15 +7,24 @@ use App\Http\Controllers\HomeSliderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\FAQController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\ResetPasswordController;
 
 // Menu Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Forgot Password
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.request');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-Route::group(['middleware' => 'admin'], function () {
+//Reset Password
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
+Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     // Menu Tambah Admin
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
@@ -57,3 +66,4 @@ Route::group(['middleware' => 'admin'], function () {
 Route::get('/', [HomeController::class, 'index']);
 
 //Admin
+Route::view('/profile', 'profil-section.profile')->name('t');

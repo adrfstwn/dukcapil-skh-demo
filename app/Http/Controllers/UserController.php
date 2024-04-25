@@ -41,7 +41,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('login')->with('success', 'User registered successfully. Please login.');
+        return redirect()->route('admin.index')->with('success', 'User registered successfully. Please login.');
         // Jika validasi gagal, kembalikan error
         if ($validator->fails()) {
             throw ValidationException::withMessages($validator->errors()->toArray());

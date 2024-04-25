@@ -67,8 +67,7 @@
                                         </g>
                                     </g>
                                 </g>
-                            </g
-                        </svg>
+                            </g </svg>
                     </div>
                     <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Mitra</span>
                 </a>
@@ -113,7 +112,8 @@
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF"
+                                    fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g transform="translate(154.000000, 300.000000)">
                                             <path class="fill-slate-800 opacity-60"
@@ -144,7 +144,8 @@
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>document</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF"
+                                    fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
                                         <g transform="translate(154.000000, 300.000000)">
                                             <path class="fill-slate-800 opacity-60"
@@ -233,7 +234,8 @@
                     </a>
                     <div x-show="open" class="block right-0 mt-2 w-full bg-white">
                         <!-- Dropdown content goes here -->
-                        <a href="{{ route('homeslider.index') }}" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Home
+                        <a href="{{ route('homeslider.index') }}"
+                            class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Home
                             Slider</a>
                         <a href="#" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Layanan
                             Terkait</a>
@@ -294,7 +296,7 @@
                 </div>
             <li class="mt-0.5 w-full">
                 <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-                    href="{{route('faq.index')}}">
+                    href="{{ route('faq.index') }}">
                     <div
                         class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                         <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1"
@@ -575,7 +577,7 @@
                         </span>
                     </div>
                 </div>
-                <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
+                <ul class="flex flex-row justify-end pl-0 mb-0 gap-2 list-none md-max:w-full">
                     <!-- online builder btn  -->
                     <!-- <li class="flex items-center">
             <a class="inline-block px-8 py-2 mb-0 mr-4 text-xs font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 ease-soft-in hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500 active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent" target="_blank" href="https://www.creative-tim.com/builder/soft-ui?ref=navbar-dashboard&amp;_ga=2.76518741.1192788655.1647724933-1242940210.1644448053">Online Builder</a>
@@ -587,6 +589,7 @@
                             <span class="hidden sm:inline">Sign In</span>
                         </a>
                     </li>
+
                     <li class="flex items-center pl-4 xl:hidden">
                         <a href="javascript:;" class="block p-0 text-sm transition-all ease-nav-brand text-slate-500"
                             sidenav-trigger>
@@ -597,6 +600,18 @@
                                     class="ease-soft mb-0.75 relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
                                 <i class="ease-soft relative block h-0.5 rounded-sm bg-slate-500 transition-all"></i>
                             </div>
+                        </a>
+                    </li>
+                    <li class="flex items-center">
+                        <a href=""
+                            class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <div class="flex justify-end my-6">
+                                    <button type="submit" class="w-16 px-2 py-1 text-xs font-semibold text-white bg-red-600 rounded-sm">Logout</button>
+                                </div>
+                            </form>
+
                         </a>
                     </li>
                     <li class="flex items-center px-4">

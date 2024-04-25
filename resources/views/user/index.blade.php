@@ -49,13 +49,14 @@
                             <td class="flex items-center px-6 py-4">
                                 <a href="{{ route('user.edit', ['id' => $user->id]) }}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                <form action="{{ route('user.destroy', ['id' => $user->id]) }}"
-                                    method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</button>
-                                </form>
+                                    <form id="deleteForm_{{ $user->id }}" action="{{ route('user.destroy', ['id' => $user->id]) }}"
+                                        method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button"
+                                            onclick="confirmDelete('{{ $user->id }}')"
+                                            class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</button>
+                                    </form>
                             </td>
                         </tr>
 @endforeach
@@ -65,4 +66,11 @@
             </div>
         </div>
     </section>
+    <script>
+        function confirmDelete(userId) {
+            if (confirm("Are you sure you want to delete this user?")) {
+                document.getElementById('deleteForm_' + userId).submit();
+            }
+        }
+    </script>
 @endsection
