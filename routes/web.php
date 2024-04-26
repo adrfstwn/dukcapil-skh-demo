@@ -11,6 +11,9 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 
+//Home
+Route::get('/', [HomeController::class, 'index']);
+
 // Menu Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth');
@@ -62,8 +65,4 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 });
 
 
-//Home
-Route::get('/', [HomeController::class, 'index']);
 
-//Admin
-Route::view('/profile', 'profil-section.profile')->name('t');

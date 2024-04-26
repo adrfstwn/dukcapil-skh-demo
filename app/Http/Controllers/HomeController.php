@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\HomeSlider;
 use App\Models\Mitra;
 use App\Models\FAQ;
+use App\Models\Layanan;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -26,11 +27,15 @@ class HomeController extends Controller
         $faqs = FAQ::all(); // Mengambil semua FAQ dari database
         foreach ($faqs as $faq) {
             // Mengganti variabel $faq->logo_mitra dengan pertanyaan dan jawaban FAQ
-            $faq->pertanyaan = $faq->pertanyaan; // Sesuaikan dengan nama kolom di database
-            $faq->jawaban = $faq->jawaban; // Sesuaikan dengan nama kolom di database
+            $faq->pertanyaans = $faq->pertanyaan; // Sesuaikan dengan nama kolom di database
+            $faq->jawabans = $faq->jawaban; // Sesuaikan dengan nama kolom di database
         }
 
-        return view('home', compact('homeSliders', 'mitras', 'faqs'));
+        $layanans = Layanan::all();
+        foreach ($layanans as $layanan) {
+            $layanan->gambar = asset(Storage::url($layanan->gambar));
+        }
+        return view('home', compact('homeSliders', 'mitras', 'faqs', 'layanans'));
     }
 
 }
