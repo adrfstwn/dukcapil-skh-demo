@@ -3,56 +3,53 @@
     <!-- start hero section -->
     <section id="hero" class="md:mb-7 md:mt-6 p-3 relative">
         <div class="container">
-            <div class="max-w-80 md:max-w-6xl mx-auto relative drop-shadow-xl -z-10">
-                <!-- Swiper -->
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <!-- data loop -->
-                        @foreach ($homeSliders as $index => $homeSlider)
-                        <div class="swiper-slide relative h-64 md:h-[560px]">
-                            <img src="{{ asset($homeSlider->gambar_slider) }}" alt="" class="object-cover object-center w-full h-full rounded-3xl">
-                            <div class="absolute inset-0 flex items-end p-6 md:p-14 text-white rounded-3xl">
+            <div class="slick-slider" id="slick-slider">
+                @foreach ($homeSliders as $index => $homeSlider)
+                    <div class="slide">
+                        <div class="max-w-80 md:max-w-6xl mx-auto relative drop-shadow-xl -z-10">
+                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end drop-shadow-xl text-white rounded-3xl">
+                                <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
+                                    class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl">
                                     <h2 class="font-bold text-base md:text-2xl">{{ $homeSlider->judul }}</h2>
                                     <p class="text-xs">{{ $homeSlider->deskripsi }}</p>
                                 </div>
                                 <div class="sm:hidden w-[400px] opacity-95">
-                                    <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">{{ $homeSlider->title }}</h2>
+                                    <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">
+                                        {{ $homeSlider->title }}</h2>
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                    <!-- Add Navigation -->
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                @endforeach
+            </div>
+            <!-- Previous Button -->
+            <div class="absolute inset-0 flex">
+                <div class="flex items-center justify-start w-1/2">
+                    <button
+                        class="absolute left-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6 z-10"
+                        onclick="slickPrev()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- Next Button -->
+                <div class="flex items-center justify-end w-1/2">
+                    <button
+                        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary rotate-180 hover:opacity-100 md:mr-6 z-10"
+                        onclick="slickNext()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
+        </div>
     </section>
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const swiper = new Swiper('.swiper-container', {
-                loop: true,
-                autoplay: {
-                    delay: 5000, // 5 seconds
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
-        });
-    </script>
     <!-- end hero section -->
 
     <!-- start service section -->
@@ -126,7 +123,8 @@
             <div class="flex flex-col gap-4 md:gap-6">
                 <div class="flex flex-col mx-auto">
                     <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">Mitra Kami</h2>
-                    <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Bekerja sama dengan berbagai pihak untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
+                    <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Bekerja sama dengan berbagai
+                        pihak untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
                 </div>
                 <div class="flex flex-col gap-6 md:gap-10">
                     <div class="splide" id="splide1">
@@ -228,36 +226,36 @@
                             this.activeAccordion = (this.activeAccordion == id) ? '' : id
                         }
                     }" class="relative w-full max-w-[1024px] mx-auto text-xs">
-                        @foreach($faqs as $faq)
-                        <div x-data="{ id: $id('accordion') }"
-                            :class="{
-                                'border-neutral-200/60 text-neutral-800': activeAccordion ==
-                                    id,
-                                'border-transparent text-neutral-600 hover:text-neutral-800': activeAccordion !=
-                                    id
-                            }"
-                            class="duration-200 ease-out bg-white border rounded-md cursor-pointer group" x-cloak>
-                            <button @click="setActiveAccordion(id)"
-                                class="flex items-center justify-between w-full px-5 py-4 font-nunito md:text-xl text-base font-semibold text-left select-none">
-                                <span>{{$faq->pertanyaan}}</span>
-                                <div :class="{ 'rotate-90': activeAccordion == id }"
-                                    class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-out">
-                                    <div
-                                        class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
-                                    </div>
+                        @foreach ($faqs as $faq)
+                            <div x-data="{ id: $id('accordion') }"
+                                :class="{
+                                    'border-neutral-200/60 text-neutral-800': activeAccordion ==
+                                        id,
+                                    'border-transparent text-neutral-600 hover:text-neutral-800': activeAccordion !=
+                                        id
+                                }"
+                                class="duration-200 ease-out bg-white border rounded-md cursor-pointer group" x-cloak>
+                                <button @click="setActiveAccordion(id)"
+                                    class="flex items-center justify-between w-full px-5 py-4 font-nunito md:text-xl text-base font-semibold text-left select-none">
+                                    <span>{{ $faq->pertanyaan }}</span>
                                     <div :class="{ 'rotate-90': activeAccordion == id }"
-                                        class="absolute w-full h-0.5 ease duration-500 bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
+                                        class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-out">
+                                        <div
+                                            class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
+                                        </div>
+                                        <div :class="{ 'rotate-90': activeAccordion == id }"
+                                            class="absolute w-full h-0.5 ease duration-500 bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
+                                        </div>
                                     </div>
-                                </div>
-                            </button>
-                            <div x-show="activeAccordion==id" x-collapse x-cloak>
-                                <div class="p-5 pt-0 opacity-70">
-                                    <p class="font-nunito text-sm  md:text-base ">
-                                        {{$faq->jawaban}}
-                                    </p>
+                                </button>
+                                <div x-show="activeAccordion==id" x-collapse x-cloak>
+                                    <div class="p-5 pt-0 opacity-70">
+                                        <p class="font-nunito text-sm  md:text-base ">
+                                            {{ $faq->jawaban }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
 
                     </div>
@@ -269,5 +267,29 @@
             </div>
         </div>
     </section>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.slick-slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: false,
+            });
+        });
+
+        function slickPrev() {
+            $('#slick-slider').slick('slickPrev');
+        }
+
+        function slickNext() {
+            $('#slick-slider').slick('slickNext');
+        }
+    </script>
+
     <!-- end section faq -->
 @endsection
