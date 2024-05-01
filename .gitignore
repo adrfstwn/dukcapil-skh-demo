@@ -1,1 +1,6 @@
-
+/public/ads/**/*.jpg
+/public/ads/**/*.png
+/public/ads/**/*.gif
+/public/ads/**/*.jpeg
+.env
+git

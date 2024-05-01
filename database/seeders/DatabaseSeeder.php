@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Test Admin',
+            'name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('adminskh'), // Anda dapat menggunakan Hash untuk mengenkripsi password
         ]);
