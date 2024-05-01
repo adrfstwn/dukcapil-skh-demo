@@ -237,7 +237,7 @@
                         <a href="{{ route('homeslider.index') }}"
                             class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Home
                             Slider</a>
-                        <a href="#" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Layanan
+                        <a href="{{route('layanan.index')}}" class="block px-16 py-2 text-sm text-gray-700 hover:bg-gray-100">Layanan
                             Terkait</a>
                     </div>
                 </div>

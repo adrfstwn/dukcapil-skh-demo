@@ -56,60 +56,53 @@
     <section id="service">
         <div class="container">
             <div class="flex flex-col gap-4 justify-center">
-                <div class="flex flex-col mx-auto justify-center items-center md:max-w-4xl gap-2 ">
+                <div class="flex flex-col mx-auto justify-center items-center md:max-w-4xl gap-2">
                     <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">Layanan Kami
                     </h2>
-                    <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Menyediakan berbagai
-                        layanan administrasi kependudukan bagi masyarakat. Layanan tersebut meliputi:</p>
+                    <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Menyediakan berbagai layanan
+                        administrasi kependudukan bagi masyarakat. Layanan tersebut meliputi:</p>
                 </div>
                 <div class="flex flex-col md:flex-row gap-6">
-                    <div x-data="slider()" class="relative ">
-                        <!-- Mobile View -->
-                        <div x-show="isMobile">
-                            <div class="grid grid-cols-1 gap-4">
-                                <template x-for="(card, index) in cards" :key="index">
-                                    <div x-show="(index === currentSlide)"
-                                        class="h-52 flex flex-col p-4 border-2 border-primary rounded-lg md:w-full">
-                                        <img src="dist/assets/icon/report.svg" alt="" class="w-6 md:w-9">
-                                        <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary"
-                                            x-text="card.title"></h3>
-                                        <p class="text-base font-nunito text-primary contrast-50" x-text="card.description">
-                                        </p>
-                                    </div>
-                                </template>
-                            </div>
-                        </div>
+                    <div class="relative">
                         <!-- Desktop View -->
-                        <div x-show="!isMobile" :class="{ 'grid-cols-1': isMobile, 'grid-cols-2': !isMobile }"
-                            class="grid md:grid-cols-2 md:gap-4">
-                            <template x-for="(card, index) in cards" :key="index">
-                                <div x-show="(index >= currentSlide && index < currentSlide + 4)"
-                                    class="h-52 flex flex-col p-4 border-2 border-primary rounded-lg md:w-full">
-                                    <img src="dist/assets/icon/report.svg" alt="" class="w-6 md:w-9">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary" x-text="card.title">
-                                    </h3>
-                                    <p class="text-base font-nunito text-primary contrast-50" x-text="card.description">
-                                    </p>
-                                </div>
-                            </template>
+                        <div class="grid md:grid-cols-2 md:gap-4">
+                            @foreach ($layanans as $index => $layanan)
+                                @if ($index >= $currentSlide && $index < $currentSlide + 4)
+                                    <a href="{{ $layanan->link_layanan }}">
+                                        <div x-show="(index >= currentSlide && index < currentSlide + 4)"
+                                            class="h-64 flex flex-col p-4 border-2 border-primary rounded-lg md:w-full">
+                                            <img src="{{ $layanan->gambar }}" alt=""
+                                                class="w-full h-40 object-cover rounded-lg">
+                                            <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary">
+                                                {{ $layanan->nama_layanan }}</h3>
+                                            <p class="text-base font-nunito text-primary contrast-50">
+                                                {{ $layanan->deskripsi_layanan }}</p>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endforeach
                         </div>
                         <div class="flex justify-end items-center my-4">
                             <button @click="prev()"
-                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
+                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                     <path fill="currentColor"
                                         d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                                </svg></button>
+                                </svg>
+                            </button>
                             <button @click="next()"
-                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
+                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                     <path fill="currentColor"
                                         d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                                </svg></button>
+                                </svg>
+                            </button>
                         </div>
                     </div>
-                    <div class="">
-                        <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
+                    <div>
+                        <a href="#">
+                            <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -291,5 +284,4 @@
         }
     </script>
 
-    <!-- end section faq -->
 @endsection

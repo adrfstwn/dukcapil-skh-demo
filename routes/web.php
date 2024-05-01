@@ -10,6 +10,7 @@ use App\Http\Controllers\FAQController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\LayananController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -60,6 +61,14 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/faq-{id}', [FAQController::class, 'edit'])->name('faq.edit');
     Route::put('/faq-{id}', [FAQController::class, 'update'])->name('faq.update');
     Route::delete('/faq-{id}', [FAQController::class, 'destroy'])->name('faq.destroy');
+
+    // Layanan
+    Route::get('/layanan', [LayananController::class, 'index'])->name('layanan.index');
+    Route::get('/layanan-create', [LayananController::class, 'create'])->name('layanan.create');
+    Route::post('/layanan', [LayananController::class, 'store'])->name('layanan.store');
+    Route::get('/layanan-{id}', [LayananController::class, 'edit'])->name('layanan.edit');
+    Route::put('/layanan-{id}', [LayananController::class, 'update'])->name('layanan.update');
+    Route::delete('/layanan-{id}', [LayananController::class, 'destroy'])->name('layanan.destroy');
 
     Route::view('/admin', 'master-admin')->name('admin.index');
 });

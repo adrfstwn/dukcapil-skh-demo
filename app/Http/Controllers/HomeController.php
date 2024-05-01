@@ -32,10 +32,13 @@ class HomeController extends Controller
         }
 
         $layanans = Layanan::all();
+        $currentSlide = 0;
         foreach ($layanans as $layanan) {
             $layanan->gambar = asset(Storage::url($layanan->gambar));
         }
-        return view('home', compact('homeSliders', 'mitras', 'faqs', 'layanans'));
+
+
+        return view('home', compact('homeSliders', 'mitras', 'faqs', 'layanans','currentSlide'));
     }
 
 }

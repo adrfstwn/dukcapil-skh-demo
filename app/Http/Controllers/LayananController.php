@@ -11,10 +11,11 @@ class LayananController extends Controller
     public function index()
     {
         $layanans = Layanan::all();
+        $currentSlide = 0;
         foreach ($layanans as $layanan) {
             $layanan->gambar = asset(Storage::url($layanan->gambar));
         }
-        return view('admin.layanan.index', compact('layanans'));
+        return view('admin.layanan.index', compact('layanans','currentSlide'));
     }
 
     /**
@@ -44,7 +45,9 @@ class LayananController extends Controller
         // Simpan data mitra ke database
         $layanan = new Layanan;
         $layanan->nama_layanan = $validatedData['nama_layanan'];
+        $layanan->deskripsi_layanan = $validatedData['deskripsi_layanan'];
         $layanan->gambar = $path;
+        $layanan->link_layanan = $validatedData['link_layanan'];
         $layanan->save();
 
         return redirect()->route('layanan.index')->with('success', 'Layanan berhasil ditambahkan');
@@ -78,7 +81,7 @@ class LayananController extends Controller
         $validatedData = $request->validate([
             'nama_layanan' => 'required',
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'deksirpsi_layanan' => 'required',
+            'deskripsi_layanan' => 'required',
             'link_layanan' => 'required',
         ]);
 
@@ -86,6 +89,8 @@ class LayananController extends Controller
 
         // Update nama mitra
         $layanan->nama_layanan = $validatedData['nama_layanan'];
+        $layanan->deskripsi_layanan = $validatedData['deskripsi_layanan'];
+        $layanan->link_layanan = $validatedData['link_layanan'];
 
         // Update logo mitra jika ada
         if ($request->hasFile('gambar')) {
