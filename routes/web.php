@@ -11,6 +11,8 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\KategoriBeritaController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -24,11 +26,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-//Reset Password
+// Reset Password
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+// Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
+
     // Menu Tambah Admin
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
@@ -70,6 +74,23 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/layanan-{id}', [LayananController::class, 'update'])->name('layanan.update');
     Route::delete('/layanan-{id}', [LayananController::class, 'destroy'])->name('layanan.destroy');
 
+    // Kategori Berita
+    Route::get('/kategori-berita', [KategoriBeritaController::class, 'index'])->name('kategori-berita.index');
+    Route::get('/kategori-berita-create', [KategoriBeritaController::class, 'create'])->name('kategori-berita.create');
+    Route::post('/kategori-berita', [KategoriBeritaController::class, 'store'])->name('kategori-berita.store');
+    Route::get('/kategori-berita-{id}', [KategoriBeritaController::class, 'edit'])->name('kategori-berita.edit');
+    Route::put('/kategori-berita-{id}', [KategoriBeritaController::class, 'update'])->name('kategori-berita.update');
+    Route::delete('/kategori-berita-{id}', [KategoriBeritaController::class, 'destroy'])->name('kategori-berita.destroy');
+
+    // Berita
+    Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+    Route::get('/berita-create', [BeritaController::class, 'create'])->name('berita.create');
+    Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
+    Route::get('/berita-{id}', [BeritaController::class, 'edit'])->name('berita.edit');
+    Route::put('/berita-{id}', [BeritaController::class, 'update'])->name('berita.update');
+    Route::delete('berita-{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+
+    // Landing Admin
     Route::view('/admin', 'master-admin')->name('admin.index');
 });
 
