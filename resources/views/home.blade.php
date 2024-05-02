@@ -5,7 +5,7 @@
         <div class="container">
             <div class="slick-slider" id="slick-slider">
                 @foreach ($homeSliders as $index => $homeSlider)
-                    <div class="slide">
+                    <div class="slide slide1">
                         <div class="max-w-80 md:max-w-6xl mx-auto relative drop-shadow-xl -z-10">
                             <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end drop-shadow-xl text-white rounded-3xl">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
@@ -65,22 +65,26 @@
                 <div class="flex flex-col md:flex-row gap-6">
                     <div class="relative">
                         <!-- Desktop View -->
-                        <div class="grid md:grid-cols-2 md:gap-4">
-                            @foreach ($layanans as $index => $layanan)
-                                @if ($index >= $currentSlide && $index < $currentSlide + 4)
-                                    <a href="{{ $layanan->link_layanan }}">
-                                        <div x-show="(index >= currentSlide && index < currentSlide + 4)"
-                                            class="h-64 flex flex-col p-4 border-2 border-primary rounded-lg md:w-full">
-                                            <img src="{{ $layanan->gambar }}" alt=""
-                                                class="w-36 h-full object-cover rounded-lg">
-                                            <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary">
-                                                {{ $layanan->nama_layanan }}</h3>
-                                            <p class="text-base font-nunito text-primary contrast-50">
-                                                {{ $layanan->deskripsi_layanan }}</p>
-                                        </div>
-                                    </a>
-                                @endif
-                            @endforeach
+                        <div class="slick-slider" id="slick-slider">
+                            <div class="slide">
+                                <div class="grid md:grid-cols-2 md:gap-4">
+                                    @foreach ($layanans as $index => $layanan)
+                                        @if ($index >= $currentSlide && $index < $currentSlide + 4)
+                                            <a href="{{ $layanan->link_layanan }}">
+                                                <div
+                                                    class="h-64 flex flex-col p-4 border-2 border-primary rounded-lg md:w-full">
+                                                    <img src="{{ $layanan->gambar }}" alt=""
+                                                        class="w-36 h-full object-cover rounded-lg">
+                                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary">
+                                                        {{ $layanan->nama_layanan }}</h3>
+                                                    <p class="text-base font-nunito text-primary contrast-50">
+                                                        {{ $layanan->deskripsi_layanan }}</p>
+                                                </div>
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                         <div class="flex justify-end items-center my-4">
                             <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6"
@@ -119,19 +123,20 @@
                     <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Bekerja sama dengan berbagai
                         pihak untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
                 </div>
-                <div class="flex flex-col gap-6 md:gap-10">
-                    <div class="slick-slider" id="slick-slider">
+                <div class="flex flex-col gap-6 md:gap-10 md:px-6">
+                    <div class="slick-slider-m" id="slick-slider-m">
                         <div class="slide">
-                            <ul class="flex flex-row gap-4 md:gap-0">
+                            <ul class="slick-slider2 flex flex-row gap-4 md:gap-0">
                                 @foreach ($mitras as $mitra)
-                                    <li class="">
-                                        <img src="{{ asset($mitra->logo_mitra) }}" class="w-28 md:w-36 rounded-md shadow-md"
-                                            alt="">
+                                    <li class="slick-slide mx-2 md:mx-0">
+                                        <img src="{{ asset($mitra->logo_mitra) }}"
+                                            class="w-44 h-32 md:w-36 rounded-md object-cover " alt="">
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -273,6 +278,23 @@
                 autoplay: true,
                 autoplaySpeed: 2000,
                 arrows: false,
+            });
+            $('.slick-slider2').slick({
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                arrows: false,
+                responsive: [{
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                    }
+                }]
             });
         });
 
