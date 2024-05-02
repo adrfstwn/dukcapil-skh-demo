@@ -60,7 +60,7 @@
             <h2 class="text-lg font-semibold text-gray-900">Berita</h2>
             <br>
             <button type="button"
-                onclick="window.location='{{ route('kategori-berita.create') }}'"
+                onclick="window.location='{{ route('berita.create') }}'"
                     class="text-white bg-red-700 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                     Add item content
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

@@ -42,6 +42,7 @@ class BeritaController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi_berita' => 'required|string|max:255',
             'gambar_berita' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'waktu' => 'required|string|max:255',
             'kategori_id' => 'required|exists:kategori_berita,id'
         ]);
 
@@ -52,6 +53,7 @@ class BeritaController extends Controller
             'judul' => $validatedData['judul'],
             'deskripsi_berita' => $validatedData['deskripsi_berita'],
             'gambar_berita' => $gambarPath,
+            'waktu' => $validatedData['waktu'],
             'kategori_id' => $validatedData['kategori_id']
         ]);
 
@@ -91,6 +93,7 @@ class BeritaController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi_berita' => 'required|string|max:255',
             'gambar_berita' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'waktu' => 'required|string|max:255',
             'kategori_id' => 'required|exists:kategori_berita,id'
         ]);
 
@@ -104,6 +107,7 @@ class BeritaController extends Controller
 
         $berita->judul = $validatedData['judul'];
         $berita->deskripsi_berita = $validatedData['deskripsi_berita'];
+        $berita->waktu = $validatedData['waktu'];
         $berita->kategori_id = $validatedData['kategori_id'];
         $berita->save();
 

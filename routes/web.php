@@ -17,6 +17,8 @@ use App\Http\Controllers\KategoriBeritaController;
 //Hometttt
 Route::get('/', [HomeController::class, 'index']);
 
+
+
 // Menu Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth');
@@ -96,6 +98,10 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     // Landing Admin
     Route::view('/admin', 'master-admin')->name('admin.index');
 });
+
+Route::view('/tupoksi', 'admin.tupoksi.index')->name('tupoksi.index');
+
+
 
 
 
