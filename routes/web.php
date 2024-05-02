@@ -37,7 +37,7 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name(
 Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
 
 // Download
-Route::get('/download-tampil', [DownloadController::class, 'show'])->name('download.tampil');
+Route::get('/download', [DownloadController::class, 'show'])->name('download.tampil');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -112,8 +112,13 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::view('/admin', 'master-admin')->name('admin.index');
 });
 
-Route::view('/tupoksi', 'admin.tupoksi.index')->name('tupoksi.index');
-Route::view('/download', 'download')->name('download');
+
+// Buat routing ngecek view dari frontend sebelum dibuat CRUD
+// Setelah dibuat CRUD hapus routingan dibawah ini
+Route::view('/tupoksi', 'profil-section.tupoksiVM')->name('tupoksi');
+Route::view('/struk', 'profil-section.strukturOrg')->name('struktur');
+Route::view('/profile', 'profil-section.profile')->name('profile');
+Route::view('/kontak', 'profil-section.kontak')->name('kontak');
 
 
 
