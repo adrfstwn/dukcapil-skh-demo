@@ -41,13 +41,13 @@ class DownloadController extends Controller
 
     public function show()
     {
-        $download = Download::all();
-        return view('download', compact('download'));
+        $downloads = Download::all();
+        return view('download', compact('downloads'));
     }
 
     public function edit($id)
     {
-        $download = Download::findOrFail($id);
+        $download= Download::findOrFail($id);
         return view('admin.download-content.edit', compact('download'));
     }
 

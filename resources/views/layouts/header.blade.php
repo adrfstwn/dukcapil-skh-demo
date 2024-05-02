@@ -326,7 +326,7 @@
                       </div>
                   </div>
                   <a class="px-2 py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
-                      href="download">DOWNLOAD</a>
+                      href="{{route('download.tampil')}}">DOWNLOAD</a>
                   <div @click.away="open = false" class="relative" x-data="{ open: false }">
                       <button @click="open = !open"
                           class="flex flex-row items-center w-full px-2 py-2 mt-2 text-sm font-bold text-left bg-transparent rounded-lg  style-menu-navbar md:w-auto md:inline md:mt-0 md:ml-3 focus:outline-none focus:shadow-outline">

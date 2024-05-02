@@ -37,7 +37,7 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name(
 Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
 
 // Download
-Route::get('/downloader', [DownloadController::class, 'show'])->name('download');
+Route::get('/download-tampil', [DownloadController::class, 'show'])->name('download.tampil');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -100,14 +100,14 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::delete('berita-{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
     // Download
-    Route::get('/download', [DownloadController::class, 'index'])->name('download.index');
+    Route::get('/downloaden', [DownloadController::class, 'index'])->name('download.index');
     Route::get('/download-create', [DownloadController::class, 'create'])->name('download.create');
     Route::post('/download', [DownloadController::class, 'store'])->name('download.store');
     Route::get('/download-{id}', [DownloadController::class, 'edit'])->name('download.edit');
     Route::put('/download-{id}', [DownloadController::class, 'update'])->name('download.update');
     Route::delete('download-{id}', [DownloadController::class, 'destroy'])->name('download.destroy');
 
-    
+
     // Landing Admin
     Route::view('/admin', 'master-admin')->name('admin.index');
 });
