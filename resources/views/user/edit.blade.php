@@ -21,7 +21,9 @@
                             class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Email
                         </label>
                         <input type="text" id="deskripsi" name="email" value="{{ $user->email }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
+    style="@if($user->email) background-color: #f4f4f4; color: #666666; cursor: not-allowed; @endif"
+    readonly>
                     </div>
                     @if ($errors->any())
                         <div class="alert alert-danger">

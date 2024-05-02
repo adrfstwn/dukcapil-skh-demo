@@ -30,6 +30,9 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'showResetPasswordForm'])->name('password.reset');
 Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+// FAQ
+Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
+
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 

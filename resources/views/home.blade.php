@@ -254,7 +254,7 @@
 
                     </div>
                 </div>
-                <a href="faq"
+                <a href="{{route('faq.show')}}"
                     class="font-nunito font-semibold text-center text-base md:text-lg text-background_light bg-primary rounded-md px-3 py-3 md:w-56 mt-6 mx-auto">Lihat
                     Selengkapnya</a>
 

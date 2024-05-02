@@ -48,7 +48,7 @@
                             </th>
                             {{-- file input doc --}}
                             <td class="px-6 py-4">
-                                
+
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="{{ route('.edit', ['id' => $->id]) }}"

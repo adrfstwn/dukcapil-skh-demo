@@ -31,7 +31,8 @@ class FAQController extends Controller
     // Menampilkan FAQ tertentu
     public function show(FAQ $faq)
     {
-        return view('faq.show', compact('faq'));
+        $faqs = FAQ::all();
+        return view('faq.index', compact('faqs'));
     }
 
     // Menampilkan formulir untuk mengedit FAQ
