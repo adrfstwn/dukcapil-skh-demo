@@ -100,6 +100,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 });
 
 Route::view('/tupoksi', 'admin.tupoksi.index')->name('tupoksi.index');
+Route::view('/download', 'download')->name('download');
 
 
 

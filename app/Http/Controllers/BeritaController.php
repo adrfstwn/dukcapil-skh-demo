@@ -30,7 +30,8 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('admin.berita.create');
+        $kategoriBerita = KategoriBerita::all();
+        return view('admin.berita.create', compact('kategoriBerita'));
     }
 
     /**
