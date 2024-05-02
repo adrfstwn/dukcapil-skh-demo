@@ -14,7 +14,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriBeritaController;
 
-//Home
+//Hometttt
 Route::get('/', [HomeController::class, 'index']);
 
 // Menu Login
