@@ -72,7 +72,7 @@
                                         <div x-show="(index >= currentSlide && index < currentSlide + 4)"
                                             class="h-64 flex flex-col p-4 border-2 border-primary rounded-lg md:w-full">
                                             <img src="{{ $layanan->gambar }}" alt=""
-                                                class="w-full h-40 object-cover rounded-lg">
+                                                class="w-36 h-full object-cover rounded-lg">
                                             <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary">
                                                 {{ $layanan->nama_layanan }}</h3>
                                             <p class="text-base font-nunito text-primary contrast-50">
@@ -83,15 +83,15 @@
                             @endforeach
                         </div>
                         <div class="flex justify-end items-center my-4">
-                            <button @click="prev()"
-                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6">
+                            <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6"
+                                onclick="slickPrev()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                     <path fill="currentColor"
                                         d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
                                 </svg>
                             </button>
-                            <button @click="next()"
-                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6">
+                            <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6"
+                                onclick="slickNext()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                     <path fill="currentColor"
                                         d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
@@ -120,12 +120,13 @@
                         pihak untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
                 </div>
                 <div class="flex flex-col gap-6 md:gap-10">
-                    <div class="splide" id="splide1">
-                        <div class="splide__track">
-                            <ul class="flex flex-row gap-4 md:gap-0 splide__list">
+                    <div class="slick-slider" id="slick-slider">
+                        <div class="slide">
+                            <ul class="flex flex-row gap-4 md:gap-0">
                                 @foreach ($mitras as $mitra)
-                                    <li class="splide__slide">
-                                        <img src="{{ asset($mitra->logo_mitra) }}" class="w-28 md:w-36" alt="">
+                                    <li class="">
+                                        <img src="{{ asset($mitra->logo_mitra) }}" class="w-28 md:w-36 rounded-md shadow-md"
+                                            alt="">
                                     </li>
                                 @endforeach
                             </ul>
@@ -283,5 +284,4 @@
             $('#slick-slider').slick('slickNext');
         }
     </script>
-
 @endsection
