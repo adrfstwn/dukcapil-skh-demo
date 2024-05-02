@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <!-- start hero section -->
-    <section id="hero" class="md:mb-7 md:mt-6 p-3 relative">
+    <section id="hero" class="my-8 md:my-10 p-3 relative -z-10">
         <div class="container">
             <div class="slick-slider" id="slick-slider">
                 @foreach ($homeSliders as $index => $homeSlider)
                     <div class="slide slide1">
-                        <div class="max-w-80 md:max-w-6xl mx-auto relative drop-shadow-xl -z-10">
-                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end drop-shadow-xl text-white rounded-3xl">
+                        <div class="max-w-80 md:max-w-6xl mx-auto relative -z-10">
+                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
                                     class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl">
@@ -24,7 +24,7 @@
                 @endforeach
             </div>
             <!-- Previous Button -->
-            <div class="absolute inset-0 flex">
+            <div class="absolute inset-0 flex mx-4 md:mx-32">
                 <div class="flex items-center justify-start w-1/2">
                     <button
                         class="absolute left-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6 z-10"
@@ -53,34 +53,38 @@
     <!-- end hero section -->
 
     <!-- start service section -->
-    <section id="service">
+    <section id="service" class="md:my-24 my-10">
         <div class="container">
-            <div class="flex flex-col gap-4 justify-center">
+            <div class="flex flex-col gap-6 justify-center">
                 <div class="flex flex-col mx-auto justify-center items-center md:max-w-4xl gap-2">
                     <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">Layanan Kami
                     </h2>
                     <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Menyediakan berbagai layanan
                         administrasi kependudukan bagi masyarakat. Layanan tersebut meliputi:</p>
                 </div>
-                <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex flex-col md:flex-row gap-6 mx-auto">
                     <div class="relative">
                         <!-- Desktop View -->
-                        <div class="slick-slider" id="slick-slider">
-                            <div class="slide">
-                                <div class="grid md:grid-cols-2 md:gap-4">
-                                    @foreach ($layanans as $index => $layanan)
+                        <div class="slide">
+                            <div class="grid gap-3 md:grid-cols-2 md:grid-rows-1 md:gap-4">
+                                <div class="slick-slider3" id="slick-slider3">
+                                    @foreach ($layanans as $layanan)
                                         @if ($index >= $currentSlide && $index < $currentSlide + 4)
-                                            <a href="{{ $layanan->link_layanan }}">
-                                                <div
-                                                    class="h-64 flex flex-col p-4 border-2 border-primary rounded-lg md:w-full">
-                                                    <img src="{{ $layanan->gambar }}" alt=""
-                                                        class="w-36 h-full object-cover rounded-lg">
-                                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary">
-                                                        {{ $layanan->nama_layanan }}</h3>
-                                                    <p class="text-base font-nunito text-primary contrast-50">
-                                                        {{ $layanan->deskripsi_layanan }}</p>
-                                                </div>
-                                            </a>
+                                            <div >
+                                                <a href="{{ $layanan->link_layanan }}" class="grid gap-3 md:grid-cols-2 md:gap-4 ">
+                                                    <div
+                                                        class="h-48 md:h-56 flex flex-col p-4 border-2 border-primary rounded-lg w-full md:w-48">
+                                                        <img src="{{ $layanan->gambar }}" alt=""
+                                                            class="size-24 md:size-28 object-cover rounded-lg mx-auto">
+                                                        <h3
+                                                            class="text-xl md:text-2xl font-nunito font-bold text-primary mx-auto">
+                                                            {{ $layanan->nama_layanan }}</h3>
+                                                        <p
+                                                            class="text-base font-nunito text-primary contrast-50 mx-auto line-clamp-2">
+                                                            {{ $layanan->deskripsi_layanan }}</p>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         @endif
                                     @endforeach
                                 </div>
@@ -103,9 +107,9 @@
                             </button>
                         </div>
                     </div>
-                    <div>
+                    <div class="max-w-md h-full">
                         <a href="#">
-                            <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
+                            <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg h-full">
                         </a>
                     </div>
                 </div>
@@ -115,7 +119,7 @@
     <!-- end service section -->
 
     <!-- start section partner-->
-    <section id="partner" class="md:my-20 my-8" aria-labelledby="carousel-heading">
+    <section id="partner" class="md:my-24 my-8" aria-labelledby="carousel-heading">
         <div class="container">
             <div class="flex flex-col gap-4 md:gap-6">
                 <div class="flex flex-col mx-auto">
@@ -130,7 +134,7 @@
                                 @foreach ($mitras as $mitra)
                                     <li class="slick-slide mx-2 md:mx-0">
                                         <img src="{{ asset($mitra->logo_mitra) }}"
-                                            class="w-44 h-32 md:w-36 rounded-md object-cover " alt="">
+                                            class="size-24 md:size-40  rounded-md object-center " alt="">
                                     </li>
                                 @endforeach
                             </ul>
@@ -144,7 +148,7 @@
 
 
     <!-- start section news -->
-    <section id="news" class="bg-primary rounded-t-[40px] md:py-20 md:my-20 my-8 py-8">
+    <section id="news" class="bg-primary rounded-t-[40px] md:py-20 md:my-24 my-10 py-8">
         <div class="container ">
             <div class="flex flex-col gap-4 md:gap-6 ">
                 <div class="flex flex-col mx-auto">
@@ -209,7 +213,7 @@
 
     <!-- start section faq -->
     <section id="faq">
-        <div class="container relative md:my-40 my-20">
+        <div class="container relative md:my-24 my-20">
             <div class="z-20 flex flex-col gap-6">
                 <div class="flex flex-col mx-auto">
                     <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">FAQ</h2>
@@ -259,7 +263,7 @@
 
                     </div>
                 </div>
-                <a href="{{route('faq.show')}}"
+                <a href="{{ route('faq.show') }}"
                     class="font-nunito font-semibold text-center text-base md:text-lg text-background_light bg-primary rounded-md px-3 py-3 md:w-56 mt-6 mx-auto">Lihat
                     Selengkapnya</a>
 
@@ -296,6 +300,21 @@
                     }
                 }]
             });
+            $('.slick-slider3').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                arrows: false,
+                responsive: [{
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                    }
+                }]
+            });
         });
 
         function slickPrev() {
@@ -304,6 +323,14 @@
 
         function slickNext() {
             $('#slick-slider').slick('slickNext');
+        }
+
+        function slickPrev() {
+            $('.slick-slider3').slick('slickPrev');
+        }
+
+        function slickNext() {
+            $('.slick-slider3').slick('slickNext');
         }
     </script>
 @endsection
