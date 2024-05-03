@@ -1,8 +1,8 @@
   <!-- start header section -->
-  <header class="drop-shadow-lg">
+  <header class="drop-shadow-lg z-20">
       <div class="w-full text-gray-700 bg-white ">
           <div x-data="{ open: false }"
-              class="flex flex-col max-w-screen-2xl mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+              class="flex flex-col max-w-screen-2xl mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 z-20">
               <div class="p-4 flex flex-row items-center justify-between">
                   <a href="#">
                       <img src="dist/assets/image/Logo-header.png" alt="logo disdukcapil skh" width="76"
@@ -20,13 +20,13 @@
                   </button>
               </div>
               <nav :class="{ 'flex': open, 'hidden': !open }"
-                  class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                  class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row z-20">
                   <a class="px-2 py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
                       href="/">BERANDA</a>
                   <!-- Profile Menu -->
-                  <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                  <div @click.away="open = false" class="relative z-20" x-data="{ open: false }">
                       <button @click="open = !open"
-                          class="flex flex-row items-center w-full px-2 py-2 mt-2 text-sm font-bold text-left bg-transparent rounded-lg  style-menu-navbar md:w-auto md:inline md:mt-0 md:ml-3 focus:outline-none focus:shadow-outline">
+                          class="flex flex-row items-center w-full px-2 py-2 mt-2 text-sm font-bold text-left bg-transparent rounded-lg  style-menu-navbar md:w-auto md:inline md:mt-0 md:ml-3 focus:outline-none focus:shadow-outline z-20">
                           <span>PROFIL</span>
                           <svg fill="currentColor" viewBox="0 0 20 20"
                               :class="{ 'rotate-180': open, 'rotate-0': !open }"
@@ -42,7 +42,7 @@
                           x-transition:leave="transition ease-in duration-75"
                           x-transition:leave-start="transform opacity-100 scale-100"
                           x-transition:leave-end="transform opacity-0 scale-95"
-                          class="absolute z-10 right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                          class="absolute z-20 right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
                           <div class="px-2 py-2 bg-background_light rounded-md shadow ">
                               <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                   href="profile">PROFIL</a>

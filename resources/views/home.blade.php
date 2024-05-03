@@ -2,11 +2,11 @@
 @section('content')
     <!-- start hero section -->
     <section id="hero" class="my-8 md:my-10 p-3 relative -z-10">
-        <div class="container">
+        <div class="container ">
             <div class="slick-slider" id="slick-slider">
                 @foreach ($homeSliders as $index => $homeSlider)
                     <div class="slide slide1">
-                        <div class="max-w-80 md:max-w-6xl mx-auto relative -z-10">
+                        <div class="max-w-80 md:max-w-6xl mx-auto relative">
                             <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
                                     class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl">
@@ -24,10 +24,10 @@
                 @endforeach
             </div>
             <!-- Previous Button -->
-            <div class="absolute inset-0 flex mx-4 md:mx-32">
-                <div class="flex items-center justify-start w-1/2">
+            <div class="absolute inset-0 flex mx-4 md:mx-20 z-20">
+                <div class="flex items-center justify-start w-1/2 z-20">
                     <button
-                        class="absolute left-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6 z-10"
+                        class="absolute left-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6 z-20"
                         onclick="slickPrev()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                             <path fill="currentColor"
@@ -36,9 +36,9 @@
                     </button>
                 </div>
                 <!-- Next Button -->
-                <div class="flex items-center justify-end w-1/2">
+                <div class="flex items-center justify-end w-1/2 z-20">
                     <button
-                        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary rotate-180 hover:opacity-100 md:mr-6 z-10"
+                        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary rotate-180 hover:opacity-100 md:mr-6 z-20"
                         onclick="slickNext()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                             <path fill="currentColor"
@@ -64,33 +64,33 @@
                 </div>
                 <div class="flex flex-col md:flex-row gap-6 mx-auto">
                     <div class="relative">
-                        <!-- Desktop View -->
-                        <div class="slide">
-                            <div class="grid gap-3 md:grid-cols-2 md:grid-rows-1 md:gap-4">
-                                <div class="slick-slider3" id="slick-slider3">
-                                    @foreach ($layanans as $layanan)
-                                        @if ($index >= $currentSlide && $index < $currentSlide + 4)
-                                            <div >
-                                                <a href="{{ $layanan->link_layanan }}" class="grid gap-3 md:grid-cols-2 md:gap-4 ">
-                                                    <div
-                                                        class="h-48 md:h-56 flex flex-col p-4 border-2 border-primary rounded-lg w-full md:w-48">
-                                                        <img src="{{ $layanan->gambar }}" alt=""
-                                                            class="size-24 md:size-28 object-cover rounded-lg mx-auto">
-                                                        <h3
-                                                            class="text-xl md:text-2xl font-nunito font-bold text-primary mx-auto">
-                                                            {{ $layanan->nama_layanan }}</h3>
-                                                        <p
-                                                            class="text-base font-nunito text-primary contrast-50 mx-auto line-clamp-2">
-                                                            {{ $layanan->deskripsi_layanan }}</p>
-                                                    </div>
-                                                </a>
-                                            </div>
+                        <div class="">
+                            <div id="">
+                                <div class="grid md:grid-cols-2 gap-3 md:gap-4">
+                                    @foreach ($layanans as $index => $layanan)
+                                        @if ($loop->index < 4)
+                                            <a href="{{ $layanan->link_layanan }}" class="">
+                                                <div
+                                                    class="h-48 md:h-56 flex flex-col p-4 border-2 border-primary rounded-lg w-full md:w-48">
+                                                    <img src="{{ $layanan->gambar }}" alt=""
+                                                        class="size-24 md:size-28 object-cover rounded-lg mx-auto">
+                                                    <h3
+                                                        class="text-xl md:text-2xl font-nunito font-bold text-primary mx-auto">
+                                                        {{ $layanan->nama_layanan }}
+                                                    </h3>
+                                                    <p
+                                                        class="text-base font-nunito text-primary contrast-50 mx-auto line-clamp-2">
+                                                        {{ $layanan->deskripsi_layanan }}
+                                                    </p>
+                                                </div>
+                                            </a>
                                         @endif
                                     @endforeach
                                 </div>
+
                             </div>
                         </div>
-                        <div class="flex justify-end items-center my-4">
+                        <div class="flex justify-end items-center my-4" x-show="!isMobile">
                             <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6"
                                 onclick="slickPrev()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
@@ -107,6 +107,7 @@
                             </button>
                         </div>
                     </div>
+
                     <div class="max-w-md h-full">
                         <a href="#">
                             <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg h-full">
@@ -117,35 +118,6 @@
         </div>
     </section>
     <!-- end service section -->
-
-    <!-- start section partner-->
-    <section id="partner" class="md:my-24 my-8" aria-labelledby="carousel-heading">
-        <div class="container">
-            <div class="flex flex-col gap-4 md:gap-6">
-                <div class="flex flex-col mx-auto">
-                    <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">Mitra Kami</h2>
-                    <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Bekerja sama dengan berbagai
-                        pihak untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
-                </div>
-                <div class="flex flex-col gap-6 md:gap-10 md:px-6">
-                    <div class="slick-slider-m" id="slick-slider-m">
-                        <div class="slide">
-                            <ul class="slick-slider2 flex flex-row gap-4 md:gap-0">
-                                @foreach ($mitras as $mitra)
-                                    <li class="slick-slide mx-2 md:mx-0">
-                                        <img src="{{ asset($mitra->logo_mitra) }}"
-                                            class="size-24 md:size-40  rounded-md object-center " alt="">
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!-- start section news -->
     <section id="news" class="bg-primary rounded-t-[40px] md:py-20 md:my-24 my-10 py-8">
@@ -210,6 +182,35 @@
         </div>
     </section>
     <!-- end section news -->
+
+    <!-- start section partner-->
+    <section id="partner" class="md:mt-24 my-8" aria-labelledby="carousel-heading">
+        <div class="container">
+            <div class="flex flex-col gap-4 md:gap-6">
+                <div class="flex flex-col mx-auto">
+                    <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">Mitra Kami</h2>
+                    <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Bekerja sama dengan
+                        berbagai
+                        pihak untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
+                </div>
+                <div class="flex flex-col gap-6 md:gap-10 md:px-6">
+                    <div class="slick-slider-m" id="slick-slider-m">
+                        <div class="slide">
+                            <ul class="slick-slider2 flex flex-row gap-4 md:gap-0">
+                                @foreach ($mitras as $mitra)
+                                    <li class="slick-slide mx-2 md:mx-0">
+                                        <img src="{{ asset($mitra->logo_mitra) }}"
+                                            class="size-24 md:size-40  rounded-md object-center " alt="">
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- end section partner --}}
 
     <!-- start section faq -->
     <section id="faq">
@@ -300,21 +301,31 @@
                     }
                 }]
             });
-            $('.slick-slider3').slick({
-                slidesToShow: 4,
+            let sliderSettings = {
                 slidesToScroll: 1,
                 arrows: false,
                 responsive: [{
-                    breakpoint: 480,
+                    breakpoint: 768,
                     settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
+                        slidesToShow: 2,
                         infinite: true,
                         autoplay: true,
                         autoplaySpeed: 2000,
                     }
                 }]
+            };
+
+            $('.slick-slider3').slick(sliderSettings);
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 768) {
+                    sliderSettings.slidesToShow = 4;
+                } else {
+                    sliderSettings.slidesToShow = 1;
+                }
+                $('.slick-slider3').slick('unslick').slick(sliderSettings);
             });
+
         });
 
         function slickPrev() {
@@ -323,14 +334,6 @@
 
         function slickNext() {
             $('#slick-slider').slick('slickNext');
-        }
-
-        function slickPrev() {
-            $('.slick-slider3').slick('slickPrev');
-        }
-
-        function slickNext() {
-            $('.slick-slider3').slick('slickNext');
         }
     </script>
 @endsection

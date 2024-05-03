@@ -119,6 +119,7 @@ Route::view('/tupoksi', 'profil-section.tupoksiVM')->name('tupoksi');
 Route::view('/struk', 'profil-section.strukturOrg')->name('struktur');
 Route::view('/profile', 'profil-section.profile')->name('profile');
 Route::view('/kontak', 'profil-section.kontak')->name('kontak');
+Route::view('/detail-download', 'standar-section.detailDownload')->name('detail-download');
 
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <section id="faq">
-    <div class="container relative md:my-40 my-20">
+    <div class="container relative my-20">
         <div class="z-20 flex flex-col gap-6">
             <div class="flex flex-col mx-auto">
                 <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">FAQ</h2>
