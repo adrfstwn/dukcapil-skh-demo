@@ -75,12 +75,14 @@
                                     <div x-show="currentIndex <= {{ $index }} && {{ $index }} < currentIndex + cardsPerSlide"
                                         class="">
                                         <a href="{{ $layanan->link_layanan }}"
-                                            class="h-48 md:h-56  w-full md:w-48 p-5 border-2 flex flex-col border-primary rounded-lg">
-                                            <img src="{{ $layanan->gambar }}" alt=""
-                                                class="size-24 md:size-28 object-cover rounded-lg mx-auto">
-                                            <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary mx-auto">
+                                            class="h-52 md:h-64  w-full md:w-52 border-2 flex flex-col gap-1 border-primary rounded-lg">
+                                            <div class="">
+                                                <img src="{{ $layanan->gambar }}" alt=""
+                                                    class="size-24 md:w-full h-28 object-cover rounded-t-lg mx-auto">
+                                            </div>
+                                            <h3 class="text-xl  font-nunito font-bold px-2 py-1 text-primary line-clamp-2">
                                                 {{ $layanan->nama_layanan }}</h3>
-                                            <p class="text-base font-nunito text-primary contrast-50 mx-auto line-clamp-2">
+                                            <p class="text-base font-nunito  text- secondary_teks px-2 pb-1 contrast-50 line-clamp-2">
                                                 {{ $layanan->deskripsi_layanan }}</p>
                                         </a>
                                     </div>
@@ -181,7 +183,7 @@
     <!-- end section news -->
 
     <!-- start section partner-->
-    <section id="partner" class="md:mt-24 my-8" aria-labelledby="carousel-heading">
+    <section id="partner" class="md:my-24 my-8" aria-labelledby="carousel-heading">
         <div class="container">
             <div class="flex flex-col gap-4 md:gap-6">
                 <div class="flex flex-col mx-auto">
@@ -213,7 +215,7 @@
     <section id="faq">
         <div class="container relative md:my-24 my-20">
             <div class="z-20 flex flex-col gap-6">
-                <div class="flex flex-col mx-auto">
+                <div class="flex flex-col gap-3 mx-auto">
                     <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">FAQ</h2>
                     <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Bekerja sama dengan
                         berbagai
@@ -228,12 +230,12 @@
                         }
                     }" class="relative w-full max-w-[1024px] mx-auto text-xs">
                         @foreach ($faqs as $index => $faq)
-                            @if ($loop->index < 6)
+                            @if ($loop->index < 8)
                                 <div x-data="{ id: $id('accordion') }"
                                     :class="{
                                         'border-primary text-neutral-800 my-4': activeAccordion ==
                                             id,
-                                        'border-transparent text-neutral-600 hover:text-neutral-800 my-4': activeAccordion !=
+                                        'border-gray-200 text-neutral-600 hover:text-neutral-800 my-4': activeAccordion !=
                                             id
                                     }"
                                     class="duration-300 ease-in-out bg-white border rounded-md cursor-pointer group"

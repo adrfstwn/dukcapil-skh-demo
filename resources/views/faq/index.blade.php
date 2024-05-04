@@ -3,7 +3,7 @@
 <section id="faq">
     <div class="container relative my-20">
         <div class="z-20 flex flex-col gap-6">
-            <div class="flex flex-col mx-auto">
+            <div class="flex flex-col mx-auto gap-3">
                 <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">FAQ</h2>
                 <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Bekerja sama dengan
                     berbagai
@@ -20,9 +20,9 @@
                     @foreach ($faqs as $faq)
                         <div x-data="{ id: $id('accordion') }"
                             :class="{
-                                'border-neutral-200/60 text-neutral-800': activeAccordion ==
+                                'border-primary text-neutral-800 my-4': activeAccordion ==
                                     id,
-                                'border-transparent text-neutral-600 hover:text-neutral-800': activeAccordion !=
+                                'border-gray-200 text-neutral-600 hover:text-neutral-800 my-4': activeAccordion !=
                                     id
                             }"
                             class="duration-200 ease-out bg-white border rounded-md cursor-pointer group" x-cloak>
