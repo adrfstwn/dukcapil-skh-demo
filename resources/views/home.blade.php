@@ -63,43 +63,41 @@
                         administrasi kependudukan bagi masyarakat. Layanan tersebut meliputi:</p>
                 </div>
                 <div class="flex flex-col md:flex-row gap-6 mx-auto">
-                    <div class="relative">
+                    <div x-data="{
+                        currentIndex: 0,
+                        cardsPerSlide: window.innerWidth >= 768 ? 4 : 1,
+                        isMobile: window.innerWidth < 768
+                    }" class="relative">
                         <div class="">
-                            <div id="">
-                                <div class="grid md:grid-cols-2 gap-3 md:gap-4">
-                                    @foreach ($layanans as $index => $layanan)
-                                        @if ($loop->index < 4)
-                                            <a href="{{ $layanan->link_layanan }}" class="">
-                                                <div
-                                                    class="h-48 md:h-56 flex flex-col p-4 border-2 border-primary rounded-lg w-full md:w-48">
-                                                    <img src="{{ $layanan->gambar }}" alt=""
-                                                        class="size-24 md:size-28 object-cover rounded-lg mx-auto">
-                                                    <h3
-                                                        class="text-xl md:text-2xl font-nunito font-bold text-primary mx-auto">
-                                                        {{ $layanan->nama_layanan }}
-                                                    </h3>
-                                                    <p
-                                                        class="text-base font-nunito text-primary contrast-50 mx-auto line-clamp-2">
-                                                        {{ $layanan->deskripsi_layanan }}
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        @endif
-                                    @endforeach
-                                </div>
-
+                            <div id="carousel" :class="{ 'grid-cols-1': isMobile, 'grid-cols-2': !isMobile }"
+                                class="grid gap-3 md:gap-4">
+                                @foreach ($layanans as $index => $layanan)
+                                    <div x-show="currentIndex <= {{ $index }} && {{ $index }} < currentIndex + cardsPerSlide"
+                                        class="">
+                                        <a href="{{ $layanan->link_layanan }}"
+                                            class="h-48 md:h-56  w-full md:w-48 p-5 border-2 flex flex-col border-primary rounded-lg">
+                                            <img src="{{ $layanan->gambar }}" alt=""
+                                                class="size-24 md:size-28 object-cover rounded-lg mx-auto">
+                                            <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary mx-auto">
+                                                {{ $layanan->nama_layanan }}</h3>
+                                            <p class="text-base font-nunito text-primary contrast-50 mx-auto line-clamp-2">
+                                                {{ $layanan->deskripsi_layanan }}</p>
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
-                        <div class="flex justify-end items-center my-4" x-show="!isMobile">
-                            <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6"
-                                onclick="slickPrev()">
+                        <div class="flex justify-end items-center my-4">
+                            <button @click="currentIndex = Math.max(currentIndex - cardsPerSlide, 0)"
+                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 md:mr-6">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                     <path fill="currentColor"
                                         d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
                                 </svg>
                             </button>
-                            <button class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6"
-                                onclick="slickNext()">
+                            <button
+                                @click="currentIndex = Math.min(currentIndex + cardsPerSlide, {{ count($layanans) }} - cardsPerSlide)"
+                                class="text-primary opacity-35 hover:text-primary hover:opacity-100 rotate-180 md:mr-6">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
                                     <path fill="currentColor"
                                         d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
@@ -107,7 +105,6 @@
                             </button>
                         </div>
                     </div>
-
                     <div class="max-w-md h-full">
                         <a href="#">
                             <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg h-full">
@@ -223,43 +220,46 @@
                         pihak
                         untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
                 </div>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col md:gap-6 gap-4">
                     <div x-data="{
                         activeAccordion: '',
                         setActiveAccordion(id) {
                             this.activeAccordion = (this.activeAccordion == id) ? '' : id
                         }
                     }" class="relative w-full max-w-[1024px] mx-auto text-xs">
-                        @foreach ($faqs as $faq)
-                            <div x-data="{ id: $id('accordion') }"
-                                :class="{
-                                    'border-neutral-200/60 text-neutral-800': activeAccordion ==
-                                        id,
-                                    'border-transparent text-neutral-600 hover:text-neutral-800': activeAccordion !=
-                                        id
-                                }"
-                                class="duration-200 ease-out bg-white border rounded-md cursor-pointer group" x-cloak>
-                                <button @click="setActiveAccordion(id)"
-                                    class="flex items-center justify-between w-full px-5 py-4 font-nunito md:text-xl text-base font-semibold text-left select-none">
-                                    <span>{{ $faq->pertanyaan }}</span>
-                                    <div :class="{ 'rotate-90': activeAccordion == id }"
-                                        class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-out">
-                                        <div
-                                            class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
-                                        </div>
+                        @foreach ($faqs as $index => $faq)
+                            @if ($loop->index < 6)
+                                <div x-data="{ id: $id('accordion') }"
+                                    :class="{
+                                        'border-primary text-neutral-800 my-4': activeAccordion ==
+                                            id,
+                                        'border-transparent text-neutral-600 hover:text-neutral-800 my-4': activeAccordion !=
+                                            id
+                                    }"
+                                    class="duration-300 ease-in-out bg-white border rounded-md cursor-pointer group"
+                                    x-cloak>
+                                    <button @click="setActiveAccordion(id)"
+                                        class="flex items-center justify-between w-full px-5 py-4 font-nunito md:text-xl text-base font-semibold text-left select-none">
+                                        <span>{{ $faq->pertanyaan }}</span>
                                         <div :class="{ 'rotate-90': activeAccordion == id }"
-                                            class="absolute w-full h-0.5 ease duration-500 bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
+                                            class="relative flex items-center justify-center w-2.5 h-2.5 duration-300 ease-in-out">
+                                            <div
+                                                class="absolute w-0.5 h-full bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
+                                            </div>
+                                            <div :class="{ 'rotate-90': activeAccordion == id }"
+                                                class="absolute w-full h-0.5 ease duration-500 bg-neutral-500 group-hover:bg-neutral-800 rounded-full">
+                                            </div>
                                         </div>
-                                    </div>
-                                </button>
-                                <div x-show="activeAccordion==id" x-collapse x-cloak>
-                                    <div class="p-5 pt-0 opacity-70">
-                                        <p class="font-nunito text-sm  md:text-base ">
-                                            {{ $faq->jawaban }}
-                                        </p>
+                                    </button>
+                                    <div x-show="activeAccordion==id" x-collapse x-cloak>
+                                        <div class="p-5 pt-0 opacity-70">
+                                            <p class="font-nunito text-sm  md:text-base ">
+                                                {{ $faq->jawaban }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
 
                     </div>
@@ -300,30 +300,6 @@
                         autoplaySpeed: 2000,
                     }
                 }]
-            });
-            let sliderSettings = {
-                slidesToScroll: 1,
-                arrows: false,
-                responsive: [{
-                    breakpoint: 768,
-                    settings: {
-                        slidesToShow: 2,
-                        infinite: true,
-                        autoplay: true,
-                        autoplaySpeed: 2000,
-                    }
-                }]
-            };
-
-            $('.slick-slider3').slick(sliderSettings);
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) {
-                    sliderSettings.slidesToShow = 4;
-                } else {
-                    sliderSettings.slidesToShow = 1;
-                }
-                $('.slick-slider3').slick('unslick').slick(sliderSettings);
             });
 
         });
