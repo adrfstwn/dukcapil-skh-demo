@@ -120,6 +120,13 @@ Route::view('/struk', 'profil-section.strukturOrg')->name('struktur');
 Route::view('/profile', 'profil-section.profile')->name('profile');
 Route::view('/kontak', 'profil-section.kontak')->name('kontak');
 Route::view('/detail-download', 'standar-section.detailDownload')->name('detail-download');
+Route::view('/detail-persyaratan', 'standar-section.detailpersyaratan')->name('detail-persyaratan');
+Route::view('/persyaratan', 'standar-section.persyaratan')->name('persyaratan');
+Route::view('/tamat', 'detail-layanan.tamat')->name('tamat');
+Route::view('/dokumake', 'detail-layanan.dokumake')->name('dokumake');
+Route::view('/makedikesmoke', 'detail-layanan.makedikesmoke')->name('makedikesmoke');
+Route::view('/makepetantuma', 'detail-layanan.makepetantuma')->name('makepetantuma');
+Route::view('/melodi', 'detail-layanan.melodi')->name('melodi');
 
 
 

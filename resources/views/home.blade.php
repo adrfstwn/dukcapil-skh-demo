@@ -6,17 +6,17 @@
             <div class="slick-slider" id="slick-slider">
                 @foreach ($homeSliders as $index => $homeSlider)
                     <div class="slide slide1">
-                        <div class="max-w-80 md:max-w-6xl mx-auto relative">
-                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl">
+                        <div class="max-w-80 md:max-w-6xl mx-auto relative shadow-lg">
+                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl ">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
-                                    class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl">
-                                <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl">
-                                    <h2 class="font-bold text-base md:text-2xl">{{ $homeSlider->judul }}</h2>
-                                    <p class="text-xs">{{ $homeSlider->deskripsi }}</p>
+                                class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">                            
+                                <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl z-10">
+                                    <h2 class="font-bold text-base md:text-xl">{{ $homeSlider->judul }}</h2>
+                                    <p class="text-xs line-clamp-2">{{ $homeSlider->deskripsi }}</p>
                                 </div>
-                                <div class="sm:hidden w-[400px] opacity-95">
+                                <div class="md:hidden w-[400px] z-10">
                                     <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">
-                                        {{ $homeSlider->title }}</h2>
+                                        {{ $homeSlider->judul }}</h2>
                                 </div>
                             </div>
                         </div>
@@ -75,14 +75,15 @@
                                     <div x-show="currentIndex <= {{ $index }} && {{ $index }} < currentIndex + cardsPerSlide"
                                         class="">
                                         <a href="{{ $layanan->link_layanan }}"
-                                            class="h-52 md:h-64  w-full md:w-52 border-2 flex flex-col gap-1 border-primary rounded-lg">
+                                            class="h-full w-full md:w-52 border-2 flex flex-col gap-1 pb-4 border-primary rounded-lg">
                                             <div class="">
                                                 <img src="{{ $layanan->gambar }}" alt=""
-                                                    class="size-24 md:w-full h-28 object-cover rounded-t-lg mx-auto">
+                                                    class="w-full h-28 object-cover object-center rounded-t-lg ">
                                             </div>
-                                            <h3 class="text-xl  font-nunito font-bold px-2 py-1 text-primary line-clamp-2">
+                                            <h3 class="text-xl font-nunito font-bold px-2 text-primary line-clamp-2">
                                                 {{ $layanan->nama_layanan }}</h3>
-                                            <p class="text-base font-nunito  text- secondary_teks px-2 pb-1 contrast-50 line-clamp-2">
+                                            <p
+                                                class="text-base font-nunito  text-secondary_teks px-2 contrast-50 line-clamp-2">
                                                 {{ $layanan->deskripsi_layanan }}</p>
                                         </a>
                                     </div>
@@ -121,7 +122,7 @@
     <!-- start section news -->
     <section id="news" class="bg-primary rounded-t-[40px] md:py-20 md:my-24 my-10 py-8">
         <div class="container ">
-            <div class="flex flex-col gap-4 md:gap-6 ">
+            <div class="flex flex-col gap-6 md:gap-10 ">
                 <div class="flex flex-col mx-auto">
                     <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-background_light text-center">Berita
                         Terbaru
@@ -135,43 +136,80 @@
                     {{-- <div class="">
                         <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
                     </div> --}}
-                    <div class="grid md:grid-cols-4 md:gap-8 gap-4">
-                        <div x-data="{ maxLength: 50 }" class="flex flex-col bg-background_light rounded-lg md:max-w-72">
-                            <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                class="w-72 md:w-full object-cover object-center rounded-t-lg">
-                            <div class="p-4">
-                                <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                <p x-text="('Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, dolorum.').substring(0, maxLength) + '...'"
-                                    class="text-base font-nunito text-primary_teks contrast-50"></p>
+                    <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-6">
+                        <a href="">
+                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
+                                <img src="dist/assets/image/Karyawan.jpg" alt=""
+                                    class="w-full object-cover object-center rounded-t-lg">
+                                <div class="flex flex-col gap-1 p-4">
+                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
+                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
+                                        2024
+                                    </p>
+                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
+                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
+                                        expedita
+                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
+                                        fuga
+                                        libero facilis ab sapiente!</p>
+                                </div>
                             </div>
-                        </div>
-                        <div x-data="{ maxLength: 50 }" class="flex flex-col bg-background_light rounded-lg md:max-w-72">
-                            <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                class="w-72 md:w-full object-cover object-center rounded-t-lg">
-                            <div class="p-4">
-                                <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                <p x-text="('Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, dolorum.').substring(0, maxLength) + '...'"
-                                    class="text-base font-nunito text-primary_teks contrast-50"></p>
+                        </a>
+                        <a href="">
+                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
+                                <img src="dist/assets/image/Karyawan.jpg" alt=""
+                                    class="w-full object-cover object-center rounded-t-lg">
+                                <div class="flex flex-col gap-1 p-4">
+                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
+                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
+                                        2024
+                                    </p>
+                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
+                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
+                                        expedita
+                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
+                                        fuga
+                                        libero facilis ab sapiente!</p>
+                                </div>
                             </div>
-                        </div>
-                        <div x-data="{ maxLength: 50 }" class="flex flex-col bg-background_light rounded-lg md:max-w-72">
-                            <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                class="w-72 md:w-full object-cover object-center rounded-t-lg">
-                            <div class="p-4">
-                                <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                <p x-text="('Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, dolorum.').substring(0, maxLength) + '...'"
-                                    class="text-base font-nunito text-primary_teks contrast-50"></p>
+                        </a>
+                        <a href="">
+                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
+                                <img src="dist/assets/image/Karyawan.jpg" alt=""
+                                    class="w-full object-cover object-center rounded-t-lg">
+                                <div class="flex flex-col gap-1 p-4">
+                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
+                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
+                                        2024
+                                    </p>
+                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
+                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
+                                        expedita
+                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
+                                        fuga
+                                        libero facilis ab sapiente!</p>
+                                </div>
                             </div>
-                        </div>
-                        <div x-data="{ maxLength: 50 }" class="flex flex-col bg-background_light rounded-lg md:max-w-72">
-                            <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                class="w-72 md:w-full object-cover object-center rounded-t-lg">
-                            <div class="p-4">
-                                <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                <p x-text="('Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, dolorum.').substring(0, maxLength) + '...'"
-                                    class="text-base font-nunito text-primary_teks contrast-50"></p>
+                        </a>
+                        <a href="">
+                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
+                                <img src="dist/assets/image/Karyawan.jpg" alt=""
+                                    class="w-full object-cover object-center rounded-t-lg">
+                                <div class="flex flex-col gap-1 p-4">
+                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
+                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
+                                        2024
+                                    </p>
+                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
+                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
+                                        expedita
+                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
+                                        fuga
+                                        libero facilis ab sapiente!</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
+
                     </div>
                 </div>
                 <button

@@ -13,9 +13,9 @@
                       Kabupaten Sukoharjo Tahun 2024</h2>
                     <p class="font-nunito text-secondary_teks">28 Februari 2024</p>
                   </div>
-                  <div class="flex flex-col gap-4">
+                  <div class="flex flex-col gap-4 max-w-screen-md">
                     <img src="dist/assets/image/Karyawan.jpg" alt="foto kegiatan karyawan"
-                      class="rounded-sm max-w-screen-lg">
+                      class="rounded-sm ">
                     <p class="font-nunito text-base text-primary_teks">Dinas Kependudukan dan Pencatatan Sipil Kabupaten
                       Sukoharjo menyelenggarakan Forum Perangkat Daerah Tahun 2024.
                       <br>

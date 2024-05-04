@@ -1,34 +1,45 @@
 @extends('layouts.app')
 @section('content')
-    {{-- start section detail download --}}
-    <section id="detail-persyaratan" class="my-10 md:my-20 -z-10">
+    {{-- start section detail persyaratan --}}
+    <section id="dokumake" class="my-10 md:my-20 -z-10">
         <div class="container">
-            <div class="flex flex-col md:flex-row justify-between md:gap-6">
+            <div class="flex flex-col md:flex-row justify-between gap-10 md:gap-6">
                 <div class="flex flex-col gap-12">
                     <div class="flex flex-col gap-6 md:gap-12">
                         <div class="flex flex-col gap-6 ">
                             <div class="flex flex-col gap-2">
-                                <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks "> Formulir
-                                    Pendaftaran
-                                    Perpindahan Penduduk</h2>
+                                <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks "> Cukup Sekali
+                                    Ngurus Mendapat Paket Dokumen Kependudukan
+                                </h2>
                                 <p class="font-nunito text-secondary_teks">28 Februari 2024</p>
                             </div>
                             <div class="flex flex-col gap-4 max-w-screen-md">
                                 <img src="dist/assets/image/Karyawan.jpg" alt="foto kegiatan karyawan"
-                                    class="rounded-md max-w-screen-md">
-                                <p class="font-nunito text-base text-primary_teks ">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing
-                                    elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-                                    mattis ligula
-                                    consectetur,. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-                                    Aliquam in
-                                    hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, Lorem
-                                    ipsum dolor
-                                    sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
+                                    class="rounded-md ">
+                                <p class="font-nunito text-base md:text-lg text-primary_teks">Pelayanan Akta Kelahiran,
+                                    Kartu Keluarga (KK) dan Kartu Identitas Anak (KIA), disebut pelayanan “ALA KAKAK”;
+                                    Pelayanan Akta Kematian, Kartu Keluarga (KK) dan Kartu Tanda Penduduk elektronik
+                                    (KTP-el) status Cerai Mati, disebut Pelayanan “AKAN KAKAK TANDAI”;
+                                    Pelayanan Akta Perkawinan bagi Penduduk Non Muslim, Kartu Keluarga (KK) dan Kartu Tanda
+                                    Penduduk elektronik (KTP-el) status Kawin Tercatat, disebut pelayanan “AKAN KAKAK
+                                    CATAT”;
+                                    Pelayanan Akta Perceraian bagi Penduduk Non Muslim, Kartu Keluarga (KK) dan Kartu Tanda
+                                    Penduduk elektronik (KTP-el) status Cerai Tercatat, disebut pelayanan “AKAN KAKAK CARI”;
+                                    dan
+                                    Pelayanan bagi Penduduk Muslim yang Menikah, 2 (dua) Kartu Tanda Penduduk elektronik
+                                    (KTP-el) berubah status Kawin Tercatat dan 2 (dua) Kartu Keluarga (KK) dipecah menjadi 3
+                                    (tiga), disebut pelayanan “LORO DADI TELU”.
+                                    Semua Dokumen Kependudukan Yang Diproses Melalui Paket Inovasi Cus Dapat Paket Doku Make
+                                    Dilayani 1x24 Jam Gratis melalui :
+
+                                    UPTD Pelayanan Administrasi Kependudukan Wilayah I;
+                                    UPTD Pelayanan Administrasi Kependudukan Wilayah II;
+                                    UPTD Pelayanan Administrasi Kependudukan Wilayah III;
+                                    Pelayanan Adminduk Kecamatan di seluruh Kabupaten Sukoharjo;
+                                    Dinas Dukcapil Kabupaten Sukoharjo.
                                 </p>
                                 <button
-                                    class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm max-w-60">
-                                    Lihat Document Selengkapnya</button>
+                                    class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik document disini</button>
                             </div>
                             <p class="text-base text-secondary_teks">#forumskpd</p>
                             <div class="flex gap-3 items-center">
@@ -116,8 +127,59 @@
                             </div>
                         </div>
                     </div>
+                    <div class="flex flex-col gap-4">
+                        <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0 border-b-2 pb-4">
+                            <span class="font-bold text-primary ">Berita</span> Terbaru
+                        </h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="flex flex-col gap-y-3">
+                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
+                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
+                                </div>
+                                <a href=""
+                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
+                                    Daerah Dinas
+                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
+                            </div>
+                            <div class="flex flex-col gap-y-3">
+                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
+                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
+                                </div>
+                                <a href=""
+                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
+                                    Daerah Dinas
+                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
+                            </div>
+                            <div class="flex flex-col gap-y-3">
+                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
+                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
+                                </div>
+                                <a href=""
+                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
+                                    Daerah Dinas
+                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
+                            </div>
+                            <div class="flex flex-col gap-y-3">
+                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
+                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
+                                </div>
+                                <a href=""
+                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
+                                    Daerah Dinas
+                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <aside class="md:block md:border-l-[2px] border-gray-200 md:pl-6">
+                <aside class=" md:border-l-[2px] border-gray-200 md:pl-6">
                     <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0"><span
                             class="font-bold text-primary ">Persyaratan</span> Terbaru</h2>
                     <div class="flex flex-col py-3 gap-4">
@@ -168,5 +230,5 @@
         </div>
         </div>
     </section>
-    {{-- end section detail download --}}
+    {{-- end section detail persyaratan --}}
 @endsection
