@@ -14,7 +14,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\DownloadController;
-
+use App\Http\Controllers\KontakController;
 //Home
 Route::get('/', [HomeController::class, 'index']);
 
@@ -107,6 +107,15 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/download-{id}', [DownloadController::class, 'update'])->name('download.update');
     Route::delete('download-{id}', [DownloadController::class, 'destroy'])->name('download.destroy');
 
+    // kontak
+    Route::get('/kontakad', [KontakController::class, 'index'])->name('kontak.index');
+    Route::get('/kontak-create', [KontakController::class, 'create'])->name('kontak.create');
+    Route::post('/kontakad', [KontakController::class, 'store'])->name('kontak.store');
+    Route::get('/kontak-{id}', [KontakController::class, 'edit'])->name('kontak.edit');
+    Route::put('/kontak-{id}', [KontakController::class, 'update'])->name('kontak.update');
+    Route::delete('/kontak-{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
+    Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
+
 
     // Landing Admin
     Route::view('/admin', 'master-admin')->name('admin.index');
@@ -118,7 +127,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 Route::view('/tupoksi', 'profil-section.tupoksiVM')->name('tupoksi');
 Route::view('/struk', 'profil-section.strukturOrg')->name('struktur');
 Route::view('/profile', 'profil-section.profile')->name('profile');
-Route::view('/kontak', 'profil-section.kontak')->name('kontak');
+
 Route::view('/detail-download', 'standar-section.detailDownload')->name('detail-download');
 Route::view('/detail-persyaratan', 'standar-section.detailpersyaratan')->name('detail-persyaratan');
 Route::view('/persyaratan', 'standar-section.persyaratan')->name('persyaratan');

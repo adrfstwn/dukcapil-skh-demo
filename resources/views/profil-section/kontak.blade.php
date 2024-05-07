@@ -29,17 +29,17 @@
                                 <li>Sabtu (08.00 - 12.00)</li>
                             </ul>
                         </div>
+                        @foreach($kontak as $kontak)
                         <div class="flex flex-col gap-2 md:gap-3">
-                            <h3 class="font-nunito font-bold text-primary_teks text-xl md:text-2xl">Kontak</h3>
-                            <ul class="font-nunito text-base text-secondary_teks">
-                                <li>Telp : (0271) 593178 <br>
-                                    Fax : (0271)</li>
-                                <li>WA Layanan Pengaduan :
-                                    081232457713</li>
-                                <li>Email :
-                                    dispendukcapil@sukoharjokab.go.id</li>
-                            </ul>
-                        </div>
+        <h3 class="font-nunito font-bold text-primary_teks text-xl md:text-2xl">Kontak</h3>
+        <ul class="font-nunito text-base text-secondary_teks">
+            <li>Telp: {{ $kontak->telp }} <br>
+                Fax: {{ $kontak->fax }}</li>
+            <li>WA Layanan Pengaduan: {{ $kontak->wa_layan }}</li>
+            <li>Email: {{ $kontak->email }}</li>
+        </ul>
+    </div>
+    @endforeach
                     </div>
                 </div>
                 <div class="flex h-80 md:h-64 flex-col md:flex-row gap-12 relative">
@@ -47,7 +47,7 @@
                         <img src="{{ asset('dist/assets/image/Gedung.jpg') }}" alt="" class="rounded-lg object-cover opacity-15"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    
+
                     <div class="absolute p-6 md:p-12 w-full flex flex-col md:flex-row justify-between gap-4 md:gap-10">
                         <div class="flex flex-col">
                             <h4 class="font-monserrat text-base md:text-2xl text-background_light font-bold">Ikuti Kami</h4>
