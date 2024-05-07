@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kontak;
+use App\Models\Jam;
 
 class KontakController extends Controller
 {
@@ -76,10 +77,10 @@ class KontakController extends Controller
 }
 
 
-    public function show()
-    {
-        $kontak = Kontak::all();
-        return view('profil-section.kontak', compact('kontak'));
-    }
-
+public function show()
+{
+    $jam = Jam::all();
+    $kontak = Kontak::all();
+    return view('profil-section.kontak', compact('jam', 'kontak'));
+}
 }

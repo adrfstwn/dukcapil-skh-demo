@@ -21,14 +21,16 @@
                             <p class="font-nunito text-base text-secondary_teks">Alamat : Jalan Kyai Mawardi No. 1
                                 Sukoharjo Kode Pos. 57521</p>
                         </div>
+                        @foreach($jam as $jam)
                         <div class="flex flex-col gap-2 md:gap-3">
                             <h3 class="font-nunito font-bold text-primary_teks text-xl md:text-2xl">Jam Operasional</h3>
                             <ul class="font-nunito text-base text-secondary_teks">
-                                <li>Senin - Kamis (08.00 - 15.00 WIB)</li>
-                                <li>Jum'at (08.00 - 13.00 WIB)</li>
-                                <li>Sabtu (08.00 - 12.00)</li>
+                                <li>Senin - Kamis ({{ $jam->weekday }})</li>
+                                <li>Jum'at ({{ $jam->jumat }})</li>
+                                <li>Sabtu ({{ $jam->sabtu }})</li>
                             </ul>
                         </div>
+                        @endforeach
                         @foreach($kontak as $kontak)
                         <div class="flex flex-col gap-2 md:gap-3">
         <h3 class="font-nunito font-bold text-primary_teks text-xl md:text-2xl">Kontak</h3>

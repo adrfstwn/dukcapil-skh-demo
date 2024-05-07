@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JamController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeSliderController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\KontakController;
+
 //Home
 Route::get('/', [HomeController::class, 'index']);
 
@@ -107,7 +109,16 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/download-{id}', [DownloadController::class, 'update'])->name('download.update');
     Route::delete('download-{id}', [DownloadController::class, 'destroy'])->name('download.destroy');
 
-    // kontak
+    // jamop
+    Route::get('/jamad', [JamController::class, 'index'])->name('jam.index');
+    Route::get('/jam-create', [JamController::class, 'create'])->name('jam.create');
+    Route::post('/jamad', [JamController::class, 'store'])->name('jam.store');
+    Route::get('/jam-{id}', [JamController::class, 'edit'])->name('jam.edit');
+    Route::put('/jam-{id}', [JamController::class, 'update'])->name('jam.update');
+    Route::delete('/jam-{id}', [JamController::class, 'destroy'])->name('jam.destroy');
+    Route::get('/kontak', [JamController::class, 'show'])->name('jam.show');
+
+    //  kontak
     Route::get('/kontakad', [KontakController::class, 'index'])->name('kontak.index');
     Route::get('/kontak-create', [KontakController::class, 'create'])->name('kontak.create');
     Route::post('/kontakad', [KontakController::class, 'store'])->name('kontak.store');
@@ -115,7 +126,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/kontak-{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak-{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
     Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
-
 
     // Landing Admin
     Route::view('/admin', 'master-admin')->name('admin.index');
