@@ -18,9 +18,9 @@ class KontakController extends Controller
     // Check if there are any existing contacts
     $existingKontak = Kontak::first();
 
-    // If there are existing contacts, redirect to the edit page
+    // If there are existing contacts, still at the same page
     if ($existingKontak) {
-        return redirect()->route('kontak.edit', $existingKontak->id);
+        return redirect()->route('kontak.index');
     }
 
     // If there are no existing contacts, show the create page
