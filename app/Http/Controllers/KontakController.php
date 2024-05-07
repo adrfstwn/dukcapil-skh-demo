@@ -14,9 +14,19 @@ class KontakController extends Controller
     }
 
     public function create()
-    {
-        return view('admin.kontak.create');
+{
+    // Check if there are any existing contacts
+    $existingKontak = Kontak::first();
+
+    // If there are existing contacts, redirect to the edit page
+    if ($existingKontak) {
+        return redirect()->route('kontak.edit', $existingKontak->id);
     }
+
+    // If there are no existing contacts, show the create page
+    return view('admin.kontak.create');
+}
+
 
     public function store(Request $request)
     {
