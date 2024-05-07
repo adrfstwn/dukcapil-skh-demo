@@ -79,8 +79,9 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
+        $kategoriBerita = KategoriBerita::all();
         $berita = Berita::findOrFail($id);
-        return view('admin.berita.edit', compact('berita'));
+        return view('admin.berita.edit', compact('berita','kategoriBerita'));
     }
 
     /**

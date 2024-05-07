@@ -11,16 +11,16 @@
                 <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="my-2">
-                        <div class="my-2">
-                            <label for="kategori_berita"
-                                class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Kategori Berita</label>
-                            <select name="kategori_id" id="kategori_berita"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                                @foreach ($kategoriBerita as $kategori)
-                                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                        <label for="kategori_berita"
+                            class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Kategori Berita</label>
+                        <select name="kategori_id" id="kategori_berita"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                            @foreach ($kategoriBerita as $kategori)
+                                <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="my-2">
                         <label for="default-input"
                             class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Title
                             news slider</label>
