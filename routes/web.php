@@ -16,6 +16,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\LinksosController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -44,6 +45,8 @@ Route::get('/download', [DownloadController::class, 'show'])->name('download.tam
 //kontak
 Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
 Route::get('/kontak', [JamController::class, 'show'])->name('jam.show');
+Route::get('/kontak', [LinksosController::class, 'show'])->name('linksos.show');
+
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -130,6 +133,13 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/kontak-{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak-{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
 
+    //  LinkSos
+    Route::get('/linksosad', [LinksosController::class, 'index'])->name('linksos.index');
+    Route::get('/linksos-create', [LinksosController::class, 'create'])->name('linksos.create');
+    Route::post('/linksosad', [LinksosController::class, 'store'])->name('linksos.store');
+    Route::get('/linksos-{id}', [LinksosController::class, 'edit'])->name('linksos.edit');
+    Route::put('/linksos-{id}', [LinksosController::class, 'update'])->name('linksos.update');
+    Route::delete('/linksos-{id}', [LinksosController::class, 'destroy'])->name('linksos.destroy');
 
     // Landing Admin
     Route::view('/admin', 'master-admin')->name('admin.index');

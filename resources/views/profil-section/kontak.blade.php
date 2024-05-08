@@ -57,29 +57,31 @@
                         </div>
                         <div class="flex flex-col gap-4 justify-end">
                             <!-- instagram -->
+                            @foreach($linksos as $linksos)
                             <div class="flex flex-row gap-2 items-center">
                                 <img src="dist/assets/icon/ri_instagram-fill.svg" alt="">
-                                <a href="instagram.com/disdukcapilkabsukoharjo"
-                                    class="font-nunito font-semibold text-background_light">disdukcapilkabsukoharjo</a>
+                                <a href="{{$linksos->instagram}}"
+                                    class="font-nunito font-semibold text-background_light">{{$linksos->nama_instagram}}</a>
                             </div>
                             <!-- facebook -->
                             <div class="flex flex-row gap-2 items-center">
                                 <img src="dist/assets/icon/facebook-fill.svg" alt="">
-                                <a href="facebook.com/disdukcapil.sukoharjokab"
-                                    class="font-nunito font-semibold text-background_light">disdukcapil.sukoharjokab</a>
+                                <a href="{{$linksos->facebook}}"
+                                    class="font-nunito font-semibold text-background_light">{{$linksos->nama_facebook}}</a>
                             </div>
                             <!-- twitter -->
                             <div class="flex flex-row gap-2 items-center">
                                 <img src="dist/assets/icon/formkit_twitter.svg" alt="">
-                                <a href="twitter.com/disdukcapilskh"
-                                    class="font-nunito font-semibold text-background_light">disdukcapilskh</a>
+                                <a href="{{$linksos->x}}"
+                                    class="font-nunito font-semibold text-background_light">{{$linksos->nama_x}}</a>
                             </div>
                             <!-- youtube -->
                             <div class="flex flex-row gap-2 items-center">
                                 <img src="dist/assets/icon/youtube-fill.svg" alt="">
-                                <a href="youtube.com/@disdukcapilkab.sukoharjo6228"
-                                    class="font-nunito font-semibold text-background_light">@disdukcapilkab.sukoharjo6228</a>
+                                <a href="{{$linksos->yt}}"
+                                    class="font-nunito font-semibold text-background_light">{{$linksos->nama_yt}}</a>
                             </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

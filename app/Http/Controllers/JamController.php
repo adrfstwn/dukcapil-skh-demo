@@ -14,10 +14,6 @@ class JamController extends Controller
         return view('admin.jam-operasi.index', compact('jam'));
     }
 
-    // public function create()
-    // {
-    //     return view('admin.jam-operasi.create');
-    // }
     public function create()
 {
     // Check if there are any existing contacts
