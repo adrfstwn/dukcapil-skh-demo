@@ -41,6 +41,10 @@ Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
 // Download
 Route::get('/download', [DownloadController::class, 'show'])->name('download.tampil');
 
+//kontak
+Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
+Route::get('/kontak', [JamController::class, 'show'])->name('jam.show');
+
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 
@@ -116,7 +120,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/jam-{id}', [JamController::class, 'edit'])->name('jam.edit');
     Route::put('/jam-{id}', [JamController::class, 'update'])->name('jam.update');
     Route::delete('/jam-{id}', [JamController::class, 'destroy'])->name('jam.destroy');
-    Route::get('/kontak', [JamController::class, 'show'])->name('jam.show');
+
 
     //  kontak
     Route::get('/kontakad', [KontakController::class, 'index'])->name('kontak.index');
@@ -125,7 +129,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/kontak-{id}', [KontakController::class, 'edit'])->name('kontak.edit');
     Route::put('/kontak-{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak-{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
-    Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
+
 
     // Landing Admin
     Route::view('/admin', 'master-admin')->name('admin.index');
