@@ -142,7 +142,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::delete('/linksos-{id}', [LinksosController::class, 'destroy'])->name('linksos.destroy');
 
     // Landing Admin
-    Route::view('/admin', 'master-admin')->name('admin.index');
+    Route::view('/admin', 'dashboard-admin')->name('admin.index');
 });
 
 
