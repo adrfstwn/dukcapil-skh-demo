@@ -17,6 +17,9 @@ use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LinksosController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\TupoksiController;
+
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -42,11 +45,16 @@ Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
 // Download
 Route::get('/download', [DownloadController::class, 'show'])->name('download.tampil');
 
+//Profil
+Route::get('/profil', [ProfilController::class, 'show'])->name('profil.show');
+
 //kontak
 Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
 Route::get('/kontak', [JamController::class, 'show'])->name('jam.show');
 Route::get('/kontak', [LinksosController::class, 'show'])->name('linksos.show');
 
+// Tupoksi
+Route::get('/tupoksi', [TupoksiController::class, 'show'])->name('tupoksi.show');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -141,6 +149,22 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/linksos-{id}', [LinksosController::class, 'update'])->name('linksos.update');
     Route::delete('/linksos-{id}', [LinksosController::class, 'destroy'])->name('linksos.destroy');
 
+    // Profil
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+    Route::get('/profil-create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::post('/profil', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('/profil-{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profil-{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('profil-{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+    // Tupoksi
+    Route::get('/tupoksivm', [TupoksiController::class, 'index'])->name('tupoksi.index');
+    Route::get('/tupoksi-create', [TupoksiController::class, 'create'])->name('tupoksi.create');
+    Route::post('/tupoksivm', [TupoksiController::class, 'store'])->name('tupoksi.store');
+    Route::get('/tupoksi-{id}', [TupoksiController::class, 'edit'])->name('tupoksi.edit');
+    Route::put('/tupoksi-{id}', [TupoksiController::class, 'update'])->name('tupoksi.update');
+    Route::delete('tupoksi-{id}', [TupoksiController::class, 'destroy'])->name('tupoksi.destroy');
+
     // Landing Admin
     Route::view('/admin', 'dashboard-admin')->name('admin.index');
 });
@@ -148,7 +172,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 
 // Buat routing ngecek view dari frontend sebelum dibuat CRUD
 // Setelah dibuat CRUD hapus routingan dibawah ini
-Route::view('/tupoksi', 'profil-section.tupoksiVM')->name('tupoksi');
+
 Route::view('/struk', 'profil-section.strukturOrg')->name('struktur');
 Route::view('/profile', 'profil-section.profile')->name('profile');
 
