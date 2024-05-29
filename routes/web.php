@@ -19,6 +19,8 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LinksosController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TupoksiController;
+use App\Http\Controllers\StrukturOrgController;
+use App\Http\Controllers\PersyaratanController;
 
 
 //Home
@@ -55,6 +57,12 @@ Route::get('/kontak', [LinksosController::class, 'show'])->name('linksos.show');
 
 // Tupoksi
 Route::get('/tupoksi', [TupoksiController::class, 'show'])->name('tupoksi.show');
+
+// Struktur Organisasi
+Route::get('/struktur-organisasi', [StrukturOrgController::class, 'show'])->name('strukturorg.show');
+
+// Persyaratan
+Route::get('/persyaratan', [PersyaratanController::class, 'show'])->name('persyaratan.show');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -165,6 +173,22 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/tupoksi-{id}', [TupoksiController::class, 'update'])->name('tupoksi.update');
     Route::delete('tupoksi-{id}', [TupoksiController::class, 'destroy'])->name('tupoksi.destroy');
 
+    // Struktur Organisasi
+    Route::get('/strukturorg', [StrukturOrgController::class, 'index'])->name('strukturorg.index');
+    Route::get('/strukturorg-create', [StrukturOrgController::class, 'create'])->name('strukturorg.create');
+    Route::post('/strukturorg', [StrukturOrgController::class, 'store'])->name('strukturorg.store');
+    Route::get('/strukturorg-{id}', [StrukturOrgController::class, 'edit'])->name('strukturorg.edit');
+    Route::put('/strukturorg-{id}', [StrukturOrgController::class, 'update'])->name('strukturorg.update');
+    Route::delete('strukturorg-{id}', [StrukturOrgController::class, 'destroy'])->name('strukturorg.destroy');
+
+    // Persyaratan
+    Route::get('/persyaratans', [PersyaratanController::class, 'index'])->name('persyaratan.index');
+    Route::get('/persyaratan-create', [PersyaratanController::class, 'create'])->name('persyaratan.create');
+    Route::post('/persyaratans', [PersyaratanController::class, 'store'])->name('persyaratan.store');
+    Route::get('/persyaratan-{id}', [PersyaratanController::class, 'edit'])->name('persyaratan.edit');
+    Route::put('/persyaratan-{id}', [PersyaratanController::class, 'update'])->name('persyaratan.update');
+    Route::delete('persyaratan-{id}', [PersyaratanController::class, 'destroy'])->name('persyaratan.destroy');
+
     // Landing Admin
     Route::view('/admin', 'dashboard-admin')->name('admin.index');
 });
@@ -173,12 +197,11 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 // Buat routing ngecek view dari frontend sebelum dibuat CRUD
 // Setelah dibuat CRUD hapus routingan dibawah ini
 
-Route::view('/struk', 'profil-section.strukturOrg')->name('struktur');
+
 Route::view('/profile', 'profil-section.profile')->name('profile');
 
 Route::view('/detail-download', 'standar-section.detailDownload')->name('detail-download');
 Route::view('/detail-persyaratan', 'standar-section.detailpersyaratan')->name('detail-persyaratan');
-Route::view('/persyaratan', 'standar-section.persyaratan')->name('persyaratan');
 Route::view('/tamat', 'detail-layanan.tamat')->name('tamat');
 Route::view('/dokumake', 'detail-layanan.dokumake')->name('dokumake');
 Route::view('/makedikesmoke', 'detail-layanan.makedikesmoke')->name('makedikesmoke');

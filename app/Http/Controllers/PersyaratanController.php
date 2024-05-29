@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StrukturOrg;
+use App\Models\Persyaratan;
 use Illuminate\Http\Request;
 
-class StrukturOrgController extends Controller
+class PersyaratanController extends Controller
 {
     public function index()
     {
-        $strukturorgs = StrukturOrg::all();
-        return view('admin.strukturorg.index', compact('strukturorgs'));
+        $persyaratans = Persyaratan::all();
+        return view('admin.persyaratan.index', compact('persyaratans'));
     }
 
     public function create()
     {
-        return view('admin.strukturorg.create');
+        return view('admin.persyaratan.create');
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'judul' => 'required',
+            'deskripsi_persyaratan' => 'required',
             'file' => 'required|mimes:pdf,doc,docx|max:2048', // contoh validasi untuk file dengan ekstensi pdf, doc, docx, dan maksimum ukuran 2MB
         ]);
 
@@ -29,33 +30,35 @@ class StrukturOrgController extends Controller
         $fileName = time() . '_' . $file->getClientOriginalName();
         $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
 
-        StrukturOrg::create([
+        Persyaratan::create([
             'judul' => $request->judul,
+            'deskripsi_persyaratan' => $request->deskripsi_persyaratan,
             'file' => $filePath,
         ]);
 
-        return redirect()->route('strukturorg.index')->with('success', 'Strukturorg created successfully.');
+        return redirect()->route('persyaratan.index')->with('success', 'Persyaratan created successfully.');
     }
 
     public function show()
     {
-        $strukturorgs = StrukturOrg::all();
-        return view('strukturorg', compact('strukturorgs'));
+        $persyaratans = Persyaratan::all();
+        return view('persyaratan', compact('persyaratans'));
     }
 
     public function edit($id)
     {
-        $strukturorg= StrukturOrg::findOrFail($id);
-        return view('admin.strukturorg.edit', compact('strukturorg'));
+        $persyaratan= Persyaratan::findOrFail($id);
+        return view('admin.persyaratan.edit', compact('persyaratan'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'judul' => 'required',
+            'deskripsi_persyaratan' => 'required',
         ]);
 
-        $strukturorg = StrukturOrg::findOrFail($id);
+        $persyaratan = Persyaratan::findOrFail($id);
 
         if ($request->hasFile('file')) {
             $request->validate([
@@ -65,19 +68,20 @@ class StrukturOrgController extends Controller
             $file = $request->file('file');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-            $strukturorg->file = $filePath;
+            $persyaratan->file = $filePath;
         }
 
-        $strukturorg->judul = $request->judul;
-        $strukturorg->save();
+        $persyaratan->judul = $request->judul;
+        $persyaratan->deskripsi_persyaratan = $request->deskripsi_persyaratan;
+        $persyaratan->save();
 
-        return redirect()->route('strukturorg.index')->with('success', 'Strukturorg updated successfully.');
+        return redirect()->route('persyaratan.index')->with('success', 'Persyaratan updated successfully.');
     }
 
     public function destroy($id)
     {
-        $strukturorg = StrukturOrg::findOrFail($id);
-        $strukturorg->delete();
-        return redirect()->route('strukturorg.index')->with('success', 'Strukturorg deleted successfully.');
+        $persyaratan = Persyaratan::findOrFail($id);
+        $persyaratan->delete();
+        return redirect()->route('persyaratan.index')->with('success', 'Persyaratan deleted successfully.');
     }
 }
