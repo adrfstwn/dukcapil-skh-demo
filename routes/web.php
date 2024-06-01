@@ -21,6 +21,8 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TupoksiController;
 use App\Http\Controllers\StrukturOrgController;
 use App\Http\Controllers\PersyaratanController;
+use App\Http\Controllers\DetailDownloadController;
+use App\Http\Controllers\DetailPersyaratanController;
 
 
 //Home
@@ -63,6 +65,15 @@ Route::get('/struktur-organisasi', [StrukturOrgController::class, 'show'])->name
 
 // Persyaratan
 Route::get('/persyaratan', [PersyaratanController::class, 'show'])->name('persyaratan.show');
+
+// Profil
+Route::get('/profile', [ProfilController::class, 'show'])->name('profil.show');
+
+// Detail-Download
+Route::get('/detail-download', [DetailDownloadController::class, 'show'])->name('detaildownload.show');
+
+// Detail-Persyaratan
+Route::get('/detail-persyaratan', [DetailPersyaratanController::class, 'show'])->name('detailpersyaratan.show');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -189,6 +200,32 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/persyaratan-{id}', [PersyaratanController::class, 'update'])->name('persyaratan.update');
     Route::delete('persyaratan-{id}', [PersyaratanController::class, 'destroy'])->name('persyaratan.destroy');
 
+    // Profil
+    Route::get('/profilss', [ProfilController::class, 'index'])->name('profil.index');
+    Route::get('/profil-create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::post('/profilss', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('/profil-{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profil-{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('profil-{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+    // Detail Download
+    Route::get('/detaildownloader', [DetailDownloadController::class, 'index'])->name('detaildownload.index');
+    Route::get('/detaildownload-create', [DetailDownloadController::class, 'create'])->name('detaildownload.create');
+    Route::post('/detaildownloader', [DetailDownloadController::class, 'store'])->name('detaildownload.store');
+    Route::get('/detaildownload-{id}', [DetailDownloadController::class, 'edit'])->name('detaildownload.edit');
+    Route::put('/detaildownload-{id}', [DetailDownloadController::class, 'update'])->name('detaildownload.update');
+    Route::delete('detaildownload-{id}', [DetailDownloadController::class, 'destroy'])->name('detaildownload.destroy');
+
+    // Detail Persyaratan
+    Route::get('/detailpersyaratanss', [DetailPersyaratanController::class, 'index'])->name('detailpersyaratan.index');
+    Route::get('/detailpersyaratan-create', [DetailPersyaratanController::class, 'create'])->name('detailpersyaratan.create');
+    Route::post('/detailpersyaratanss', [DetailPersyaratanController::class, 'store'])->name('detailpersyaratan.store');
+    Route::get('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'edit'])->name('detailpersyaratan.edit');
+    Route::put('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'update'])->name('detailpersyaratan.update');
+    Route::delete('detailpersyaratan-{id}', [DetailPersyaratanController::class, 'destroy'])->name('detailpersyaratan.destroy');
+
+
+
     // Landing Admin
     Route::view('/admin', 'dashboard-admin')->name('admin.index');
 });
@@ -198,10 +235,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 // Setelah dibuat CRUD hapus routingan dibawah ini
 
 
-Route::view('/profile', 'profil-section.profile')->name('profile');
-
-Route::view('/detail-download', 'standar-section.detailDownload')->name('detail-download');
-Route::view('/detail-persyaratan', 'standar-section.detailpersyaratan')->name('detail-persyaratan');
 Route::view('/tamat', 'detail-layanan.tamat')->name('tamat');
 Route::view('/dokumake', 'detail-layanan.dokumake')->name('dokumake');
 Route::view('/makedikesmoke', 'detail-layanan.makedikesmoke')->name('makedikesmoke');

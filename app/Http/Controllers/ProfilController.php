@@ -2,101 +2,88 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profil;
 use Illuminate\Http\Request;
+use App\Models\Profil;
 use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $profils = Profil::all();
         return view('admin.profil.index', compact('profils'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.profil.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required|max:255',
+        $request->validate([
+            'nama' => 'required',
             'deskripsi_profil' => 'required',
-            'gambar_profil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_profil' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('gambar_profil')) {
-            $path = $request->file('gambar_profil')->store('profil_images', 'public');
-            $validatedData['gambar_profil'] = $path;
-        }
+        $gambar = $request->file('gambar_profil');
+        $namaGambar = time() . '_' . $gambar->getClientOriginalName();
+        $pathGambar = $request->file('gambar_profil')->storeAs('public/profil', $namaGambar);
 
-        Profil::create($validatedData);
-
-        return redirect()->route('profil.index')->with('success', 'Profil created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Profil $profil)
-    {
-        return view('profil.show', compact('profils'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Profil $profil)
-    {
-        return view('admin.profil.edit', compact('profils'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Profil $profil)
-    {
-        $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'deskripsi_profil' => 'required',
-            'gambar_profil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        Profil::create([
+            'nama' => $request->nama,
+            'deskripsi_profil' => $request->deskripsi_profil,
+            'gambar_profil' => 'profil/' . $namaGambar,
         ]);
 
-        if ($request->hasFile('gambar_profil')) {
-            if ($profil->gambar_profil && Storage::disk('public')->exists($profil->gambar_profil)) {
-                Storage::disk('public')->delete($profil->gambar_profil);
-            }
-            $path = $request->file('gambar_profil')->store('profil_images', 'public');
-            $validatedData['gambar_profil'] = $path;
-        }
-
-        $profil->update($validatedData);
-
-        return redirect()->route('profil.index')->with('success', 'Profil updated successfully.');
+        return redirect()->route('profil.index')->with('success', 'Profil berhasil dibuat.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Profil $profil)
+    public function show()
     {
-        if ($profil->gambar_profil && Storage::disk('public')->exists($profil->gambar_profil)) {
-            Storage::disk('public')->delete($profil->gambar_profil);
+        $profils = Profil::all();
+        return view('profil', compact('profils'));
+    }
+
+    public function edit($id)
+    {
+        $profil = Profil::findOrFail($id);
+        return view('admin.profil.edit', compact('profil'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'deskripsi_profil' => 'required',
+        ]);
+
+        $profil = Profil::findOrFail($id);
+
+        if ($request->hasFile('gambar_profil')) {
+            $request->validate([
+                'gambar_profil' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            $gambar = $request->file('gambar_profil');
+            $namaGambar = time() . '_' . $gambar->getClientOriginalName();
+            $pathGambar = $request->file('gambar_profil')->storeAs('public/profil', $namaGambar);
+            $profil->gambar_profil = 'profil/' . $namaGambar;
         }
 
+        $profil->nama = $request->nama;
+        $profil->deskripsi_profil = $request->deskripsi_profil;
+        $profil->save();
+
+        return redirect()->route('profil.index')->with('success', 'Profil berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $profil = Profil::findOrFail($id);
+        Storage::delete('public/' . $profil->gambar_profil);
         $profil->delete();
-
-        return redirect()->route('profil.index')->with('success', 'Profil deleted successfully.');
+        return redirect()->route('profil.index')->with('success', 'Profil berhasil dihapus.');
     }
 }

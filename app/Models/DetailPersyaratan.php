@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profil extends Model
+class DetailPersyaratan extends Model
 {
     use HasFactory;
-    protected $table = 'profil';
+    protected $table = 'detailpersyaratan';
     protected $fillable = [
         'nama',
-        'deskripsi_profil',
-        'gambar_profil',
+        'gambar',
+        'deskripsi_detail_persyaratan',
     ];
 }

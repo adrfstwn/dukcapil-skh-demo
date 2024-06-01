@@ -7,42 +7,18 @@
             <div class="flex flex-col gap-12"> 
               <div class="flex flex-col gap-6 md:gap-12">
                 <div class="flex flex-col gap-6 ">
+                @foreach ($detailpersyaratans as $detailpersyaratan)
                   <div class="flex flex-col gap-2">
-                    <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks "> Forum Perangkat Daerah
-                      Dinas Dukcapil
-                      Kabupaten Sukoharjo Tahun 2024</h2>
-                    <p class="font-nunito text-secondary_teks">28 Februari 2024</p>
+                    <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">{{ $detailpersyaratan->nama }}</h2>
+                    <p class="font-nunito text-secondary_teks">{{ $detailpersyaratan->created_at }}</p>
                   </div>
                   <div class="flex flex-col gap-4 max-w-screen-md">
-                    <img src="dist/assets/image/Karyawan.jpg" alt="foto kegiatan karyawan"
+                    <img src="{{ asset('storage/' . $detailpersyaratan->gambar) }}" alt="foto kegiatan karyawan"
                       class="rounded-sm ">
-                    <p class="font-nunito text-base text-primary_teks">Dinas Kependudukan dan Pencatatan Sipil Kabupaten
-                      Sukoharjo menyelenggarakan Forum Perangkat Daerah Tahun 2024.
-                      <br>
-                      Kegiatan dipimpin oleh Kepala Dinas Dukcapil Kabupaten Sukoharjo Budi Susetyo, S.H., M.H dengan
-                      narasumber dari Bapperida (Burhan Surya Aji, S.IP., M.M. Kabid. PPE PD) dan BPKPAD (Tri Hastuti
-                      Lestari
-                      Handayani, S.E., M.M. Analis Keuangan Pusat dan Daerah Ahli Muda).
-                      <br>
-                      Forum perangkat daerah Dinas Dukcapil Kabupaten Sukoharjo dihadiri oleh OPD terkait, Camat/perwakilan,
-                      beberapa sekolah menengah di Kabupaten Sukoharjo serta instansi atau perusahaan yang telah
-                      melaksanakan
-                      kerjasama dengan Dinas Dukcapil Kabupaten Sukoharjo.
-                      <br>
-                      Dalam forum ini disampaikan indikator kinerja dan target renstra tahun 2025. Program dan kegiatan
-                      Dinas
-                      Dukcapil Kabupaten Sukoharjo tahun 2025 diarahkan untuk mendukung peningkatan kepemilikan dokumen
-                      adminduk dan suksesnya percepatan transformasi digital dan keterpaduan layanan digital nasional. 
-                      <br>
-                      Disampaikan pula inovasi-inovasi dan capaian Dinas Dukcapil Kabupaten Sukoharjo sampai saat ini serta
-                      rencana inovasi pelayanan di tahun 2025.
-                      <br>
-                      Yang pada akhirnya bertujuan untuk mewujudkan layanan administrasi kependudukan yang membahagiakan
-                      masyarakat dengan meningkatkan kualitas layanan administrasi kependudukan dan pencatatan sipil serta
-                      meningkatkan kualitas aparatur pelayanan publik.
-                    </p>
+                    <p class="font-nunito text-base text-primary_teks">{{ $detailpersyaratan->deskripsi_detail_persyaratan}}</p>
                     <button class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik disini untuk lebih lanjut</button>
                   </div>
+                  @endforeach
                   <p class="text-base text-secondary_teks">#forumskpd</p>
                   <div class="flex gap-3 items-center">
                     <p class="font-nunito font-semibold text-primary_teks">BAGIKAN :</p>
