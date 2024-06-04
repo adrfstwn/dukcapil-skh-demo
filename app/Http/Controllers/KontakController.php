@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kontak;
+use App\Models\Jam;
 
 class KontakController extends Controller
 {
@@ -14,9 +15,19 @@ class KontakController extends Controller
     }
 
     public function create()
-    {
-        return view('admin.kontak.create');
+{
+    // Check if there are any existing contacts
+    $existingKontak = Kontak::first();
+
+    // If there are existing contacts, still at the same page
+    if ($existingKontak) {
+        return redirect()->route('kontak.index');
     }
+
+    // If there are no existing contacts, show the create page
+    return view('admin.kontak.create');
+}
+
 
     public function store(Request $request)
     {
@@ -66,10 +77,10 @@ class KontakController extends Controller
 }
 
 
-    public function show()
-    {
-        $kontak = Kontak::all();
-        return view('profil-section.kontak', compact('kontak'));
-    }
-
+public function show()
+{
+    $jam = Jam::all();
+    $kontak = Kontak::all();
+    return view('profil-section.kontak', compact('jam', 'kontak'));
+}
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JamController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeSliderController;
@@ -15,6 +16,15 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\KategoriBeritaController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\LinksosController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\TupoksiController;
+use App\Http\Controllers\StrukturOrgController;
+use App\Http\Controllers\PersyaratanController;
+use App\Http\Controllers\DetailDownloadController;
+use App\Http\Controllers\DetailPersyaratanController;
+
+
 //Home
 Route::get('/', [HomeController::class, 'index']);
 
@@ -38,6 +48,32 @@ Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
 
 // Download
 Route::get('/download', [DownloadController::class, 'show'])->name('download.tampil');
+
+//Profil
+Route::get('/profil', [ProfilController::class, 'show'])->name('profil.show');
+
+//kontak
+Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
+Route::get('/kontak', [JamController::class, 'show'])->name('jam.show');
+Route::get('/kontak', [LinksosController::class, 'show'])->name('linksos.show');
+
+// Tupoksi
+Route::get('/tupoksi', [TupoksiController::class, 'show'])->name('tupoksi.show');
+
+// Struktur Organisasi
+Route::get('/struktur-organisasi', [StrukturOrgController::class, 'show'])->name('strukturorg.show');
+
+// Persyaratan
+Route::get('/persyaratan', [PersyaratanController::class, 'show'])->name('persyaratan.show');
+
+// Profil
+Route::get('/profile', [ProfilController::class, 'show'])->name('profil.show');
+
+// Detail-Download
+Route::get('/detail-download', [DetailDownloadController::class, 'show'])->name('detaildownload.show');
+
+// Detail-Persyaratan
+Route::get('/detail-persyaratan', [DetailPersyaratanController::class, 'show'])->name('detailpersyaratan.show');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -107,30 +143,98 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/download-{id}', [DownloadController::class, 'update'])->name('download.update');
     Route::delete('download-{id}', [DownloadController::class, 'destroy'])->name('download.destroy');
 
-    // kontak
+    // jamop
+    Route::get('/jamad', [JamController::class, 'index'])->name('jam.index');
+    Route::get('/jam-create', [JamController::class, 'create'])->name('jam.create');
+    Route::post('/jamad', [JamController::class, 'store'])->name('jam.store');
+    Route::get('/jam-{id}', [JamController::class, 'edit'])->name('jam.edit');
+    Route::put('/jam-{id}', [JamController::class, 'update'])->name('jam.update');
+    Route::delete('/jam-{id}', [JamController::class, 'destroy'])->name('jam.destroy');
+
+
+    //  kontak
     Route::get('/kontakad', [KontakController::class, 'index'])->name('kontak.index');
     Route::get('/kontak-create', [KontakController::class, 'create'])->name('kontak.create');
     Route::post('/kontakad', [KontakController::class, 'store'])->name('kontak.store');
     Route::get('/kontak-{id}', [KontakController::class, 'edit'])->name('kontak.edit');
     Route::put('/kontak-{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontak-{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
-    Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
+
+    //  LinkSos
+    Route::get('/linksosad', [LinksosController::class, 'index'])->name('linksos.index');
+    Route::get('/linksos-create', [LinksosController::class, 'create'])->name('linksos.create');
+    Route::post('/linksosad', [LinksosController::class, 'store'])->name('linksos.store');
+    Route::get('/linksos-{id}', [LinksosController::class, 'edit'])->name('linksos.edit');
+    Route::put('/linksos-{id}', [LinksosController::class, 'update'])->name('linksos.update');
+    Route::delete('/linksos-{id}', [LinksosController::class, 'destroy'])->name('linksos.destroy');
+
+    // Profil
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+    Route::get('/profil-create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::post('/profil', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('/profil-{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profil-{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('profil-{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+    // Tupoksi
+    Route::get('/tupoksivm', [TupoksiController::class, 'index'])->name('tupoksi.index');
+    Route::get('/tupoksi-create', [TupoksiController::class, 'create'])->name('tupoksi.create');
+    Route::post('/tupoksivm', [TupoksiController::class, 'store'])->name('tupoksi.store');
+    Route::get('/tupoksi-{id}', [TupoksiController::class, 'edit'])->name('tupoksi.edit');
+    Route::put('/tupoksi-{id}', [TupoksiController::class, 'update'])->name('tupoksi.update');
+    Route::delete('tupoksi-{id}', [TupoksiController::class, 'destroy'])->name('tupoksi.destroy');
+
+    // Struktur Organisasi
+    Route::get('/strukturorg', [StrukturOrgController::class, 'index'])->name('strukturorg.index');
+    Route::get('/strukturorg-create', [StrukturOrgController::class, 'create'])->name('strukturorg.create');
+    Route::post('/strukturorg', [StrukturOrgController::class, 'store'])->name('strukturorg.store');
+    Route::get('/strukturorg-{id}', [StrukturOrgController::class, 'edit'])->name('strukturorg.edit');
+    Route::put('/strukturorg-{id}', [StrukturOrgController::class, 'update'])->name('strukturorg.update');
+    Route::delete('strukturorg-{id}', [StrukturOrgController::class, 'destroy'])->name('strukturorg.destroy');
+
+    // Persyaratan
+    Route::get('/persyaratans', [PersyaratanController::class, 'index'])->name('persyaratan.index');
+    Route::get('/persyaratan-create', [PersyaratanController::class, 'create'])->name('persyaratan.create');
+    Route::post('/persyaratans', [PersyaratanController::class, 'store'])->name('persyaratan.store');
+    Route::get('/persyaratan-{id}', [PersyaratanController::class, 'edit'])->name('persyaratan.edit');
+    Route::put('/persyaratan-{id}', [PersyaratanController::class, 'update'])->name('persyaratan.update');
+    Route::delete('persyaratan-{id}', [PersyaratanController::class, 'destroy'])->name('persyaratan.destroy');
+
+    // Profil
+    Route::get('/profilss', [ProfilController::class, 'index'])->name('profil.index');
+    Route::get('/profil-create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::post('/profilss', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('/profil-{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profil-{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('profil-{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+    // Detail Download
+    Route::get('/detaildownloader', [DetailDownloadController::class, 'index'])->name('detaildownload.index');
+    Route::get('/detaildownload-create', [DetailDownloadController::class, 'create'])->name('detaildownload.create');
+    Route::post('/detaildownloader', [DetailDownloadController::class, 'store'])->name('detaildownload.store');
+    Route::get('/detaildownload-{id}', [DetailDownloadController::class, 'edit'])->name('detaildownload.edit');
+    Route::put('/detaildownload-{id}', [DetailDownloadController::class, 'update'])->name('detaildownload.update');
+    Route::delete('detaildownload-{id}', [DetailDownloadController::class, 'destroy'])->name('detaildownload.destroy');
+
+    // Detail Persyaratan
+    Route::get('/detailpersyaratanss', [DetailPersyaratanController::class, 'index'])->name('detailpersyaratan.index');
+    Route::get('/detailpersyaratan-create', [DetailPersyaratanController::class, 'create'])->name('detailpersyaratan.create');
+    Route::post('/detailpersyaratanss', [DetailPersyaratanController::class, 'store'])->name('detailpersyaratan.store');
+    Route::get('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'edit'])->name('detailpersyaratan.edit');
+    Route::put('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'update'])->name('detailpersyaratan.update');
+    Route::delete('detailpersyaratan-{id}', [DetailPersyaratanController::class, 'destroy'])->name('detailpersyaratan.destroy');
+
 
 
     // Landing Admin
-    Route::view('/admin', 'master-admin')->name('admin.index');
+    Route::view('/admin', 'dashboard-admin')->name('admin.index');
 });
 
 
 // Buat routing ngecek view dari frontend sebelum dibuat CRUD
 // Setelah dibuat CRUD hapus routingan dibawah ini
-Route::view('/tupoksi', 'profil-section.tupoksiVM')->name('tupoksi');
-Route::view('/struk', 'profil-section.strukturOrg')->name('struktur');
-Route::view('/profile', 'profil-section.profile')->name('profile');
 
-Route::view('/detail-download', 'standar-section.detailDownload')->name('detail-download');
-Route::view('/detail-persyaratan', 'standar-section.detailpersyaratan')->name('detail-persyaratan');
-Route::view('/persyaratan', 'standar-section.persyaratan')->name('persyaratan');
+
 Route::view('/tamat', 'detail-layanan.tamat')->name('tamat');
 Route::view('/dokumake', 'detail-layanan.dokumake')->name('dokumake');
 Route::view('/makedikesmoke', 'detail-layanan.makedikesmoke')->name('makedikesmoke');
