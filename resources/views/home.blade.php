@@ -24,7 +24,7 @@
                 @endforeach
             </div>
             <!-- Previous Button -->
-            <div class="absolute inset-0 flex mx-4 md:mx-20 z-20">
+            {{-- <div class="absolute inset-0 flex mx-4 md:mx-20 z-20">
                 <div class="flex items-center justify-start w-1/2 z-20">
                     <button
                         class="absolute left-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6 z-20"
@@ -46,7 +46,7 @@
                         </svg>
                     </button>
                 </div>
-            </div>
+            </div> --}}
         </div>
         </div>
     </section>
