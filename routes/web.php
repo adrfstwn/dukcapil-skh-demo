@@ -133,7 +133,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
     Route::get('/berita-{id}', [BeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/berita-{id}', [BeritaController::class, 'update'])->name('berita.update');
-    Route::delete('berita-{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    Route::delete('/berita-{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
     // Download
     Route::get('/downloaden', [DownloadController::class, 'index'])->name('download.index');

@@ -13,7 +13,7 @@ class KategoriBeritaController extends Controller
     public function index()
     {
         $kategoriBeritas = KategoriBerita::all();
-        return view('admin.kategori-berita.index', compact('kategoriBeritas'));
+        return view('admin.berita.index', compact('kategoriBerita'));
     }
 
     /**
@@ -84,6 +84,6 @@ class KategoriBeritaController extends Controller
         $kategoriBerita = KategoriBerita::findOrFail($id);
         $kategoriBerita->delete();
 
-        return redirect()->route('kategori-berita.index')->with('success', 'Kategori berita deleted successfully');
+        return redirect()->route('berita.index')->with('success', 'Kategori berita deleted successfully');
     }
 }
