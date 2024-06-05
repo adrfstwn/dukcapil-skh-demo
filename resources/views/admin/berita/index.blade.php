@@ -66,9 +66,9 @@
         </div>
     </section>
     <section id="berita-card">
-        @foreach ($beritas as $berita)
-            <div class="container">
-                <div class="grid grid-col-4 gap-3 justify-between ">
+        <div class="container">
+            <div class="grid grid-cols-4 gap-3 gap-y-6 ">
+                    @foreach ($beritas as $berita)
                     <div
                         class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                         <div
@@ -136,8 +136,8 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
-        @endforeach
     </section>
 @endsection
