@@ -68,7 +68,7 @@
     <section id="berita-card">
         @foreach ($beritas as $berita)
             <div class="container">
-                <div class="grid md:grid-cols-4 gap-4 justify-between my-10">
+                <div class="grid grid-col-4 gap-3 justify-between ">
                     <div
                         class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                         <div
