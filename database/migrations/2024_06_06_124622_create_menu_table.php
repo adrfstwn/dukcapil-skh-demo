@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('super-submenu', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_super-submenu');
-            $table->unsignedBigInteger('submenu_id');
-            $table->foreign('submenu_id')->references('id')->on('submenu');
+            $table->string('nama_menu');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('menu');
     }
 };

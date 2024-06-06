@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('submenu', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_submenu');
             $table->unsignedBigInteger('menu_id');
-            $table->foreign('menu_id')->references('id')->on('menu');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('nama_submenu');
+            $table->string('url')->nullable();
             $table->timestamps();
+
+            $table->foreign('menu_id')->references('id')->on('menu')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('submenu')->onDelete('cascade');
         });
     }
 

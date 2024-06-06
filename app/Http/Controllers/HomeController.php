@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HomeSlider;
 use App\Models\Mitra;
+use App\Models\Menu;
+use App\Models\Submenu;
 use App\Models\FAQ;
 use App\Models\Layanan;
 use Illuminate\Support\Facades\Storage;
@@ -36,7 +38,6 @@ class HomeController extends Controller
         foreach ($layanans as $layanan) {
             $layanan->gambar = asset(Storage::url($layanan->gambar));
         }
-
 
         return view('home', compact('homeSliders', 'mitras', 'faqs', 'layanans','currentSlide'));
     }

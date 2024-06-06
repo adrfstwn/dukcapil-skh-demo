@@ -9,7 +9,7 @@
                         <div class="max-w-80 md:max-w-6xl mx-auto relative shadow-lg">
                             <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl ">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
-                                class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">                            
+                                class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl z-10">
                                     <h2 class="font-bold text-base md:text-xl">{{ $homeSlider->judul }}</h2>
                                     <p class="text-xs line-clamp-2">{{ $homeSlider->deskripsi }}</p>
@@ -23,30 +23,6 @@
                     </div>
                 @endforeach
             </div>
-            <!-- Previous Button -->
-            {{-- <div class="absolute inset-0 flex mx-4 md:mx-20 z-20">
-                <div class="flex items-center justify-start w-1/2 z-20">
-                    <button
-                        class="absolute left-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6 z-20"
-                        onclick="slickPrev()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                        </svg>
-                    </button>
-                </div>
-                <!-- Next Button -->
-                <div class="flex items-center justify-end w-1/2 z-20">
-                    <button
-                        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary rotate-180 hover:opacity-100 md:mr-6 z-20"
-                        onclick="slickNext()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                        </svg>
-                    </button>
-                </div>
-            </div> --}}
         </div>
         </div>
     </section>

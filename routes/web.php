@@ -23,11 +23,11 @@ use App\Http\Controllers\StrukturOrgController;
 use App\Http\Controllers\PersyaratanController;
 use App\Http\Controllers\DetailDownloadController;
 use App\Http\Controllers\DetailPersyaratanController;
-
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SubmenuController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
-
 
 
 // Menu Login
@@ -77,6 +77,22 @@ Route::get('/detail-persyaratan', [DetailPersyaratanController::class, 'show'])-
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
+
+    //Menu
+    Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('/menu-create', [MenuController::class, 'create'])->name('menu.create');
+    Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+    Route::get('/menu-{id}', [MenuController::class, 'edit'])->name('menu.edit');
+    Route::put('/menu-{id}', [MenuController::class, 'update'])->name('menu.update');
+    Route::delete('/menu-{id}', [MenuController::class, 'destroy'])->name('menu.destroy');
+
+    //Sub Menu
+    Route::get('/submenu', [SubmenuController::class, 'index'])->name('submenu.index');
+    Route::get('/submenu-create', [SubmenuController::class, 'create'])->name('submenu.create');
+    Route::post('/submenu', [SubmenuController::class, 'store'])->name('submenu.store');
+    Route::get('/submenu-{id}', [SubmenuController::class, 'edit'])->name('submenu.edit');
+    Route::put('/submenu-{id}', [SubmenuController::class, 'update'])->name('submenu.update');
+    Route::delete('/submenu-{id}', [SubmenuController::class, 'destroy'])->name('submenu.destroy');
 
     // Menu Tambah Admin
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
@@ -223,8 +239,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'edit'])->name('detailpersyaratan.edit');
     Route::put('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'update'])->name('detailpersyaratan.update');
     Route::delete('detailpersyaratan-{id}', [DetailPersyaratanController::class, 'destroy'])->name('detailpersyaratan.destroy');
-
-
 
     // Landing Admin
     Route::view('/admin', 'dashboard-admin')->name('admin.index');
