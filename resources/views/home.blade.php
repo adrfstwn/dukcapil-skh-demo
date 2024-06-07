@@ -7,15 +7,15 @@
                 @foreach ($homeSliders as $index => $homeSlider)
                     <div class="slide slide1">
                         <div class="max-w-80 md:max-w-6xl mx-auto relative shadow-lg">
-                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl ">
+                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-xl md:rounded-3xl ">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
-                                class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">
+                                    class="absolute inset-0 object-cover object-center w-full h-full rounded-xl md:rounded-3xl filter brightness-50">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl z-10">
                                     <h2 class="font-bold text-base md:text-xl">{{ $homeSlider->judul }}</h2>
                                     <p class="text-xs line-clamp-2">{{ $homeSlider->deskripsi }}</p>
                                 </div>
                                 <div class="md:hidden w-[400px] z-10">
-                                    <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">
+                                    <h2 class="font-semibold md:font-bold font-monserrat text-center text-base md:text-2xl text-slate-50 contrast-150">
                                         {{ $homeSlider->judul }}</h2>
                                 </div>
                             </div>
@@ -132,19 +132,29 @@
                             </div>
                         </a> --}}
                         @foreach ($beritas as $berita)
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="{{$berita->gambar_berita}}" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
+                            <a href="">
+                                <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full p-4">
+                                    <img src="{{ $berita->gambar_berita }}" alt=""
+                                        class="max-w-72 h-72 object-cover object-center rounded-t-lg">
                                     <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">{{$berita->judul}}</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">{{$berita->waktu}}
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        {{$berita->deskripsi_berita}}</p>
+                                        <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">
+                                            {{ $berita->judul }}</h3>
+                                        <div class="flex gap-1 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" class="text-secondary_teks"
+                                                viewBox="0 0 16 16">
+                                                <path fill="currentColor" fill-rule="evenodd"
+                                                    d="M13 11.567C13 12.36 12.36 13 11.567 13H4.433C3.64 13 3 12.36 3 11.567V4.433C3 3.64 3.64 3 4.433 3H6v-.495a.51.51 0 0 1 .412-.497L6.5 2c.276 0 .5.214.5.505V3h2v-.495a.51.51 0 0 1 .412-.497L9.5 2c.276 0 .5.214.5.505V3h1.567C12.36 3 13 3.64 13 4.433zM4 6v5.33c0 .37.3.67.67.67h6.66c.37 0 .67-.3.67-.67V6zm1.5 4c.245 0 .45.183.492.412L6 10.5c0 .245-.183.45-.412.492L5.5 11a.505.505 0 0 1-.5-.5c0-.245.183-.45.412-.492zM8 10c.245 0 .45.183.492.412l.008.088c0 .245-.183.45-.412.492L8 11a.505.505 0 0 1-.5-.5c0-.245.183-.45.412-.492zm2.5 0c.245 0 .45.183.492.412L11 10.5c0 .245-.183.45-.412.492L10.5 11a.505.505 0 0 1-.5-.5c0-.245.183-.45.412-.492zm-5-1.5c.245 0 .45.183.492.412L6 9c0 .245-.183.45-.412.492L5.5 9.5A.505.505 0 0 1 5 9c0-.245.183-.45.412-.492zm2.5 0c.245 0 .45.183.492.412L8.5 9c0 .245-.183.45-.412.492L8 9.5a.505.505 0 0 1-.5-.5c0-.245.183-.45.412-.492zm2.5 0c.245 0 .45.183.492.412L11 9c0 .245-.183.45-.412.492L10.5 9.5A.505.505 0 0 1 10 9c0-.245.183-.45.412-.492zM5.5 7c.245 0 .45.183.492.412L6 7.5c0 .245-.183.45-.412.492L5.5 8a.505.505 0 0 1-.5-.5c0-.245.183-.45.412-.492zM8 7c.245 0 .45.183.492.412L8.5 7.5c0 .245-.183.45-.412.492L8 8a.505.505 0 0 1-.5-.5c0-.245.183-.45.412-.492zm2.5 0c.245 0 .45.183.492.412L11 7.5c0 .245-.183.45-.412.492L10.5 8a.505.505 0 0 1-.5-.5c0-.245.183-.45.412-.492zM4 5h8v-.33c0-.37-.3-.67-.67-.67H4.67C4.3 4 4 4.3 4 4.67z" />
+                                            </svg>
+                                            <p class="text-sm font-nunito text-secondary_teks font-medium contrast-75">
+                                                {{ $berita->waktu }}
+                                            </p>
+                                        </div>
+                                        <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem
+                                            ipsum
+                                            {{ $berita->deskripsi_berita }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
                         @endforeach
                     </div>
                 </div>
