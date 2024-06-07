@@ -113,7 +113,7 @@
                         <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
                     </div> --}}
                     <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-6">
-                        <a href="">
+                        {{-- <a href="">
                             <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
                                 <img src="dist/assets/image/Karyawan.jpg" alt=""
                                     class="w-full object-cover object-center rounded-t-lg">
@@ -130,9 +130,8 @@
                                         libero facilis ab sapiente!</p>
                                 </div>
                             </div>
-                        </a>
+                        </a> --}}
                         @foreach ($beritas as $berita)
-
                         <a href="">
                             <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
                                 <img src="{{$berita->gambar_berita}}" alt=""
@@ -147,9 +146,6 @@
                             </div>
                         </a>
                         @endforeach
-
-
-
                     </div>
                 </div>
                 <button
