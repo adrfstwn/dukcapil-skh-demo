@@ -75,6 +75,9 @@ Route::get('/detail-download', [DetailDownloadController::class, 'show'])->name(
 // Detail-Persyaratan
 Route::get('/detail-persyaratan', [DetailPersyaratanController::class, 'show'])->name('detailpersyaratan.show');
 
+// Berita
+Route::get('/beritane', [BeritaController::class, 'show'])->name('berita.show');
+
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 

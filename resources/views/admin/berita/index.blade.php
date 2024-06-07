@@ -68,7 +68,7 @@
     <section id="berita-card">
         <div class="container">
             <div class="grid grid-cols-4 gap-3 gap-y-6 ">
-                    @foreach ($beritas as $berita)
+                    @foreach ($beritas->sortByDesc('id') as $berita)
                     <div
                         class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                         <div
@@ -85,7 +85,7 @@
                                     {{ $berita->judul }}</h5>
                                 <p
                                     class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-2">
-                                    {{ $berita->deskripsi_berita }}
+                                    {{ Illuminate\Support\Str::limit($berita->deskripsi_berita, 50) }}
                                 </p>
                                 <div class="flex flex-col gap-6">
                                     <p class="text-base font-medium font-nunito text-primary_teks">

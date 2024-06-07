@@ -9,7 +9,7 @@
                         <div class="max-w-80 md:max-w-6xl mx-auto relative shadow-lg">
                             <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl ">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
-                                class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">
+                                    class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl z-10">
                                     <h2 class="font-bold text-base md:text-xl">{{ $homeSlider->judul }}</h2>
                                     <p class="text-xs line-clamp-2">{{ $homeSlider->deskripsi }}</p>
@@ -109,50 +109,32 @@
                         untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
                 </div>
                 <div class="flex flex-col md:flex-row gap-8">
-                    {{-- <div class="">
-                        <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
-                    </div> --}}
+
                     <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-6">
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
-                                </div>
-                            </div>
-                        </a>
-                        @foreach ($beritas as $berita)
 
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="{{$berita->gambar_berita}}" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
+                        @foreach ($beritas->sortByDesc('id')->take(4) as $berita)
+                            <a href="{{ route('berita.show', $berita->id) }}">
+                                <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full">
+                                    <img src="{{ $berita->gambar_berita }}" alt=""
+                                        class="w-full object-cover object-center rounded-t-lg">
                                     <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">{{$berita->judul}}</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">{{$berita->waktu}}
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        {{$berita->deskripsi_berita}}</p>
+                                        <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">
+                                            {{ $berita->judul }}
+                                        </h3>
+                                        <p class="text-sm font-nunito text-secondary_teks font-medium contrast-75">
+                                            {{ $berita->waktu }}
+                                        </p>
+                                        <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">
+                                            {{ Illuminate\Support\Str::limit($berita->deskripsi_berita, 150) }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
                         @endforeach
-
-
 
                     </div>
                 </div>
-                <button
+                <button onclick="window.location.href='{{ route('berita.show') }}'"
                     class="font-nunito font-semibold text-base md:text-lg text-primary bg-background_light rounded-md px-3 py-3 md:w-56 mt-6 mx-auto ">Lihat
                     Selengkapnya</button>
             </div>
@@ -208,7 +190,7 @@
                         }
                     }" class="relative w-full max-w-[1024px] mx-auto text-xs">
                         @foreach ($faqs as $index => $faq)
-                            @if ($loop->index < 8)
+                            @if ($loop->index < 5)
                                 <div x-data="{ id: $id('accordion') }"
                                     :class="{
                                         'border-primary text-neutral-800 my-4': activeAccordion ==

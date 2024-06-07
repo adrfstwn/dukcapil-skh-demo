@@ -41,7 +41,7 @@ class BeritaController extends Controller
     {
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
-            'deskripsi_berita' => 'required|string|max:255',
+            'deskripsi_berita' => 'required|string',
             'gambar_berita' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'waktu' => 'required|string|max:255',
             'status' => 'required|string|max:255',
@@ -70,10 +70,11 @@ class BeritaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show()
     {
-        $berita = Berita::findOrFail($id);
-        return view('admin.berita.show', compact('berita'));
+        $beritas = Berita::orderBy('created_at', 'desc')->paginate(5);
+        $latestBeritas = Berita::orderBy('created_at', 'desc')->paginate(3);
+        return view('berita', compact('latestBeritas','beritas'));
     }
 
     /**
@@ -95,7 +96,7 @@ class BeritaController extends Controller
 
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
-            'deskripsi_berita' => 'required|string|max:255',
+            'deskripsi_berita' => 'required|string',
             'gambar_berita' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'waktu' => 'required|string|max:255',
             'status' => 'required|string|max:255',
