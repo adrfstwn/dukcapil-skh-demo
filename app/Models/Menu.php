@@ -12,9 +12,9 @@ class Menu extends Model
 
     protected $table = 'menu';
 
-    protected $fillable = ['nama_menu'];
+    protected $fillable = ['nama_menu','url'];
 
-    public function submenu()
+    public function submenus()
     {
         return $this->hasMany(Submenu::class);
     }

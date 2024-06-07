@@ -1,20 +1,19 @@
 <?php
 
-// app/Http/Controllers/MenuController.php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Submenu;
 
-
 class MenuController extends Controller
 {
     public function index()
     {
-        $menu = Menu::all();
-        $submenu = Submenu::all();
-        return view('admin.menu.index', compact('menu','submenu'));
+        // Mengambil semua menu beserta submenus dan children submenus-nya
+        $menus = Menu::with('submenus.children')->get();
+        $submenus = Submenu::all();
+        return view('admin.menu.index', compact('menus','submenus'));
     }
 
     public function create()
@@ -41,30 +40,24 @@ class MenuController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $validatedData = $request->validate([
-        'nama_menu' => 'required|string|max:255',
-        'url' => 'nullable|string|max:255',
-    ]);
-
-    $menu = Menu::findOrFail($id);
-    $menu->update($validatedData);
-
-    return redirect()->route('menu.index')->with('success', 'Menu updated successfully.');
-}
-
-
-    public function destroy(Menu $menu)
     {
+        $validatedData = $request->validate([
+            'nama_menu' => 'required|string|max:255',
+            'url' => 'nullable|string|max:255',
+        ]);
+
+        $menu = Menu::findOrFail($id);
+        $menu->update($validatedData);
+
+        return redirect()->route('menu.index')->with('success', 'Menu updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $menu = Menu::findOrFail($id);
         $menu->delete();
 
         return redirect()->route('menu.index')->with('success', 'Menu deleted successfully.');
     }
 
-    public function show()
-    {
-        $menu = Menu::all();
-        $submenu = Submenu::all();
-        return view('layouts.header', compact('menu'));
-    }
 }

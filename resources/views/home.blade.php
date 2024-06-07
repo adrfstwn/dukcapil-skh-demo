@@ -131,60 +131,24 @@
                                 </div>
                             </div>
                         </a>
+                        @foreach ($beritas as $berita)
+
                         <a href="">
                             <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
+                                <img src="{{$berita->gambar_berita}}" alt=""
                                     class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
+                                    <div class="flex flex-col gap-1 p-4">
+                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">{{$berita->judul}}</h3>
+                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">{{$berita->waktu}}
                                     </p>
                                     <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
+                                        {{$berita->deskripsi_berita}}</p>
                                 </div>
                             </div>
                         </a>
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
-                                </div>
-                            </div>
-                        </a>
+                        @endforeach
+
+
 
                     </div>
                 </div>

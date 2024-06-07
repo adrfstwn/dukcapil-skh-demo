@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/SubmenuController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
@@ -12,16 +10,16 @@ class SubmenuController extends Controller
 {
     public function index()
     {
-        $menu = Menu::all();
-    $submenu = Submenu::with('children')->whereNull('parent_id')->get();
-    return view('admin.menu.index', compact('submenu', 'menu'));
+         $submenus = Submenu::all();
+        $menus = Menu::all();
+        return view('admin.menu.index', compact('submenus', 'menus'));
     }
 
     public function create()
     {
-        $menu = Menu::all();
-        $submenu = Submenu::all();
-        return view('admin.submenu.create', compact('menu', 'submenu'));
+        $menus = Menu::all();
+        $submenus = Submenu::all();
+        return view('admin.submenu.create', compact('menus', 'submenus'));
     }
 
     public function store(Request $request)
@@ -38,14 +36,15 @@ class SubmenuController extends Controller
         return redirect()->route('submenu.index')->with('success', 'Submenu created successfully.');
     }
 
-    public function edit(Submenu $submenu)
+    public function edit($id)
     {
-        $menu = Menu::all();
-        $submenu = Submenu::all();
-        return view('admin.submenu.edit', compact('submenu', 'menu'));
+        $submenu = Submenu::findOrFail($id);
+        $menus = Menu::all();
+        $submenus = Submenu::all();
+        return view('admin.submenu.edit', compact('submenu', 'menus', 'submenus'));
     }
 
-    public function update(Request $request, Submenu $submenu)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'menu_id' => 'required|exists:menu,id',
@@ -54,13 +53,15 @@ class SubmenuController extends Controller
             'url' => 'nullable|string|max:255',
         ]);
 
+        $submenu = Submenu::findOrFail($id);
         $submenu->update($validatedData);
 
         return redirect()->route('submenu.index')->with('success', 'Submenu updated successfully.');
     }
 
-    public function destroy(Submenu $submenu)
+    public function destroy($id)
     {
+        $submenu = Submenu::findOrFail($id);
         $submenu->delete();
         return redirect()->route('submenu.index')->with('success', 'Submenu deleted successfully.');
     }

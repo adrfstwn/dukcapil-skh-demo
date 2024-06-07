@@ -31,8 +31,16 @@
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 144x144px).</p>
                     <div class="my-2">
                         <label for="default-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Publication time</label>
-                        <input type="datetime-local" id="default-input" name="waktu" placeholder="Date published" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" value="{{ date('Y-m-d\TH:i', strtotime($berita->waktu)) }}">
+                        <input type="datetime" id="default-input" name="waktu" placeholder="Date published" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" value="{{ $berita->waktu}}">
                     </div>
+                    <div class="my-2">
+                        <label for="status_berita" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Status Berita</label>
+                        <select name="status" id="status_berita" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                            <option value="DRAFT" {{ $berita->status == 'DRAFT' ? 'selected' : '' }}>DRAFT</option>
+                            <option value="PUBLISH" {{ $berita->status == 'PUBLISH' ? 'selected' : '' }}>PUBLISH</option>
+                        </select>
+                    </div>
+
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>

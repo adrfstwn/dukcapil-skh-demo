@@ -30,10 +30,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($menu as $menu)
+                        @foreach ($menus as $menu)
                             <tr
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $menu->nama_menu }}
@@ -54,7 +53,6 @@
                                 </td>
                             </tr>
                         @endforeach
-
                     </tbody>
                 </table>
             </div>
@@ -87,10 +85,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach ($submenu as $sub)
+                    @foreach ($submenus as $sub)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $sub->nama_submenu }}
@@ -111,12 +108,9 @@
                             </td>
                         </tr>
                     @endforeach
-
                 </tbody>
             </table>
         </div>
 
-        </div>
-        </div>
     </section>
 @endsection

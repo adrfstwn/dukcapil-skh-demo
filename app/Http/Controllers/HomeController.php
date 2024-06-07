@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\HomeSlider;
 use App\Models\Mitra;
-use App\Models\Menu;
-use App\Models\Submenu;
+use App\Models\Berita;
 use App\Models\FAQ;
 use App\Models\Layanan;
 use Illuminate\Support\Facades\Storage;
@@ -25,6 +24,10 @@ class HomeController extends Controller
         foreach ($mitras as $mitra) {
             $mitra->logo_mitra = asset(Storage::url($mitra->logo_mitra));
         }
+        $beritas = Berita::all();
+        foreach ($beritas as $berita) {
+            $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
+        }
 
         $faqs = FAQ::all(); // Mengambil semua FAQ dari database
         foreach ($faqs as $faq) {
@@ -39,7 +42,7 @@ class HomeController extends Controller
             $layanan->gambar = asset(Storage::url($layanan->gambar));
         }
 
-        return view('home', compact('homeSliders', 'mitras', 'faqs', 'layanans','currentSlide'));
+        return view('home', compact('beritas','homeSliders', 'mitras', 'faqs', 'layanans','currentSlide'));
     }
 
 }
