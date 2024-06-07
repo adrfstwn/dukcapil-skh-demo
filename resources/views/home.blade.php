@@ -112,8 +112,9 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-6">
 
-                        @foreach ($beritas->sortByDesc('id')->take(4) as $berita)
-                            <a href="{{ route('berita.show', $berita->id) }}">
+                        @foreach ($beritas as $berita)
+                        @if ($berita->status === 'PUBLISH')
+                            <a href="{{ route('berita.detail', $berita->id) }}">
                                 <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full">
                                     <img src="{{ $berita->gambar_berita }}" alt=""
                                         class="w-full object-cover object-center rounded-t-lg">
@@ -130,6 +131,7 @@
                                     </div>
                                 </div>
                             </a>
+                            @endif
                         @endforeach
                     </div>
                 </div>

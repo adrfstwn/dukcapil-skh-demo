@@ -77,6 +77,7 @@ Route::get('/detail-persyaratan', [DetailPersyaratanController::class, 'show'])-
 
 // Berita
 Route::get('/beritane', [BeritaController::class, 'show'])->name('berita.show');
+Route::get('/beritane-{id}', [BeritaController::class, 'showDetail'])->name('berita.detail');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {

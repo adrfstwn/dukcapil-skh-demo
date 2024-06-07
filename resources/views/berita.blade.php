@@ -14,7 +14,7 @@
                         @foreach ($beritas as $berita)
 
                             <div class="flex flex-col gap-2">
-                                <a href="{{ route('berita.show', $berita->id) }}"
+                                <a href=""
                                     class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">
                                     {{ $berita->judul }}
                                 </a>
@@ -26,7 +26,7 @@
                                             <p class="font-nunito text-base text-secondary_teks line-clamp-5 flex-grow"> <!-- Added flex-grow to push the caption to the left -->
                                                 {{ \Illuminate\Support\Str::limit($berita->deskripsi_berita, 600, '...') }}
                                             </p>
-                                            <a href="{{ route('berita.show', $berita->id) }}"
+                                            <a href="{{ route('berita.detail', $berita->id) }}"
                                                 class="px-2 py-1 font-nunito text-xs text-background_light bg-primary rounded-sm mt-2" style="max-width: 150px;"> <!-- Adjusted padding and margin-top, and added inline styling to limit width -->
                                                 Lihat Selengkapnya
                                             </a>
@@ -52,7 +52,7 @@
                         @foreach ($latestBeritas as $latestBerita)
 
                             <div class="flex flex-col gap-2">
-                                <a href="{{ route('berita.show', $latestBerita->id) }}"
+                                <a href=""
                                     class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">
                                     {{ $latestBerita->judul }}
                                 </a>
@@ -60,7 +60,7 @@
                                 <p class="font-nunito text-base text-secondary_teks line-clamp-2">
                                     {{ \Illuminate\Support\Str::limit($latestBerita->deskripsi_berita, 150, '...') }}
                                 </p>
-                                <a href="{{ route('berita.show', $latestBerita->id) }}"
+                                <a href="{{ route('berita.detail', $latestBerita->id) }}"
                                     class="px-2 py-1 font-nunito text-xs text-background_light bg-primary rounded-sm mt-2" style="max-width: 150px;">
                                     Lihat Selengkapnya
                                 </a>

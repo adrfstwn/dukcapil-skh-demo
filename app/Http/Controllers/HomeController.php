@@ -9,6 +9,7 @@ use App\Models\Berita;
 use App\Models\FAQ;
 use App\Models\Layanan;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class HomeController extends Controller
@@ -25,13 +26,14 @@ class HomeController extends Controller
             $mitra->logo_mitra = asset(Storage::url($mitra->logo_mitra));
         }
         // $beritas = Berita::all();
-        $beritas = Berita::orderBy('waktu', 'desc')->take(4)->get();
-        Carbon::setLocale('id');
-        foreach ($beritas as $berita) {
-            $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
-            $berita->waktu = Carbon::parse($berita->waktu)->translatedFormat('l, j F Y');
-        }
+        $publishedBeritas = Berita::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->get();
 
+    $beritas = $publishedBeritas->take(4); // Ambil 3 berita terbaru
+    foreach ($beritas as $berita) {
+        $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
+    }
+
+    //faq
         $faqs = FAQ::all(); // Mengambil semua FAQ dari database
         foreach ($faqs as $faq) {
             // Mengganti variabel $faq->logo_mitra dengan pertanyaan dan jawaban FAQ

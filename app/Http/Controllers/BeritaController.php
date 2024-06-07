@@ -139,4 +139,11 @@ class BeritaController extends Controller
 
         return redirect()->route('berita.index')->with('success', 'Berita deleted successfully');
     }
+
+    public function showDetail($id)
+    {
+        $berita = Berita::find($id);
+
+        return view('detail-berita', compact('berita'));
+    }
 }
