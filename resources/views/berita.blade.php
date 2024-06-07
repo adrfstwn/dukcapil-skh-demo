@@ -12,6 +12,7 @@
                     </div>
                     <div class="flex flex-col gap-4">
                         @foreach ($beritas as $berita)
+
                             <div class="flex flex-col gap-2">
                                 <a href="{{ route('berita.show', $berita->id) }}"
                                     class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">
@@ -34,6 +35,7 @@
                                         </div>
                                         <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                                         </div>
+
                                         @endforeach
                                         <div class="flex justify-center mt-6"> <!-- Centered pagination links -->
                                             {{ $beritas->links() }}
@@ -48,6 +50,7 @@
                     </h2>
                     <div class="flex flex-col py-3 gap-4">
                         @foreach ($latestBeritas as $latestBerita)
+
                             <div class="flex flex-col gap-2">
                                 <a href="{{ route('berita.show', $latestBerita->id) }}"
                                     class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">
@@ -63,6 +66,7 @@
                                 </a>
                                 <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                             </div>
+
                         @endforeach
                     </div>
 

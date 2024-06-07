@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\KategoriBerita;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class BeritaController extends Controller
 {
@@ -22,7 +23,7 @@ class BeritaController extends Controller
                 $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
             }
         }
-        return view('admin.berita.index', compact('beritas','kategoriBeritas'));
+        return view('admin.berita.index', compact('beritas', 'kategoriBeritas'));
     }
 
     /**
@@ -67,24 +68,29 @@ class BeritaController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show()
-    {
-        $beritas = Berita::orderBy('created_at', 'desc')->paginate(5);
-        $latestBeritas = Berita::orderBy('created_at', 'desc')->paginate(3);
-        return view('berita', compact('latestBeritas','beritas'));
-    }
+{
+    $publishedBeritas = Berita::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->get();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
+    $latestBeritas = $publishedBeritas->take(3); // Ambil 3 berita terbaru
+
+    $page = request()->query('page', 1); // Ambil nomor halaman dari query, defaultnya adalah 1
+
+    $beritas = new LengthAwarePaginator(
+        $publishedBeritas->slice(($page - 1) * 5 , 5), // Ambil 5 berita setelah 3 berita terbaru, sesuai dengan nomor halaman
+        $publishedBeritas->count(), // Jumlah total berita
+        5, // Jumlah item per halaman
+        $page, // Nomor halaman saat ini
+        ['path' => LengthAwarePaginator::resolveCurrentPath()] // Path untuk halaman paginate
+    );
+
+    return view('berita', compact('latestBeritas', 'beritas'));
+}
+        public function edit($id)
     {
         $kategoriBerita = KategoriBerita::all();
         $berita = Berita::findOrFail($id);
-        return view('admin.berita.edit', compact('berita','kategoriBerita'));
+        return view('admin.berita.edit', compact('berita', 'kategoriBerita'));
     }
 
     /**
