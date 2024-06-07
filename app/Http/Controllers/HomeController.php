@@ -29,7 +29,9 @@ class HomeController extends Controller
         $publishedBeritas = Berita::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->get();
 
     $beritas = $publishedBeritas->take(4); // Ambil 3 berita terbaru
+    Carbon::setLocale('id');
     foreach ($beritas as $berita) {
+        $berita->waktu = Carbon::parse($berita->waktu)->translatedFormat('l, j F Y');
         $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
     }
 
