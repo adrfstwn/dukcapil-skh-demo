@@ -7,7 +7,7 @@
                 @foreach ($homeSliders as $index => $homeSlider)
                     <div class="slide slide1">
                         <div class="max-w-80 md:max-w-6xl mx-auto relative shadow-lg">
-                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl ">
+                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-xl md:rounded-3xl ">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
                                     class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl z-10">
@@ -15,7 +15,7 @@
                                     <p class="text-xs line-clamp-2">{{ $homeSlider->deskripsi }}</p>
                                 </div>
                                 <div class="md:hidden w-[400px] z-10">
-                                    <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">
+                                    <h2 class="font-semibold md:font-bold font-monserrat text-center text-base md:text-2xl text-slate-50 contrast-150">
                                         {{ $homeSlider->judul }}</h2>
                                 </div>
                             </div>
@@ -131,7 +131,6 @@
                                 </div>
                             </a>
                         @endforeach
-
                     </div>
                 </div>
                 <button onclick="window.location.href='{{ route('berita.show') }}'"

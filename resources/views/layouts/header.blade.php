@@ -20,7 +20,7 @@
                   </button>
               </div>
               <nav :class="{ 'flex': open, 'hidden': !open }"
-                  class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row z-20">
+                  class="flex-col items-center flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row z-20">
                   <a class="px-2 py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
                       href="/">BERANDA</a>
                   <!-- Profile Menu -->

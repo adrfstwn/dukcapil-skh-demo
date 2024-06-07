@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\HomeSlider;
 use App\Models\Mitra;
@@ -24,9 +24,12 @@ class HomeController extends Controller
         foreach ($mitras as $mitra) {
             $mitra->logo_mitra = asset(Storage::url($mitra->logo_mitra));
         }
-        $beritas = Berita::all();
+        // $beritas = Berita::all();
+        $beritas = Berita::orderBy('waktu', 'desc')->take(4)->get();
+        Carbon::setLocale('id');
         foreach ($beritas as $berita) {
             $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
+            $berita->waktu = Carbon::parse($berita->waktu)->translatedFormat('l, j F Y');
         }
 
         $faqs = FAQ::all(); // Mengambil semua FAQ dari database
