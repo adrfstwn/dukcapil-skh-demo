@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\KategoriBerita;
@@ -17,12 +17,13 @@ class BeritaController extends Controller
     {
         $beritas = Berita::all();
         $kategoriBeritas = KategoriBerita::all();
+        Carbon::setLocale('id');
         foreach ($beritas as $berita) {
             // Jika gambar berita tidak null, atur URL gambar
             if ($berita->gambar_berita) {
                 $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
             }
-
+            $berita->waktu = Carbon::parse($berita->waktu)->translatedFormat('l, j F Y');
         }
         return view('admin.berita.index', compact('beritas', 'kategoriBeritas'));
     }
