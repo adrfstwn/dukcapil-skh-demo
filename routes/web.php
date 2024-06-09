@@ -25,10 +25,13 @@ use App\Http\Controllers\DetailDownloadController;
 use App\Http\Controllers\DetailPersyaratanController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubmenuController;
+use App\Http\Controllers\KontenSubMenuController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
 
+// Konten Submenu
+Route::get('/kontene', [KontenSubMenuController::class, 'show'])->name('konten.show');
 
 // Menu Login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -97,6 +100,14 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/submenu-{id}', [SubmenuController::class, 'edit'])->name('submenu.edit');
     Route::put('/submenu-{id}', [SubmenuController::class, 'update'])->name('submenu.update');
     Route::delete('/submenu-{id}', [SubmenuController::class, 'destroy'])->name('submenu.destroy');
+
+    //Konten Sub Menu
+    Route::get('/konten', [KontenSubMenuController::class, 'index'])->name('konten.index');
+    Route::get('/konten-create', [KontenSubMenuController::class, 'create'])->name('konten.create');
+    Route::post('/konten', [KontenSubMenuController::class, 'store'])->name('konten.store');
+    Route::get('/konten-{id}', [KontenSubMenuController::class, 'edit'])->name('konten.edit');
+    Route::put('/konten-{id}', [KontenSubMenuController::class, 'update'])->name('konten.update');
+    Route::delete('/konten-{id}', [KontenSubMenuController::class, 'destroy'])->name('konten.destroy');
 
     // Menu Tambah Admin
     Route::get('/user', [UserController::class, 'index'])->name('user.index');

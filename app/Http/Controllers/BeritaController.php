@@ -22,6 +22,7 @@ class BeritaController extends Controller
             if ($berita->gambar_berita) {
                 $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
             }
+
         }
         return view('admin.berita.index', compact('beritas', 'kategoriBeritas'));
     }
