@@ -21,11 +21,13 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TupoksiController;
 use App\Http\Controllers\StrukturOrgController;
 use App\Http\Controllers\PersyaratanController;
-
+use App\Http\Controllers\DetailDownloadController;
+use App\Http\Controllers\DetailPersyaratanController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\SubmenuController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
-
 
 
 // Menu Login
@@ -64,8 +66,37 @@ Route::get('/struktur-organisasi', [StrukturOrgController::class, 'show'])->name
 // Persyaratan
 Route::get('/persyaratan', [PersyaratanController::class, 'show'])->name('persyaratan.show');
 
+// Profil
+Route::get('/profile', [ProfilController::class, 'show'])->name('profil.show');
+
+// Detail-Download
+Route::get('/detail-download', [DetailDownloadController::class, 'show'])->name('detaildownload.show');
+
+// Detail-Persyaratan
+Route::get('/detail-persyaratan', [DetailPersyaratanController::class, 'show'])->name('detailpersyaratan.show');
+
+// Berita
+Route::get('/beritane', [BeritaController::class, 'show'])->name('berita.show');
+Route::get('/beritane-{id}', [BeritaController::class, 'showDetail'])->name('berita.detail');
+
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
+
+    //Menu
+    Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
+    Route::get('/menu-create', [MenuController::class, 'create'])->name('menu.create');
+    Route::post('/menu', [MenuController::class, 'store'])->name('menu.store');
+    Route::get('/menu-{id}', [MenuController::class, 'edit'])->name('menu.edit');
+    Route::put('/menu-{id}', [MenuController::class, 'update'])->name('menu.update');
+    Route::delete('/menu-{id}', [MenuController::class, 'destroy'])->name('menu.destroy');
+
+    //Sub Menu
+    Route::get('/submenu', [SubmenuController::class, 'index'])->name('submenu.index');
+    Route::get('/submenu-create', [SubmenuController::class, 'create'])->name('submenu.create');
+    Route::post('/submenu', [SubmenuController::class, 'store'])->name('submenu.store');
+    Route::get('/submenu-{id}', [SubmenuController::class, 'edit'])->name('submenu.edit');
+    Route::put('/submenu-{id}', [SubmenuController::class, 'update'])->name('submenu.update');
+    Route::delete('/submenu-{id}', [SubmenuController::class, 'destroy'])->name('submenu.destroy');
 
     // Menu Tambah Admin
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
@@ -122,7 +153,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
     Route::get('/berita-{id}', [BeritaController::class, 'edit'])->name('berita.edit');
     Route::put('/berita-{id}', [BeritaController::class, 'update'])->name('berita.update');
-    Route::delete('berita-{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
+    Route::delete('/berita-{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
 
     // Download
     Route::get('/downloaden', [DownloadController::class, 'index'])->name('download.index');
@@ -189,6 +220,30 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::put('/persyaratan-{id}', [PersyaratanController::class, 'update'])->name('persyaratan.update');
     Route::delete('persyaratan-{id}', [PersyaratanController::class, 'destroy'])->name('persyaratan.destroy');
 
+    // Profil
+    Route::get('/profilss', [ProfilController::class, 'index'])->name('profil.index');
+    Route::get('/profil-create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::post('/profilss', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('/profil-{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profil-{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('profil-{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+
+    // Detail Download
+    Route::get('/detaildownloader', [DetailDownloadController::class, 'index'])->name('detaildownload.index');
+    Route::get('/detaildownload-create', [DetailDownloadController::class, 'create'])->name('detaildownload.create');
+    Route::post('/detaildownloader', [DetailDownloadController::class, 'store'])->name('detaildownload.store');
+    Route::get('/detaildownload-{id}', [DetailDownloadController::class, 'edit'])->name('detaildownload.edit');
+    Route::put('/detaildownload-{id}', [DetailDownloadController::class, 'update'])->name('detaildownload.update');
+    Route::delete('detaildownload-{id}', [DetailDownloadController::class, 'destroy'])->name('detaildownload.destroy');
+
+    // Detail Persyaratan
+    Route::get('/detailpersyaratanss', [DetailPersyaratanController::class, 'index'])->name('detailpersyaratan.index');
+    Route::get('/detailpersyaratan-create', [DetailPersyaratanController::class, 'create'])->name('detailpersyaratan.create');
+    Route::post('/detailpersyaratanss', [DetailPersyaratanController::class, 'store'])->name('detailpersyaratan.store');
+    Route::get('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'edit'])->name('detailpersyaratan.edit');
+    Route::put('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'update'])->name('detailpersyaratan.update');
+    Route::delete('detailpersyaratan-{id}', [DetailPersyaratanController::class, 'destroy'])->name('detailpersyaratan.destroy');
+
     // Landing Admin
     Route::view('/admin', 'dashboard-admin')->name('admin.index');
 });
@@ -198,10 +253,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 // Setelah dibuat CRUD hapus routingan dibawah ini
 
 
-Route::view('/profile', 'profil-section.profile')->name('profile');
-
-Route::view('/detail-download', 'standar-section.detailDownload')->name('detail-download');
-Route::view('/detail-persyaratan', 'standar-section.detailpersyaratan')->name('detail-persyaratan');
 Route::view('/tamat', 'detail-layanan.tamat')->name('tamat');
 Route::view('/dokumake', 'detail-layanan.dokumake')->name('dokumake');
 Route::view('/makedikesmoke', 'detail-layanan.makedikesmoke')->name('makedikesmoke');

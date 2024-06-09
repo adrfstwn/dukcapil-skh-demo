@@ -16,6 +16,7 @@ class Berita extends Model
         'deskripsi_berita',
         'gambar_berita',
         'waktu',
+        'status',
     ];
 
     public function kategori()

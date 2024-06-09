@@ -42,12 +42,19 @@
                         aria-describedby="file_input_help" name="gambar_berita" id="file_input" type="file">
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX.
                         144x144px).</p>
-                    <div class="my-2">
-                        <label for="default-input"
-                            class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Publication time</label>
-                        <input type="datetime-local" name="waktu" id="default-input" placeholder="Date publised"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                    </div>
+                        <div class="my-2">
+                            <label for="date-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Publication time</label>
+                            <input type="date" name="waktu" id="date-input" placeholder="Date published"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                        </div>
+                        <div class="my-2">
+                            <label for="status-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Publication status</label>
+                            <select name="status" id="status"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                                <option value="DRAFT">DRAFT</option>
+                                <option value="PUBLISH">PUBLISH</option>
+                            </select>
+                        </div>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">

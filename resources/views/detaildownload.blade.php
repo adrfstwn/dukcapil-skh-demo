@@ -1,35 +1,26 @@
 @extends('layouts.app')
 @section('content')
     {{-- start section detail download --}}
-    <section id="detail-persyaratan" class="my-10 md:my-20 -z-10">
+    <section id="detail-download" class="my-10 md:my-20 -z-10">
         <div class="container">
             <div class="flex flex-col md:flex-row justify-between md:gap-6">
                 <div class="flex flex-col gap-12">
                     <div class="flex flex-col gap-6 md:gap-12">
+                    @foreach ($detaildownloads as $detaildownload)
                         <div class="flex flex-col gap-6 ">
                             <div class="flex flex-col gap-2">
-                                <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks "> Formulir
-                                    Pendaftaran
-                                    Perpindahan Penduduk</h2>
-                                <p class="font-nunito text-secondary_teks">28 Februari 2024</p>
+                                <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">{{ $detaildownload->nama }}</h2>
+                                <p class="font-nunito text-secondary_teks">{{ $detaildownload->created_at }}</p>
                             </div>
                             <div class="flex flex-col gap-4 max-w-screen-md">
-                                <img src="dist/assets/image/Karyawan.jpg" alt="foto kegiatan karyawan"
+                                <img src="{{ asset('storage/' . $detaildownload->gambar) }}" alt="foto kegiatan karyawan"
                                     class="rounded-md max-w-screen-md">
-                                <p class="font-nunito text-base text-primary_teks ">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing
-                                    elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla,
-                                    mattis ligula
-                                    consectetur,. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
-                                    Aliquam in
-                                    hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula consectetur, Lorem
-                                    ipsum dolor
-                                    sit amet, consectetur adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna.
-                                </p>
+                                <p class="font-nunito text-base text-primary_teks ">{{ $detaildownload->deskripsi_detail_download}}</p>
                                 <button
                                     class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm max-w-60">
                                     Lihat Document Selengkapnya</button>
                             </div>
+                    @endforeach
                             <p class="text-base text-secondary_teks">#forumskpd</p>
                             <div class="flex gap-3 items-center">
                                 <p class="font-nunito font-semibold text-primary_teks">BAGIKAN :</p>

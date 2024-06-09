@@ -7,45 +7,21 @@
                 @foreach ($homeSliders as $index => $homeSlider)
                     <div class="slide slide1">
                         <div class="max-w-80 md:max-w-6xl mx-auto relative shadow-lg">
-                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-3xl ">
+                            <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-xl md:rounded-3xl ">
                                 <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
-                                class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">                            
+                                    class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl z-10">
                                     <h2 class="font-bold text-base md:text-xl">{{ $homeSlider->judul }}</h2>
                                     <p class="text-xs line-clamp-2">{{ $homeSlider->deskripsi }}</p>
                                 </div>
                                 <div class="md:hidden w-[400px] z-10">
-                                    <h2 class="font-bold font-monserrat text-center text-2xl text-slate-50 contrast-150">
+                                    <h2 class="font-semibold md:font-bold font-monserrat text-center text-base md:text-2xl text-slate-50 contrast-150">
                                         {{ $homeSlider->judul }}</h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
-            </div>
-            <!-- Previous Button -->
-            <div class="absolute inset-0 flex mx-4 md:mx-20 z-20">
-                <div class="flex items-center justify-start w-1/2 z-20">
-                    <button
-                        class="absolute left-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary hover:opacity-100 md:ml-6 z-20"
-                        onclick="slickPrev()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                        </svg>
-                    </button>
-                </div>
-                <!-- Next Button -->
-                <div class="flex items-center justify-end w-1/2 z-20">
-                    <button
-                        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-primary opacity-35 hover:text-primary rotate-180 hover:opacity-100 md:mr-6 z-20"
-                        onclick="slickNext()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewBox="0 0 512 512">
-                            <path fill="currentColor"
-                                d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208s208-93.13 208-208S370.87 48 256 48m35.31 292.69a16 16 0 1 1-22.62 22.62l-96-96a16 16 0 0 1 0-22.62l96-96a16 16 0 0 1 22.62 22.62L206.63 256Z" />
-                        </svg>
-                    </button>
-                </div>
             </div>
         </div>
         </div>
@@ -133,86 +109,33 @@
                         untuk memberikan pelayanan yang terbaik bagi masyarakat.</p>
                 </div>
                 <div class="flex flex-col md:flex-row gap-8">
-                    {{-- <div class="">
-                        <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg">
-                    </div> --}}
-                    <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-6">
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="">
-                            <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full   ">
-                                <img src="dist/assets/image/Karyawan.jpg" alt=""
-                                    class="w-full object-cover object-center rounded-t-lg">
-                                <div class="flex flex-col gap-1 p-4">
-                                    <h3 class="text-xl md:text-2xl font-nunito font-bold text-primary_teks">Berita 1</h3>
-                                    <p class="text-sm font-nunito text- secondary_teks font-medium contrast-75">12 April
-                                        2024
-                                    </p>
-                                    <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">Lorem ipsum
-                                        dolor sit amet consectetur adipisicing elit. Explicabo, nemo soluta. Facere a
-                                        expedita
-                                        temporibus dolorem nesciunt eius assumenda illo quod ut consequatur rem, aperiam
-                                        fuga
-                                        libero facilis ab sapiente!</p>
-                                </div>
-                            </div>
-                        </a>
 
+                    <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-6">
+
+                        @foreach ($beritas as $berita)
+                        @if ($berita->status === 'PUBLISH')
+                            <a href="{{ route('berita.detail', $berita->id) }}">
+                                <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full p-3">
+                                    <img src="{{ $berita->gambar_berita }}" alt=""
+                                        class="max-w-72 h-72 object-cover object-center rounded-t-lg">
+                                    <div class="flex flex-col gap-1 p-4">
+                                        <h3 class="text-xl font-nunito font-bold text-primary_teks">
+                                            {{ $berita->judul }}
+                                        </h3>
+                                        <p class="text-sm font-nunito text-secondary_teks font-medium contrast-75">
+                                            {{ $berita->waktu }}
+                                        </p>
+                                        <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">
+                                            {{ Illuminate\Support\Str::limit($berita->deskripsi_berita, 150) }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
-                <button
+                <button onclick="window.location.href='{{ route('berita.show') }}'"
                     class="font-nunito font-semibold text-base md:text-lg text-primary bg-background_light rounded-md px-3 py-3 md:w-56 mt-6 mx-auto ">Lihat
                     Selengkapnya</button>
             </div>
@@ -268,7 +191,7 @@
                         }
                     }" class="relative w-full max-w-[1024px] mx-auto text-xs">
                         @foreach ($faqs as $index => $faq)
-                            @if ($loop->index < 8)
+                            @if ($loop->index < 5)
                                 <div x-data="{ id: $id('accordion') }"
                                     :class="{
                                         'border-primary text-neutral-800 my-4': activeAccordion ==

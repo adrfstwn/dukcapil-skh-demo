@@ -81,6 +81,7 @@ public function update(Request $request, $id)
         $tupoksi = Tupoksi::findOrFail($id);
 
         $tupoksi->nama_tupoksi = $request->nama_tupoksi;
+        $tupoksi->nama_fungsi = $request->nama_fungsi;
         $tupoksi->nama_tugaspokok = $request->nama_tugaspokok;
         $tupoksi->deskripsi_tugaspokok = $request->deskripsi_tugaspokok;
         $tupoksi->deskripsi_fungsi = $request->deskripsi_fungsi;
