@@ -33,7 +33,7 @@
             </div>
             <div class="w-full md:w-1/4">
                 <h3 class="text-xl font-monserrat text-background_light font-bold pb-3">
-                    Layanan Kami
+                    Link Terkait
                 </h3>
                 <hr class="w-8 border-b-[1.5px] rounded-sm mb-5">
                 <ul>
@@ -49,6 +49,7 @@
                 </ul>
             </div>
             <div class="w-full md:w-1/4">
+                @foreach ($kontak as $kontak )
                 <h3 class="text-xl font-monserrat text-background_light font-bold pb-3">
                     Temukan Kami
                 </h3>
@@ -60,20 +61,18 @@
                             Sukoharjo Kode Pos. 57521</a>
                     </li>
                     <li><a href=""
-                            class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">Telp
-                            : (0271) 593178
+                            class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">Telp: {{ $kontak->telp }}
                             <br>
-                            Fax : (0271)</a>
+                            Fax: {{ $kontak->fax }}</a>
                     </li>
-                    <li><a href="https://wa.me/081232457713"
-                            class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">WA
-                            Layanan Pengaduan: 081232457713</a>
+                    <li><a href=""
+                            class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">WA Layanan Pengaduan: {{ $kontak->wa_layan }}</a>
                     </li>
-                    <li><a href=" http://dispendukcapil@sukoharjokab.go.id"
-                            class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">Email:
-                            dispendukcapil@sukoharjokab.go.id</a>
+                    <li><a href=""
+                            class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">Email: {{ $kontak->email }}</a>
                     </li>
                 </ul>
+                @endforeach
             </div>
         </div>
         <div class="w-full mt-10 border-t-[2px] border-white rounded-sm">
@@ -82,8 +81,9 @@
                     &copy; 2024 DISDUKCAPIL KABUPATEN SUKOHARJO
                 </p>
                 <div class="flex  gap-3">
+                    @foreach ($linksos as $linksos )
                     <!-- youtube -->
-                    <a href="http://www.youtube.com/@disdukcapilkab.sukoharjo6228" class="">
+                    <a href="{{ $linksos->yt }}" class="">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                             class="md:size-8" viewBox="0,0,256,256" style="fill:#000000;">
                             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -100,7 +100,7 @@
                         </svg>
                     </a>
                     <!-- instagram -->
-                    <a href="https://www.instagram.com/disdukcapilkabsukoharjo/" class="">
+                    <a href="{{ $linksos->instagram }}" class="">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                             class="md:size-7" viewBox="0,0,256,256" style="fill:#000000;">
                             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -117,7 +117,7 @@
                         </svg>
                     </a>
                     <!-- facebook -->
-                    <a href="https://web.facebook.com/disdukcapil.sukoharjokab" class="">
+                    <a href="{{ $linksos->facebook }}" class="">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                             class="md:size-7" viewBox="0,0,256,256" style="fill:#000000;">
                             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1"
@@ -134,7 +134,7 @@
                         </svg>
                     </a>
                     <!-- twitter X -->
-                    <a href="https://twitter.com/disdukcapilskh" class="">
+                    <a href="{{ $linksos->x }}" class="">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
                             class="md:size-7" viewBox="0,0,256,256" style="fill:#000000;">
                             <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1"
@@ -150,6 +150,7 @@
                             </g>
                         </svg>
                     </a>
+                    @endforeach
                 </div>
             </div>
         </div>

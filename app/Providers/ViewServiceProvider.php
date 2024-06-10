@@ -8,11 +8,15 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\Menu;
 use App\Models\Submenu;
+use App\Models\Linksos;
+use App\Models\Jam;
+use App\Models\Kontak;
 
 class ViewServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        // Composer untuk header
         View::composer('layouts.header', function ($view) {
             // Ambil semua menu utama
             $menus = Menu::all();
@@ -31,6 +35,18 @@ class ViewServiceProvider extends ServiceProvider
 
             $view->with('menu', $menus)->with('allSubmenus', $allSubmenus);
         });
+
+        // Composer untuk footer
+        View::composer('layouts.footer', function ($view) {
+            $linksos = Linksos::all();
+            $jam = Jam::all();
+            $kontak = Kontak::all();
+            $view->with(compact('linksos', 'jam', 'kontak'));
+        });
+    }
+
+    public function register()
+    {
+        //
     }
 }
-
