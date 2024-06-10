@@ -5,8 +5,8 @@
               class="flex flex-col max-w-screen-2xl mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 z-20">
               <div class="p-4 flex flex-row items-center justify-between">
                   <a href="#">
-                      <img src="dist/assets/image/Logo-header.png" alt="logo disdukcapil skh" width="76"
-                          class="md:w-32">
+                      <img src="dist/assets/image/logo-Dispendukcapil.png" alt="logo disdukcapil skh" 
+                          class="w-36 md:w-60">
                   </a>
                   <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
                       <svg fill="black" viewBox="0 0 20 20" class="size-7">

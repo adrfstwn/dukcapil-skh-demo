@@ -15,7 +15,8 @@
                                     <p class="text-xs line-clamp-2">{{ $homeSlider->deskripsi }}</p>
                                 </div>
                                 <div class="md:hidden w-[400px] z-10">
-                                    <h2 class="font-semibold md:font-bold font-monserrat text-center text-base md:text-2xl text-slate-50 contrast-150">
+                                    <h2
+                                        class="font-semibold md:font-bold font-monserrat text-center text-base md:text-2xl text-slate-50 contrast-150">
                                         {{ $homeSlider->judul }}</h2>
                                 </div>
                             </div>
@@ -113,24 +114,32 @@
                     <div class="grid grid-cols-1 md:grid-cols-4 md:gap-10 gap-6">
 
                         @foreach ($beritas as $berita)
-                        @if ($berita->status === 'PUBLISH')
-                            <a href="{{ route('berita.detail', $berita->id) }}">
-                                <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full p-3">
-                                    <img src="{{ $berita->gambar_berita }}" alt=""
-                                        class="max-w-72 h-72 object-cover object-center rounded-t-lg">
-                                    <div class="flex flex-col gap-1 p-4">
-                                        <h3 class="text-xl font-nunito font-bold text-primary_teks">
-                                            {{ $berita->judul }}
-                                        </h3>
-                                        <p class="text-sm font-nunito text-secondary_teks font-medium contrast-75">
-                                            {{ $berita->waktu }}
-                                        </p>
-                                        <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">
-                                            {{ Illuminate\Support\Str::limit($berita->deskripsi_berita, 150) }}
-                                        </p>
+                            @if ($berita->status === 'PUBLISH')
+                                <a href="{{ route('berita.detail', $berita->id) }}">
+                                    <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full p-3">
+                                        <img src="{{ $berita->gambar_berita }}" alt=""
+                                            class="max-w-72 h-72 object-cover object-center rounded-t-lg">
+                                        <div class="flex flex-col gap-1 p-4">
+                                            <h3 class="text-xl font-nunito font-bold text-primary_teks">
+                                                {{ $berita->judul }}
+                                            </h3>
+                                            <p class="text-sm font-nunito text-secondary_teks font-medium contrast-75">
+                                                {{ $berita->waktu }}
+                                            </p>
+                                            <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">
+                                                {{ Illuminate\Support\Str::limit($berita->deskripsi_berita, 150) }}
+                                            </p>
+                                            <div class="flex gap-1 mt-3">
+                                                <p class="text-sm text-primary/80 font-semibold font-monserrat">Baca Selengkapnya </p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                                                    viewBox="0 0 24 24" class="rotate-90 text-primary/80 text-sm">
+                                                    <path fill="currentColor"
+                                                        d="M8 8.4V16q0 .425-.288.713T7 17t-.712-.288T6 16V6q0-.425.288-.712T7 5h10q.425 0 .713.288T18 6t-.288.713T17 7H9.4l8.9 8.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275z" />
+                                                </svg>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
                             @endif
                         @endforeach
                     </div>

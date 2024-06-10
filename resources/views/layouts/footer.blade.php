@@ -2,9 +2,9 @@
     <div class="container">
         <div class="flex flex-wrap">
             <div class="w-full md:w-1/4">
-                <img src="dist/assets/image/logo-footer.png" alt="logo disdukcapil sukoharjo" width="100"
-                    class="md:w-48">
-                <p class="mt-4 mb-10 text-base font-nunito font-semibold text-background_light ">
+                <img src="dist/assets/image/SKH-LOGO.png" alt="logo disdukcapil sukoharjo" width=""
+                    class="w-28 md:w-48">
+                <p class="mt-4 mb-10 text-base md:text-lg font-monserrat font-bold text-background_light ">
                     Dinas Kependudukan dan <br> Pencatatan Sipil Kabupaten Sukoharjo
                 </p>
             </div>
