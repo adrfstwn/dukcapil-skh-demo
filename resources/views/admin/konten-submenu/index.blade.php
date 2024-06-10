@@ -21,10 +21,14 @@
                 @foreach ($kontenSubMenu->sortByDesc('id') as $konten)
                     <div class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                         <div class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-red-gray-500 bg-clip-border text-white shadow-lg shadow-red-gray-500">
-                            <img src="{{ $konten->gambar }}" alt="news-image" class="" />
-                            <div class="to-bg-black-10 absolute inset-0 size-full bg-gradient-to-r from-transparent via-transparent to-black/60">
-                            </div>
+                            @if ($konten->gambar)
+                                <img src="{{ $konten->gambar }}" alt="news-image" class="" />
+                            @else
+                                <img src="https://i.ibb.co/j6xppvM/default-image.png" alt="No Image Available" class="" />
+                            @endif
+                            <div class="to-bg-black-10 absolute inset-0 size-full bg-gradient-to-r from-transparent via-transparent to-black/60"></div>
                         </div>
+
                         <div class="p-6">
                             <div class="mb-3 flex flex-col gap-3 justify-between">
                                 <h5 class="block font-nunito text-xl font-bold leading-snug tracking-normal text-red-900 antialiased line-clamp-2">
@@ -40,10 +44,12 @@
                                     <p class="text-base font-medium font-nunito text-primary_teks">
                                         Status : <span class="text-base bg-primary text-white rounded-md p-2">{{ $konten->status }}</span>
                                     </p>
-                                    <p class="text-base font-medium font-nunito text-primary_teks">
-                                        File :
-                                        <a href="{{ asset('storage/' . $konten->file) }}" class="text-blue-600 hover:underline" target="_blank">Preview</a>
-                                    </p>
+                                    @if ($konten->file)
+                                        <p class="text-base font-medium font-nunito text-primary_teks">
+                                            File :
+                                            <a href="{{ asset('storage/' . $konten->file) }}" class="text-blue-600 hover:underline" target="_blank">Preview</a>
+                                        </p>
+                                    @endif
                                     <p class="text-base font-medium font-nunito text-primary_teks">
                                         Waktu : <span class="text-base font-medium">{{ $konten->tanggal }}</span>
                                     </p>

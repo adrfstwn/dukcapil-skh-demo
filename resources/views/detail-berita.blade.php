@@ -23,31 +23,6 @@
                         </div>
                         <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                     </div>
-                    <div class="flex flex-col gap-4">
-                        <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0 border-b-2 pb-4">
-                            <span class="font-bold text-primary ">Berita</span> Terbaru
-                        </h2>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            {{-- @foreach ($beritas as $berita)
-                                @if ($berita->status === 'PUBLISH')
-                                    <div class="flex flex-col gap-y-3">
-                                        <a href="{{ route('berita.detail', $berita->id) }}">
-                                            <img src="{{ $berita->gambar_berita }}" alt=""
-                                                class="max-w-80 max-h-80 object-cover object-center rounded-md">
-                                            <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
-                                                <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">
-                                                    Berita</p>
-                                                <p class="text-xs text-secondary_teks font-nunito text-end">
-                                                    {{ $berita->waktu }}</p>
-                                            </div>
-                                            <a href=""
-                                                class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->deskripsi_berita }}</a>
-                                        </a>
-                                    </div>
-                                @endif
-                            @endforeach --}}
-                        </div>
-                    </div>
                 </div>
                 <aside class="md:block md:border-l-[2px] border-gray-200 md:pl-6">
                     <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0"><span

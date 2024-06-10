@@ -316,18 +316,10 @@
                                       @if ($submenu->parent_id === null || $submenu->parent_id == $menu->id)
                                           <div class="relative">
                                               <!-- Tambahkan event klik untuk submenu parent -->
-                                              <a @click="openChild{{ $submenu->id }} = !openChild{{ $submenu->id }}"
+                                              <a href="{{ route('konten.showBySubmenu', ['submenu_id' => $submenu->id]) }}"
                                                   class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                                                   {{ $submenu->nama_submenu }}
                                               </a>
-                                              <!-- Tampilkan submenu children jika variabel openChild{{ $submenu->id }} true -->
-                                              <div x-show="openChild{{ $submenu->id }}"
-                                                  class="ml-4 py-1 bg-background_light rounded-md shadow">
-                                                  @foreach ($submenu->children as $child_submenu)
-                                                      <a class="block px-4 py-2 text-sm font-semibold bg-transparent rounded-lg hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                                          href="{{ $child_submenu->url }}">{{ $child_submenu->nama_submenu }}</a>
-                                                  @endforeach
-                                              </div>
                                           </div>
                                       @endif
                                   @endforeach

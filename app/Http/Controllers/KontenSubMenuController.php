@@ -122,4 +122,21 @@ class KontenSubMenuController extends Controller
 
         return redirect()->route('konten.index')->with('success', 'Konten SubMenu deleted successfully.');
     }
+
+    public function showBySubmenu($submenu_id)
+    {
+        // Ambil semua konten sub-menu yang berelasi dengan submenu_id
+        $kontenSubMenu = KontenSubMenu::where('submenu_id', $submenu_id)->get();
+
+        // Konversi URL gambar agar dapat diakses melalui asset helper
+        foreach ($kontenSubMenu as $konten) {
+            $konten->gambar = asset(Storage::url($konten->gambar));
+        }
+
+        // Ambil informasi submenu yang berelasi
+        $submenu = Submenu::findOrFail($submenu_id);
+
+        // Tampilkan view dengan data kontenSubMenu dan submenu
+        return view('konten-submenu', compact('kontenSubMenu', 'submenu'));
+    }
 }
