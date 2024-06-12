@@ -11,7 +11,8 @@
                             {{ $submenu->nama_submenu }}
                         </h1>
                         @if ($kontenSubMenu->isEmpty())
-                            <p class="font-semibold font-monserrat text-xl text-center text-secondary_teks">Detail halalaman ini belum tersedia</p>
+                            <p class="font-semibold font-monserrat text-xl text-center text-secondary_teks">Detail halalaman
+                                ini belum tersedia</p>
                         @else
                             @foreach ($kontenSubMenu as $konten)
                                 <div class="flex flex-col gap-6 ">
@@ -22,11 +23,11 @@
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
-                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" class="rounded-md w-full max-h-96">
+                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}"
+                                                class="rounded-md w-full max-h-96">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}
                                             </p>
-
                                         @endif
                                         <p class="font-nunito text-base text-primary_teks">
                                             {{ $konten->deskripsi_konten }}</p>
@@ -131,17 +132,22 @@
                             <span class="font-bold text-primary ">Berita</span> Terbaru
                         </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            @foreach($beritaTerbaru as $berita)
-                    <div class="flex flex-col gap-y-3 p-4 border rounded-md">
-                        <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
-                            <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
-                            <p class="text-xs text-secondary_teks font-nunito text-end">{{ $berita->waktu }}</p>
-                        </div>
-                        <a href="{{ route('berita.detail', $berita->id) }}" class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
-                        <p class="text-sm text-secondary_teks line-clamp-3">{{ Str::limit($berita->deskripsi_berita, 100) }}</p>
-                        <a href="{{ route('berita.detail', $berita->id) }}" class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca Selengkapnya</a>
-                    </div>
-                @endforeach
+                            @foreach ($beritaTerbaru as $berita)
+                                <div class="flex flex-col gap-y-3 p-4 border rounded-md">
+                                    <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                        <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                        <p class="text-xs text-secondary_teks font-nunito text-end">{{ $berita->waktu }}
+                                        </p>
+                                    </div>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
+                                    <p class="text-sm text-secondary_teks line-clamp-3">
+                                        {{ Str::limit($berita->deskripsi_berita, 100) }}</p>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
+                                        Selengkapnya</a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
