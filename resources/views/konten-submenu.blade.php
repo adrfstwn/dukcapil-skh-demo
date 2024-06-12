@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     {{-- start konten-submenu section --}}
     <section id="konten-submenu" class="my-10 md:my-20 -z-10">
@@ -22,7 +21,7 @@
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
-                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" class="rounded-md w-full max-h-96">
+                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" class="rounded-md w-full max-h-[450px] object-cover object-center">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}
                                             </p>
