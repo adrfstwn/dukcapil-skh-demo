@@ -137,9 +137,9 @@
                             <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
                             <p class="text-xs text-secondary_teks font-nunito text-end">{{ $berita->waktu }}</p>
                         </div>
-                        <a href="{{ route('berita.show', $berita->id) }}" class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
+                        <a href="{{ route('berita.detail', $berita->id) }}" class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
                         <p class="text-sm text-secondary_teks line-clamp-3">{{ Str::limit($berita->deskripsi_berita, 100) }}</p>
-                        <a href="{{ route('berita.show', $berita->id) }}" class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca Selengkapnya</a>
+                        <a href="{{ route('berita.detail', $berita->id) }}" class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca Selengkapnya</a>
                     </div>
                 @endforeach
                         </div>
