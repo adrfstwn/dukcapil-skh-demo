@@ -30,6 +30,8 @@
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             @foreach ($beritaTerbaru as $berita)
                                 <div class="flex flex-col gap-y-3 p-4 border rounded-md">
+                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" alt="{{ $berita->judul }}"
+                                        class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                     <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
                                         <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
                                         <p class="text-xs text-secondary_teks font-nunito text-end">{{ $berita->waktu }}
