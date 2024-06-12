@@ -31,7 +31,7 @@ use App\Http\Controllers\KontenSubMenuController;
 Route::get('/', [HomeController::class, 'index']);
 
 // Konten Submenu
-Route::get('/submenu/{submenu_id}/konten', [KontenSubMenuController::class, 'showBySubmenu'])->name('konten.showBySubmenu');
+Route::get('/submenu-{submenu_id}-konten', [KontenSubMenuController::class, 'showBySubmenu'])->name('konten.showBySubmenu');
 
 
 // Menu Login
