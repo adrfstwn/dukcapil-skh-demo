@@ -14,7 +14,7 @@
                             <div class="flex flex-col items-center gap-6 max-w-screen-lg">
                                 @if ($berita->gambar_berita)
                                     <img src="{{ asset('storage/' . $berita->gambar_berita) }}" alt="{{ $berita->judul }}"
-                                        class="w-full h-auto rounded-lg">
+                                        class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                     <p class="text-base md:text-lg text-secondary_teks">
                                         {{ $berita->deskripsi_berita }}
                                     </p>
@@ -22,6 +22,29 @@
                             </div>
                         </div>
                         <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0 border-b-2 pb-4">
+                            <span class="font-bold text-primary ">Berita</span> Terbaru
+                        </h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            @foreach ($beritaTerbaru as $berita)
+                                <div class="flex flex-col gap-y-3 p-4 border rounded-md">
+                                    <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                        <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                        <p class="text-xs text-secondary_teks font-nunito text-end">{{ $berita->waktu }}
+                                        </p>
+                                    </div>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
+                                    <p class="text-sm text-secondary_teks line-clamp-3">
+                                        {{ Str::limit($berita->deskripsi_berita, 100) }}</p>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
+                                        Selengkapnya</a>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
                 <aside class="md:block md:border-l-[2px] border-gray-200 md:pl-6">

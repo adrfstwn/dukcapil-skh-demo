@@ -145,7 +145,8 @@ class BeritaController extends Controller
     public function showDetail($id)
     {
         $berita = Berita::find($id);
+        $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get();
 
-        return view('detail-berita', compact('berita'));
+        return view('detail-berita', compact('berita','beritaTerbaru'));
     }
 }

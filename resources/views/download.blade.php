@@ -14,9 +14,10 @@
                         @foreach ($downloads as $download)
                             <div class="flex flex-col gap-2">
                                 <a href="detail-download"
-                                    class="font-bold font-nunito text-xl md:text-2xl text-primary_teks ">
+                                    class="font-bold font-monserrat text-xl md:text-2xl text-primary_teks ">
                                     {{ $download->judul }}
                                 </a>
+                                <p class="text-sm font-medium text-center text-white bg-primary px-2 py-1 max-w-32 rounded-full">Kategori</p>
                                 <p class="text-sm text-secondary_teks font-nunito">{{ $download->created_at }}</p>
                                 <p class="font-nunito text-base text-secondary_teks line-clamp-2">
                                     {{ $download->deskripsi_download }}

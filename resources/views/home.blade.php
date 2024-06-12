@@ -34,7 +34,7 @@
         <div class="container">
             <div class="flex flex-col gap-6 justify-center">
                 <div class="flex flex-col mx-auto justify-center items-center md:max-w-4xl gap-2">
-                    <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">Layanan Kami
+                    <h2 class="font-monserrat font-bold text-2xl md:text-4xl text-primary_teks text-center">Layanan dan Inovasi Kami
                     </h2>
                     <p class="font-nunito text-base md:text-xl text-secondary_teks text-center">Menyediakan berbagai layanan
                         administrasi kependudukan bagi masyarakat. Layanan tersebut meliputi:</p>

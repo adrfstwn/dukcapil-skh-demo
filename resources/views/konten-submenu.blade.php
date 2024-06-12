@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     {{-- start konten-submenu section --}}
     <section id="konten-submenu" class="my-10 md:my-20 -z-10">
@@ -11,7 +10,8 @@
                             {{ $submenu->nama_submenu }}
                         </h1>
                         @if ($kontenSubMenu->isEmpty())
-                            <p class="font-semibold font-monserrat text-xl text-center text-secondary_teks">Detail halalaman ini belum tersedia</p>
+                            <p class="font-semibold font-monserrat text-xl text-center text-secondary_teks">Detail halalaman
+                                ini belum tersedia</p>
                         @else
                             @foreach ($kontenSubMenu as $konten)
                                 <div class="flex flex-col gap-6 ">
@@ -22,7 +22,8 @@
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
-                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" class="rounded-md w-full h-auto">
+                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}"
+                                                class="rounded-md w-full max-h-[450px] object-cover object-center">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}
                                             </p>
@@ -32,7 +33,7 @@
                                         @if ($konten->file)
                                             <a href="{{ Storage::url($konten->file) }}"
                                                 class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik
-                                                disini untuk lebih lanjut</a>
+                                                link file</a>
                                         @endif
                                     </div>
                                     <p class="text-base text-secondary_teks"></p>
@@ -130,50 +131,22 @@
                             <span class="font-bold text-primary ">Berita</span> Terbaru
                         </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            <div class="flex flex-col gap-y-3">
-                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
-                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
-                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
-                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
+                            @foreach ($beritaTerbaru as $berita)
+                                <div class="flex flex-col gap-y-3 p-4 border rounded-md">
+                                    <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                        <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                        <p class="text-xs text-secondary_teks font-nunito text-end">{{ $berita->waktu }}
+                                        </p>
+                                    </div>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
+                                    <p class="text-sm text-secondary_teks line-clamp-3">
+                                        {{ Str::limit($berita->deskripsi_berita, 100) }}</p>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
+                                        Selengkapnya</a>
                                 </div>
-                                <a href=""
-                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
-                                    Daerah Dinas
-                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
-                            </div>
-                            <div class="flex flex-col gap-y-3">
-                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
-                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
-                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
-                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
-                                </div>
-                                <a href=""
-                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
-                                    Daerah Dinas
-                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
-                            </div>
-                            <div class="flex flex-col gap-y-3">
-                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
-                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
-                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
-                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
-                                </div>
-                                <a href=""
-                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
-                                    Daerah Dinas
-                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
-                            </div>
-                            <div class="flex flex-col gap-y-3">
-                                <img src="dist/assets/image/Gedung.jpg" alt="" class="rounded-md">
-                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
-                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
-                                    <p class="text-xs text-secondary_teks font-nunito text-end">28 Februari 2024</p>
-                                </div>
-                                <a href=""
-                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2">Forum Perangkat
-                                    Daerah Dinas
-                                    Dukcapil Kabupaten Sukoharjo Tahun 2024</a>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
