@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Submenu;
+use App\Models\Berita;
 use App\Models\KontenSubMenu;
 use Illuminate\Support\Facades\Storage;
 
@@ -136,7 +137,10 @@ class KontenSubMenuController extends Controller
         // Ambil informasi submenu yang berelasi
         $submenu = Submenu::findOrFail($submenu_id);
 
+        // Ambil berita terbaru
+    $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get(); // Misalnya mengambil 5 berita terbaru
+
         // Tampilkan view dengan data kontenSubMenu dan submenu
-        return view('konten-submenu', compact('kontenSubMenu', 'submenu'));
+        return view('konten-submenu', compact('kontenSubMenu', 'submenu','beritaTerbaru'));
     }
 }
