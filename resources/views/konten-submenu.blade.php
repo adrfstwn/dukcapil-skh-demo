@@ -22,7 +22,10 @@
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
-                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" class="rounded-md w-full h-auto">
+                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" class="rounded-md w-full max-h-96">
+                                            <p class="font-nunito text-base text-primary_teks">
+                                                {{ $konten->judul }}
+                                            </p>
 
                                         @endif
                                         <p class="font-nunito text-base text-primary_teks">
