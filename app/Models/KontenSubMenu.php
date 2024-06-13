@@ -16,4 +16,9 @@ class KontenSubMenu extends Model
     {
         return $this->belongsTo(Submenu::class);
     }
+
+    public function urls()
+    {
+        return $this->hasMany(KontenSubmenuUrl::class,'konten_submenu_id', 'id');
+    }
 }

@@ -36,10 +36,12 @@ class KontenSubMenuController extends Controller
             'status' => 'required|string|max:255',
             'tanggal' => 'required|string|max:255',
             'gambar' => 'nullable|image',
-            'submenu_id' => 'required|exists:submenu,id'
+            'submenu_id' => 'required|exists:submenu,id',
+            'urls' => 'array',
+            'urls.*.nama_url' => 'required_with:urls|string',
+            'urls.*.link_url' => 'required_with:urls|url'
         ]);
 
-        // Inisialisasi model KontenSubMenu dengan data yang sudah divalidasi
         $kontenSubMenu = new KontenSubMenu([
             'judul' => $validatedData['judul'],
             'deskripsi_konten' => $validatedData['deskripsi_konten'],
@@ -48,20 +50,22 @@ class KontenSubMenuController extends Controller
             'submenu_id' => $validatedData['submenu_id']
         ]);
 
-        // Jika ada file yang diunggah, simpan file tersebut
         if ($request->hasFile('file')) {
             $kontenSubMenu->file = $request->file('file')->store('file_konten', 'public');
         }
 
-        // Jika ada gambar yang diunggah, simpan gambar tersebut
         if ($request->hasFile('gambar')) {
             $kontenSubMenu->gambar = $request->file('gambar')->store('gambar_konten', 'public');
         }
 
-        // Simpan data KontenSubMenu ke dalam database
         $kontenSubMenu->save();
 
-        // Redirect ke halaman index KontenSubMenu dengan pesan sukses
+        if (isset($validatedData['urls'])) {
+            foreach ($validatedData['urls'] as $url) {
+                $kontenSubMenu->urls()->create($url);
+            }
+        }
+
         return redirect()->route('konten.index')->with('success', 'Konten SubMenu created successfully.');
     }
 
@@ -88,31 +92,39 @@ class KontenSubMenuController extends Controller
             'status' => 'required|string|max:255',
             'tanggal' => 'required|string|max:255',
             'gambar' => 'nullable|image',
-            'submenu_id' => 'required|exists:submenu,id'
+            'submenu_id' => 'required|exists:submenu,id',
+            'urls' => 'array',
+            'urls.*.nama_url' => 'required_with:urls|string',
+            'urls.*.link_url' => 'required_with:urls|url'
         ]);
 
-        // Cari data KontenSubMenu yang akan diupdate
         $kontenSubMenu = KontenSubMenu::findOrFail($id);
 
-        // Update data dengan data yang sudah divalidasi
-        $kontenSubMenu->judul = $validatedData['judul'];
-        $kontenSubMenu->deskripsi_konten = $validatedData['deskripsi_konten'];
-        $kontenSubMenu->status = $validatedData['status'];
-        $kontenSubMenu->tanggal = $validatedData['tanggal'];
-        $kontenSubMenu->submenu_id = $validatedData['submenu_id'];
+        $kontenSubMenu->update([
+            'judul' => $validatedData['judul'],
+            'deskripsi_konten' => $validatedData['deskripsi_konten'],
+            'status' => $validatedData['status'],
+            'tanggal' => $validatedData['tanggal'],
+            'submenu_id' => $validatedData['submenu_id']
+        ]);
 
         if ($request->hasFile('file')) {
             $kontenSubMenu->file = $request->file('file')->store('file_konten', 'public');
         }
 
-        // Jika ada gambar yang diunggah, simpan gambar tersebut
         if ($request->hasFile('gambar')) {
             $kontenSubMenu->gambar = $request->file('gambar')->store('gambar_konten', 'public');
         }
-        // Simpan perubahan
+
         $kontenSubMenu->save();
 
-        // Redirect ke halaman index KontenSubMenu dengan pesan sukses
+        $kontenSubMenu->urls()->delete();
+        if (isset($validatedData['urls'])) {
+            foreach ($validatedData['urls'] as $url) {
+                $kontenSubMenu->urls()->create($url);
+            }
+        }
+
         return redirect()->route('konten.index')->with('success', 'Konten SubMenu updated successfully.');
     }
 

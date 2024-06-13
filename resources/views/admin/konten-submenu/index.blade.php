@@ -53,6 +53,16 @@
                                     <p class="text-base font-medium font-nunito text-primary_teks">
                                         Waktu : <span class="text-base font-medium">{{ $konten->tanggal }}</span>
                                     </p>
+                                    <div class="text-base font-medium font-nunito text-primary_teks">
+                                        URLs:
+                                        <ul>
+                                            @foreach ($konten->urls as $url)
+                                                <li>
+                                                    <a href="{{ $url->link_url }}" class="text-blue-600 hover:underline" target="_blank">{{ $url->nama_url }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="group mt-4 inline-flex flex-wrap items-center gap-3">
                                     <span data-tooltip-target="hapus" class="cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
@@ -87,3 +97,4 @@
         </div>
     </section>
 @endsection
+
