@@ -61,6 +61,21 @@
                             <option value="PUBLISH" {{ $kontenSubMenu->status == 'PUBLISH' ? 'selected' : '' }}>PUBLISH</option>
                         </select>
                     </div>
+                    <div class="my-2">
+                        <label for="urls-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">URLs</label>
+                        <div id="urls-container">
+                            @foreach($kontenSubMenu->urls as $url)
+                                <div class="flex items-center mb-2">
+                                    <input type="text" name="urls[{{ $url->id }}][nama_url]" value="{{ $url->nama_url }}" placeholder="URL Name"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 mr-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                                    <input type="text" name="urls[{{ $url->id }}][link_url]" value="{{ $url->link_url }}" placeholder="URL Link"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                                    <button type="button" class="ml-2 text-red-600 remove-url" data-url-id="{{ $url->id }}">Remove</button>
+                                </div>
+                            @endforeach
+                        </div>
+                        <button type="button" id="add-url-button" class="mt-2 text-blue-600">Add URL</button>
+                    </div>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -79,4 +94,39 @@
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addUrlButton = document.getElementById('add-url-button');
+            const urlsContainer = document.getElementById('urls-container');
+
+            addUrlButton.addEventListener('click', function() {
+                const newUrlDiv = document.createElement('div');
+                newUrlDiv.classList.add('flex', 'items-center', 'mb-2');
+                newUrlDiv.innerHTML = `
+                    <input type="text" name="new_urls[][nama_url]" placeholder="URL Name"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 mr-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                    <input type="text" name="new_urls[][link_url]" placeholder="URL Link"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                    <button type="button" class="ml-2 text-red-600 remove-url">Remove</button>
+                `;
+                urlsContainer.appendChild(newUrlDiv);
+            });
+
+            urlsContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('remove-url')) {
+                    const urlId = event.target.getAttribute('data-url-id');
+                    if (urlId) {
+                        // Add a hidden input to mark the URL for deletion
+                        const deleteInput = document.createElement('input');
+                        deleteInput.type = 'hidden';
+                        deleteInput.name = `delete_urls[]`;
+                        deleteInput.value = urlId;
+                        urlsContainer.appendChild(deleteInput);
+                    }
+                    event.target.parentElement.remove();
+                }
+            });
+        });
+    </script>
 @endsection
