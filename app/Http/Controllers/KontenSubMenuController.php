@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Submenu;
 use App\Models\Berita;
 use App\Models\KontenSubMenu;
+use App\Models\KontenSubMenuUrl;
 use Illuminate\Support\Facades\Storage;
 
 class KontenSubMenuController extends Controller
@@ -14,11 +15,11 @@ class KontenSubMenuController extends Controller
     {
         $kontenSubMenu = KontenSubMenu::all();
 
-    foreach ($kontenSubMenu as $konten) {
-        $konten->gambar = asset(Storage::url($konten->gambar));
-    }
+        foreach ($kontenSubMenu as $konten) {
+            $konten->gambar = asset(Storage::url($konten->gambar));
+        }
 
-    return view('admin.konten-submenu.index', compact('kontenSubMenu'));
+        return view('admin.konten-submenu.index', compact('kontenSubMenu'));
     }
 
     public function create()
@@ -82,9 +83,10 @@ class KontenSubMenuController extends Controller
         $submenus = Submenu::all(); // Ambil semua submenu untuk digunakan dalam dropdown
         return view('admin.konten-submenu.edit', compact('kontenSubMenu', 'submenus'));
     }
-
     public function update(Request $request, $id)
     {
+        $kontenSubMenu = KontenSubMenu::findOrFail($id);
+
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi_konten' => 'required|string',
@@ -94,38 +96,55 @@ class KontenSubMenuController extends Controller
             'gambar' => 'nullable|image',
             'submenu_id' => 'required|exists:submenu,id',
             'urls' => 'array',
-            'urls.*.nama_url' => 'required_with:urls|string',
-            'urls.*.link_url' => 'required_with:urls|url'
+            'urls.*.nama_url' => 'required|string',
+            'urls.*.link_url' => 'required|url',
+            'new_urls' => 'array',
+            'new_urls.*.nama_url' => 'required|string',
+            'new_urls.*.link_url' => 'required|url',
+            'delete_urls' => 'array'
         ]);
 
-        $kontenSubMenu = KontenSubMenu::findOrFail($id);
-
-        $kontenSubMenu->update([
-            'judul' => $validatedData['judul'],
-            'deskripsi_konten' => $validatedData['deskripsi_konten'],
-            'status' => $validatedData['status'],
-            'tanggal' => $validatedData['tanggal'],
-            'submenu_id' => $validatedData['submenu_id']
-        ]);
+        $kontenSubMenu->update($request->only('submenu_id', 'judul', 'deskripsi_konten', 'tanggal', 'status'));
 
         if ($request->hasFile('file')) {
-            $kontenSubMenu->file = $request->file('file')->store('file_konten', 'public');
+            if ($kontenSubMenu->file) {
+                Storage::disk('public')->delete($kontenSubMenu->file);
+            }
+            $kontenSubMenu->file = $request->file('file')->store('files', 'public');
         }
 
         if ($request->hasFile('gambar')) {
-            $kontenSubMenu->gambar = $request->file('gambar')->store('gambar_konten', 'public');
+            if ($kontenSubMenu->gambar) {
+                Storage::disk('public')->delete($kontenSubMenu->gambar);
+            }
+            $kontenSubMenu->gambar = $request->file('gambar')->store('images', 'public');
         }
 
         $kontenSubMenu->save();
 
-        $kontenSubMenu->urls()->delete();
-        if (isset($validatedData['urls'])) {
-            foreach ($validatedData['urls'] as $url) {
-                $kontenSubMenu->urls()->create($url);
+        // Update existing URLs
+        if ($request->has('urls')) {
+            foreach ($request->input('urls') as $urlId => $urlData) {
+                $url = KontenSubMenuUrl::findOrFail($urlId);
+                $url->update($urlData);
             }
         }
 
-        return redirect()->route('konten.index')->with('success', 'Konten SubMenu updated successfully.');
+        // Add new URLs
+        if ($request->has('new_urls')) {
+            foreach ($request->input('new_urls') as $newUrlData) {
+                if (!empty($newUrlData['nama_url']) && !empty($newUrlData['link_url'])) {
+                    $kontenSubMenu->urls()->create($newUrlData);
+                }
+            }
+        }
+
+        // Remove URLs
+        if ($request->has('delete_urls')) {
+            KontenSubMenuUrl::destroy($request->input('delete_urls'));
+        }
+
+        return redirect()->route('konten.index')->with('success', 'Konten SubMenu updated successfully');
     }
 
     public function destroy($id)
@@ -139,7 +158,9 @@ class KontenSubMenuController extends Controller
     public function showBySubmenu($submenu_id)
     {
         // Ambil semua konten sub-menu yang berelasi dengan submenu_id
-        $kontenSubMenu = KontenSubMenu::where('submenu_id', $submenu_id)->get();
+        $kontenSubMenu = KontenSubMenu::where('submenu_id', $submenu_id)
+                                                                ->with('urls') // Include related URLs
+                                                                ->get();
 
         // Konversi URL gambar agar dapat diakses melalui asset helper
         foreach ($kontenSubMenu as $konten) {
@@ -150,9 +171,9 @@ class KontenSubMenuController extends Controller
         $submenu = Submenu::findOrFail($submenu_id);
 
         // Ambil berita terbaru
-    $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get(); // Misalnya mengambil 5 berita terbaru
+        $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get(); // Misalnya mengambil 5 berita terbaru
 
         // Tampilkan view dengan data kontenSubMenu dan submenu
-        return view('konten-submenu', compact('kontenSubMenu', 'submenu','beritaTerbaru'));
+        return view('konten-submenu', compact('kontenSubMenu', 'submenu', 'beritaTerbaru'));
     }
 }

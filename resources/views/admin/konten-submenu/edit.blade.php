@@ -12,24 +12,21 @@
                     @method('PUT')
                     <div class="my-2">
                         <label for="submenu" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Submenu</label>
-                        <select name="submenu_id" id="submenu"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                        <select name="submenu_id" id="submenu" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                             @foreach ($submenus as $submenu)
-                                <option value="{{ $submenu->id }}" {{ $kontenSubMenu->submenu_id == $submenu->id ? 'selected' : '' }}>{{ $submenu->nama_submenu }}</option>
+                                <option value="{{ $submenu->id }}" {{ $kontenSubMenu->submenu_id == $submenu->id ? 'selected' : '' }}>
+                                    {{ $submenu->nama_submenu }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="my-2">
                         <label for="default-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Title Konten</label>
-                        <input type="text" name="judul" id="default-input" placeholder="Title konten"
-                            value="{{ $kontenSubMenu->judul }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                        <input type="text" name="judul" id="default-input" placeholder="Title konten" value="{{ $kontenSubMenu->judul }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                     </div>
                     <div class="my-2">
                         <label for="message" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Description Konten</label>
-                        <textarea id="message" name="deskripsi_konten" rows="4"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                            placeholder="Write your thoughts here...">{{ $kontenSubMenu->deskripsi_konten }}</textarea>
+                        <textarea id="message" name="deskripsi_konten" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Write your thoughts here...">{{ $kontenSubMenu->deskripsi_konten }}</textarea>
                     </div>
                     <div class="my-2">
                         <label class="block mb-2 text-base font-medium text-gray-900 dark:text-white" for="file_input">Upload File</label>
@@ -49,14 +46,11 @@
                     </div>
                     <div class="my-2">
                         <label for="date-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Publication time</label>
-                        <input type="date" name="tanggal" id="date-input" placeholder="Date published"
-                            value="{{ $kontenSubMenu->tanggal }}"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                        <input type="date" name="tanggal" id="date-input" placeholder="Date published" value="{{ $kontenSubMenu->tanggal }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                     </div>
                     <div class="my-2">
                         <label for="status-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Publication status</label>
-                        <select name="status" id="status"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                        <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                             <option value="DRAFT" {{ $kontenSubMenu->status == 'DRAFT' ? 'selected' : '' }}>DRAFT</option>
                             <option value="PUBLISH" {{ $kontenSubMenu->status == 'PUBLISH' ? 'selected' : '' }}>PUBLISH</option>
                         </select>
@@ -64,13 +58,11 @@
                     <div class="my-2">
                         <label for="urls-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">URLs</label>
                         <div id="urls-container">
-                            @foreach($kontenSubMenu->urls as $url)
-                                <div class="flex items-center mb-2">
-                                    <input type="text" name="urls[{{ $url->id }}][nama_url]" value="{{ $url->nama_url }}" placeholder="URL Name"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 mr-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                                    <input type="text" name="urls[{{ $url->id }}][link_url]" value="{{ $url->link_url }}" placeholder="URL Link"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                                    <button type="button" class="ml-2 text-red-600 remove-url" data-url-id="{{ $url->id }}">Remove</button>
+                            @foreach ($kontenSubMenu->urls as $url)
+                                <div class="flex items-center mb-2 url-input" data-url-id="{{ $url->id }}">
+                                    <input type="text" name="urls[{{ $url->id }}][nama_url]" value="{{ $url->nama_url }}" placeholder="URL Name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 mr-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                                    <input type="text" name="urls[{{ $url->id }}][link_url]" value="{{ $url->link_url }}" placeholder="URL Link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
+                                    <button type="button" class="ml-2 text-red-600 remove-url">Remove</button>
                                 </div>
                             @endforeach
                         </div>
@@ -86,45 +78,49 @@
                             </ul>
                         </div>
                     @endif
+
                     <div class="flex justify-end my-6">
-                        <button type="submit"
-                            class="w-24 px-4 py-2 text-base font-bold text-white bg-red-600 rounded-lg">Submit</button>
+                        <button type="submit" class="w-24 px-4 py-2 text-base font-bold text-white bg-red-600 rounded-lg">Submit</button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const addUrlButton = document.getElementById('add-url-button');
             const urlsContainer = document.getElementById('urls-container');
+            let urlCount = {{ count($kontenSubMenu->urls) }};
 
             addUrlButton.addEventListener('click', function() {
                 const newUrlDiv = document.createElement('div');
                 newUrlDiv.classList.add('flex', 'items-center', 'mb-2');
                 newUrlDiv.innerHTML = `
-                    <input type="text" name="new_urls[][nama_url]" placeholder="URL Name"
+                    <input type="text" name="new_urls[${urlCount}][nama_url]" placeholder="URL Name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 mr-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                    <input type="text" name="new_urls[][link_url]" placeholder="URL Link"
+                    <input type="text" name="new_urls[${urlCount}][link_url]" placeholder="URL Link"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                     <button type="button" class="ml-2 text-red-600 remove-url">Remove</button>
                 `;
                 urlsContainer.appendChild(newUrlDiv);
+                urlCount++;
             });
 
             urlsContainer.addEventListener('click', function(event) {
                 if (event.target.classList.contains('remove-url')) {
-                    const urlId = event.target.getAttribute('data-url-id');
-                    if (urlId) {
-                        // Add a hidden input to mark the URL for deletion
-                        const deleteInput = document.createElement('input');
-                        deleteInput.type = 'hidden';
-                        deleteInput.name = `delete_urls[]`;
-                        deleteInput.value = urlId;
-                        urlsContainer.appendChild(deleteInput);
+                    const urlDiv = event.target.closest('.url-input');
+                    if (urlDiv) {
+                        const urlId = urlDiv.getAttribute('data-url-id');
+                        if (urlId) {
+                            // Create a hidden input to mark this URL for deletion upon form submission
+                            const deleteInput = document.createElement('input');
+                            deleteInput.type = 'hidden';
+                            deleteInput.name = `delete_urls[]`;
+                            deleteInput.value = urlId;
+                            urlsContainer.appendChild(deleteInput);
+                        }
+                        urlDiv.remove();
                     }
-                    event.target.parentElement.remove();
                 }
             });
         });

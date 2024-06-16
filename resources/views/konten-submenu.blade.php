@@ -35,6 +35,21 @@
                                                 class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik
                                                 link file</a>
                                         @endif
+                                        <h3 class="font-monserrat font-bold text-xl text-primary_teks">URLs</h3>
+                                        @if ($konten->urls->isEmpty())
+                                            <p class="font-nunito text-base text-primary_teks">No URLs available.</p>
+                                        @else
+                                            <ul class="list-disc list-inside">
+                                                @foreach ($konten->urls as $url)
+                                                    <li>
+                                                        <a href="{{ $url->link_url }}" target="_blank"
+                                                            class="font-nunito text-base text-primary underline">
+                                                            {{ $url->nama_url }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
                                     </div>
                                     <p class="text-base text-secondary_teks"></p>
                                     <div class="flex gap-3 items-center">
@@ -132,9 +147,9 @@
                         </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             @foreach ($beritaTerbaru as $berita)
-                            
                                 <div class="flex flex-col gap-y-3 p-4 border rounded-md">
-                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" alt="{{ $berita->judul }}"
+                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}"
+                                        alt="{{ $berita->judul }}"
                                         class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                     <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
                                         <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
