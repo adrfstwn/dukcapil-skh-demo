@@ -5,7 +5,7 @@
               class="flex flex-col max-w-screen-2xl mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 z-20">
               <div class="p-4 flex flex-row items-center justify-between">
                   <a href="#">
-                      <img src="dist/assets/image/logo-Dispendukcapil.png" alt="logo disdukcapil skh" 
+                      <img src="dist/assets/image/logo-Dispendukcapil.png" alt="logo disdukcapil skh"
                           class="w-36 md:w-60">
                   </a>
                   <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">

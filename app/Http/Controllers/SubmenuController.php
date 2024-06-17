@@ -23,18 +23,17 @@ class SubmenuController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'menu_id' => 'required|exists:menu,id',
-            'parent_id' => 'nullable|exists:submenu,id',
-            'nama_submenu' => 'required|string|max:255',
-            'url' => 'nullable|string|max:255',
-        ]);
+{
+    $validatedData = $request->validate([
+        'menu_id' => 'required|exists:menu,id',
+        'nama_submenu' => 'required|string|max:255',
+        'url' => 'nullable|string|max:255',
+    ]);
 
-        Submenu::create($validatedData);
+    Submenu::create($validatedData);
 
-        return redirect()->route('submenu.index')->with('success', 'Submenu created successfully.');
-    }
+    return redirect()->route('submenu.index')->with('success', 'Submenu created successfully.');
+}
 
     public function edit($id)
     {
@@ -45,19 +44,19 @@ class SubmenuController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'menu_id' => 'required|exists:menu,id',
-            'parent_id' => 'nullable|exists:submenu,id',
-            'nama_submenu' => 'required|string|max:255',
-            'url' => 'nullable|string|max:255',
-        ]);
+{
+    $validatedData = $request->validate([
+        'menu_id' => 'required|exists:menu,id',
+        'nama_submenu' => 'required|string|max:255',
+        'url' => 'nullable|string|max:255',
+    ]);
 
-        $submenu = Submenu::findOrFail($id);
-        $submenu->update($validatedData);
+    $submenu = Submenu::findOrFail($id);
+    $submenu->update($validatedData);
 
-        return redirect()->route('submenu.index')->with('success', 'Submenu updated successfully.');
-    }
+    return redirect()->route('submenu.index')->with('success', 'Submenu updated successfully.');
+}
+
 
     public function destroy($id)
     {

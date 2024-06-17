@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\KontenMenu;
 use App\Models\Menu;
+use App\Models\Berita;
 use App\Models\KontenMenuUrl;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class KontenMenuController extends Controller
 {
     public function index()
     {
-        $kontenMenus = KontenMenu::with('menu')->paginate(10);
+        $kontenMenus = KontenMenu::all();
+
+        foreach ($kontenMenus as $konten) {
+            $konten->gambar = asset(Storage::url($konten->gambar));
+        }
+
         return view('admin.konten-menu.index', compact('kontenMenus'));
     }
 
@@ -116,6 +122,28 @@ class KontenMenuController extends Controller
         $kontenMenu->delete();
 
         return redirect()->route('konten-menu.index')->with('success', 'Konten Menu deleted successfully.');
+    }
+
+    public function showByMenu($menu_id)
+    {
+        // Ambil semua konten menu yang berelasi dengan menu_id
+        $kontenMenu = KontenMenu::where('menu_id', $menu_id)
+            ->with('urls') // Include related URLs
+            ->get();
+
+        // Konversi URL gambar agar dapat diakses melalui asset helper
+        foreach ($kontenMenu as $konten) {
+            $konten->gambar = asset(Storage::url($konten->gambar));
+        }
+
+        // Ambil informasi menu yang berelasi
+        $menu = Menu::findOrFail($menu_id);
+
+        // Ambil berita terbaru
+        $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get(); // Misalnya mengambil 3 berita terbaru
+
+        // Tampilkan view dengan data kontenMenu, menu, dan beritaTerbaru
+        return view('konten-menu', compact('kontenMenu', 'menu', 'beritaTerbaru'));
     }
 }
 

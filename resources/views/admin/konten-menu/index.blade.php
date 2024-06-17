@@ -18,11 +18,11 @@
     <section id="konten-card">
         <div class="container">
             <div class="grid grid-cols-4 gap-3 gap-y-6">
-                @foreach ($kontenMenus->sortByDesc('id') as $konten)
+                @foreach ($kontenMenus->sortByDesc('id') as $kontenMenu)
                     <div class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                         <div class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-red-gray-500 bg-clip-border text-white shadow-lg shadow-red-gray-500">
-                            @if ($konten->gambar)
-                                <img src="{{ $konten->gambar }}" alt="news-image" class="" />
+                            @if ($kontenMenu->gambar)
+                                <img src="{{ $kontenMenu->gambar }}" alt="news-image" class="" />
                             @else
                                 <img src="https://i.ibb.co/j6xppvM/default-image.png" alt="No Image Available" class="" />
                             @endif
@@ -32,31 +32,31 @@
                         <div class="p-6">
                             <div class="mb-3 flex flex-col gap-3 justify-between">
                                 <h5 class="block font-nunito text-xl font-bold leading-snug tracking-normal text-red-900 antialiased line-clamp-2">
-                                    {{ $konten->judul }}
+                                    {{ $kontenMenu->judul }}
                                 </h5>
                                 <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-2">
-                                    {{ Illuminate\Support\Str::limit($konten->deskripsi_konten, 50) }}
+                                    {{ Illuminate\Support\Str::limit($kontenMenu->deskripsi_konten, 50) }}
                                 </p>
                                 <div class="flex flex-col gap-6">
                                     <p class="text-base font-medium font-nunito text-primary_teks">
-                                        Menu : <span class="text-base bg-primary text-white rounded-md p-2">{{ $konten->menu->nama_menu }}</span>
+                                        Menu : <span class="text-base bg-primary text-white rounded-md p-2">{{ $kontenMenu->menu->nama_menu }}</span>
                                     </p>
                                     <p class="text-base font-medium font-nunito text-primary_teks">
-                                        Status : <span class="text-base bg-primary text-white rounded-md p-2">{{ $konten->status }}</span>
+                                        Status : <span class="text-base bg-primary text-white rounded-md p-2">{{ $kontenMenu->status }}</span>
                                     </p>
-                                    @if ($konten->file)
+                                    @if ($kontenMenu->file)
                                         <p class="text-base font-medium font-nunito text-primary_teks">
                                             File :
-                                            <a href="{{ asset('storage/' . $konten->file) }}" class="text-blue-600 hover:underline" target="_blank">Preview</a>
+                                            <a href="{{ asset('storage/' . $kontenMenu->file) }}" class="text-blue-600 hover:underline" target="_blank">Preview</a>
                                         </p>
                                     @endif
                                     <p class="text-base font-medium font-nunito text-primary_teks">
-                                        Waktu : <span class="text-base font-medium">{{ $konten->tanggal }}</span>
+                                        Waktu : <span class="text-base font-medium">{{ $kontenMenu->tanggal }}</span>
                                     </p>
                                     <div class="text-base font-medium font-nunito text-primary_teks">
                                         URLs:
                                         <ul>
-                                            @foreach ($konten->urls as $url)
+                                            @foreach ($kontenMenu->urls as $url)
                                                 <li>
                                                     <a href="{{ $url->link_url }}" class="text-blue-600 hover:underline" target="_blank">{{ $url->nama_url }}</a>
                                                 </li>
@@ -71,7 +71,7 @@
                                             <path fill="red" d="M16 10a6 6 0 1 0 6 6a6 6 0 0 0-6-6m0 10a4 4 0 1 1 4-4a4 4 0 0 1-4 4" />
                                         </svg>
                                     </span>
-                                    <a href="{{ route('konten-menu.edit', ['id' => $konten->id]) }}" data-tooltip-target="edit" class="cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
+                                    <a href="{{ route('konten-menu.edit', ['id' => $kontenMenu->id]) }}" data-tooltip-target="edit" class="cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
                                             <g fill="none" stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                                 <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
@@ -79,7 +79,7 @@
                                             </g>
                                         </svg>
                                     </a>
-                                    <form action="{{ route('konten-menu.destroy', ['id' => $konten->id]) }}" method="POST" class="inline-block">
+                                    <form action="{{ route('konten-menu.destroy', ['id' => $kontenMenu->id]) }}" method="POST" class="inline-block">
                                         @csrf
                                         @method('DELETE')
                                         <button data-tooltip-target="" class="cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
