@@ -39,9 +39,13 @@ class KontenSubMenuController extends Controller
             'gambar' => 'nullable|image',
             'submenu_id' => 'required|exists:submenu,id',
             'urls' => 'array',
-            'urls.*.nama_url' => 'required_with:urls|string',
-            'urls.*.link_url' => 'required_with:urls|url'
+            'urls.*.nama_url' => 'nullable|string',
+            'urls.*.link_url' => 'nullable|url',
+            'new_urls' => 'array',
+            'new_urls.*.nama_url' => 'nullable|string',
+            'new_urls.*.link_url' => 'nullable|url',
         ]);
+
 
         $kontenSubMenu = new KontenSubMenu([
             'judul' => $validatedData['judul'],
@@ -63,9 +67,12 @@ class KontenSubMenuController extends Controller
 
         if (isset($validatedData['urls'])) {
             foreach ($validatedData['urls'] as $url) {
-                $kontenSubMenu->urls()->create($url);
+                if (!empty($url['nama_url']) && !empty($url['link_url'])) {
+                    $kontenSubMenu->urls()->create($url);
+                }
             }
         }
+
 
         return redirect()->route('konten.index')->with('success', 'Konten SubMenu created successfully.');
     }
@@ -96,13 +103,14 @@ class KontenSubMenuController extends Controller
             'gambar' => 'nullable|image',
             'submenu_id' => 'required|exists:submenu,id',
             'urls' => 'array',
-            'urls.*.nama_url' => 'required|string',
-            'urls.*.link_url' => 'required|url',
+            'urls.*.nama_url' => 'nullable|string',
+            'urls.*.link_url' => 'nullable|url',
             'new_urls' => 'array',
-            'new_urls.*.nama_url' => 'required|string',
-            'new_urls.*.link_url' => 'required|url',
+            'new_urls.*.nama_url' => 'nullable|string',
+            'new_urls.*.link_url' => 'nullable|url',
             'delete_urls' => 'array'
         ]);
+
 
         $kontenSubMenu->update($request->only('submenu_id', 'judul', 'deskripsi_konten', 'tanggal', 'status'));
 
@@ -139,6 +147,7 @@ class KontenSubMenuController extends Controller
             }
         }
 
+
         // Remove URLs
         if ($request->has('delete_urls')) {
             KontenSubMenuUrl::destroy($request->input('delete_urls'));
@@ -159,8 +168,8 @@ class KontenSubMenuController extends Controller
     {
         // Ambil semua konten sub-menu yang berelasi dengan submenu_id
         $kontenSubMenu = KontenSubMenu::where('submenu_id', $submenu_id)
-                                                                ->with('urls') // Include related URLs
-                                                                ->get();
+            ->with('urls') // Include related URLs
+            ->get();
 
         // Konversi URL gambar agar dapat diakses melalui asset helper
         foreach ($kontenSubMenu as $konten) {

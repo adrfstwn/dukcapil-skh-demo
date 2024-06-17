@@ -56,7 +56,7 @@
                         </select>
                     </div>
                     <div class="my-2">
-                        <label for="urls-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">URLs</label>
+                        <label for="urls-input" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Add URL (*Opsional)</label>
                         <div id="urls-container">
                             @foreach ($kontenMenu->urls as $url)
                                 <div class="flex items-center mb-2 url-input" data-url-id="{{ $url->id }}">

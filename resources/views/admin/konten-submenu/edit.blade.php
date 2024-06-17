@@ -66,7 +66,7 @@
                                 </div>
                             @endforeach
                         </div>
-                        <button type="button" id="add-url-button" class="mt-2 text-blue-600">Add URL</button>
+                        <button type="button" id="add-url-button" class="mt-2 text-blue-600">Add URL (*Opsional)</button>
                     </div>
 
                     @if ($errors->any())

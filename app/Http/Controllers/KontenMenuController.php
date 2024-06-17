@@ -30,14 +30,17 @@ class KontenMenuController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'menu_id' => 'required',
+        $validatedData = $request->validate([
+            'menu_id' => 'required|exists:menu,id',
             'judul' => 'required|string|max:255',
             'deskripsi_konten' => 'required|string',
             'tanggal' => 'required|date',
             'file' => 'nullable|file|mimes:pdf,doc,docx',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|string|in:DRAFT,PUBLISH',
+            'urls' => 'array',
+            'urls.*.nama_url' => 'nullable|string',
+            'urls.*.link_url' => 'nullable|url',
         ]);
 
         $data = $request->all();
@@ -54,16 +57,19 @@ class KontenMenuController extends Controller
 
         if (isset($data['urls'])) {
             foreach ($data['urls'] as $url) {
-                KontenMenuUrl::create([
-                    'konten_menu_id' => $kontenMenu->id,
-                    'nama_url' => $url['nama_url'],
-                    'link_url' => $url['link_url']
-                ]);
+                if (!empty($url['nama_url']) && !empty($url['link_url'])) {
+                    KontenMenuUrl::create([
+                        'konten_menu_id' => $kontenMenu->id,
+                        'nama_url' => $url['nama_url'],
+                        'link_url' => $url['link_url']
+                    ]);
+                }
             }
         }
 
         return redirect()->route('konten-menu.index')->with('success', 'Konten menu created successfully.');
     }
+
 
     public function edit($id)
     {
@@ -74,14 +80,21 @@ class KontenMenuController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'menu_id' => 'required',
+        $validatedData = $request->validate([
+            'menu_id' => 'required|exists:menu,id',
             'judul' => 'required|string|max:255',
             'deskripsi_konten' => 'required|string',
             'tanggal' => 'required|date',
             'file' => 'nullable|file|mimes:pdf,doc,docx',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required|string|in:DRAFT,PUBLISH',
+            'urls' => 'array',
+            'urls.*.nama_url' => 'nullable|string',
+            'urls.*.link_url' => 'nullable|url',
+            'new_urls' => 'array',
+            'new_urls.*.nama_url' => 'nullable|string',
+            'new_urls.*.link_url' => 'nullable|url',
+            'delete_urls' => 'array'
         ]);
 
         $kontenMenu = KontenMenu::findOrFail($id);
@@ -103,22 +116,50 @@ class KontenMenuController extends Controller
 
         $kontenMenu->update($data);
 
+        // Update or create URLs
         if (isset($data['urls'])) {
             KontenMenuUrl::where('konten_menu_id', $id)->delete();
             foreach ($data['urls'] as $url) {
-                KontenMenuUrl::create([
-                    'konten_menu_id' => $kontenMenu->id,
-                    'nama_url' => $url['nama_url'],
-                    'link_url' => $url['link_url']
-                ]);
+                if (!empty($url['nama_url']) && !empty($url['link_url'])) {
+                    KontenMenuUrl::create([
+                        'konten_menu_id' => $kontenMenu->id,
+                        'nama_url' => $url['nama_url'],
+                        'link_url' => $url['link_url']
+                    ]);
+                }
             }
+        }
+
+        // Add new URLs
+        if (isset($data['new_urls'])) {
+            foreach ($data['new_urls'] as $newUrl) {
+                if (!empty($newUrl['nama_url']) && !empty($newUrl['link_url'])) {
+                    KontenMenuUrl::create([
+                        'konten_menu_id' => $kontenMenu->id,
+                        'nama_url' => $newUrl['nama_url'],
+                        'link_url' => $newUrl['link_url']
+                    ]);
+                }
+            }
+        }
+
+        // Remove URLs
+        if (isset($data['delete_urls'])) {
+            KontenMenuUrl::destroy($data['delete_urls']);
         }
 
         return redirect()->route('konten-menu.index')->with('success', 'Konten menu updated successfully.');
     }
+
+
     public function destroy($id)
     {
         $kontenMenu = KontenMenu::findOrFail($id);
+
+        // Delete related URLs first
+        $kontenMenu->urls()->delete();
+
+        // Delete the konten menu item
         $kontenMenu->delete();
 
         return redirect()->route('konten-menu.index')->with('success', 'Konten Menu deleted successfully.');
@@ -146,4 +187,3 @@ class KontenMenuController extends Controller
         return view('konten-menu', compact('kontenMenu', 'menu', 'beritaTerbaru'));
     }
 }
-

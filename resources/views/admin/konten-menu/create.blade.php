@@ -40,7 +40,7 @@
                     <input type="date" name="tanggal" id="tanggal" placeholder="Date published" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                 </div>
                 <div id="url-container" class="my-4">
-                    <label for="urls" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Input URL</label>
+                    <label for="urls" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Input URL (*Opsional)</label>
                     <div class="flex items-center gap-4 mb-2">
                         <input type="text" name="urls[0][nama_url]" placeholder="Nama URL" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                         <input type="url" name="urls[0][link_url]" placeholder="Link URL" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-1/2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
