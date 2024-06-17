@@ -37,11 +37,11 @@ class KontenMenuController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('file')) {
-            $data['file'] = $request->file('file')->store('files', 'public');
+            $data['file'] = $request->file('file')->store('file_konten_menu', 'public');
         }
 
         if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('images', 'public');
+            $data['gambar'] = $request->file('gambar')->store('gambar_menu', 'public');
         }
 
         $kontenMenu = KontenMenu::create($data);
@@ -85,14 +85,14 @@ class KontenMenuController extends Controller
             if ($kontenMenu->file) {
                 Storage::disk('public')->delete($kontenMenu->file);
             }
-            $data['file'] = $request->file('file')->store('files', 'public');
+            $data['file'] = $request->file('file')->store('file_konten_menu', 'public');
         }
 
         if ($request->hasFile('gambar')) {
             if ($kontenMenu->gambar) {
                 Storage::disk('public')->delete($kontenMenu->gambar);
             }
-            $data['gambar'] = $request->file('gambar')->store('images', 'public');
+            $data['gambar'] = $request->file('gambar')->store('gambar_menu', 'public');
         }
 
         $kontenMenu->update($data);
@@ -109,6 +109,13 @@ class KontenMenuController extends Controller
         }
 
         return redirect()->route('konten-menu.index')->with('success', 'Konten menu updated successfully.');
+    }
+    public function destroy($id)
+    {
+        $kontenMenu = KontenMenu::findOrFail($id);
+        $kontenMenu->delete();
+
+        return redirect()->route('konten-menu.index')->with('success', 'Konten Menu deleted successfully.');
     }
 }
 
