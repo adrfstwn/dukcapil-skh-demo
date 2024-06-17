@@ -24,7 +24,7 @@ class KontenSubMenuController extends Controller
 
     public function create()
     {
-        $submenus = Submenu::all(); // Contoh: ambil semua submenu dari model Submenu
+        $submenus = Submenu::all();
         return view('admin.konten-submenu.create', compact('submenus'));
     }
 
