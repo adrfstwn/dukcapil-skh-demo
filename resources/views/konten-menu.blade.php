@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
-                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}"
+                                            <img src="{{ $konten->gambar }}" loading="lazy" alt="{{ $konten->judul }}"
                                                 class="rounded-md w-full max-h-[450px] object-cover object-center">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}
@@ -150,7 +150,7 @@
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             @foreach ($beritaTerbaru as $berita)
                                 <div class="flex flex-col gap-y-3 p-4 border rounded-md">
-                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}"
+                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" loading="lazy"
                                         alt="{{ $berita->judul }}"
                                         class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                     <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">

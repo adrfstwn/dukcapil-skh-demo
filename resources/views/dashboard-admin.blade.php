@@ -20,9 +20,9 @@
                         <th scope="col" class="p-4">Tanggal Pembuatan</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-300 dark:divide-slate-700">
+                <tbody class="divide-y text-neutral-950 font-medium divide-slate-300 dark:divide-slate-700">
                     @foreach($menus as $index => $menu)
-                        <tr class="even:bg-red-600/40">
+                        <tr class="even:bg-primary  even:text-slate-50 even:font-medium">
                             <td class="p-4">{{ $index + 1 }}</td>
                             <td class="p-4">{{ $menu->nama_menu }}</td>
                             <td class="p-4">{{ $menu->status }}</td>
@@ -53,9 +53,9 @@
                         <th scope="col" class="p-4">Tanggal Pembuatan</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-300 dark:divide-slate-700">
+                <tbody class="divide-y text-neutral-950 font-medium divide-slate-300 dark:divide-slate-700">
                     @foreach($submenus as $index => $submenu)
-                        <tr class="even:bg-red-600/40">
+                        <tr class="even:bg-primary  even:text-slate-50 even:font-medium">
                             <td class="p-4">{{ $index + 1 }}</td>
                             <td class="p-4">{{ $submenu->nama_submenu }}</td>
                             <td class="p-4">{{ $submenu->menu->nama_menu }}</td>
@@ -82,7 +82,7 @@
             @foreach($beritas as $berita)
                 <div class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                     <div class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-red-gray-500 bg-clip-border text-white shadow-lg shadow-red-gray-500">
-                        <img src="{{ $berita->gambar_berita }}" alt="news-image" class="w-full h-48 object-cover"/>
+                        <img src="{{ $berita->gambar_berita }}" alt="news-image" loading="lazy" class="w-full h-48 object-cover"/>
                         <div class="to-bg-black-10 absolute inset-0 size-full bg-gradient-to-r from-transparent via-transparent to-black/60"></div>
                     </div>
                     <div class="p-6">
@@ -90,18 +90,20 @@
                             <h5 class="block font-nunito text-xl font-bold leading-snug tracking-normal text-red-900 antialiased line-clamp-2">
                                 {{ $berita->judul }}
                             </h5>
-                            <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-2">
-                                {{ $berita->deskripsi_berita }}
-                            </p>
+                            <div class="line-clamp-3">
+                                <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased ">
+                                    {{ $berita->deskripsi_berita }}
+                                </p>
+                            </div>
                             <div class="flex flex-col gap-6">
                                 <p class="text-base font-medium font-nunito text-primary_teks">
-                                    Kategori : <span class="text-base bg-primary text-white rounded-md p-2">{{ $berita->kategori->nama_kategori }}</span>
+                                    Kategori : <span class="text-sm text-primary font-bold ">{{ $berita->kategori->nama_kategori }}</span>
                                 </p>
                                 <p class="text-base font-medium font-nunito text-primary_teks">
-                                    Status : <span class="text-base bg-primary text-white rounded-md p-2">{{ $berita->status }}</span>
+                                    Status : <span class="text-sm text-primary font-bold ">{{ $berita->status }}</span>
                                 </p>
                                 <p class="text-base font-medium font-nunito text-primary_teks">
-                                    Waktu : <span class="text-base font-medium">{{ $berita->waktu }}</span>
+                                    Waktu : <span class="text-base font-bold text-primary">{{ $berita->waktu }}</span>
                                 </p>
                             </div>
                             <div class="group mt-4 inline-flex flex-wrap items-center gap-3">

@@ -22,7 +22,7 @@
                     <div class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
                         <div class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-red-gray-500 bg-clip-border text-white shadow-lg shadow-red-gray-500">
                             @if ($konten->gambar)
-                                <img src="{{ $konten->gambar }}" alt="news-image" class="" />
+                                <img src="{{ $konten->gambar }}" loading="lazy" alt="news-image" class="" />
                             @else
                                 <img src="https://i.ibb.co/j6xppvM/default-image.png" alt="No Image Available" class="" />
                             @endif

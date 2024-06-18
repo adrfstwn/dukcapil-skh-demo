@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
-                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}"
+                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" loading="lazy"
                                                 class="rounded-md w-full max-h-[450px] object-cover object-center">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}

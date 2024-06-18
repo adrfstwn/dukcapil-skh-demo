@@ -48,7 +48,7 @@
                                 {{ $profil->deskripsi_profil }}
                             </td>
                             <td class="px-6 py-4">
-    <img src="{{ asset('storage/' . $profil->gambar_profil) }}" alt="Profil Image" class="w-70">
+    <img src="{{ asset('storage/' . $profil->gambar_profil) }}" alt="Profil Image" loading="lazy" class="w-70">
 </td>
 
                             <td class="flex items-center px-6 py-4">

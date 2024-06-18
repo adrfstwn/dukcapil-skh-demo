@@ -14,7 +14,7 @@
                     </p>
                 </div>
                 <div class="flex">
-                    <img src="{{ asset('storage/' . $profil->gambar_profil) }}" alt="Logo Kab.Sukoharjo" class="w-80 ">
+                    <img src="{{ asset('storage/' . $profil->gambar_profil) }}" loading="lazy" alt="Logo Kab.Sukoharjo" class="w-80 ">
                 </div>
             </div>
         </div>

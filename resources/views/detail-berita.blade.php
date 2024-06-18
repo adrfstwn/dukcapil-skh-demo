@@ -13,7 +13,7 @@
                             <p class="text-sm text-secondary_teks font-nunito">{{ $berita->waktu }}</p>
                             <div class="flex flex-col items-center gap-6 max-w-screen-lg">
                                 @if ($berita->gambar_berita)
-                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" alt="{{ $berita->judul }}"
+                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" loading="lazy" alt="{{ $berita->judul }}"
                                         class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                     <p class="text-base md:text-lg text-secondary_teks">
                                         {{ $berita->deskripsi_berita }}
@@ -30,7 +30,7 @@
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             @foreach ($beritaTerbaru as $berita)
                                 <div class="flex flex-col gap-y-3 p-4 border rounded-md">
-                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" alt="{{ $berita->judul }}"
+                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" loading="lazy" alt="{{ $berita->judul }}"
                                         class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                     <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
                                         <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
