@@ -27,6 +27,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\KontenSubMenuController;
 use App\Http\Controllers\KontenMenuController;
+use App\Http\Controllers\DasboardAdminController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -269,7 +270,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::delete('detailpersyaratan-{id}', [DetailPersyaratanController::class, 'destroy'])->name('detailpersyaratan.destroy');
 
     // Landing Admin
-    Route::view('/admin', 'dashboard-admin')->name('admin.index');
+    Route::get('/admin', [DasboardAdminController::class, 'index'])->name('admin.index');
 });
 
 
