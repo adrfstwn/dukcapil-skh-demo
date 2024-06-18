@@ -183,7 +183,11 @@ class KontenMenuController extends Controller
         // Ambil berita terbaru
         $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get(); // Misalnya mengambil 3 berita terbaru
 
+        // Tambahkan relasi kontenMenus ke setiap objek $menu
+        $menu->kontenMenus = $kontenMenu;
+
         // Tampilkan view dengan data kontenMenu, menu, dan beritaTerbaru
         return view('konten-menu', compact('kontenMenu', 'menu', 'beritaTerbaru'));
     }
+
 }
