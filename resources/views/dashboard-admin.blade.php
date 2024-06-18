@@ -3,7 +3,7 @@
     <div class="flex flex-row gap-6">
         <!-- Menu Table -->
         <div class="overflow-hidden w-full overflow-x-auto rounded-xl border border-slate-300 max-w-screen-lg ">
-            <a href=""
+            <a href="{{ route('menu.index') }}"
                 class="flex gap-2 px-3 py-[6px] bg-primary rounded-md w-24 text-center font-semibold text-white my-6 ml-6">
                 Menu
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@
 
         <!-- Submenu Table -->
         <div class="overflow-hidden w-full overflow-x-auto rounded-xl border border-slate-300 max-w-screen-lg ">
-            <a href=""
+            <a href="{{ route('menu.index') }}"
                 class="flex gap-2 px-3 py-[6px] bg-primary rounded-md w-32 text-center font-semibold text-white my-6 ml-6">
                 Submenu
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
@@ -70,7 +70,7 @@
 
     <!-- Berita Section -->
     <div class="overflow-hidden w-full overflow-x-auto rounded-xl border border-slate-300 max-w-screen-2xl my-10 ">
-        <a href=""
+        <a href="{{ route('berita.index') }}"
             class="flex gap-2 px-3 py-[6px] bg-primary rounded-md w-24 text-center font-semibold text-white my-6 ml-6">
             Berita
             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
