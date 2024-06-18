@@ -4,12 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
-
 class ModifySubmenuTableNullableUrl extends Migration
 {
     /**
@@ -25,6 +19,9 @@ class ModifySubmenuTableNullableUrl extends Migration
 
             // Now drop the column
             $table->dropColumn('parent_id');
+
+            // Modify the url column to be nullable
+            $table->string('url')->nullable()->change();
         });
     }
 
@@ -41,7 +38,9 @@ class ModifySubmenuTableNullableUrl extends Migration
 
             // Restore the foreign key constraint
             $table->foreign('parent_id')->references('id')->on('submenu');
+
+            // Revert the url column to be not nullable
+            $table->string('url')->nullable(false)->change();
         });
     }
-};
-
+}
