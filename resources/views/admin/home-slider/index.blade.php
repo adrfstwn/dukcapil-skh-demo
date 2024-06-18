@@ -48,7 +48,7 @@
                                 {{ $homeSlider->deskripsi }}
                             </td>
                             <td class="px-6 py-4">
-                                <img src="{{ asset($homeSlider->gambar_slider) }}" alt="" class="w-40">
+                                <img src="{{ asset($homeSlider->gambar_slider) }}" alt="" loading="lazy" class="w-40">
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="{{ route('homeslider.edit', ['id' => $homeSlider->id]) }}"

@@ -48,7 +48,7 @@
                                 {{ $detaildownload->deskripsi_detail_download }}
                             </td>
                             <td class="px-6 py-4">
-                                <img src="{{ asset('storage/' . $detaildownload->gambar) }}" alt="Detail Download Image" class="w-70">
+                                <img src="{{ asset('storage/' . $detaildownload->gambar) }}" loading="lazy" alt="Detail Download Image" class="w-70">
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="{{ route('detaildownload.edit', ['id' => $detaildownload->id]) }}"

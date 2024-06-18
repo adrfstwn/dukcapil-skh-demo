@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="flex flex-col gap-4 max-w-screen-md">
                                     <img src="{{ asset('storage/' . $detailpersyaratan->gambar) }}"
-                                        alt="foto kegiatan karyawan" class="rounded-sm ">
+                                        alt="foto kegiatan karyawan" loading="lazy" class="rounded-sm ">
                                     <p class="font-nunito text-base text-primary_teks">
                                         {{ $detailpersyaratan->deskripsi_detail_persyaratan }}</p>
                                     <button

@@ -8,7 +8,7 @@
                     <div class="slide slide1">
                         <div class="max-w-80 md:max-w-6xl mx-auto relative shadow-lg">
                             <div class="h-64 p-6 md:p-14 md:h-[560px] flex items-end text-white rounded-xl md:rounded-3xl ">
-                                <img src="{{ asset($homeSlider->gambar_slider) }}" alt=""
+                                <img src="{{ asset($homeSlider->gambar_slider) }}" loading="lazy" alt=""
                                     class="absolute inset-0 object-cover object-center w-full h-full rounded-3xl filter brightness-50">
                                 <div class="hidden md:block w-[400px] md:p-6 p-4 bg-primary opacity-75 rounded-xl z-10">
                                     <h2 class="font-bold text-base md:text-xl">{{ $homeSlider->judul }}</h2>
@@ -54,7 +54,7 @@
                                         <a href="{{ $layanan->link_layanan }}"
                                             class="h-full w-full md:w-52 border-2 flex flex-col gap-1 pb-4 border-primary rounded-lg">
                                             <div class="">
-                                                <img src="{{ $layanan->gambar }}" alt=""
+                                                <img src="{{ $layanan->gambar }}" loading="lazy" alt=""
                                                     class="w-full h-28 object-cover object-center rounded-t-lg ">
                                             </div>
                                             <h3 class="text-xl font-nunito font-bold px-2 text-primary line-clamp-2">
@@ -87,7 +87,7 @@
                     </div>
                     <div class="max-w-md h-full">
                         <a href="#">
-                            <img src="dist/assets/image/BannerPelayanan.jpg" alt="" class="rounded-lg h-full">
+                            <img src="dist/assets/image/BannerPelayanan.jpg" alt="" loading="lazy" class="rounded-lg h-full">
                         </a>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                             @if ($berita->status === 'PUBLISH')
                                 <a href="{{ route('berita.detail', $berita->id) }}">
                                     <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full p-3">
-                                        <img src="{{ $berita->gambar_berita }}" alt=""
+                                        <img src="{{ $berita->gambar_berita }}" loading="lazy" alt=""
                                             class="max-w-72 h-72 object-cover object-center rounded-t-lg">
                                         <div class="flex flex-col gap-1 p-4">
                                             <h3 class="text-xl font-nunito font-bold text-primary_teks">
@@ -168,7 +168,7 @@
                             <ul class="slick-slider2 flex flex-row gap-4 md:gap-0">
                                 @foreach ($mitras as $mitra)
                                     <li class="slick-slide mx-2 md:mx-0">
-                                        <img src="{{ asset($mitra->logo_mitra) }}"
+                                        <img src="{{ asset($mitra->logo_mitra) }}" loading="lazy"
                                             class="size-24 md:size-40  rounded-md object-center " alt="">
                                     </li>
                                 @endforeach

@@ -26,9 +26,14 @@ use App\Http\Controllers\DetailPersyaratanController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\KontenSubMenuController;
+use App\Http\Controllers\KontenMenuController;
+use App\Http\Controllers\DasboardAdminController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
+
+// Konten Submenu
+Route::get('/menu-{menu_id}-konten', [KontenMenuController::class, 'showByMenu'])->name('konten.showByMenu');
 
 // Konten Submenu
 Route::get('/submenu-{submenu_id}-konten', [KontenSubMenuController::class, 'showBySubmenu'])->name('konten.showBySubmenu');
@@ -101,6 +106,14 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/submenu-{id}', [SubmenuController::class, 'edit'])->name('submenu.edit');
     Route::put('/submenu-{id}', [SubmenuController::class, 'update'])->name('submenu.update');
     Route::delete('/submenu-{id}', [SubmenuController::class, 'destroy'])->name('submenu.destroy');
+
+    //Konten Menu
+    Route::get('/konten-menu', [KontenMenuController::class, 'index'])->name('konten-menu.index');
+    Route::get('/konten-menu-create', [KontenMenuController::class, 'create'])->name('konten-menu.create');
+    Route::post('/konten-menu', [KontenMenuController::class, 'store'])->name('konten-menu.store');
+    Route::get('/konten-menu-{id}', [KontenMenuController::class, 'edit'])->name('konten-menu.edit');
+    Route::put('/konten-menu-{id}', [KontenMenuController::class, 'update'])->name('konten-menu.update');
+    Route::delete('/konten-menu-{id}', [KontenMenuController::class, 'destroy'])->name('konten-menu.destroy');
 
     //Konten Sub Menu
     Route::get('/konten', [KontenSubMenuController::class, 'index'])->name('konten.index');
@@ -257,7 +270,7 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::delete('detailpersyaratan-{id}', [DetailPersyaratanController::class, 'destroy'])->name('detailpersyaratan.destroy');
 
     // Landing Admin
-    Route::view('/admin', 'dashboard-admin')->name('admin.index');
+    Route::get('/admin', [DasboardAdminController::class, 'index'])->name('admin.index');
 });
 
 

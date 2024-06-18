@@ -13,7 +13,7 @@
                                 <p class="font-nunito text-secondary_teks">{{ $detaildownload->created_at }}</p>
                             </div>
                             <div class="flex flex-col gap-4 max-w-screen-md">
-                                <img src="{{ asset('storage/' . $detaildownload->gambar) }}" alt="foto kegiatan karyawan"
+                                <img src="{{ asset('storage/' . $detaildownload->gambar) }}" loading="lazy" alt="foto kegiatan karyawan"
                                     class="rounded-md max-w-screen-md">
                                 <p class="font-nunito text-base text-primary_teks ">{{ $detaildownload->deskripsi_detail_download}}</p>
                                 <button

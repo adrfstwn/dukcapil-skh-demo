@@ -42,7 +42,7 @@
                                 {{$mitra->nama}}
                             </th>
                             <td class="px-6 py-4">
-                                <img src="{{$mitra->logo_mitra}}" alt="" class="w-40">
+                                <img src="{{$mitra->logo_mitra}}" alt="" loading="lazy" class="w-40">
 
                             </td>
                             <td class="flex items-center px-6 py-4">

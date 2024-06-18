@@ -48,7 +48,7 @@
                                 {{ $detailpersyaratan->deskripsi_detail_persyaratan }}
                             </td>
                             <td class="px-6 py-4">
-                                <img src="{{ asset('storage/' . $detailpersyaratan->gambar) }}" alt="Detail Persyaratan Image" class="w-70">
+                                <img src="{{ asset('storage/' . $detailpersyaratan->gambar) }}" loading="lazy" alt="Detail Persyaratan Image" class="w-70">
                             </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="{{ route('detailpersyaratan.edit', ['id' => $detailpersyaratan->id]) }}"

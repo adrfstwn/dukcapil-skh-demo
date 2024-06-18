@@ -30,17 +30,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="my-2">
-                        <label for="parent_id" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Parent
-                            Submenu</label>
-                        <select name="parent_id" id="parent_id"
-                            class="parent-selector bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
-                            <option value="">None</option>
-                            @foreach ($submenus as $sub)
-                                <option value="{{ $sub->id }}">{{ $sub->nama_submenu }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>

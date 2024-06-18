@@ -52,7 +52,7 @@
                                 {{$layanan->deskripsi_layanan}}
                             </th>
                             <td class="px-6 py-4">
-                                <img src="{{$layanan->gambar}}" alt="" class="w-40">
+                                <img src="{{$layanan->gambar}}" alt="" loading="lazy" class="w-40">
                             </td>
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">

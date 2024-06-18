@@ -18,15 +18,6 @@ class Submenu extends Model
         return $this->belongsTo(Menu::class);
     }
 
-    public function parent()
-    {
-        return $this->belongsTo(Submenu::class, 'parent_id');
-    }
-
-    public function children()
-    {
-        return $this->hasMany(Submenu::class, 'parent_id');
-    }
     public function kontenSubMenus()
     {
         return $this->hasMany(KontenSubMenu::class);

@@ -11,7 +11,7 @@ class MenuController extends Controller
     public function index()
     {
         // Mengambil semua menu beserta submenus dan children submenus-nya
-        $menus = Menu::with('submenus.children')->get();
+        $menus = Menu::all();
         $submenus = Submenu::all();
         return view('admin.menu.index', compact('menus','submenus'));
     }

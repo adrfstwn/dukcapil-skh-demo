@@ -1,21 +1,21 @@
 @extends('layouts.app')
+
 @section('content')
-    {{-- start konten-submenu section --}}
-    <section id="konten-submenu" class="my-10 md:my-20 -z-10">
+    <section id="konten-menu" class="my-10 md:my-20">
         <div class="container">
             <div class="flex flex-col md:flex-row justify-between md:gap-6">
                 <div class="flex flex-col gap-12">
                     <div class="flex flex-col gap-6 md:gap-12">
                         <h1 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary">
-                            {{ $submenu->nama_submenu }}
+                            {{ $menu->nama_menu }}
                         </h1>
-                        @if ($kontenSubMenu->isEmpty())
-                            <p class="font-semibold font-monserrat text-xl text-center text-secondary_teks">Detail halalaman
+                        @if ($kontenMenu->isEmpty())
+                            <p class="font-semibold font-monserrat text-xl text-center text-secondary_teks">Detail halaman
                                 ini belum tersedia</p>
                         @else
-                            @foreach ($kontenSubMenu as $konten)
+                            @foreach ($kontenMenu as $konten)
                             @if ($konten->status === 'PUBLISH')
-                                <div class="flex flex-col gap-6 ">
+                                <div class="flex flex-col gap-6">
                                     <div class="flex flex-col gap-2">
                                         <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">
                                             {{ $konten->judul }}</h2>
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
-                                            <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" loading="lazy"
+                                            <img src="{{ $konten->gambar }}" loading="lazy" alt="{{ $konten->judul }}"
                                                 class="rounded-md w-full max-h-[450px] object-cover object-center">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}
@@ -150,7 +150,7 @@
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             @foreach ($beritaTerbaru as $berita)
                                 <div class="flex flex-col gap-y-3 p-4 border rounded-md">
-                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}"
+                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" loading="lazy"
                                         alt="{{ $berita->judul }}"
                                         class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                     <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
@@ -174,51 +174,21 @@
                     <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0"><span
                             class="font-bold text-primary ">Persyaratan</span> Terbaru</h2>
                     <div class="flex flex-col py-3 gap-4">
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
+                        {{-- @foreach ($persyaratanTerbaru as $persyaratan)
+                            <div class="flex flex-col gap-2">
+                                <a href="{{ $persyaratan->link }}"
+                                    class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">
+                                    {{ $persyaratan->nama }}
+                                </a>
+                                <p class="font-nunito text-sm md:text-base text-secondary_teks ">
+                                    {{ $persyaratan->tanggal }}
+                                </p>
+                                <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
+                            </div>
+                        @endforeach --}}
                     </div>
                 </aside>
             </div>
-        </div>
-        </div>
         </div>
     </section>
 @endsection

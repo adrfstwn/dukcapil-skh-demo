@@ -17,7 +17,7 @@
                                 <div class="flex flex-col md:flex-row items-center gap-2">
                                     @if ($berita->gambar_berita)
                                         <img src="{{ asset('storage/' . $berita->gambar_berita) }}"
-                                            alt="{{ $berita->judul }}" class="max-w-64 md:w-full h-auto rounded-sm mr-4">
+                                            alt="{{ $berita->judul }}" loading="lazy" class="max-w-64 md:w-full h-auto rounded-sm mr-4">
                                         <!-- Adjusted width to w-2/5 and added margin-right -->
                                         <div class="flex flex-col gap-3"> <!-- Wrapped button in a div -->
                                             <div class="flex flex-col gap-1">
