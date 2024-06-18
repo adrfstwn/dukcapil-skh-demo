@@ -14,6 +14,7 @@
                                 ini belum tersedia</p>
                         @else
                             @foreach ($kontenSubMenu as $konten)
+                            @if ($konten->status === 'PUBLISH')
                                 <div class="flex flex-col gap-6 ">
                                     <div class="flex flex-col gap-2">
                                         <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">
@@ -138,6 +139,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             @endforeach
                         @endif
                     </div>
