@@ -20,13 +20,13 @@
               </div>
               <nav :class="{ 'flex': open, 'hidden': !open }"
                   class="flex-col   pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row z-20">
-                  <a class="px-2 py-2  text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
+                  <a class="px-2 py-2 uppercase text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
                       href="/">BERANDA</a>
                   <!-- Profile Menu -->
                   <div @click.away="open = false" class="relative z-20" x-data="{ open: false }">
                       <button @mouseenter="open = true" @mouseleave="open = false"
-                          class="flex flex-row items-center w-full px-2 py-2 mt-2 text-sm font-bold text-left bg-transparent rounded-lg style-menu-navbar md:w-auto md:inline md:mt-0 md:ml-3 focus:outline-none focus:shadow-outline z-20">
-                          <span>PROFIL</span>
+                          class="flex flex-row uppercase  items-center w-full px-2 py-2 mt-2 text-sm font-bold text-left bg-transparent rounded-lg style-menu-navbar md:w-auto md:inline md:mt-0 md:ml-3 focus:outline-none focus:shadow-outline z-20">
+                          <span class="uppercase ">PROFIL</span>
                           <svg fill="currentColor" viewBox="0 0 20 20"
                               :class="{ 'rotate-180': open, 'rotate-0': !open }"
                               class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1">
@@ -44,13 +44,13 @@
                           x-transition:leave-end="transform opacity-0 scale-95"
                           class="absolute z-20 right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
                           <div class="px-2 py-2 bg-background_light rounded-md shadow">
-                              <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                              <a class="block uppercase  px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                   href="profile">PROFIL</a>
-                              <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                              <a class="block uppercase  px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                   href="tupoksi">TUPOKSI, VISI & MISI</a>
-                              <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                              <a class="block uppercase  px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                   href="struktur-organisasi">STRUKTUR ORGANISASI</a>
-                              <a class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                              <a class="block uppercase  px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                                   href="kontak">KONTAK</a>
                           </div>
                       </div>
@@ -59,13 +59,13 @@
                       @if ($menu->kontenMenus && $menu->kontenMenus->isNotEmpty())
                           <!-- Menu with content directly links to content -->
                           <a href="{{ route('konten.showByMenu', ['menu_id' => $menu->id]) }}"
-                              class="px-2 py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline ">
+                              class="px-2 uppercase  py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline ">
                               {{ $menu->nama_menu }}
                           </a>
                       @elseif ($menu->url)
                           <!-- Menu with URL redirects to external link -->
                           <a href="{{ $menu->url }}"
-                              class="px-2 py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline">
+                              class="px-2 uppercase  py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline">
                               {{ $menu->nama_menu }}
                           </a>
                       @elseif (isset($allSubmenus[$menu->id]) && count($allSubmenus[$menu->id]) > 0)
@@ -75,7 +75,7 @@
                                   @mouseleave="open{{ $menu->id }} = false" class="relative">
                                   <button
                                       class="flex flex-row items-center w-full px-2 py-2 mt-2 text-sm font-bold text-left bg-transparent rounded-lg style-menu-navbar md:w-auto md:inline md:mt-0 md:ml-3 focus:outline-none focus:shadow-outline">
-                                      <span>{{ $menu->nama_menu }}</span>
+                                      <span class="uppercase ">{{ $menu->nama_menu }}</span>
                                       <svg fill="currentColor" viewBox="0 0 20 20"
                                           :class="{
                                               'rotate-180': open{{ $menu->id }},
@@ -101,18 +101,18 @@
                                               <div class="relative">
                                                   @if ($submenu->kontenSubMenus && $submenu->kontenSubMenus->isNotEmpty())
                                                       <a href="{{ route('konten.showBySubmenu', ['submenu_id' => $submenu->id]) }}"
-                                                          class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                                                          class="block uppercase  px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                                                           {{ $submenu->nama_submenu }}
                                                       </a>
                                                   @elseif ($submenu->url)
                                                       <a href="{{ $submenu->url }}"
-                                                          class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                                                          class="block uppercase  px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                                                           {{ $submenu->nama_submenu }}
                                                       </a>
                                                   @else
                                                       <!-- Empty submenu item -->
                                                       <span
-                                                          class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                                                          class="block uppercase px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                                                           {{ $submenu->nama_submenu }}
                                                       </span>
                                                   @endif
@@ -125,14 +125,14 @@
                       @else
                           <!-- Menu with neither content nor submenus -->
                           <a href="#"
-                              class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                              class="block px-4 py-2 mt-2 uppercase text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                               {{ $menu->nama_menu }}
                           </a>
                       @endif
                   @endforeach
-                  <a class="px-2 py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
+                  <a class="px-2 uppercase py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
                       href="persyaratan">PERSYARATAN</a>
-                  <a class="px-2 py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
+                  <a class="px-2 uppercase  py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
                       href="{{ route('download.tampil') }}">DOWNLOAD</a>
               </nav>
           </div>

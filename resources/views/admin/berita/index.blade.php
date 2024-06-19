@@ -90,11 +90,11 @@
                                 <div class="flex flex-col gap-6">
                                     <p class="text-base font-medium font-nunito text-primary_teks">
                                         Kategori : <span
-                                            class="text-base bg-primary text-white rounded-md p-2">{{ $berita->kategori->nama_kategori }}</span>
+                                            class="text-sm text-primary font-bold">{{ $berita->kategori->nama_kategori }}</span>
                                     </p>
                                     <p class="text-base font-medium font-nunito text-primary_teks">
                                         Status : <span
-                                            class="text-base bg-primary text-white rounded-md p-2">{{ $berita->status }}</span>
+                                            class="text-sm text-primary font-bold">{{ $berita->status }}</span>
                                     </p>
                                     <p class="text-base font-medium font-nunito text-primary_teks">
                                         Waktu : <span class="text-base font-medium">{{ $berita->waktu }}</span>
