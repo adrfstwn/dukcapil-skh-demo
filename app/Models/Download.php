@@ -12,13 +12,13 @@ class Download extends Model
     protected $fillable = [
         'judul',
         'deskripsi_download',
-        'file',
         'kategori_id',
+        'file',
     ];
+
 
     public function kategori()
     {
         return $this->belongsTo(KategoriDownload::class, 'kategori_id');
     }
-
 }

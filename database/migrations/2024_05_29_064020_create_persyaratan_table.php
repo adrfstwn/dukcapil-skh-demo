@@ -13,8 +13,6 @@ return new class extends Migration
             $table->string('judul');
             $table->text('deskripsi_persyaratan');
             $table->string('file')->nullable();
-            $table->foreignId('kategori_id')->constrained()->onDelete('restrict'); // Batasi foreign key
-
             $table->timestamps();
         });
     }

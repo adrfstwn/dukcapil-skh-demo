@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategori_persyaratan', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_kategori');
-            $table->timestamps();
+        Schema::table('persyaratan', function (Blueprint $table) {
+            $table->unsignedBigInteger('kategori_id');
+            $table->foreign('kategori_id')->references('id')->on('kategori_persyaratan');
         });
     }
 
@@ -23,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kategori_persyaratan');
+        Schema::table('_persyaratan', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -12,13 +12,13 @@ class Persyaratan extends Model
 
     protected $fillable = [
         'judul',
-        'kategori_id',
         'deskripsi_persyaratan',
+        'kategori_id',
         'file'
     ];
-
     public function kategori()
     {
         return $this->belongsTo(KategoriPersyaratan::class, 'kategori_id');
     }
+
 }

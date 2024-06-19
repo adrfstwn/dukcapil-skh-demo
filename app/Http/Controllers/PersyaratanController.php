@@ -152,4 +152,3 @@ class PersyaratanController extends Controller
         return view('detail-persyaratan', compact('persyaratans'));
     }
 }
-

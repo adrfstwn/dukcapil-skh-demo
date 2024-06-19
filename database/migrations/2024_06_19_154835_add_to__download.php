@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('download', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->longText('deskripsi_download');
-            $table->string('file');
-            $table->timestamps();
+        Schema::table('download', function (Blueprint $table) {
+            $table->unsignedBigInteger('kategori_id');
+            $table->foreign('kategori_id')->references('id')->on('kategori_download');
         });
     }
 
@@ -25,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('download');
+        Schema::table('_download', function (Blueprint $table) {
+            //
+        });
     }
 };
