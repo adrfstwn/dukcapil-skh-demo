@@ -47,10 +47,12 @@
                         <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                     </div>
                     <div class="flex flex-col gap-4">
+                        <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0 border-b-2 pb-4">
+                            <span class="font-bold text-primary ">Berita</span> Terbaru
+                        </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="flex flex-col gap-y-3 p-4 border rounded-md">
-                                <img src="" loading="lazy"
-                                    alt=""
+                                <img src="" loading="lazy" alt=""
                                     class="w-full max-h-[450px] object-cover object-center rounded-lg">
                                 <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
                                     <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
@@ -60,7 +62,7 @@
                                 <a href=""
                                     class="text-base font-bold font-nunito text-primary_teks line-clamp-2"></a>
                                 <p class="text-sm text-secondary_teks line-clamp-3">
-                                   </p>
+                                </p>
                                 <a href=""
                                     class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
                                     Selengkapnya</a>
