@@ -9,9 +9,16 @@ class Persyaratan extends Model
 {
     use HasFactory;
     protected $table = 'persyaratan';
+
     protected $fillable = [
         'judul',
+        'kategori_id',
         'deskripsi_persyaratan',
-        'file',
+        'file'
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriPersyaratan::class, 'kategori_id');
+    }
 }

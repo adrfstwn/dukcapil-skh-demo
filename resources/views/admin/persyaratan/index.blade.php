@@ -1,4 +1,5 @@
 @extends('master-admin')
+
 @section('content')
     <section id="form-persyaratan">
         <div class="container">
@@ -27,6 +28,9 @@
                                 Deskripsi Document
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Kategori
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 File Document
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -36,34 +40,39 @@
                     </thead>
                     <tbody>
                         @foreach($persyaratans as $index => $persyaratan)
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-                            <td class="w-4 p-4">
-                                {{ $index + 1 }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $persyaratan->judul }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $persyaratan->deskripsi_persyaratan }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <button onclick="openPreview('{{ asset('storage/' . $persyaratan->file) }}')"
-                                    class="text-blue-600 hover:underline">Preview</button>
-                            </td>
-                            <td class="flex items-center px-6 py-4">
-                                <a href="{{ route('persyaratan.edit', $persyaratan->id) }}"
-                                    class="font-medium text-blue-600 hover:underline">Edit</a>
-                                <form action="{{ route('persyaratan.destroy', $persyaratan->id) }}"
-                                    method="POST" class="inline-block">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class="font-medium text-red-600 hover:underline ms-3">Remove</button>
-                                </form>
-                            </td>
-                        </tr>
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="w-4 p-4">
+                                    {{ $index + 1 }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $persyaratan->judul }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $persyaratan->deskripsi_persyaratan }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $persyaratan->kategori->nama_kategori }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if ($persyaratan->file)
+                                        <button onclick="openPreview('{{ asset('storage/' . $persyaratan->file) }}')"
+                                            class="text-blue-600 hover:underline">Preview</button>
+                                    @else
+                                        <span>No File</span>
+                                    @endif
+                                </td>
+                                <td class="flex items-center px-6 py-4">
+                                    <a href="{{ route('persyaratan.edit', $persyaratan->id) }}"
+                                        class="font-medium text-blue-600 hover:underline">Edit</a>
+                                    <form action="{{ route('persyaratan.destroy', $persyaratan->id) }}"
+                                        method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="font-medium text-red-600 hover:underline ms-3">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

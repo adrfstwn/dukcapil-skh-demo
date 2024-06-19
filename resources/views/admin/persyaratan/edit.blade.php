@@ -1,9 +1,9 @@
 @extends('master-admin')
+
 @section('content')
     <section id="persyaratan-edit">
         <div class="container">
-            <div
-                class="flex flex-col p-6 border-[1.5px] border-white shadow-md backdrop-blur-md bg-slate-50 rounded-2xl shadow-gray-200">
+            <div class="flex flex-col p-6 border-[1.5px] border-white shadow-md backdrop-blur-md bg-slate-50 rounded-2xl shadow-gray-200">
                 <div class="flex flex-col">
                     <h2 class="text-2xl font-bold md:text-3xl font-monserrats text-primary_teks">Edit Persyaratan</h2>
                     <p class="text-base text-secondary_teks">Edit persyaratan section</p>
@@ -12,15 +12,24 @@
                     @csrf
                     @method('PUT')
                     <div class="my-2">
-                        <label for="judul" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Title
-                            Judul Document</label>
+                        <label for="kategori_id" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Kategori Persyaratan</label>
+                        <select name="kategori_id" id="kategori_id">
+    @foreach ($kategoriPersyaratan as $kategori)
+        @if ($kategori->nama_kategori == 'Layanan Pendaftaran Penduduk' || $kategori->nama_kategori == 'Layanan Pendaftaran Sipil')
+            <option value="{{ $kategori->id }}" {{ $persyaratan->kategori_id == $kategori->id ? 'selected' : '' }}>
+                {{ $kategori->nama_kategori }}
+            </option>
+        @endif
+    @endforeach
+</select>
+                    </div>
+                    <div class="my-2">
+                        <label for="judul" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Title Judul Document</label>
                         <input type="text" id="judul" name="judul" value="{{ $persyaratan->judul }}"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                     </div>
                     <div class="my-2">
-                        <label for="deskripsi_persyaratan"
-                            class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Description Persyaratan
-                            Deskripsi Document</label>
+                        <label for="deskripsi_persyaratan" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Description Persyaratan Deskripsi Document</label>
                         <textarea id="deskripsi_persyaratan" name="deskripsi_persyaratan" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                             placeholder="Write your thoughts here...">{{ $persyaratan->deskripsi_persyaratan }}</textarea>
@@ -42,8 +51,7 @@
                         </div>
                     @endif
                     <div class="flex justify-end my-6">
-                        <button type="submit"
-                            class="w-24 px-4 py-2 text-base font-bold text-white bg-red-600 rounded-lg">Submit</button>
+                        <button type="submit" class="w-24 px-4 py-2 text-base font-bold text-white bg-red-600 rounded-lg">Submit</button>
                     </div>
                 </form>
             </div>

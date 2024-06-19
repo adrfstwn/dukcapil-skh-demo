@@ -6,25 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('persyaratan', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->longText('deskripsi_persyaratan');
-            $table->string('file');
+            $table->text('deskripsi_persyaratan');
+            $table->string('file')->nullable();
+            $table->foreignId('kategori_id')->constrained()->onDelete('restrict'); // Batasi foreign key
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('persyaratan');
     }
 };
+

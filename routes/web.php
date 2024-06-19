@@ -21,8 +21,6 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\TupoksiController;
 use App\Http\Controllers\StrukturOrgController;
 use App\Http\Controllers\PersyaratanController;
-use App\Http\Controllers\DetailDownloadController;
-use App\Http\Controllers\DetailPersyaratanController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\KontenSubMenuController;
@@ -74,19 +72,14 @@ Route::get('/struktur-organisasi', [StrukturOrgController::class, 'show'])->name
 
 // Persyaratan
 Route::get('/persyaratan', [PersyaratanController::class, 'show'])->name('persyaratan.show');
+Route::get('/persyaratan/{id}', [PersyaratanController::class, 'show'])->name('persyaratan.detail');
 
 // Profil
 Route::get('/profile', [ProfilController::class, 'show'])->name('profil.show');
 
-// Detail-Download
-Route::get('/detail-download', [DetailDownloadController::class, 'show'])->name('detaildownload.show');
-
-// Detail-Persyaratan
-Route::get('/detail-persyaratan', [DetailPersyaratanController::class, 'show'])->name('detailpersyaratan.show');
-
 // Berita
 Route::get('/beritane', [BeritaController::class, 'show'])->name('berita.show');
-Route::get('/beritane-{id}', [BeritaController::class, 'showDetail'])->name('berita.detail');
+Route::get('/beritane-{id}', [BeritaController::class, 'show'])->name('berita.detail');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
@@ -239,11 +232,13 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 
     // Persyaratan
     Route::get('/persyaratans', [PersyaratanController::class, 'index'])->name('persyaratan.index');
-    Route::get('/persyaratan-create', [PersyaratanController::class, 'create'])->name('persyaratan.create');
+    Route::get('/persyaratans-create', [PersyaratanController::class, 'create'])->name('persyaratan.create');
     Route::post('/persyaratans', [PersyaratanController::class, 'store'])->name('persyaratan.store');
-    Route::get('/persyaratan-{id}', [PersyaratanController::class, 'edit'])->name('persyaratan.edit');
-    Route::put('/persyaratan-{id}', [PersyaratanController::class, 'update'])->name('persyaratan.update');
-    Route::delete('persyaratan-{id}', [PersyaratanController::class, 'destroy'])->name('persyaratan.destroy');
+    Route::get('/persyaratans-{id}', [PersyaratanController::class, 'edit'])->name('persyaratan.edit');
+    Route::put('/persyaratans-{id}', [PersyaratanController::class, 'update'])->name('persyaratan.update');
+    Route::delete('persyaratans-{id}', [PersyaratanController::class, 'destroy'])->name('persyaratan.destroy');
+
+
 
     // Profil
     Route::get('/profilss', [ProfilController::class, 'index'])->name('profil.index');
@@ -252,22 +247,6 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/profil-{id}', [ProfilController::class, 'edit'])->name('profil.edit');
     Route::put('/profil-{id}', [ProfilController::class, 'update'])->name('profil.update');
     Route::delete('profil-{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
-
-    // Detail Download
-    Route::get('/detaildownloader', [DetailDownloadController::class, 'index'])->name('detaildownload.index');
-    Route::get('/detaildownload-create', [DetailDownloadController::class, 'create'])->name('detaildownload.create');
-    Route::post('/detaildownloader', [DetailDownloadController::class, 'store'])->name('detaildownload.store');
-    Route::get('/detaildownload-{id}', [DetailDownloadController::class, 'edit'])->name('detaildownload.edit');
-    Route::put('/detaildownload-{id}', [DetailDownloadController::class, 'update'])->name('detaildownload.update');
-    Route::delete('detaildownload-{id}', [DetailDownloadController::class, 'destroy'])->name('detaildownload.destroy');
-
-    // Detail Persyaratan
-    Route::get('/detailpersyaratanss', [DetailPersyaratanController::class, 'index'])->name('detailpersyaratan.index');
-    Route::get('/detailpersyaratan-create', [DetailPersyaratanController::class, 'create'])->name('detailpersyaratan.create');
-    Route::post('/detailpersyaratanss', [DetailPersyaratanController::class, 'store'])->name('detailpersyaratan.store');
-    Route::get('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'edit'])->name('detailpersyaratan.edit');
-    Route::put('/detailpersyaratan-{id}', [DetailPersyaratanController::class, 'update'])->name('detailpersyaratan.update');
-    Route::delete('detailpersyaratan-{id}', [DetailPersyaratanController::class, 'destroy'])->name('detailpersyaratan.destroy');
 
     // Landing Admin
     Route::get('/admin', [DasboardAdminController::class, 'index'])->name('admin.index');
