@@ -16,8 +16,6 @@
                     <tr>
                         <th scope="col" class="p-4">No</th>
                         <th scope="col" class="p-4">Nama Menu</th>
-                        <th scope="col" class="p-4">Status</th>
-                        <th scope="col" class="p-4">Tanggal Pembuatan</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y text-neutral-950 font-medium divide-slate-300 dark:divide-slate-700">
@@ -25,8 +23,6 @@
                         <tr class="even:bg-primary  even:text-slate-50 even:font-medium">
                             <td class="p-4">{{ $index + 1 }}</td>
                             <td class="p-4">{{ $menu->nama_menu }}</td>
-                            <td class="p-4">{{ $menu->status }}</td>
-                            <td class="p-4">{{ $menu->created_at->format('d-m-Y') }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -49,8 +45,6 @@
                         <th scope="col" class="p-4">No</th>
                         <th scope="col" class="p-4">Nama Submenu</th>
                         <th scope="col" class="p-4">Nama dari Menu</th>
-                        <th scope="col" class="p-4">Status</th>
-                        <th scope="col" class="p-4">Tanggal Pembuatan</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y text-neutral-950 font-medium divide-slate-300 dark:divide-slate-700">
@@ -59,8 +53,6 @@
                             <td class="p-4">{{ $index + 1 }}</td>
                             <td class="p-4">{{ $submenu->nama_submenu }}</td>
                             <td class="p-4">{{ $submenu->menu->nama_menu }}</td>
-                            <td class="p-4">{{ $submenu->status }}</td>
-                            <td class="p-4">{{ $submenu->created_at->format('d-m-Y') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

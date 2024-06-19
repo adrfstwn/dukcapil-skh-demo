@@ -17,8 +17,11 @@
                             @if ($konten->status === 'PUBLISH')
                                 <div class="flex flex-col gap-6 ">
                                     <div class="flex flex-col gap-2">
-                                        <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">
-                                            {{ $konten->judul }}</h2>
+                                        @if ($konten->judul !== $submenu->nama_submenu)
+                                            <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">
+                                                {{ $konten->judul }}
+                                            </h2>
+                                        @endif
                                         <p class="font-nunito text-secondary_teks">Dibuat pada {{ $konten->tanggal }}</p>
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
@@ -36,10 +39,10 @@
                                                 class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik
                                                 link file</a>
                                         @endif
-                                        <h3 class="font-monserrat font-bold text-xl text-primary_teks">URLs</h3>
                                         @if ($konten->urls->isEmpty())
-                                            <p class="font-nunito text-base text-primary_teks">No URLs available.</p>
+
                                         @else
+                                        <h3 class="font-monserrat font-bold text-xl text-primary_teks">Link Terkait</h3>
                                             <ul class="list-disc list-inside">
                                                 @foreach ($konten->urls as $url)
                                                     <li>

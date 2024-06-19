@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Submenu;
 use App\Models\Berita;
+use Illuminate\Support\Facades\Storage;
 
 class DasboardAdminController extends Controller
 {
@@ -18,6 +19,12 @@ class DasboardAdminController extends Controller
          $menus = Menu::all();
          $submenus = Submenu::all();
          $beritas = Berita::all();
+         foreach ($beritas as $berita) {
+            // Jika gambar berita tidak null, atur URL gambar
+            if ($berita->gambar_berita) {
+                $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
+            }
+        }
 
          // Kirim data ke view menggunakan compact
          return view('dashboard-admin', compact('menus', 'submenus', 'beritas'));
