@@ -34,7 +34,7 @@
                                 <h5 class="block font-nunito text-xl font-bold leading-snug tracking-normal text-red-900 antialiased line-clamp-2">
                                     {{ $konten->judul }}
                                 </h5>
-                                <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-2">
+                                <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-3">
                                     {{ Illuminate\Support\Str::limit($konten->deskripsi_konten, 50) }}
                                 </p>
                                 <div class="flex flex-col gap-6">
