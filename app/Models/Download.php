@@ -13,5 +13,12 @@ class Download extends Model
         'judul',
         'deskripsi_download',
         'file',
+        'kategori_id',
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(KategoriDownload::class, 'kategori_id');
+    }
+
 }

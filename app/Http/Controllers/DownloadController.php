@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Download;
+use App\Models\KategoriDownload;
 use Illuminate\Http\Request;
 
 class DownloadController extends Controller
@@ -15,15 +16,17 @@ class DownloadController extends Controller
 
     public function create()
     {
-        return view('admin.download-content.create');
+        $kategoriDownloads = KategoriDownload::all();
+        return view('admin.download-content.create', compact('kategoriDownloads'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
-            'deskripsi_download' => 'required',
-            'file' => 'required|mimes:pdf,doc,docx|max:2048', // contoh validasi untuk file dengan ekstensi pdf, doc, docx, dan maksimum ukuran 2MB
+            'judul' => 'required|string|max:255',
+            'deskripsi_download' => 'required|string',
+            'file' => 'required|file|mimes:pdf|max:2048',
+            'kategori_id' => 'required|exists:kategori_download,id',
         ]);
 
         $file = $request->file('file');
@@ -34,9 +37,17 @@ class DownloadController extends Controller
             'judul' => $request->judul,
             'deskripsi_download' => $request->deskripsi_download,
             'file' => $filePath,
+            'kategori_id' => $request->kategori_id,
         ]);
 
         return redirect()->route('download.index')->with('success', 'Download created successfully.');
+    }
+
+    public function edit($id)
+    {
+        $download = Download::findOrFail($id);
+        $kategoriDownloads = KategoriDownload::all();
+        return view('admin.download-content.edit', compact('download', 'kategoriDownloads'));
     }
 
     public function show()
@@ -45,34 +56,28 @@ class DownloadController extends Controller
         return view('download', compact('downloads'));
     }
 
-    public function edit($id)
-    {
-        $download= Download::findOrFail($id);
-        return view('admin.download-content.edit', compact('download'));
-    }
-
     public function update(Request $request, $id)
     {
         $request->validate([
-            'judul' => 'required',
-            'deskripsi_download' => 'required',
+            'judul' => 'required|string|max:255',
+            'deskripsi_download' => 'required|string',
+            'kategori_id' => 'required|exists:kategori_download,id',
+            'file' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
         $download = Download::findOrFail($id);
 
-        if ($request->hasFile('file')) {
-            $request->validate([
-                'file' => 'required|mimes:pdf,doc,docx|max:2048',
-            ]);
+        $download->judul = $request->judul;
+        $download->deskripsi_download = $request->deskripsi_download;
+        $download->kategori_id = $request->kategori_id;
 
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
             $download->file = $filePath;
         }
 
-        $download->judul = $request->judul;
-        $download->deskripsi_download = $request->deskripsi_download;
         $download->save();
 
         return redirect()->route('download.index')->with('success', 'Download updated successfully.');

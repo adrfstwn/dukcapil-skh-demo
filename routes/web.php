@@ -54,7 +54,8 @@ Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name(
 Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
 
 // Download
-Route::get('/download', [DownloadController::class, 'show'])->name('download.tampil');
+Route::get('/download', [DownloadController::class, 'show'])->name('download.show');
+Route::get('/download/{id}', [DownloadController::class, 'show'])->name('download.detail');
 
 //Profil
 Route::get('/profil', [ProfilController::class, 'show'])->name('profil.show');

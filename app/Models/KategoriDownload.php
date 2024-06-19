@@ -5,13 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DetailDownload extends Model
+class KategoriDownload extends Model
 {
     use HasFactory;
-    protected $table = 'detaildownload';
+    protected $table = 'kategori_download';
     protected $fillable = [
-        'nama',
-        'gambar',
-        'deskripsi_detail_download',
+        'nama_kategori'
     ];
 }

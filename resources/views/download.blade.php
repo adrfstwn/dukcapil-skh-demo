@@ -17,7 +17,9 @@
                                     class="font-bold font-monserrat text-xl md:text-2xl text-primary_teks ">
                                     {{ $download->judul }}
                                 </a>
-                                <p class="text-sm font-medium text-center text-white bg-primary px-2 py-1 max-w-32 rounded-full">Kategori</p>
+                                <span class="text-sm font-medium text-center text-white bg-primary px-2 py-1 max-w-max rounded-full">
+                        {{ $download->kategori->nama_kategori }}
+                    </span>
                                 <p class="text-sm text-secondary_teks font-nunito">{{ $download->created_at }}</p>
                                 <p class="font-nunito text-base text-secondary_teks line-clamp-2">
                                     {{ $download->deskripsi_download }}
@@ -25,7 +27,7 @@
                                 <div class="flex flex-row items-center gap-2">
                                     <a href="detail-download"
                                         class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                                        <iframe src="{{ asset('storage/' . $download->file) }}" frameborder="2" height="600"></iframe>
+                                        Lihat Selengkapnya
                                     </a>
                                 </div>
                                 <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">

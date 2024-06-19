@@ -133,7 +133,7 @@
                   <a class="px-2 uppercase py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
                       href="persyaratan">PERSYARATAN</a>
                   <a class="px-2 uppercase  py-2 mt-2 text-sm font-bold font-nunito  rounded-lg  md:mt-0 md:ml-3 style-menu-navbar focus:outline-none focus:shadow-outline"
-                      href="{{ route('download.tampil') }}">DOWNLOAD</a>
+                      href="{{ route('download.show') }}">DOWNLOAD</a>
               </nav>
           </div>
       </div>

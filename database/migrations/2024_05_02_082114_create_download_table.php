@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('judul');
             $table->longText('deskripsi_download');
             $table->string('file');
+            $table->foreignId('kategori_id')->constrained()->onDelete('restrict'); // Batasi foreign key
             $table->timestamps();
         });
     }
