@@ -89,4 +89,10 @@ class DownloadController extends Controller
         $download->delete();
         return redirect()->route('download.index')->with('success', 'Download deleted successfully.');
     }
+
+    public function showDetail($id)
+    {
+        $downloads = Download::findOrFail($id);
+        return view('detail-download', compact('downloads'));
+    }
 }

@@ -1,43 +1,50 @@
 @extends('layouts.app')
+
 @section('content')
-    {{-- start section kontak --}}
-    <section id="Persyaratan" class="my-10 md:my-20 -z-10">
+    {{-- start section detail persyaratan --}}
+    <section id="detail-persyaratan" class="my-10 md:my-20">
         <div class="container">
-            <div class="flex flex-col md:flex-row justify-between">
-                <div class="flex flex-col gap-6 md:gap-12">
-                    <div class="flex flex-col gap-4">
-                        <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks ">
-                            <span class="font-bold text-primary">Persyaratan</span> Terbaru
-                        </h2>
+            <div class="flex flex-col md:flex-row justify-between md:gap-6">
+                <div class="flex flex-col gap-12">
+                    <div class="flex flex-col gap-6 md:gap-12">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <h2 class="font-bold font-nunito text-xl md:text-3xl text-primary_teks ">
+                                {{ $persyaratans->judul }}
+                            </h2>
+                            <p class="text-xs text-gray-500 uppercase font-semibold tracking-wide">
+                                Kategori: {{ $persyaratans->kategori->nama_kategori }}
+                            </p>
+                            <p class="text-sm text-secondary_teks font-nunito">{{ $persyaratans->waktu }}</p>
+                            <div class="flex flex-col items-center gap-6 max-w-screen-lg">
+                                @if ($persyaratans->file)
+                                    @php
+                                        $extension = pathinfo($persyaratans->file, PATHINFO_EXTENSION);
+                                    @endphp
+
+                                    @if (in_array($extension, ['jpg', 'jpeg', 'png']))
+                                        <img src="{{ asset('storage/' . $persyaratans->file) }}" loading="lazy" alt="{{ $persyaratans->judul }}"
+                                            class="w-full max-h-[450px] object-cover object-center rounded-lg">
+                                        <div class="mt-4">
+                                            <a href="{{ asset('storage/' . $persyaratans->file) }}" download class="text-sm text-primary underline">Download File</a>
+                                        </div>
+                                    @elseif ($extension == 'pdf')
+                                        <p class="text-base md:text-lg text-secondary_teks">
+                                            <a href="{{ asset('storage/' . $persyaratans->file) }}" target="_blank" class="text-primary underline">Download File</a>
+                                        </p>
+                                    @endif
+                                @endif
+                                <p class="text-base md:text-lg text-secondary_teks">
+                                    {{ $persyaratans->deskripsi_persyaratan }}
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                     </div>
-                    <div class="flex flex-col gap-4 max-w-screen-sm">
-                    @foreach ($persyaratans as $persyaratan)
-    <div class="flex flex-col gap-2">
-        <div class="flex flex-col gap-3">
-            <div class="flex flex-col gap-2">
-                <a href="{{ route('persyaratan.detail', $persyaratan->id) }}" class="font-bold font-nunito text-xl md:text-2xl text-primary_teks">
-                    {{ $persyaratan->judul }}
-                </a>
-                
-                <div class="flex flex-col gap-2">
-                    <span class="text-sm font-medium text-center text-white bg-primary px-2 py-1 max-w-max rounded-full">
-                        {{ $persyaratan->kategori->nama_kategori }}
-                    </span>
-                </div>
-            </div>
-            <p class="text-sm text-secondary_teks font-nunito">{{ $persyaratan->created_at }}</p>
-            <p class="font-nunito text-base text-secondary_teks line-clamp-2">
-                {{ $persyaratan->deskripsi_persyaratan }}
-            </p>
-        </div>
-        <div class="flex flex-row items-center gap-2">
-            <a href="{{ route('persyaratan.detail', $persyaratan->id) }}" class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
-                Lihat Selengkapnya
-            </a>
-        </div>
-        <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
-    </div>
-@endforeach
+                    <div class="flex flex-col gap-4">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        </div>
                     </div>
                 </div>
                 <aside class="md:block md:border-l-[2px] border-gray-200 md:pl-6">
@@ -87,9 +94,7 @@
                     </div>
                 </aside>
             </div>
-            <div class="flex flex-row justify-center gap-3 mt-6"> <!-- Centered pagination links -->
-            </div>
         </div>
     </section>
-    {{-- end news section --}}
+    {{-- end section detail persyaratan --}}
 @endsection

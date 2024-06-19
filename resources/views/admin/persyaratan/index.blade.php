@@ -22,16 +22,16 @@
                                 No
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Judul Document
+                                Judul Persyaratan
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Deskripsi Document
+                                Deskripsi Persyaratan
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Kategori
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                File Document
+                                File Document / Gambar
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action

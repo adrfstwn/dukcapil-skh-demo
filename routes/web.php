@@ -55,7 +55,7 @@ Route::get('/faq-show', [FAQController::class, 'show'])->name('faq.show');
 
 // Download
 Route::get('/download', [DownloadController::class, 'show'])->name('download.show');
-Route::get('/download/{id}', [DownloadController::class, 'show'])->name('download.detail');
+Route::get('/download-{id}', [DownloadController::class, 'showDetail'])->name('download.detail');
 
 //Profil
 Route::get('/profil', [ProfilController::class, 'show'])->name('profil.show');
@@ -73,7 +73,7 @@ Route::get('/struktur-organisasi', [StrukturOrgController::class, 'show'])->name
 
 // Persyaratan
 Route::get('/persyaratan', [PersyaratanController::class, 'show'])->name('persyaratan.show');
-Route::get('/persyaratan/{id}', [PersyaratanController::class, 'show'])->name('persyaratan.detail');
+Route::get('/persyaratan-{id}', [PersyaratanController::class, 'showDetail'])->name('persyaratan.detail');
 
 // Profil
 Route::get('/profile', [ProfilController::class, 'show'])->name('profil.show');
@@ -176,11 +176,11 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
 
     // Download
     Route::get('/downloaden', [DownloadController::class, 'index'])->name('download.index');
-    Route::get('/download-create', [DownloadController::class, 'create'])->name('download.create');
-    Route::post('/download', [DownloadController::class, 'store'])->name('download.store');
-    Route::get('/download-{id}', [DownloadController::class, 'edit'])->name('download.edit');
-    Route::put('/download-{id}', [DownloadController::class, 'update'])->name('download.update');
-    Route::delete('download-{id}', [DownloadController::class, 'destroy'])->name('download.destroy');
+    Route::get('/downloaden-create', [DownloadController::class, 'create'])->name('download.create');
+    Route::post('/downloaden', [DownloadController::class, 'store'])->name('download.store');
+    Route::get('/downloaden-{id}', [DownloadController::class, 'edit'])->name('download.edit');
+    Route::put('/downloaden-{id}', [DownloadController::class, 'update'])->name('download.update');
+    Route::delete('downloaden-{id}', [DownloadController::class, 'destroy'])->name('download.destroy');
 
     // jamop
     Route::get('/jamad', [JamController::class, 'index'])->name('jam.index');

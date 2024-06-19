@@ -17,33 +17,31 @@ class PersyaratanController extends Controller
 
     // Method untuk menampilkan detail persyaratan berdasarkan ID
     public function show()
-{
-    $persyaratans = Persyaratan::orderBy('created_at', 'desc')->paginate(5); // Ambil 5 persyaratan per halaman
-
-    return view('persyaratan', compact('persyaratans'));
-}
-
+    {
+        $persyaratans = Persyaratan::orderBy('created_at', 'desc')->paginate(5); // Ambil 5 persyaratan per halaman
+        return view('persyaratan', compact('persyaratans'));
+    }
 
     // Method lainnya...
 
     public function create()
-{
-    $kategoriPersyaratan = KategoriPersyaratan::all();
-    return view('admin.persyaratan.create', compact('kategoriPersyaratan'));
-}
+    {
+        $kategoriPersyaratan = KategoriPersyaratan::all();
+        return view('admin.persyaratan.create', compact('kategoriPersyaratan'));
+    }
 
     public function store(Request $request)
     {
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi_persyaratan' => 'required|string',
-            'file' => 'required|file|mimes:pdf|max:2048',
+            'file' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Hanya file gambar yang diterima
             'kategori_id' => 'required|in:1,2',
         ]);
 
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
 
         Persyaratan::create([
             'judul' => $request->judul,
@@ -68,7 +66,7 @@ class PersyaratanController extends Controller
             'kategori_id' => 'required',
             'judul' => 'required',
             'deskripsi_persyaratan' => 'required',
-            'file' => 'nullable|mimes:pdf|max:2048',
+            'file' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Hanya file gambar yang diterima
         ]);
 
         $persyaratan = Persyaratan::findOrFail($id);
@@ -80,8 +78,8 @@ class PersyaratanController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public', $filename);
-            $persyaratan->file = $filename;
+            $file->storeAs('public/uploads', $filename); // Simpan di direktori uploads
+            $persyaratan->file = 'uploads/' . $filename; // Update path file
         }
 
         $persyaratan->save();
@@ -147,4 +145,11 @@ class PersyaratanController extends Controller
         $kategoriPersyaratan->delete();
         return redirect()->route('kategori-persyaratan.index')->with('success', 'Kategori Persyaratan deleted successfully.');
     }
+
+    public function showDetail($id)
+    {
+        $persyaratans = Persyaratan::findOrFail($id);
+        return view('detail-persyaratan', compact('persyaratans'));
+    }
 }
+

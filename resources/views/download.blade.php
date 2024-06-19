@@ -13,7 +13,7 @@
                     <div class="flex flex-col gap-4">
                         @foreach ($downloads as $download)
                             <div class="flex flex-col gap-2">
-                                <a href="detail-download"
+                                <a href="{{ route('download.detail', $download->id) }}"
                                     class="font-bold font-monserrat text-xl md:text-2xl text-primary_teks ">
                                     {{ $download->judul }}
                                 </a>
@@ -25,7 +25,7 @@
                                     {{ $download->deskripsi_download }}
                                 </p>
                                 <div class="flex flex-row items-center gap-2">
-                                    <a href="detail-download"
+                                    <a href="{{ route('download.detail', $download->id) }}"
                                         class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
                                         Lihat Selengkapnya
                                     </a>
