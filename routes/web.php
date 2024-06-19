@@ -80,7 +80,7 @@ Route::get('/profile', [ProfilController::class, 'show'])->name('profil.show');
 
 // Berita
 Route::get('/beritane', [BeritaController::class, 'show'])->name('berita.show');
-Route::get('/beritane-{id}', [BeritaController::class, 'show'])->name('berita.detail');
+Route::get('/beritane-{id}', [BeritaController::class, 'showDetail'])->name('berita.detail');
 
 // Middleware
 Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
