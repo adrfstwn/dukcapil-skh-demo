@@ -34,15 +34,15 @@
                                 <h5 class="block font-nunito text-xl font-bold leading-snug tracking-normal text-red-900 antialiased line-clamp-2">
                                     {{ $konten->judul }}
                                 </h5>
-                                <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-2">
+                                <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-3">
                                     {{ Illuminate\Support\Str::limit($konten->deskripsi_konten, 50) }}
                                 </p>
                                 <div class="flex flex-col gap-6">
                                     <p class="text-base font-medium font-nunito text-primary_teks">
-                                        Submenu : <span class="text-base bg-primary text-white rounded-md p-2">{{ $konten->submenu->nama_submenu }}</span>
+                                        Submenu : <span class="text-sm text-primary font-bold">{{ $konten->submenu->nama_submenu }}</span>
                                     </p>
                                     <p class="text-base font-medium font-nunito text-primary_teks">
-                                        Status : <span class="text-base bg-primary text-white rounded-md p-2">{{ $konten->status }}</span>
+                                        Status : <span class="text-sm text-primary font-bold">{{ $konten->status }}</span>
                                     </p>
                                     @if ($konten->file)
                                         <p class="text-base font-medium font-nunito text-primary_teks">

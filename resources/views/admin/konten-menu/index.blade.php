@@ -39,10 +39,10 @@
                                 </p>
                                 <div class="flex flex-col gap-6">
                                     <p class="text-base font-medium font-nunito text-primary_teks">
-                                        Menu : <span class="text-base bg-primary text-white rounded-md p-2">{{ $kontenMenu->menu->nama_menu }}</span>
+                                        Menu : <span class="text-sm text-primary font-bold">{{ $kontenMenu->menu->nama_menu }}</span>
                                     </p>
                                     <p class="text-base font-medium font-nunito text-primary_teks">
-                                        Status : <span class="text-base bg-primary text-white rounded-md p-2">{{ $kontenMenu->status }}</span>
+                                        Status : <span class="text-sm text-primary font-bold">{{ $kontenMenu->status }}</span>
                                     </p>
                                     @if ($kontenMenu->file)
                                         <p class="text-base font-medium font-nunito text-primary_teks">

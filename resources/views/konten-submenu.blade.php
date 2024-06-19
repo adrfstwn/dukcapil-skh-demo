@@ -17,14 +17,17 @@
                             @if ($konten->status === 'PUBLISH')
                                 <div class="flex flex-col gap-6 ">
                                     <div class="flex flex-col gap-2">
-                                        <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">
-                                            {{ $konten->judul }}</h2>
+                                        @if ($konten->judul !== $submenu->nama_submenu)
+                                            <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks ">
+                                                {{ $konten->judul }}
+                                            </h2>
+                                        @endif
                                         <p class="font-nunito text-secondary_teks">Dibuat pada {{ $konten->tanggal }}</p>
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
                                             <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" loading="lazy"
-                                                class="rounded-md w-full max-h-[450px] object-cover object-center">
+                                                class="rounded-md w-full h-full object-cover object-center">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}
                                             </p>
@@ -36,10 +39,10 @@
                                                 class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik
                                                 link file</a>
                                         @endif
-                                        <h3 class="font-monserrat font-bold text-xl text-primary_teks">URLs</h3>
                                         @if ($konten->urls->isEmpty())
-                                            <p class="font-nunito text-base text-primary_teks">No URLs available.</p>
+
                                         @else
+                                        <h3 class="font-monserrat font-bold text-xl text-primary_teks">Link Terkait</h3>
                                             <ul class="list-disc list-inside">
                                                 @foreach ($konten->urls as $url)
                                                     <li>
@@ -53,7 +56,7 @@
                                         @endif
                                     </div>
                                     <p class="text-base text-secondary_teks"></p>
-                                    <div class="flex gap-3 items-center">
+                                    {{-- <div class="flex gap-3 items-center">
                                         <p class="font-nunito font-semibold text-primary_teks">BAGIKAN :</p>
                                         <div class="flex">
                                             <div class="flex  gap-3">
@@ -137,7 +140,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 @endif
                             @endforeach
@@ -161,7 +164,7 @@
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
                                     <p class="text-sm text-secondary_teks line-clamp-3">
-                                        {{ Str::limit($berita->deskripsi_berita, 100) }}</p>
+                                        {{ $berita->deskripsi_berita }}</p>
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
                                         Selengkapnya</a>
