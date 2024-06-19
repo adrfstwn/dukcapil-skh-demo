@@ -24,7 +24,7 @@
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)
                                             <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" loading="lazy"
-                                                class="rounded-md w-full max-h-[450px] object-cover object-center">
+                                                class="rounded-md w-full h-full object-cover object-center">
                                             <p class="font-nunito text-base text-primary_teks">
                                                 {{ $konten->judul }}
                                             </p>
@@ -53,7 +53,7 @@
                                         @endif
                                     </div>
                                     <p class="text-base text-secondary_teks"></p>
-                                    <div class="flex gap-3 items-center">
+                                    {{-- <div class="flex gap-3 items-center">
                                         <p class="font-nunito font-semibold text-primary_teks">BAGIKAN :</p>
                                         <div class="flex">
                                             <div class="flex  gap-3">
@@ -137,7 +137,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 @endif
                             @endforeach
