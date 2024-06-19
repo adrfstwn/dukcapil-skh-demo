@@ -28,9 +28,7 @@
                                         @if ($konten->gambar)
                                             <img src="{{ $konten->gambar }}" alt="{{ $konten->judul }}" loading="lazy"
                                                 class="rounded-md w-full h-full object-cover object-center">
-                                            <p class="font-nunito text-base text-primary_teks">
-                                                {{ $konten->judul }}
-                                            </p>
+
                                         @endif
                                         <p class="font-nunito text-base text-primary_teks">
                                             {{ $konten->deskripsi_konten }}</p>
