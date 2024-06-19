@@ -13,8 +13,5 @@ class KategoriDownload extends Model
         'nama_kategori'
     ];
 
-    public function kategori()
-    {
-        return $this->belongsTo(KategoriDownload::class, 'kategori_id');
-    }
+
 }
