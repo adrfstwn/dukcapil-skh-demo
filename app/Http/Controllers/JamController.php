@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Jam;
 use App\Models\Kontak;
+use App\Models\Map;
+use App\Models\Linksos;
 
 class JamController extends Controller
 {
@@ -75,9 +77,11 @@ class JamController extends Controller
 
     public function show()
 {
+    $maps = Map::all();
     $jam = Jam::all();
     $kontak = Kontak::all();
-    return view('profil-section.kontak', compact('jam', 'kontak'));
+    $linksos = Linksos::all();
+    return view('profil-section.kontak', compact('linksos','jam','kontak','maps'));
 }
 
 

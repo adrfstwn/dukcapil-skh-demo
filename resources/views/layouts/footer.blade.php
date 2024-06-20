@@ -46,10 +46,6 @@
                             class="font-nunito inline-block pb-2 text-sm mb-4 text-background_light style-menu-footer">
                               {{ $layanan->nama_layanan }}</a>
                     </li>
-                    <!-- <li><a href="http://skm.dispendukcapil.sukoharjokab.go.id/" target="_blank"
-                            class="font-nunito inline-block pb-2 mb-4 text-sm text-background_light style-menu-footer">Survei
-                            Kepuasan Masyarakat (SKM) Semester 1 Tahun 2024</a>
-                    </li> -->
 
                 </ul>
                 @endforeach
@@ -61,11 +57,13 @@
                     </h3>
                     <hr class="w-8 border-b-[1.5px] rounded-sm mb-5">
                     <ul>
-                        <li><a href="https://maps.app.goo.gl/DQvS8usQN4v9eyjW9"
-                                class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">Jalan
-                                Kyai Mawardi No. 1
-                                Sukoharjo Kode Pos. 57521</a>
+                        @foreach ($maps as $map )
+
+
+                        <li><a href=""
+                                class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">{{ $map->alamat }}</a>
                         </li>
+                        @endforeach
                         <li><a href=""
                                 class="font-nunito inline-block pb-3 mb-4 text-sm text-background_light style-menu-footer">Telp:
                                 {{ $kontak->telp }}
