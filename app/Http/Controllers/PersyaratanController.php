@@ -5,24 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Persyaratan;
 use App\Models\KategoriPersyaratan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class PersyaratanController extends Controller
 {
     // Method untuk menampilkan semua persyaratan
     public function index()
     {
-        $persyaratans = Persyaratan::all();
+        $persyaratans = Persyaratan::orderBy('created_at', 'DESC')->get(); // Mengambil data download diurutkan berdasarkan created_at DESC
         return view('admin.persyaratan.index', compact('persyaratans'));
     }
 
     // Method untuk menampilkan detail persyaratan berdasarkan ID
     public function show()
     {
-        $persyaratans = Persyaratan::orderBy('created_at', 'desc')->paginate(5); // Ambil 5 persyaratan per halaman
+        $persyaratans = Persyaratan::orderBy('created_at', 'DESC')->get(); // Mengambil data download diurutkan berdasarkan created_at DESC
         return view('persyaratan', compact('persyaratans'));
     }
-
-    // Method lainnya...
 
     public function create()
     {
@@ -31,27 +31,33 @@ class PersyaratanController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi_persyaratan' => 'required|string',
-            'file' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Hanya file gambar yang diterima
-            'kategori_id' => 'required|in:1,2',
-        ]);
+{
+    $validatedData = $request->validate([
+        'kategori_id' => 'required',
+        'judul' => 'required',
+        'deskripsi_persyaratan' => 'nullable', // Deskripsi bisa nullable
+        'file' => 'nullable|file',
+        'status' => ['required', Rule::in(['DRAFT', 'PUBLISH'])],
+    ]);
 
+    // Proses menyimpan data
+    $persyaratan = new Persyaratan();
+    $persyaratan->kategori_id = $validatedData['kategori_id'];
+    $persyaratan->judul = $validatedData['judul'];
+    $persyaratan->deskripsi_persyaratan = $validatedData['deskripsi_persyaratan'];
+    $persyaratan->status = $validatedData['status'];
+
+    if ($request->hasFile('file')) {
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
         $filePath = $file->storeAs('uploads', $fileName, 'public');
-
-        Persyaratan::create([
-            'judul' => $request->judul,
-            'deskripsi_persyaratan' => $request->deskripsi_persyaratan,
-            'file' => $filePath,
-            'kategori_id' => $request->kategori_id,
-        ]);
-
-        return redirect()->route('persyaratan.index')->with('success', 'Persyaratan created successfully.');
+        $persyaratan->file = $filePath;
     }
+
+    $persyaratan->save();
+
+    return redirect()->route('persyaratan.index')->with('success', 'Persyaratan created successfully.');
+}
 
     public function edit($id)
     {
@@ -61,40 +67,52 @@ class PersyaratanController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'kategori_id' => 'required',
-            'judul' => 'required',
-            'deskripsi_persyaratan' => 'required',
-            'file' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Hanya file gambar yang diterima
-        ]);
+{
+    $request->validate([
+        'judul' => 'required|string|max:255',
+        'deskripsi_persyaratan' => 'nullable|string',
+        'file' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,xls,xlsx,ppt,pptx|max:2048', // Terima file gambar dan dokumen
+        'kategori_id' => 'required|exists:kategori_persyaratan,id',
+        'status' => ['required', Rule::in(['DRAFT', 'PUBLISH'])], // Validasi status
+    ]);
 
-        $persyaratan = Persyaratan::findOrFail($id);
+    $persyaratan = Persyaratan::findOrFail($id);
 
-        $persyaratan->kategori_id = $request->kategori_id;
-        $persyaratan->judul = $request->judul;
-        $persyaratan->deskripsi_persyaratan = $request->deskripsi_persyaratan;
+    $persyaratan->judul = $request->judul;
+    $persyaratan->deskripsi_persyaratan = $request->deskripsi_persyaratan;
+    $persyaratan->kategori_id = $request->kategori_id;
+    $persyaratan->status = $request->status; // Simpan status
 
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/uploads', $filename); // Simpan di direktori uploads
-            $persyaratan->file = 'uploads/' . $filename; // Update path file
+    if ($request->hasFile('file')) {
+        // Hapus file lama jika ada
+        if ($persyaratan->file && Storage::disk('public')->exists($persyaratan->file)) {
+            Storage::disk('public')->delete($persyaratan->file);
         }
 
-        $persyaratan->save();
-
-        return redirect()->route('persyaratan.index')->with('success', 'Persyaratan updated successfully.');
+        $file = $request->file('file');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $persyaratan->file = $filePath;
     }
+
+    $persyaratan->save();
+
+    return redirect()->route('persyaratan.index')->with('success', 'Persyaratan updated successfully.');
+}
 
     public function destroy($id)
     {
         $persyaratan = Persyaratan::findOrFail($id);
+
+        // Hapus file jika ada
+        if ($persyaratan->file && Storage::disk('public')->exists($persyaratan->file)) {
+            Storage::disk('public')->delete($persyaratan->file);
+        }
+
         $persyaratan->delete();
         return redirect()->route('persyaratan.index')->with('success', 'Persyaratan deleted successfully.');
     }
 
-    // Method CRUD untuk kategori persyaratan
     public function indexKategori()
     {
         $kategoriPersyaratan = KategoriPersyaratan::all();

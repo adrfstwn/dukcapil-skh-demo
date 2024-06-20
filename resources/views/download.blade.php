@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
     {{-- start download section --}}
     <section id="download" class="my-10 md:my-20 -z-10">
@@ -12,6 +13,7 @@
                     </div>
                     <div class="flex flex-col gap-4">
                         @foreach ($downloads as $download)
+                        @if ($download->status === 'PUBLISH')
                             <div class="flex flex-col gap-2">
                                 <div class="flex flex-col gap-1">
                                     <a href="{{ route('download.detail', $download->id) }}"
@@ -23,7 +25,7 @@
                                             {{ $download->kategori->nama_kategori }}
                                         </p>
                                         <span class="text-neutral-500">•</span>
-                                        <p class="text-sm text-secondary_teks font-nunito">{{ $download->created_at }}</p>
+                                        <p class="text-sm text-secondary_teks font-nunito">{{ $download->created_at->format('d M Y') }}</p>
                                     </div>
                                 </div>
                                 <p class="font-nunito text-base text-secondary_teks line-clamp-3">
@@ -44,6 +46,7 @@
                                 </div>
                                 <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                             </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>
@@ -95,7 +98,6 @@
                     </div>
                 </aside>
             </div>
-        </div>
         </div>
     </section>
     {{-- end download section --}}
