@@ -8,30 +8,34 @@
                 <div class="flex flex-col gap-12">
                     <div class="flex flex-col gap-6 md:gap-12">
                         <div class="flex flex-col gap-2">
+                            <p class="text-sm  text-primary uppercase font-semibold font-monserrat">
+                                {{ $downloads->kategori->nama_kategori }}
+                            </p>
                             <h2 href="" class="font-bold font-nunito text-xl md:text-3xl text-primary_teks ">
                                 {{ $downloads->judul }}
                             </h2>
-                            <p class="text-xs text-gray-500 uppercase font-semibold tracking-wide">
-                                Kategori: {{ $downloads->kategori->nama_kategori }}
-                            </p>
-
                             <p class="text-sm text-secondary_teks font-nunito">{{ $downloads->waktu }}</p>
-                            <div class="flex flex-col items-center gap-6 max-w-screen-lg">
+                            <div class="flex flex-col gap-6 max-w-screen-lg">
                                 @if ($downloads->file)
                                     @php
                                         $extension = pathinfo($downloads->file, PATHINFO_EXTENSION);
                                     @endphp
-
                                     @if (in_array($extension, ['jpg', 'jpeg', 'png']))
-                                        <img src="{{ asset('storage/' . $downloads->file) }}" loading="lazy" alt="{{ $downloads->judul }}"
-                                            class="w-full max-h-[450px] object-cover object-center rounded-lg">
+                                        <img src="{{ asset('storage/' . $downloads->file) }}" loading="lazy"
+                                            alt="{{ $downloads->judul }}"
+                                            class="w-full h-full object-cover object-center rounded-lg">
                                         <div class="mt-4">
-                                            <a href="{{ asset('storage/' . $downloads->file) }}" download class="text-sm text-primary underline">Download Gambar</a>
+                                            <a href="{{ asset('storage/' . $downloads->file) }}" download
+                                                class="text-base text-neutral-50 bg-primary px-2 py-1 rounded-md"
+                                                target="_blank">Download Gambar</a>
                                         </div>
                                     @elseif ($extension == 'pdf')
-                                        <iframe src="{{ asset('storage/' . $downloads->file) }}" width="100%" height="600px" frameborder="0"></iframe>
-                                        <div class="mt-4">
-                                            <a href="{{ asset('storage/' . $downloads->file) }}" download class="text-sm text-primary underline">Download PDF</a>
+                                        <iframe src="{{ asset('storage/' . $downloads->file) }}" width="100%"
+                                            height="700px" frameborder="0" class="rounded-xl">Formulir</iframe>
+                                        <div class="">
+                                            <a href="{{ asset('storage/' . $downloads->file) }}" download
+                                                class="text-base text-neutral-50 bg-primary px-2 py-1 rounded-md"
+                                                target="_blank">Download File PDF</a>
                                         </div>
                                     @endif
                                 @endif

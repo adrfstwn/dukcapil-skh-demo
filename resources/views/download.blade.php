@@ -13,21 +13,33 @@
                     <div class="flex flex-col gap-4">
                         @foreach ($downloads as $download)
                             <div class="flex flex-col gap-2">
-                                <a href="{{ route('download.detail', $download->id) }}"
-                                    class="font-bold font-monserrat text-xl md:text-2xl text-primary_teks ">
-                                    {{ $download->judul }}
-                                </a>
-                                <span class="text-sm font-medium text-center text-white bg-primary px-2 py-1 max-w-max rounded-full">
-                        {{ $download->kategori->nama_kategori }}
-                    </span>
-                                <p class="text-sm text-secondary_teks font-nunito">{{ $download->created_at }}</p>
-                                <p class="font-nunito text-base text-secondary_teks line-clamp-2">
+                                <div class="flex flex-col gap-1">
+                                    <a href="{{ route('download.detail', $download->id) }}"
+                                        class="font-bold font-monserrat text-xl md:text-2xl text-primary_teks ">
+                                        {{ $download->judul }}
+                                    </a>
+                                    <div class="flex gap-2 items-center">
+                                        <p class="text-sm font-bold text-primary">
+                                            {{ $download->kategori->nama_kategori }}
+                                        </p>
+                                        <span class="text-neutral-500">•</span>
+                                        <p class="text-sm text-secondary_teks font-nunito">{{ $download->created_at }}</p>
+                                    </div>
+                                </div>
+                                <p class="font-nunito text-base text-secondary_teks line-clamp-3">
                                     {{ $download->deskripsi_download }}
                                 </p>
                                 <div class="flex flex-row items-center gap-2">
                                     <a href="{{ route('download.detail', $download->id) }}"
-                                        class="px-2 py-[4px] font-nunito text-sm text-background_light bg-primary rounded-sm">
+                                        class="flex gap-1 px-3 py-[6px]  justify-center font-nunito text-sm text-background_light bg-primary rounded-full">
                                         Lihat Selengkapnya
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px"
+                                                viewBox="0 0 24 24" class="rotate-90 text-background_light text-xs">
+                                                <path fill="currentColor"
+                                                    d="M8 8.4V16q0 .425-.288.713T7 17t-.712-.288T6 16V6q0-.425.288-.712T7 5h10q.425 0 .713.288T18 6t-.288.713T17 7H9.4l8.9 8.9q.275.275.275.7t-.275.7t-.7.275t-.7-.275z" />
+                                            </svg>
+                                        </span>
                                     </a>
                                 </div>
                                 <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
