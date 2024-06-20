@@ -42,7 +42,10 @@ class DownloadController extends Controller
     $download->status = $validatedData['status'];
 
     if ($request->hasFile('file')) {
-        // Proses untuk menyimpan file
+        $file = $request->file('file');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $download->file = $filePath;
     }
 
     $download->save();
