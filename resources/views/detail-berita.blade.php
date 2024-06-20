@@ -10,6 +10,9 @@
                             <h2 href="" class="font-bold font-nunito text-xl md:text-3xl text-primary_teks ">
                                 {{ $berita->judul }}
                             </h2>
+                            <p class="text-sm  text-primary uppercase font-semibold font-monserrat">
+                                informasi
+                            </p>
                             <p class="text-sm text-secondary_teks font-nunito">{{ $berita->waktu }}</p>
                             <div class="flex flex-col items-center gap-6 max-w-screen-lg">
                                 @if ($berita->gambar_berita)
