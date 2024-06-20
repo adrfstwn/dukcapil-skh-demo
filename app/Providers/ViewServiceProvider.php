@@ -45,7 +45,7 @@ class ViewServiceProvider extends ServiceProvider
             $kontak = Kontak::all();
             $layanan = Layanan::all();
             $maps = Map::all();
-            $view->with(compact('linksos', 'jam', 'kontak','layanan'));
+            $view->with(compact('linksos', 'jam', 'kontak','layanan','maps'));
         });
     }
 
