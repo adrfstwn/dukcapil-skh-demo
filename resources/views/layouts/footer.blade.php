@@ -39,17 +39,20 @@
                     Link Terkait
                 </h3>
                 <hr class="w-8 border-b-[1.5px] rounded-sm mb-5">
+
+                @foreach ($layanan as $layanan )
                 <ul>
-                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScBUr0c7ChQ30BvH72fG6AdaGas9UJu5Z0qX2a5Lb-rybY-pA/viewform" target="_blank"
-                            class="font-nunito inline-block pb-2 mb-4 text-sm text-background_light style-menu-footer">LOPER
-                            <br> (Laporan Online Petugas Register)</a>
+                    <li><a href=" {{ $layanan->link_layanan }}"
+                            class="font-nunito inline-block pb-2 text-sm mb-4 text-background_light style-menu-footer">
+                              {{ $layanan->nama_layanan }}</a>
                     </li>
-                    <li><a href="http://skm.dispendukcapil.sukoharjokab.go.id/" target="_blank"
+                    <!-- <li><a href="http://skm.dispendukcapil.sukoharjokab.go.id/" target="_blank"
                             class="font-nunito inline-block pb-2 mb-4 text-sm text-background_light style-menu-footer">Survei
                             Kepuasan Masyarakat (SKM) Semester 1 Tahun 2024</a>
-                    </li>
+                    </li> -->
 
                 </ul>
+                @endforeach
             </div>
             <div class="w-full md:w-1/4">
                 @foreach ($kontak as $kontak)

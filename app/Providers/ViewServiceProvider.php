@@ -11,6 +11,7 @@ use App\Models\Submenu;
 use App\Models\Linksos;
 use App\Models\Jam;
 use App\Models\Kontak;
+use App\Models\Layanan;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -41,7 +42,8 @@ class ViewServiceProvider extends ServiceProvider
             $linksos = Linksos::all();
             $jam = Jam::all();
             $kontak = Kontak::all();
-            $view->with(compact('linksos', 'jam', 'kontak'));
+            $layanan = Layanan::all();
+            $view->with(compact('linksos', 'jam', 'kontak','layanan'));
         });
     }
 
