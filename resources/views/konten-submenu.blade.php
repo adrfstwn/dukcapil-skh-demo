@@ -22,7 +22,7 @@
                                                 {{ $konten->judul }}
                                             </h2>
                                         @endif
-                                        <p class="font-nunito text-secondary_teks">Dibuat pada {{ $konten->tanggal }}</p>
+                                        <p class="font-nunito text-secondary_teks">Dirilis Pada{{ $konten->tanggal }}</p>
                                     </div>
                                     <div class="flex flex-col gap-4 max-w-screen-lg">
                                         @if ($konten->gambar)

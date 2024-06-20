@@ -7,7 +7,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-20 justify-center items-start">
                 <div class="flex flex-col gap-3 ">
                     <h2 class="font-monserrat font-bold text-2xl md:text-[32px] text-primary_teks"><span
-                            class="text-primary">PROFIL</span> <br>
+                            class="text-primary text-2xl font-monserrat font-medium">PROFIL</span> <br>
                             {{ $profil->nama }}</h2>
                     <p class="font-nunito text-primary_teks text-base">
                     {{ $profil->deskripsi_profil }}
