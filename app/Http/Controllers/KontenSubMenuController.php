@@ -7,6 +7,7 @@ use App\Models\Submenu;
 use App\Models\Berita;
 use App\Models\KontenSubMenu;
 use App\Models\KontenSubMenuUrl;
+use App\Models\Persyaratan;
 use Illuminate\Support\Facades\Storage;
 
 class KontenSubMenuController extends Controller
@@ -182,7 +183,9 @@ class KontenSubMenuController extends Controller
         // Ambil berita terbaru
         $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get(); // Misalnya mengambil 5 berita terbaru
 
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+
         // Tampilkan view dengan data kontenSubMenu dan submenu
-        return view('konten-submenu', compact('kontenSubMenu', 'submenu', 'beritaTerbaru'));
+        return view('konten-submenu', compact('kontenSubMenu', 'submenu', 'beritaTerbaru','latestPersyaratan'));
     }
 }

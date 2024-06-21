@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\KategoriBerita;
+use App\Models\Persyaratan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -73,6 +74,7 @@ class BeritaController extends Controller
     public function show()
 {
     $publishedBeritas = Berita::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->get();
+    $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
 
     $latestBeritas = $publishedBeritas->take(3); // Ambil 3 berita terbaru
 
@@ -86,7 +88,7 @@ class BeritaController extends Controller
         ['path' => LengthAwarePaginator::resolveCurrentPath()] // Path untuk halaman paginate
     );
 
-    return view('berita', compact('latestBeritas', 'beritas'));
+    return view('berita', compact('latestBeritas', 'beritas','latestPersyaratan'));
 }
         public function edit($id)
     {
@@ -146,7 +148,8 @@ class BeritaController extends Controller
     {
         $berita = Berita::find($id);
         $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get();
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
 
-        return view('detail-berita', compact('berita','beritaTerbaru'));
+        return view('detail-berita', compact('berita','beritaTerbaru','latestPersyaratan'));
     }
 }

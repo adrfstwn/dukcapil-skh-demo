@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Submenu;
 use App\Models\Berita;
+use App\Models\Persyaratan;
+use App\Models\Download;
 use Illuminate\Support\Facades\Storage;
 
 class DasboardAdminController extends Controller
@@ -15,19 +17,24 @@ class DasboardAdminController extends Controller
      */
     public function index()
     {
-         // Ambil semua data dari model
-         $menus = Menu::all();
-         $submenus = Submenu::all();
-         $beritas = Berita::all();
-         foreach ($beritas as $berita) {
-            // Jika gambar berita tidak null, atur URL gambar
+        $menus = Menu::all();
+        $submenus = Submenu::all();
+        $beritas = Berita::all();
+
+        // Jika gambar berita tidak null, atur URL gambar
+        foreach ($beritas as $berita) {
             if ($berita->gambar_berita) {
                 $berita->gambar_berita = asset(Storage::url($berita->gambar_berita));
             }
         }
 
-         // Kirim data ke view menggunakan compact
-         return view('dashboard-admin', compact('menus', 'submenus', 'beritas'));
+        // Hitung jumlah berita, persyaratan, dan download
+        $jumlahBerita = Berita::count();
+        $jumlahPersyaratan = Persyaratan::count();
+        $jumlahDownload = Download::count();
+
+        // Kirim data ke view menggunakan compact
+        return view('dashboard-admin', compact('menus', 'submenus', 'beritas', 'jumlahBerita', 'jumlahPersyaratan', 'jumlahDownload'));
     }
 
     /**

@@ -697,7 +697,7 @@
                         <a href=""
                             class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500">
                             <i class="fa fa-user sm:mr-1"></i>
-                            <span class="hidden sm:inline">Sign In</span>
+                            <span class="sm:inline">{{ Auth::user()->name }}</span>
                         </a>
                     </li>
 

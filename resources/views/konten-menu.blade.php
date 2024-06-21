@@ -174,18 +174,16 @@
                     <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0"><span
                             class="font-bold text-primary ">Persyaratan</span> Terbaru</h2>
                     <div class="flex flex-col py-3 gap-4">
-                        {{-- @foreach ($persyaratanTerbaru as $persyaratan)
+                        @foreach ($latestPersyaratan as $persyaratanTerbaru)
+
+                        <div class="flex flex-col py-3 gap-4">
                             <div class="flex flex-col gap-2">
-                                <a href="{{ $persyaratan->link }}"
-                                    class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">
-                                    {{ $persyaratan->nama }}
-                                </a>
-                                <p class="font-nunito text-sm md:text-base text-secondary_teks ">
-                                    {{ $persyaratan->tanggal }}
-                                </p>
-                                <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                            </div>
-                        @endforeach --}}
+                        <a href="{{ route('persyaratan.detail', $persyaratanTerbaru->id) }}"
+                            class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">{{$persyaratanTerbaru->judul}}</a>
+                        <p class="font-nunito text-sm md:text-base text-secondary_teks ">{{$persyaratanTerbaru->created_at->format('Y-m-d')}}</p>
+                        <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
+                    </div>
+                    @endforeach
                     </div>
                 </aside>
             </div>
