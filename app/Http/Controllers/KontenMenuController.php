@@ -7,6 +7,7 @@ use App\Models\KontenMenu;
 use App\Models\Menu;
 use App\Models\Berita;
 use App\Models\KontenMenuUrl;
+use App\Models\Persyaratan;
 use Illuminate\Support\Facades\Storage;
 
 class KontenMenuController extends Controller
@@ -186,8 +187,11 @@ class KontenMenuController extends Controller
         // Tambahkan relasi kontenMenus ke setiap objek $menu
         $menu->kontenMenus = $kontenMenu;
 
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+
+
         // Tampilkan view dengan data kontenMenu, menu, dan beritaTerbaru
-        return view('konten-menu', compact('kontenMenu', 'menu', 'beritaTerbaru'));
+        return view('konten-menu', compact('kontenMenu', 'menu', 'beritaTerbaru','latestPersyaratan'));
     }
 
 }
