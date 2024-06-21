@@ -24,7 +24,7 @@
                     </div>
                     <div class="my-2">
                         <label for="message" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Description news</label>
-                        <textarea id="message" name="deskripsi_berita" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Write your thoughts here...">{{ $berita->deskripsi_berita }}</textarea>
+                        <textarea id="editor" name="deskripsi_berita" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary" placeholder="Write your thoughts here...">{{ $berita->deskripsi_berita }}</textarea>
                     </div>
                     <label class="block mb-2 text-base font-medium text-gray-900 dark:text-white" for="file_input">Upload file (*Kosongkan jika tidak diubah)</label>
                     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" name="gambar_berita">
