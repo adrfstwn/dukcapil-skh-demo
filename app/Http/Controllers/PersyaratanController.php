@@ -36,7 +36,7 @@ class PersyaratanController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi_persyaratan' => 'required|string',
             'file' => 'required|image|mimes:jpg,jpeg,png|max:2048', // Hanya file gambar yang diterima
-            'kategori_id' => 'required|in:1,2',
+            'kategori_id' => 'required|exists:kategori_persyaratan,id',
         ]);
 
         $file = $request->file('file');
@@ -63,7 +63,7 @@ class PersyaratanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kategori_id' => 'required',
+            'kategori_id' => 'required|exists:kategori_persyaratan,id',
             'judul' => 'required',
             'deskripsi_persyaratan' => 'required',
             'file' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Hanya file gambar yang diterima
