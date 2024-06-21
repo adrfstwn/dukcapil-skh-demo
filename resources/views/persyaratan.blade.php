@@ -12,6 +12,7 @@
                     </div>
                     <div class="flex flex-col gap-4 max-w-screen-lg">
                         @foreach ($persyaratans as $persyaratan)
+                        @if ($persyaratan->status === 'PUBLISH')
                             <div class="flex flex-col gap-2">
                                 <div class="flex flex-col gap-3">
                                     <div class="flex flex-col gap-2">
@@ -25,7 +26,7 @@
                                             </p>
                                             <span class="text-neutral-500">•</span>
                                             <p class="text-sm text-secondary_teks font-nunito">
-                                                {{ $persyaratan->created_at }}</p>
+                                                {{ $persyaratan->created_at->format('d M Y') }}</p>
 
                                         </div>
                                     </div>
@@ -48,6 +49,7 @@
                                 </div>
                                 <hr class="border-b-[1px] border-gray-300 mt-6 md:mt-8 rounded-full">
                             </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>

@@ -26,6 +26,7 @@ use App\Http\Controllers\SubmenuController;
 use App\Http\Controllers\KontenSubMenuController;
 use App\Http\Controllers\KontenMenuController;
 use App\Http\Controllers\DasboardAdminController;
+use App\Http\Controllers\MapController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -64,6 +65,7 @@ Route::get('/profil', [ProfilController::class, 'show'])->name('profil.show');
 Route::get('/kontak', [KontakController::class, 'show'])->name('kontak.show');
 Route::get('/kontak', [JamController::class, 'show'])->name('jam.show');
 Route::get('/kontak', [LinksosController::class, 'show'])->name('linksos.show');
+// Route::get('/kontak', [MapController::class, 'show'])->name('map.show');
 
 // Tupoksi
 Route::get('/tupoksi', [TupoksiController::class, 'show'])->name('tupoksi.show');
@@ -141,6 +143,15 @@ Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
     Route::get('/mitra-{id}', [MitraController::class, 'edit'])->name('mitra.edit');
     Route::put('/mitra-{id}', [MitraController::class, 'update'])->name('mitra.update');
     Route::delete('/mitra-{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+
+    // Mitra
+    Route::get('/mapad', [MapController::class, 'index'])->name('map.index');
+    Route::get('/map-create', [MapController::class, 'create'])->name('map.create');
+    Route::post('/map', [MapController::class, 'store'])->name('map.store');
+    Route::get('/map-{id}', [MapController::class, 'edit'])->name('map.edit');
+    Route::put('/map-{id}', [MapController::class, 'update'])->name('map.update');
+    Route::delete('/map-{id}', [MapController::class, 'destroy'])->name('map.destroy');
+
 
     // FAQ
     Route::get('/faq', [FAQController::class, 'index'])->name('faq.index');

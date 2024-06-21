@@ -8,22 +8,27 @@
                     <h2 class="font-monserrat text-2xl md:text-[32px] text-primary font-bold">Temukan Kami</h2>
                     <div class="max-w-screen-xl">
                         <div class="relative" style="padding-top: 56.25%;">
+                            @foreach ($maps as $map )
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.1762273700956!2d110.83298617376123!3d-7.664194292352353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a3c46cf40ab25%3A0x47b08fd85924a44f!2sDinas%20Kependudukan%20Dan%20Pencatatan%20Sipil%20Kabupaten%20Sukoharjo!5e0!3m2!1sen!2sid!4v1715312504434!5m2!1sen!2sid"
+                                src="{{ $map->link_map }}"
                                 width="800" height="600"
                                 style="border:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
                                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                                 class="w-full h-full rounded-lg md:rounded-2xl">
                             </iframe>
+                            @endforeach
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    @foreach ($maps as $map )
                         <div class="flex flex-col gap-2 md:gap-3">
+
                             <h3 class="font-nunito font-bold text-primary_teks text-xl md:text-2xl">Alamat</h3>
-                            <p class="font-nunito text-base text-secondary_teks">Alamat : Jalan Kyai Mawardi No. 1
-                                Sukoharjo Kode Pos. 57521</p>
+                            <p class="font-nunito text-base text-secondary_teks">Alamat : {{ $map->alamat }}</p>
+
                         </div>
+                        @endforeach
                         @foreach ($jam as $jam)
                             <div class="flex flex-col gap-2 md:gap-3">
                                 <h3 class="font-nunito font-bold text-primary_teks text-xl md:text-2xl">Jam Operasional</h3>

@@ -7,17 +7,15 @@
             <div class="flex flex-col md:flex-row justify-between gap-6">
                 <div class="flex flex-col gap-12 w-full md:w-2/3">
                     <div class="flex flex-col gap-6 md:gap-12">
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        </div>
                         <div class="flex flex-col gap-2">
-                            <p class="text-sm  text-primary uppercase font-semibold font-monserrat">
+                            <p class="text-sm text-primary uppercase font-semibold font-monserrat">
                                 {{ $persyaratans->kategori->nama_kategori }}
                             </p>
-                            <h2 class="font-bold font-nunito text-xl md:text-3xl text-primary_teks ">
+                            <h2 class="font-bold font-nunito text-xl md:text-3xl text-primary_teks">
                                 {{ $persyaratans->judul }}
                             </h2>
                             <p class="text-sm text-secondary_teks font-nunito">{{ $persyaratans->waktu }}</p>
-                            <div class="flex flex-col  gap-6 max-w-screen-lg">
+                            <div class="flex flex-col gap-6 max-w-screen-lg">
                                 @if ($persyaratans->file)
                                     @php
                                         $extension = pathinfo($persyaratans->file, PATHINFO_EXTENSION);
@@ -29,14 +27,16 @@
                                         <div class="mt-4">
                                             <a href="{{ asset('storage/' . $persyaratans->file) }}" download
                                                 class="text-base text-neutral-50 bg-primary px-2 py-1 rounded-md"
-                                                target="_blank">Download File</a>
+                                                target="_blank">Download Gambar</a>
                                         </div>
                                     @elseif ($extension == 'pdf')
-                                        <p class="text-base md:text-lg text-secondary_teks">
-                                            <a href="{{ asset('storage/' . $persyaratans->file) }}"
+                                        <iframe src="{{ asset('storage/' . $persyaratans->file) }}" width="100%"
+                                            height="700px" frameborder="0" class="rounded-xl">Formulir</iframe>
+                                        <div class="">
+                                            <a href="{{ asset('storage/' . $persyaratans->file) }}" download
                                                 class="text-base text-neutral-50 bg-primary px-2 py-1 rounded-md"
                                                 target="_blank">Download File PDF</a>
-                                        </p>
+                                        </div>
                                     @endif
                                 @endif
                                 <p class="text-base md:text-lg text-secondary_teks">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="flex flex-col gap-4">
                         <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0 border-b-2 pb-4">
-                            <span class="font-bold text-primary ">Berita</span> Terbaru
+                            <span class="font-bold text-primary">Berita</span> Terbaru
                         </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                             <div class="flex flex-col gap-y-3 p-4 border rounded-md">
@@ -72,14 +72,14 @@
                 </div>
                 <aside class="md:block md:border-l-[2px] border-gray-200 md:pl-6">
                     <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0"><span
-                            class="font-bold text-primary ">Persyaratan</span> Terbaru</h2>
+                            class="font-bold text-primary">Persyaratan</span> Terbaru</h2>
                     <div class="flex flex-col py-3 gap-4">
                         <div class="flex flex-col gap-2">
                             <a href=""
                                 class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
                                 Pencatatan
                                 Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
+                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
                             <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
                         </div>
                         <div class="flex flex-col gap-2">
@@ -87,7 +87,7 @@
                                 class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
                                 Pencatatan
                                 Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
+                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
                             <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
                         </div>
                         <div class="flex flex-col gap-2">
@@ -95,7 +95,7 @@
                                 class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
                                 Pencatatan
                                 Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
+                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
                             <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
                         </div>
                         <div class="flex flex-col gap-2">
@@ -103,7 +103,7 @@
                                 class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
                                 Pencatatan
                                 Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
+                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
                             <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
                         </div>
                         <div class="flex flex-col gap-2">
@@ -111,7 +111,7 @@
                                 class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
                                 Pencatatan
                                 Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks ">13 Mei 2022</p>
+                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
                             <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
                         </div>
                     </div>

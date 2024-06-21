@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Download;
 use App\Models\KategoriDownload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
+
 
 class DownloadController extends Controller
 {
     public function index()
     {
-        $downloads = Download::all();
+        $downloads = Download::orderBy('created_at', 'DESC')->get(); // Mengambil data download diurutkan berdasarkan created_at DESC
         return view('admin.download-content.index', compact('downloads'));
     }
 
@@ -21,27 +24,35 @@ class DownloadController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi_download' => 'required|string',
-            'file' => 'required|file|mimes:pdf|max:2048',
-            'kategori_id' => 'required|exists:kategori_download,id',
-        ]);
+{
+    $validatedData = $request->validate([
+        'kategori_id' => 'required',
+        'judul' => 'required',
+        'deskripsi_download' => 'nullable', // Deskripsi bisa nullable
+        'file' => 'nullable|file',
+        'status' => ['required', Rule::in(['DRAFT', 'PUBLISH'])],
+    ]);
 
+    // Proses menyimpan data
+    $download = new Download();
+    $download->kategori_id = $validatedData['kategori_id'];
+    $download->judul = $validatedData['judul'];
+    $download->deskripsi_download = $validatedData['deskripsi_download'];
+    $download->file = $validatedData['file'];
+    $download->status = $validatedData['status'];
+
+    if ($request->hasFile('file')) {
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-
-        Download::create([
-            'judul' => $request->judul,
-            'deskripsi_download' => $request->deskripsi_download,
-            'file' => $filePath,
-            'kategori_id' => $request->kategori_id,
-        ]);
-
-        return redirect()->route('download.index')->with('success', 'Download created successfully.');
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $download->file = $filePath;
     }
+
+    $download->save();
+
+    return redirect()->route('download.index');
+}
+
 
     public function edit($id)
     {
@@ -52,40 +63,53 @@ class DownloadController extends Controller
 
     public function show()
     {
-        $downloads = Download::all();
+        $downloads = Download::orderBy('created_at', 'DESC')->get();
         return view('download', compact('downloads'));
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi_download' => 'required|string',
-            'kategori_id' => 'required|exists:kategori_download,id',
-            'file' => 'nullable|file|mimes:pdf|max:2048',
-        ]);
+{
+    $request->validate([
+        'judul' => 'required|string|max:255',
+        'deskripsi_download' => 'nullable|string',
+        'kategori_id' => 'required|exists:kategori_download,id',
+        'status' => ['required', Rule::in(['DRAFT', 'PUBLISH'])], // Validasi status
+        'file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,gif|max:2048',
+    ]);
 
-        $download = Download::findOrFail($id);
+    $download = Download::findOrFail($id);
 
-        $download->judul = $request->judul;
-        $download->deskripsi_download = $request->deskripsi_download;
-        $download->kategori_id = $request->kategori_id;
+    $download->judul = $request->judul;
+    $download->deskripsi_download = $request->deskripsi_download;
+    $download->kategori_id = $request->kategori_id;
+    $download->status = $request->status; // Simpan status
 
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-            $download->file = $filePath;
+    if ($request->hasFile('file')) {
+        // Hapus file lama jika ada
+        if ($download->file && Storage::disk('public')->exists($download->file)) {
+            Storage::disk('public')->delete($download->file);
         }
 
-        $download->save();
-
-        return redirect()->route('download.index')->with('success', 'Download updated successfully.');
+        $file = $request->file('file');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $download->file = $filePath;
     }
+
+    $download->save();
+
+    return redirect()->route('download.index')->with('success', 'Download updated successfully.');
+}
 
     public function destroy($id)
     {
         $download = Download::findOrFail($id);
+
+        // Hapus file jika ada
+        if ($download->file && Storage::disk('public')->exists($download->file)) {
+            Storage::disk('public')->delete($download->file);
+        }
+
         $download->delete();
         return redirect()->route('download.index')->with('success', 'Download deleted successfully.');
     }
