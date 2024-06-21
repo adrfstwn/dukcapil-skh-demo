@@ -20,7 +20,8 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-3">
-                    <h3 class="text-primary font-bold font-monserrat text-4xl">2340</h3>
+                    <h3 class="text-primary font-bold font-monserrat text-4xl">{{$jumlahBerita}}
+                    </h3>
                     <div class="flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32px" height="32px" viewBox="0 0 21 21"
                             class="text-primary">
@@ -55,7 +56,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-3">
-                    <h3 class="text-primary font-bold font-monserrat text-4xl">2340</h3>
+                    <h3 class="text-primary font-bold font-monserrat text-4xl">{{$jumlahDownload}}</h3>
                     <div class="flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
                             class="text-primary">
@@ -88,7 +89,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-3">
-                    <h3 class="text-primary font-bold font-monserrat text-4xl">2340</h3>
+                    <h3 class="text-primary font-bold font-monserrat text-4xl">{{$jumlahPersyaratan}}</h3>
                     <div class="flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24"
                             class="text-primary">
