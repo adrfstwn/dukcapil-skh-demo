@@ -19,7 +19,7 @@
         <div class="container">
             <div class="grid grid-cols-4 gap-3 gap-y-6">
                 @foreach ($kontenMenus->sortByDesc('id') as $kontenMenu)
-                    <div class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+                    <div class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg" id="kontenMenu{{ $kontenMenu->id }}">
                         <div class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-red-gray-500 bg-clip-border text-white shadow-lg shadow-red-gray-500">
                             @if ($kontenMenu->gambar)
                                 <img src="{{ $kontenMenu->gambar }}" loading="lazy" alt="news-image" class="" />
@@ -79,10 +79,10 @@
                                             </g>
                                         </svg>
                                     </a>
-                                    <form action="{{ route('konten-menu.destroy', ['id' => $kontenMenu->id]) }}" method="POST" class="inline-block">
+                                    <form action="{{ route('konten-menu.destroy', ['id' => $kontenMenu->id]) }}" method="POST" class="delete-form inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button data-tooltip-target="" class="cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
+                                        <button data-tooltip-target="" type="button" class="delete-button cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 16 16">
                                                 <path fill="red" d="M6 8h4v5H6zM7 1h2v2H7zM4.5 3h7v2h-7zM11.2 9L13 12H3.8l1.8-3h5.6zM8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm0 15a7 7 0 1 1 7-7a7 7 0 0 1-7 7z"/>
                                             </svg>
@@ -96,4 +96,19 @@
             </div>
         </div>
     </section>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-button');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                const id = this.getAttribute('data-id');
+                if (confirm('Are you sure you want to delete this download?')) {
+                    const form = this.closest('form');
+                    form.submit();
+                    document.getElementById('kontenMenu' + id).remove();
+                }
+            });
+        });
+    });
+    </script>
 @endsection
