@@ -70,7 +70,7 @@
             <div class="grid grid-cols-4 gap-3 gap-y-6 ">
                     @foreach ($beritas->sortByDesc('id') as $berita)
                     <div
-                        class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
+                        class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg"  id="berita{{ $berita->id }}">
                         <div
                             class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-red-gray-500 bg-clip-border text-white shadow-lg shadow-red-gray-500">
                             <img src="{{ $berita->gambar_berita }}" alt="news-image" class="" />
@@ -123,11 +123,11 @@
                                         </svg>
                                     </a>
                                     <form action="{{ route('berita.destroy', ['id' => $berita->id]) }}"
-                                        method="POST" class="inline-block">
+                                        method="POST" class="delete-form inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button data-tooltip-target=""
-                                            class="cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
+                                        <button data-tooltip-target="" type="button" data-id="{{ $berita->id }}"
+                                            class="delete-button cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
                                                 viewBox="0 0 16 16">
                                                 <path fill="red" fill-rule="evenodd"
@@ -144,4 +144,19 @@
                 </div>
             </div>
     </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-button');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                const id = this.getAttribute('data-id');
+                if (confirm('Are you sure you want to delete this news?')) {
+                    const form = this.closest('form');
+                    form.submit();
+                    document.getElementById('berita' + id).remove();
+                }
+            });
+        });
+    });
+</script>
 @endsection
