@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class UserController extends Controller
 {
@@ -41,11 +41,10 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect()->route('admin.index')->with('success', 'User registered successfully. Please login.');
-        // Jika validasi gagal, kembalikan error
-        if ($validator->fails()) {
-            throw ValidationException::withMessages($validator->errors()->toArray());
-        }
+        // Kirim notifikasi verifikasi email
+        event(new Registered($user));
+
+        return redirect()->route('verification.notice')->with('message', 'Registration successful. Please check your email for verification.');
 
 
     }
