@@ -14,14 +14,16 @@ class PersyaratanController extends Controller
     public function index()
     {
         $persyaratans = Persyaratan::orderBy('created_at', 'DESC')->get(); // Mengambil data download diurutkan berdasarkan created_at DESC
-        return view('admin.persyaratan.index', compact('persyaratans'));
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+        return view('admin.persyaratan.index', compact('persyaratans','latestPersyaratan'));
     }
 
     // Method untuk menampilkan detail persyaratan berdasarkan ID
     public function show()
     {
         $persyaratans = Persyaratan::orderBy('created_at', 'DESC')->get(); // Mengambil data download diurutkan berdasarkan created_at DESC
-        return view('persyaratan', compact('persyaratans'));
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+        return view('persyaratan', compact('persyaratans','latestPersyaratan'));
     }
 
     public function create()
@@ -167,6 +169,7 @@ class PersyaratanController extends Controller
     public function showDetail($id)
     {
         $persyaratans = Persyaratan::findOrFail($id);
-        return view('detail-persyaratan', compact('persyaratans'));
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+        return view('detail-persyaratan', compact('persyaratans','latestPersyaratan'));
     }
 }
