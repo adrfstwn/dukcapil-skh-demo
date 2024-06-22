@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Download;
+use App\Models\Persyaratan;
 use App\Models\KategoriDownload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,7 +15,8 @@ class DownloadController extends Controller
     public function index()
     {
         $downloads = Download::orderBy('created_at', 'DESC')->get(); // Mengambil data download diurutkan berdasarkan created_at DESC
-        return view('admin.download-content.index', compact('downloads'));
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+        return view('admin.download-content.index', compact('downloads','latestPersyaratan'));
     }
 
     public function create()
@@ -64,7 +66,8 @@ class DownloadController extends Controller
     public function show()
     {
         $downloads = Download::orderBy('created_at', 'DESC')->get();
-        return view('download', compact('downloads'));
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+        return view('download', compact('downloads','latestPersyaratan'));
     }
 
     public function update(Request $request, $id)
@@ -117,6 +120,7 @@ class DownloadController extends Controller
     public function showDetail($id)
     {
         $downloads = Download::findOrFail($id);
-        return view('detail-download', compact('downloads'));
+        $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
+        return view('detail-download', compact('downloads','latestPersyaratan'));
     }
 }

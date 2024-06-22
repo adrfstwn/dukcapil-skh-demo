@@ -73,47 +73,16 @@
                 <aside class="md:block md:border-l-[2px] border-gray-200 md:pl-6">
                     <h2 class="font-monserrat text-2xl md:text-[32px] text-primary_teks pt-6 md:pt-0"><span
                             class="font-bold text-primary">Persyaratan</span> Terbaru</h2>
-                    <div class="flex flex-col py-3 gap-4">
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
-                        <div class="flex flex-col gap-2">
-                            <a href=""
-                                class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">Persyaratan
-                                Pencatatan
-                                Pengangkatan Anak</a>
-                            <p class="font-nunito text-sm md:text-base text-secondary_teks">13 Mei 2022</p>
-                            <hr class="border-[1.5px] border-gray-200 rounded-full my-3">
-                        </div>
+                            @foreach ($latestPersyaratan as $persyaratanTerbaru)
+
+<div class="flex flex-col py-3 gap-4">
+    <div class="flex flex-col gap-2">
+<a href="{{ route('persyaratan.detail', $persyaratanTerbaru->id) }}"
+    class="font-nunito text-base font-semibold text-primary_teks line-clamp-2">{{$persyaratanTerbaru->judul}}</a>
+<p class="font-nunito text-sm md:text-base text-secondary_teks ">{{$persyaratanTerbaru->created_at->format('Y-m-d')}}</p>
+<hr class="border-[1.5px] border-gray-200 rounded-full my-3">
+</div>
+@endforeach
                     </div>
                 </aside>
             </div>
