@@ -34,7 +34,7 @@ class KontenMenuController extends Controller
         $validatedData = $request->validate([
             'menu_id' => 'required|exists:menu,id',
             'judul' => 'required|string|max:255',
-            'deskripsi_konten' => 'required|string',
+            'deskripsi_konten' => 'nullable|string',
             'tanggal' => 'required|date',
             'file' => 'nullable|file|mimes:pdf,doc,docx',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -84,7 +84,7 @@ class KontenMenuController extends Controller
         $validatedData = $request->validate([
             'menu_id' => 'required|exists:menu,id',
             'judul' => 'required|string|max:255',
-            'deskripsi_konten' => 'required|string',
+            'deskripsi_konten' => 'nullable|string',
             'tanggal' => 'required|date',
             'file' => 'nullable|file|mimes:pdf,doc,docx',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

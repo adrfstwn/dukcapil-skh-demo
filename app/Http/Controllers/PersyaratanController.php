@@ -50,7 +50,7 @@ class PersyaratanController extends Controller
     if ($request->hasFile('file')) {
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $filePath = $file->storeAs('file_persyaratan', $fileName, 'public');
         $persyaratan->file = $filePath;
     }
 
@@ -91,7 +91,7 @@ class PersyaratanController extends Controller
 
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $filePath = $file->storeAs('file_persyaratan', $fileName, 'public');
         $persyaratan->file = $filePath;
     }
 

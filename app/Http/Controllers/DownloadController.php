@@ -44,7 +44,7 @@ class DownloadController extends Controller
     if ($request->hasFile('file')) {
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $filePath = $file->storeAs('file_download', $fileName, 'public');
         $download->file = $filePath;
     }
 
@@ -92,7 +92,7 @@ class DownloadController extends Controller
 
         $file = $request->file('file');
         $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $filePath = $file->storeAs('file_download', $fileName, 'public');
         $download->file = $filePath;
     }
 
