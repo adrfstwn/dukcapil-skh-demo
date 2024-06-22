@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\FAQController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\EnsureEmailIsVerified;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\LayananController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\KontenSubMenuController;
 use App\Http\Controllers\KontenMenuController;
 use App\Http\Controllers\DasboardAdminController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\Auth\VerifyEmailController;
 
 //Home
 Route::get('/', [HomeController::class, 'index']);
@@ -43,6 +45,13 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+// Verify Email
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/email-verify', [VerifyEmailController::class, 'show'])->name('verification.notice');
+    Route::get('/email-verify-{id}-{hash}', [VerifyEmailController::class, 'verify'])->name('verification.verify');
+    Route::post('/email-resend', [VerifyEmailController::class, 'sendVerificationEmail'])->name('verification.send');
+});
 // Forgot Password
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('password.request');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -85,7 +94,7 @@ Route::get('/beritane', [BeritaController::class, 'show'])->name('berita.show');
 Route::get('/beritane-{id}', [BeritaController::class, 'showDetail'])->name('berita.detail');
 
 // Middleware
-Route::group(['middleware' => ['auth', AdminMiddleware::class]], function () {
+Route::group(['middleware' => ['auth', 'admin','verified']], function () {
 
     //Menu
     Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');

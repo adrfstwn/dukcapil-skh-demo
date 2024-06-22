@@ -58,18 +58,19 @@
                                     <div class="flex justify-end">
                                         <!-- component -->
                                         <button type="button"
-                                        class="px-4 py-2 font-bold tracking-wide text-center text-red-600 transition cursor-pointer text-bas whitespace-nowrap rounded-xl"
-                                        onclick="window.location.href='{{ route('password.request') }}'">Forgot Password?</button>
+                                            class="px-4 py-2 font-bold tracking-wide text-center text-red-600 transition cursor-pointer text-bas whitespace-nowrap rounded-xl"
+                                            onclick="window.location.href='{{ route('password.request') }}'">Forgot
+                                            Password?</button>
                                     </div>
-                                    @if($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="flex">
                                         <button
                                             class="w-full px-4 py-2 font-bold text-white rounded-sm bg-primary focus:outline-none focus:shadow-outline"

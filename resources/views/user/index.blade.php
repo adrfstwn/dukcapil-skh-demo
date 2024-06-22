@@ -26,6 +26,9 @@
                                 Email
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Status Verifikasi
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Aksi
                             </th>
                         </tr>
@@ -42,6 +45,13 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $user->email }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    @if ($user->hasVerifiedEmail())
+                                        <span class="text-green-500">Verified</span>
+                                    @else
+                                        <span class="text-red-500">Not Verified</span>
+                                    @endif
                                 </td>
 
                                 <td class="flex items-center px-6 py-4">
