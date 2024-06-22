@@ -3,8 +3,7 @@
     <section id="home-slider-index">
         <div class="container">
             <div class="my-6">
-                <button type="button"
-                    onclick="window.location.href='{{ route('user.create') }}'"
+                <button type="button" onclick="window.location.href='{{ route('user.create') }}'"
                     class="text-white bg-red-700 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                     Tambah User
                     <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -32,35 +31,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user )
+                        @foreach ($users as $user)
+                            <tr
+                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="w-4 p-4">
+                                </td>
 
+                                <td class="px-6 py-4">
+                                    {{ $user->name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $user->email }}
+                                </td>
 
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="w-4 p-4">
-                            </td>
-
-                            <td class="px-6 py-4">
-                                {{ $user->name }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $user->email }}
-                            </td>
-
-                            <td class="flex items-center px-6 py-4">
-                                <a href="{{ route('user.edit', ['id' => $user->id]) }}"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                    <form id="deleteForm_{{ $user->id }}" action="{{ route('user.destroy', ['id' => $user->id]) }}"
-                                        method="POST" class="inline-block">
+                                <td class="flex items-center px-6 py-4">
+                                    <a href="{{ route('user.edit', ['id' => $user->id]) }}"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <form id="deleteForm_{{ $user->id }}"
+                                        action="{{ route('user.destroy', ['id' => $user->id]) }}" method="POST"
+                                        class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button"
-                                            onclick="confirmDelete('{{ $user->id }}')"
+                                        <button type="button" onclick="confirmDelete('{{ $user->id }}')"
                                             class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</button>
                                     </form>
-                            </td>
-                        </tr>
-@endforeach
-
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

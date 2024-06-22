@@ -19,7 +19,7 @@
                 <div class="my-2">
                     <label for="default-input"
                         class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Description news
-                        slider</label>
+                        slider (*Opsional)</label>
                     <input type="text" name="deskripsi" id="default-input"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary">
                 </div>

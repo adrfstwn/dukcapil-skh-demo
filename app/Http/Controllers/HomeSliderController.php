@@ -36,7 +36,7 @@ class HomeSliderController extends Controller
     {
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
-            'deskripsi' => 'required|string|max:255',
+            'deskripsi' => 'nullable|string|max:255',
             'gambar_slider' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -83,7 +83,7 @@ class HomeSliderController extends Controller
 
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
-            'deskripsi' => 'required|string|max:255',
+            'deskripsi' => 'nullable|string|max:255',
             'gambar_slider' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

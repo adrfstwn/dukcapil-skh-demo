@@ -33,7 +33,7 @@ class KontenSubMenuController extends Controller
     {
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
-            'deskripsi_konten' => 'required|string',
+            'deskripsi_konten' => 'nullable|string',
             'file' => 'nullable|file',
             'status' => 'required|string|max:255',
             'tanggal' => 'required|string|max:255',
@@ -97,7 +97,7 @@ class KontenSubMenuController extends Controller
 
         $validatedData = $request->validate([
             'judul' => 'required|string|max:255',
-            'deskripsi_konten' => 'required|string',
+            'deskripsi_konten' => 'nullable|string',
             'file' => 'nullable|file',
             'status' => 'required|string|max:255',
             'tanggal' => 'required|string|max:255',
