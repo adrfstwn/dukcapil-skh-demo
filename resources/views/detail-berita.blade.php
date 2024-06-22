@@ -19,7 +19,7 @@
                                     <img src="{{ asset('storage/' . $berita->gambar_berita) }}" loading="lazy" alt="{{ $berita->judul }}"
                                         class="w-full max-h-full object-cover object-center rounded-lg">
                                     <p class="text-base md:text-lg text-secondary_teks">
-                                        {{ $berita->deskripsi_berita }}
+                                        {!! $berita->deskripsi_berita !!}
                                     </p>
                                 @endif
                             </div>
@@ -43,7 +43,7 @@
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
                                     <p class="text-sm text-secondary_teks line-clamp-3">
-                                        {{ Str::limit($berita->deskripsi_berita, 100) }}</p>
+                                        {!! \Illuminate\Support\Str::limit($berita->deskripsi_berita, 100) !!}</p>
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
                                         Selengkapnya</a>

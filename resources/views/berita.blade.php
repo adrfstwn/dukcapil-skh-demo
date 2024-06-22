@@ -36,7 +36,7 @@
                                         </div>
                                         <p class="font-nunito text-base text-secondary_teks line-clamp-5 flex-grow">
                                             <!-- Added flex-grow to push the caption to the left -->
-                                            {{ \Illuminate\Support\Str::limit($berita->deskripsi_berita, 600, '...') }}
+                                            {!! \Illuminate\Support\Str::limit($berita->deskripsi_berita, 600, '...') !!}
                                         </p>
                                         <a href="{{ route('berita.detail', $berita->id) }}"
                                             class="px-2 py-1 font-nunito text-base items-start justify-start text-center text-background_light bg-primary rounded-md mt-2 w-40">
