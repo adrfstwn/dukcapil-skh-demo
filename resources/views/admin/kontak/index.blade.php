@@ -40,7 +40,7 @@
                     </thead>
                     <tbody>
                         @foreach($kontaks as $kontak)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" id="{{$kontak->id}}">
                                 <td class="w-4 p-4">
                                 </td>
                                 <td class="px-6 py-4">
@@ -59,11 +59,11 @@
                                     <a href="{{ route('kontak.edit', ['id' => $kontak->id]) }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                     <form action="{{ route('kontak.destroy', ['id' => $kontak->id]) }}"
-                                        method="POST" class="inline-block">
+                                        method="POST" class="delete-form inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit"
-                                            class="font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</button>
+                                        <button type="button" data-id="{{ $kontak->id }}"
+                                            class="delete-button font-medium text-red-600 dark:text-red-500 hover:underline ms-3">Remove</button>
                                     </form>
                                 </td>
                             </tr>
@@ -73,4 +73,19 @@
             </div>
         </div>
     </section>
+    <script>
+           document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-button');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function (event) {
+                const id = this.getAttribute('data-id');
+                if (confirm('Are you sure you want to delete this download?')) {
+                    const form = this.closest('form');
+                    form.submit();
+                    document.getElementById('kontak' + id).remove();
+                }
+            });
+        });
+    });
+    </script>
 @endsection
