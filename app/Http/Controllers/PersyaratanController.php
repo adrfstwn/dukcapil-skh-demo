@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Persyaratan;
+use App\Models\Berita;
 use App\Models\KategoriPersyaratan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -170,6 +171,7 @@ class PersyaratanController extends Controller
     {
         $persyaratans = Persyaratan::findOrFail($id);
         $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
-        return view('detail-persyaratan', compact('persyaratans','latestPersyaratan'));
+        $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get();
+        return view('detail-persyaratan', compact('persyaratans','latestPersyaratan','beritaTerbaru'));
     }
 }

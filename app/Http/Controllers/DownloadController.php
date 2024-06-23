@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Download;
+use App\Models\Berita;
 use App\Models\Persyaratan;
 use App\Models\KategoriDownload;
 use Illuminate\Http\Request;
@@ -120,7 +121,8 @@ class DownloadController extends Controller
     public function showDetail($id)
     {
         $downloads = Download::findOrFail($id);
+        $beritaTerbaru = Berita::orderBy('created_at', 'desc')->take(3)->get();
         $latestPersyaratan = Persyaratan::where('status', 'PUBLISH')->orderBy('created_at', 'desc')->take(5)->get();
-        return view('detail-download', compact('downloads','latestPersyaratan'));
+        return view('detail-download', compact('downloads','latestPersyaratan','beritaTerbaru'));
     }
 }
