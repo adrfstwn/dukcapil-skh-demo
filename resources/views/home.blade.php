@@ -61,7 +61,7 @@
                                                 {{ $layanan->nama_layanan }}</h3>
                                             <p
                                                 class="text-base font-nunito  text-secondary_teks px-2 contrast-50 line-clamp-2">
-                                                {{ $layanan->deskripsi_layanan }}</p>
+                                                {!! $layanan->deskripsi_layanan !!}</p>
                                         </a>
                                     </div>
                                 @endforeach
@@ -127,7 +127,7 @@
                                                 {{ $berita->waktu }}
                                             </p>
                                             <p class="text-base font-nunito text-primary_teks contrast-50 line-clamp-2">
-                                                {{ Illuminate\Support\Str::limit($berita->deskripsi_berita, 150) }}
+                                                {!! Illuminate\Support\Str::limit($berita->deskripsi_berita, 150) !!}
                                             </p>
                                             <div class="flex gap-1 mt-3">
                                                 <p class="text-sm text-primary/80 font-semibold font-monserrat">Baca Selengkapnya </p>

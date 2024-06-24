@@ -35,7 +35,7 @@
                                     {{ $kontenMenu->judul }}
                                 </h5>
                                 <p class="block font-nunito text-base leading-relaxed text-gray-700 antialiased line-clamp-2">
-                                    {{ Illuminate\Support\Str::limit($kontenMenu->deskripsi_konten, 50) }}
+                                    {!! Illuminate\Support\Str::limit($kontenMenu->deskripsi_konten, 50) !!}
                                 </p>
                                 <div class="flex flex-col gap-6">
                                     <p class="text-base font-medium font-nunito text-primary_teks">
