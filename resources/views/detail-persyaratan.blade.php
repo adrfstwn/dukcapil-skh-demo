@@ -40,7 +40,7 @@
                                     @endif
                                 @endif
                                 <p class="text-base md:text-lg text-secondary_teks">
-                                    {{ $persyaratans->deskripsi_persyaratan }}
+                                    {!! $persyaratans->deskripsi_persyaratan !!}
                                 </p>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
                                     <p class="text-sm text-secondary_teks line-clamp-3">
-                                        {{ Str::limit($berita->deskripsi_berita, 100) }}</p>
+                                        {!! Str::limit($berita->deskripsi_berita, 100) !!}</p>
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
                                         Selengkapnya</a>

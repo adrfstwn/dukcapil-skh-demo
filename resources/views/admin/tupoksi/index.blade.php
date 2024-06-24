@@ -70,7 +70,7 @@
                                 {{ $tupoksi->nama_tugaspokok }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $tupoksi->deskripsi_tugaspokok }}
+                                {!! $tupoksi->deskripsi_tugaspokok !!}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $tupoksi->nama_fungsi }}
