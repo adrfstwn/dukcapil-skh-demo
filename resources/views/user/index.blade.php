@@ -26,6 +26,9 @@
                             Email
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Status Verifikasi
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Aksi
                         </th>
                     </tr>
@@ -43,7 +46,13 @@
                             <td class="px-6 py-4">
                                 {{ $user->email }}
                             </td>
-
+                            <td>
+                                @if ($user->hasVerifiedEmail())
+                                    <span class="badge badge-success">Verified</span>
+                                @else
+                                    <span class="badge badge-warning">Not Verified</span>
+                                @endif
+                            </td>
                             <td class="flex items-center px-6 py-4">
                                 <a href="{{ route('user.edit', ['id' => $user->id]) }}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
