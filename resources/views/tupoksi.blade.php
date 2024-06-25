@@ -13,7 +13,7 @@
                         <div class="flex flex-col gap-4">
                             <h3 class="font-monserrat text-primary_teks text-xl font-semibold md:text-2xl">{{ $tupoksi->nama_tugaspokok }}</h3>
                             <hr class="w-7 border-b-[1.5px] border-primary rounded-sm">
-                            <p class="font-nunito text-base text-primary_teks">{{ $tupoksi->deskripsi_tugaspokok }}
+                            <p class="font-nunito text-base text-primary_teks">{!! $tupoksi->deskripsi_tugaspokok !!}
                             </p>
                         </div>
                         <div class="flex flex-col gap-4">

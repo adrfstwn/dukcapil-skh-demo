@@ -30,7 +30,7 @@
                                                 class="rounded-md w-full max-h-[450px] object-cover object-center">
                                         @endif
                                         <p class="font-nunito text-base text-primary_teks">
-                                            {{ $konten->deskripsi_konten }}</p>
+                                            {!! $konten->deskripsi_konten !!}</p>
                                         @if ($konten->file)
                                             <a href="{{ Storage::url($konten->file) }}"
                                                 class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik
@@ -161,7 +161,7 @@
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
                                     <p class="text-sm text-secondary_teks line-clamp-3">
-                                        {{ Str::limit($berita->deskripsi_berita, 100) }}</p>
+                                        {!! Str::limit($berita->deskripsi_berita, 100) !!}</p>
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
                                         Selengkapnya</a>

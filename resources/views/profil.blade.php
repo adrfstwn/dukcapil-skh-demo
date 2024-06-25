@@ -10,7 +10,7 @@
                             class="text-primary text-2xl font-monserrat font-medium">PROFIL</span> <br>
                             {{ $profil->nama }}</h2>
                     <p class="font-nunito text-primary_teks text-base">
-                    {{ $profil->deskripsi_profil }}
+                    {!! $profil->deskripsi_profil !!}
                     </p>
                 </div>
                 <div class="flex">
