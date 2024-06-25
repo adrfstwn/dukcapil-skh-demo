@@ -22,7 +22,7 @@
                     </div>
                     <div class="my-2">
                         <label for="deskripsi_tugaspokok" class="block mb-2 text-base font-medium text-gray-900">Deskripsi Tugaspokok</label>
-                        <textarea id="editor" name="deskripsi_tugaspokok" rows="4"
+                        <textarea id="" name="deskripsi_tugaspokok" rows="4"
                                   class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary"
                                   placeholder="Deskripsi Tugaspokok"></textarea>
                     </div>

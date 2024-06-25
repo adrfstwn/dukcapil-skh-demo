@@ -31,7 +31,7 @@
                                         </div>
                                     </div>
                                     <p class="font-nunito text-base text-secondary_teks line-clamp-3">
-                                        {{ $persyaratan->deskripsi_persyaratan }}
+                                        {!! $persyaratan->deskripsi_persyaratan !!}
                                     </p>
                                 </div>
                                 <div class="flex flex-row items-center gap-2">

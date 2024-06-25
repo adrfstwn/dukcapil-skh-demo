@@ -43,7 +43,7 @@
                                 {{ $profil->nama }}
                             </th>
                             <td class="px-6 py-4">
-                                {{ $profil->deskripsi_profil }}
+                                {!! $profil->deskripsi_profil !!}
                             </td>
                             <td class="px-6 py-4">
                                 <img src="{{ asset('storage/' . $profil->gambar_profil) }}" alt="Profil Image"

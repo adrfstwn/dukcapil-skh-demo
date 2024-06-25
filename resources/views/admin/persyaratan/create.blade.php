@@ -25,7 +25,7 @@
                     </div>
                     <div class="my-2">
                         <label for="deskripsi_persyaratan" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Deskripsi Dokumen</label>
-                        <textarea id="editor" name="deskripsi_persyaratan" rows="4"
+                        <textarea id="" name="deskripsi_persyaratan" rows="4"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                             placeholder="Masukkan deskripsi di sini..."></textarea>
                     </div>

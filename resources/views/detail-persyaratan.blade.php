@@ -40,7 +40,7 @@
                                     @endif
                                 @endif
                                 <p class="text-base md:text-lg text-secondary_teks">
-                                    {{ $persyaratans->deskripsi_persyaratan }}
+                                    {!! $persyaratans->deskripsi_persyaratan !!}
                                 </p>
                             </div>
                         </div>
@@ -51,22 +51,24 @@
                             <span class="font-bold text-primary">Berita</span> Terbaru
                         </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            <div class="flex flex-col gap-y-3 p-4 border rounded-md">
-                                <img src="" loading="lazy" alt=""
-                                    class="w-full max-h-[450px] object-cover object-center rounded-lg">
-                                <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
-                                    <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
-                                    <p class="text-xs text-secondary_teks font-nunito text-end">
-                                    </p>
+                        @foreach ($beritaTerbaru as $berita)
+                                <div class="flex flex-col gap-y-3 p-4 border rounded-md">
+                                    <img src="{{ asset('storage/' . $berita->gambar_berita) }}" loading="lazy" alt="{{ $berita->judul }}"
+                                        class="w-full max-h-[450px] object-cover object-center rounded-lg">
+                                    <div class="flex gap-1 md:gap-4 items-center justify-between md:justify-start">
+                                        <p class="px-2 py-1 bg-primary rounded-sm text-background_light text-xs">Berita</p>
+                                        <p class="text-xs text-secondary_teks font-nunito text-end">{{ $berita->waktu }}
+                                        </p>
+                                    </div>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
+                                    <p class="text-sm text-secondary_teks line-clamp-3">
+                                        {!! Str::limit($berita->deskripsi_berita, 100) !!}</p>
+                                    <a href="{{ route('berita.detail', $berita->id) }}"
+                                        class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
+                                        Selengkapnya</a>
                                 </div>
-                                <a href=""
-                                    class="text-base font-bold font-nunito text-primary_teks line-clamp-2"></a>
-                                <p class="text-sm text-secondary_teks line-clamp-3">
-                                </p>
-                                <a href=""
-                                    class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
-                                    Selengkapnya</a>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
