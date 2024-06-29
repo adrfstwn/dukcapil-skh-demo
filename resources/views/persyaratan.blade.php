@@ -30,7 +30,7 @@
 
                                         </div>
                                     </div>
-                                    <p class="font-nunito text-base text-secondary_teks line-clamp-3">
+                                    <p class="font-nunito text-base text-secondary_teks line-clamp-2">
                                         {!! $persyaratan->deskripsi_persyaratan !!}
                                     </p>
                                 </div>

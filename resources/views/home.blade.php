@@ -118,7 +118,7 @@
                                 <a href="{{ route('berita.detail', $berita->id) }}">
                                     <div class="flex flex-col bg-background_light rounded-lg md:max-w-80 h-full p-3">
                                         <img src="{{ $berita->gambar_berita }}" loading="lazy" alt=""
-                                            class="max-w-72 h-72 object-cover object-center rounded-t-lg">
+                                            class="w-full h-72 object-cover object-center rounded-t-lg">
                                         <div class="flex flex-col gap-1 p-4">
                                             <h3 class="text-xl font-nunito font-bold text-primary_teks">
                                                 {{ $berita->judul }}

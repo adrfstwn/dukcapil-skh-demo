@@ -21,31 +21,13 @@
                             No
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Nama Tupoksi
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nama Tugaspokok
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Deskripsi Tugaspokok
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nama Fungsi
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Deskripsi Fungsi
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Nama Visi & Misi
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nama Visi
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Deskripsi Visi
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nama Misi
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Deskripsi Misi
@@ -64,31 +46,13 @@
                                 {{ $index + 1 }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $tupoksi->nama_tupoksi }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $tupoksi->nama_tugaspokok }}
-                            </td>
-                            <td class="px-6 py-4">
                                 {!! $tupoksi->deskripsi_tugaspokok !!}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $tupoksi->nama_fungsi }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $tupoksi->deskripsi_fungsi }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $tupoksi->nama_visimisi }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $tupoksi->nama_visi }}
-                            </td>
-                            <td class="px-6 py-4">
                                 {{ $tupoksi->deskripsi_visi }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $tupoksi->nama_misi }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $tupoksi->deskripsi_misi }}
@@ -124,6 +88,6 @@
                 }
             });
         });
-    });window
+    });
 </script>
 @endsection
