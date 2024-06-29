@@ -17,7 +17,7 @@
     </section>
     <section id="konten-card">
         <div class="container">
-            <div class="grid grid-cols-4 gap-3 gap-y-6">
+            <div class="grid grid-cols-4 gap-3 gap-y-6 max-w-screen-xl">
                 @foreach ($kontenSubMenu->sortByDesc('id') as $konten)
                     <div class="relative flex w-full max-w-xs flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg" id="konten{{$konten->id}}">
                         <div class="relative mx-4 mt-4 overflow-hidden rounded-xl bg-red-gray-500 bg-clip-border text-white shadow-lg shadow-red-gray-500">
@@ -28,7 +28,6 @@
                             @endif
                             <div class="to-bg-black-10 absolute inset-0 size-full bg-gradient-to-r from-transparent via-transparent to-black/60"></div>
                         </div>
-
                         <div class="p-6">
                             <div class="mb-3 flex flex-col gap-3 justify-between">
                                 <h5 class="block font-nunito text-xl font-bold leading-snug tracking-normal text-red-900 antialiased line-clamp-2">
@@ -83,9 +82,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button data-tooltip-target="" type="button" data-id="{{ $konten->id }}" class="delete-button cursor-pointer rounded-full border border-red-700/5 bg-red-700/5 p-3 text-red-700 transition-colors hover:border-red-700/10 hover:bg-red-700/10 hover:!opacity-100 group-hover:opacity-70">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 16 16">
-                                                <path fill="red" d="M6 8h4v5H6zM7 1h2v2H7zM4.5 3h7v2h-7zM11.2 9L13 12H3.8l1.8-3h5.6zM8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0zm0 15a7 7 0 1 1 7-7a7 7 0 0 1-7 7z"/>
-                                            </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 16 16"><path fill="currentColor" d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75M4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.75 1.75 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15M6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25"/></svg>
                                         </button>
                                     </form>
                                 </div>

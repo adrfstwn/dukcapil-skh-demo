@@ -30,7 +30,8 @@
                                                 class="rounded-md w-full max-h-[450px] object-cover object-center">
                                         @endif
                                         <p class="font-nunito text-base text-primary_teks">
-                                            {!! $konten->deskripsi_konten !!}</p>
+                                            {!! \Illuminate\Support\Str::limit($konten->deskripsi_konten, 100, '...') !!}
+                                        </p>
                                         @if ($konten->file)
                                             <a href="{{ Storage::url($konten->file) }}"
                                                 class="font-nunito text-base font-semibold text-background_light bg-primary px-3 py-[6px] rounded-md max-w-60">Klik

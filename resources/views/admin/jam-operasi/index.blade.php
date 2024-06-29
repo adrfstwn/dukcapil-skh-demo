@@ -38,7 +38,7 @@
                     @foreach($jam as $jam)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                             id="jam{{ $jam->id }}">
-                            >
+
                             <td class="w-4 p-4">
                             </td>
                             <td class="px-6 py-4">
