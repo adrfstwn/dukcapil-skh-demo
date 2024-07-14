@@ -29,7 +29,7 @@
                                     </div>
                                 </div>
                                 <p class="font-nunito text-base text-secondary_teks line-clamp-3">
-                                    {!! $download->deskripsi_download !!}
+                                {!! \Illuminate\Support\Str::limit($download->deskripsi_download, 100, '...') !!}
                                 </p>
                                 <div class="flex flex-row items-center gap-2">
                                     <a href="{{ route('download.detail', $download->id) }}"

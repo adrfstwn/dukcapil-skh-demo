@@ -161,8 +161,9 @@
                                     </div>
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="text-base font-bold font-nunito text-primary_teks line-clamp-2">{{ $berita->judul }}</a>
-                                    <p class="text-sm text-secondary_teks line-clamp-2">
-                                        {!! Str::limit($berita->deskripsi_berita, 100) !!}</p>
+                                    <p class="text-sm text-secondary_teks line-clamp-3">
+                                    {!! \Illuminate\Support\Str::limit($berita->deskripsi_berita, 100, '...') !!}
+                                        </p>
                                     <a href="{{ route('berita.detail', $berita->id) }}"
                                         class="mt-2 px-4 py-2 bg-primary text-background_light text-sm rounded-md text-center">Baca
                                         Selengkapnya</a>

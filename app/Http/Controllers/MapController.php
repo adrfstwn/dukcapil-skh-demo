@@ -7,6 +7,7 @@ use App\Models\Map;
 use App\Models\Linksos;
 use App\Models\Kontak;
 use App\Models\Jam;
+use App\Models\Layanan;
 
 
 class MapController extends Controller
@@ -76,7 +77,7 @@ class MapController extends Controller
     $jam = Jam::all();
     $kontak = Kontak::all();
     $linksos = Linksos::all();
-    return view('profil-section.kontak', compact('linksos','jam','kontak','map'));
+    return view('profil-section.kontak', compact('linksos','jam','kontak','maps'));
 }
 
     /**
