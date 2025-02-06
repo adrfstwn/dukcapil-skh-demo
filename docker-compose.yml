@@ -1,0 +1,18 @@
+services:
+  php:
+    image: dunglas/frankenphp #php8.2
+    restart: always
+    environment:
+      - SERVER_NAME=dukcapil.adrfstwn.cloud
+    ports:
+      - "80:80" #HTTP
+      - "443:443" #HTTPS
+      - "443:443/udp" #HTTP/3
+    volumes:
+      - ./:/app
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
