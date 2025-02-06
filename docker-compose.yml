@@ -5,15 +5,20 @@ services:
     restart: always
     environment:
       - SERVER_NAME=dukcapil.adrfstwn.cloud
-    ports:
-      - "8081:80" #HTTP
-      - "443:443" #HTTPS
-      - "443:443/udp" #HTTP/3
+    # ports:
+    #   - "8081:80" #HTTP
+    #   - "443:443" #HTTPS
+    #   - "443:443/udp" #HTTP/3
     volumes:
       - ./:/app
       - caddy_data:/data
       - caddy_config:/config
+    networks:
+      - dukcapil-network
 
 volumes:
   caddy_data:
   caddy_config:
+networks:
+  dukcapil-network:
+    driver: bridge
