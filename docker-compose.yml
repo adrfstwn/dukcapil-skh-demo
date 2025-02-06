@@ -13,13 +13,7 @@ services:
       - ./:/app
       - caddy_data:/data
       - caddy_config:/config
-    networks:
-      - dukcapil-network
 
 volumes:
   caddy_data:
   caddy_config:
-networks:
-  dukcapil-network:
-    name: dukcapil-network
-    driver: bridge
