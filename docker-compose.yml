@@ -7,7 +7,6 @@ services:
       - SERVER_NAME=dukcapil.adrfstwn.cloud
     ports:
       - "8081:80" #HTTP
-      # - "443:443" #HTTPS
       - "8443:443/udp" #HTTP/3
     volumes:
       - ./:/app
