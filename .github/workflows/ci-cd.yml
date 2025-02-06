@@ -1,0 +1,70 @@
+name: Dukcapil SKH Web Profile CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy project with Docker
+    permissions:
+      deployments: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+
+      - name: Create GitHub deployment
+        uses: chrnorm/deployment-action@v2
+        id: deployment
+        with:
+          token: '${{ github.token }}'
+          environment: production
+
+      - name: Set up SSH Key and Deploy my App on Server
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: 22
+          script: |
+            # Setup GitHub Token for authentication
+            git config --global url."https://${{ secrets.PERSONAL_GITHUB_TOKEN }}:@github.com".insteadOf "https://github.com"
+            
+            # Navigate to the project directory
+            cd /var/www/projects/dukcapil-skh-demo
+
+            # Pull the latest changes from Git
+            echo "Pulling latest changes from Git..."
+            git pull origin main
+
+            # Navigate to the docker compose
+            cd /var/www/projects/dukcapil-skh-demo
+
+            # Stop any running containers (if applicable)
+            echo "Stopping running containers..."
+            docker-compose down || true
+
+            # Build and start Docker containers
+            echo "Building and starting Docker containers..."
+            docker-compose up --build -d
+
+
+            # Remove unused Docker images
+            # echo "Removing unused Docker images..."
+            # docker image prune -f
+
+            # Verify if the deployment is successful by checking if the application responds on port 8000
+            echo "Checking if the server is running on port 8000..."
+            nc -zv localhost 5000 || { echo "Deployment failed (port 8000 not open)"; exit 1; }
+
+            echo "Deployment successful (server is up on port 8000)"
