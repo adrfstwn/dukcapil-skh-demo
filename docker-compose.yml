@@ -1,18 +1,10 @@
+# compose.yaml
 services:
-  php:
-    image: dunglas/frankenphp #php8.2
-    container_name: dukcapil-laravel
-    restart: always
-    environment:
-      - SERVER_NAME=dukcapil.adrfstwn.cloud
+  frankenphp:
+    build:
+      context: .
+    entrypoint: php artisan octane:frankenphp
     ports:
-      - "8081:80" #HTTP
-      - "8443:443/udp" #HTTP/3
+      - "8000:8000"
     volumes:
-      - ./:/app
-      - caddy_data:/data
-      - caddy_config:/config
-
-volumes:
-  caddy_data:
-  caddy_config:
+      - .:/app
