@@ -1,6 +1,7 @@
 # compose.yaml
 services:
   frankenphp:
+    container_name: dukcapil-laravel
     build:
       context: .
     entrypoint: php artisan octane:frankenphp
