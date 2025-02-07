@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:8.2
+FROM dunglas/frankenphp
  
 RUN install-php-extensions \
     pcntl
