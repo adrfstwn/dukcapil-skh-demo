@@ -9,3 +9,9 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+    networks:
+      - postgres-network  # Menambahkan layanan ke jaringan yang sudah ada
+
+networks:
+  postgres-network:
+    external: true 
