@@ -20,7 +20,18 @@ COPY . /app
 # Install semua dependensi tanpa dev dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# BUild Tailwind
+# Set Environment Production
+ENV APP_ENV=production
+ENV APP_DEBUG=false
+
+# Clear Cache tanpa konfirmasi
+RUN php artisan optimize:clear -n
+
+# Jalankan migration & seeding tanpa konfirmasi
+RUN php artisan migrate --force
+RUN php artisan db:seed --force
+
+# Build Tailwind
 RUN npm install
 RUN npm run build
 
