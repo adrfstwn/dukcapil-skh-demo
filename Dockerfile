@@ -24,13 +24,6 @@ RUN composer install --no-dev --optimize-autoloader
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 
-# Clear Cache tanpa konfirmasi
-RUN php artisan optimize:clear -n
-
-# Jalankan migration & seeding tanpa konfirmasi
-RUN php artisan migrate --force
-RUN php artisan db:seed --force
-
 # Build Tailwind
 RUN npm install
 RUN npm run build
