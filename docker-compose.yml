@@ -4,7 +4,7 @@ services:
     container_name: dukcapil-laravel
     #entrypoint: php artisan octane:frankenphp
     ports:
-      - "9000:9000"
+      - "8000:8000"
     volumes:
       - .:/app
     networks:
