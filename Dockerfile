@@ -22,7 +22,6 @@ RUN composer install --ignore-platform-reqs --no-dev -a
 
 # clear cache
 RUN composer clear-cache
-RUN php artisan cache:clear
 RUN php artisan config:clear
 RUN php artisan view:clear
 RUN php artisan route:clear
