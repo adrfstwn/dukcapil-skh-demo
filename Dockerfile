@@ -28,7 +28,8 @@ RUN php artisan route:clear
 
 # Generate necessary files for Laravel Octane
 RUN composer dump-autoload 
-RUN php artisan octane:install --server=frankenphp --force
+RUN composer require laravel/octane --with-all-dependencies
+RUN php artisan octane:install
 
 # Set Environment Production
 ENV APP_ENV=production
