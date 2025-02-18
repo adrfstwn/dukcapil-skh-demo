@@ -11,7 +11,9 @@ services:
       - .:/app
     networks:
       - postgres-network  # Menambahkan layanan ke jaringan yang sudah ada
-
+      - nginx-network
 networks:
   postgres-network:
-    external: true 
+    external: true
+  nginx-network:
+    external: true
