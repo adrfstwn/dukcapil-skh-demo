@@ -21,7 +21,7 @@ COPY . /app
 RUN composer install --no-dev --optimize-autoloader
 
 # Generate necessary files for Laravel Octane
-RUN php artisan octane:install --server=frankenphp
+RUN php artisan octane:install --server=frankenphp --force
 
 # Set Environment Production
 ENV APP_ENV=production
