@@ -17,18 +17,16 @@ WORKDIR /app
 
 COPY . /app
 
-# Install semua dependensi tanpa dev dependencies
+# Install dependencies
 RUN composer install --ignore-platform-reqs --no-dev -a
 
-# clear cache
-RUN composer clear-cache
-RUN php artisan config:clear
-RUN php artisan view:clear
-RUN php artisan route:clear
-
-# Generate necessary files for Laravel Octane
+# Generate necessary files for Laravel Octane (move this after composer install)
 RUN composer dump-autoload 
 RUN composer require laravel/octane --with-all-dependencies
+
+# Ensure 'frankenphp-worker.php' file exists before running Octane install
+RUN if [ ! -f public/frankenphp-worker.php ]; then echo '<?php' > public/frankenphp-worker.php; fi
+
 RUN php artisan octane:install
 
 # Set Environment Production
