@@ -1,9 +1,7 @@
 .env
 node_modules
-
-/caddy
-frankenphp
-frankenphp-worker.php
+public/storage
 
 **/caddy
-public/storage
+frankenphp
+frankenphp-worker.php
