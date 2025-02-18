@@ -18,7 +18,7 @@ WORKDIR /app
 COPY . /app
 
 # Install semua dependensi tanpa dev dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install
 
 # Generate necessary files for Laravel Octane
 RUN composer dump-autoload && php artisan octane:install --server=frankenphp --force
