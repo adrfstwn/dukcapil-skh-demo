@@ -1,7 +1,5 @@
-# compose.yaml
 services:
   frankenphp:
-    image: placeholder-image:latest
     container_name: dukcapil-laravel
     build:
       context: .
