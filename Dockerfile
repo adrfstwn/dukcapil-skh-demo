@@ -37,6 +37,8 @@ ENV APP_DEBUG=false
 RUN npm install
 RUN npm run build
 
+RUN ls -la /app
+
 EXPOSE 8000
 
 ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
