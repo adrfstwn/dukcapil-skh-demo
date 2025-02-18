@@ -1,5 +1,6 @@
 services:
   frankenphp:
+    image: 23.94.64.116:8082/dukcapil-skh-demo:latest
     container_name: dukcapil-laravel
     entrypoint: php artisan octane:frankenphp
     ports:
@@ -7,8 +8,9 @@ services:
     volumes:
       - .:/app
     networks:
-      - postgres-network  # Menambahkan layanan ke jaringan yang sudah ada
+      - postgres-network
       - nginx-network
+
 networks:
   postgres-network:
     external: true
