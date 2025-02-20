@@ -41,5 +41,5 @@ RUN ls -la /app
 
 EXPOSE 8000
 
-ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
+ENTRYPOINT ["php", "artisan", "octane:frankenphp", "--host=0.0.0.0", "--port=8000"]
 

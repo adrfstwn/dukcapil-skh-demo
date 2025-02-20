@@ -2,6 +2,7 @@ services:
   frankenphp:
     image: 23.94.64.116:8082/dukcapil-skh-demo:latest
     container_name: dukcapil-laravel
+    entrypoint: php artisan octane:frankenphp --host=0.0.0.0 --port=8000
     ports:
       - "8000:8000"
     networks:
