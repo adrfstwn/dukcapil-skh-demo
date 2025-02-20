@@ -1,5 +1,6 @@
-FROM dunglas/frankenphp
+FROM dunglas/frankenphp:latest
 
+# Install PHP Extensions
 RUN install-php-extensions \
     pcntl \
     zip \
@@ -10,10 +11,10 @@ RUN install-php-extensions \
 # Install Composer secara manual
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install NPM 
+# Install NPM
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && apt-get install -y nodejs
 
-# Sest Working directory
+# Set Working directory
 WORKDIR /app
 
 # Copy all files
@@ -22,15 +23,11 @@ COPY . /app
 # Install dependencies
 RUN composer install --ignore-platform-reqs --no-dev -a
 
-# Generate necessary files for Laravel Octane (move this after composer install)
-RUN composer dump-autoload 
-RUN composer require laravel/octane --with-all-dependencies
-
-# Ensure 'frankenphp-worker.php' file exists before running Octane install
+# Pastikan file frankenphp-worker.php ada
 RUN if [ ! -f public/frankenphp-worker.php ]; then echo '<?php' > public/frankenphp-worker.php; fi
 
-# Install frankenphp Server API
-RUN echo "yes" | php artisan octane:install --server=frankenphp --force
+# Install Octane dan set servernya ke FrankenPHP
+RUN php artisan octane:install --server=frankenphp --force
 
 # Set permission untuk Laravel storage & cache
 RUN chmod -R 777 storage bootstrap/cache
@@ -39,16 +36,12 @@ RUN chmod -R 777 storage bootstrap/cache
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 
-# Build Tailwind
+# Build Tailwind jika ada
 RUN npm install
 RUN npm run build
 
-# Check all files 
-RUN ls -la /app
-
-# Expose port same in docker-compose.yml
+# Expose port yang digunakan Laravel Octane
 EXPOSE 8000
 
 # Define run Container
-ENTRYPOINT ["php", "artisan", "octane:frankenphp", "--host=0.0.0.0", "--port=8000"]
-
+ENTRYPOINT ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8000"]
