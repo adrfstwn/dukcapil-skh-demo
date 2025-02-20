@@ -13,8 +13,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install NPM 
 RUN curl -fsSL https://deb.nodesource.com/setup_current.x | bash - && apt-get install -y nodejs
 
+# Sest Working directory
 WORKDIR /app
 
+# Copy all files
 COPY . /app
 
 # Install dependencies
@@ -27,7 +29,11 @@ RUN composer require laravel/octane --with-all-dependencies
 # Ensure 'frankenphp-worker.php' file exists before running Octane install
 RUN if [ ! -f public/frankenphp-worker.php ]; then echo '<?php' > public/frankenphp-worker.php; fi
 
+# Install frankenphp Server API
 RUN echo "yes" | php artisan octane:install --server=frankenphp --force
+
+# Set permission untuk Laravel storage & cache
+RUN chmod -R 777 storage bootstrap/cache
 
 # Set Environment Production
 ENV APP_ENV=production
@@ -37,9 +43,12 @@ ENV APP_DEBUG=false
 RUN npm install
 RUN npm run build
 
+# Check all files 
 RUN ls -la /app
 
+# Expose port same in docker-compose.yml
 EXPOSE 8000
 
+# Define run Container
 ENTRYPOINT ["php", "artisan", "octane:frankenphp", "--host=0.0.0.0", "--port=8000"]
 
