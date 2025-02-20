@@ -27,7 +27,7 @@ RUN composer require laravel/octane --with-all-dependencies
 # Ensure 'frankenphp-worker.php' file exists before running Octane install
 RUN if [ ! -f public/frankenphp-worker.php ]; then echo '<?php' > public/frankenphp-worker.php; fi
 
-RUN php artisan octane:install
+RUN echo "yes" | php artisan octane:install --server=frankenphp --force
 
 # Set Environment Production
 ENV APP_ENV=production
