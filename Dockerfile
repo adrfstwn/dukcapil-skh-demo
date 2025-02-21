@@ -44,4 +44,4 @@ RUN npm run build
 EXPOSE 8000
 
 # Define run Container
-ENTRYPOINT ["php", "artisan", "octane:start", "--server=frankenphp", "--host=0.0.0.0", "--port=8000"]
+ENTRYPOINT ["php", "artisan", "octane:frankenphp"]
