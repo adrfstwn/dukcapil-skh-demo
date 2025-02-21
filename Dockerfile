@@ -23,9 +23,6 @@ COPY . /app
 # Install dependencies
 RUN composer install --ignore-platform-reqs --no-dev -a
 
-# Pastikan file frankenphp-worker.php ada
-RUN if [ ! -f public/frankenphp-worker.php ]; then echo '<?php' > public/frankenphp-worker.php; fi
-
 # Install Octane dan set servernya ke FrankenPHP
 RUN echo "yes" | php artisan octane:install --server=frankenphp
 

@@ -10,11 +10,6 @@ services:
     networks:
       - postgres-network
       - nginx-network
-    volumes:
-      - .:/app
-    environment:
-      APP_ENV: production
-      APP_DEBUG: "false"
 
 networks:
   postgres-network:
