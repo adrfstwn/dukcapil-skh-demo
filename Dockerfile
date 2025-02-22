@@ -24,7 +24,7 @@ COPY . /app
 RUN composer install --ignore-platform-reqs --no-dev -a
 
 # Install Octane dan set servernya ke FrankenPHP
-RUN echo "yes" | php artisan octane:install --server=frankenphp
+# RUN echo "yes" | php artisan octane:install --server=frankenphp
 
 # Set permission untuk Laravel storage & cache
 RUN chmod -R 777 storage bootstrap/cache
