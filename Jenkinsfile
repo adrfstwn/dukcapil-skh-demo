@@ -1,11 +1,9 @@
 pipeline {
     agent any
     environment {
-        APP_NAME = "dukcapil-skh-demo-pipeline-v1"
         IMAGE_TAG = "${env.BUILD_ID}"
-        GIT_REPO = "https://github.com/adrfstwn/dukcapil-skh-demo.git"
         GIT_BRANCH = "main"
-        DOCKER_IMAGE_NAME = "dukcapil-laravel" // Nama image Docker
+        DOCKER_IMAGE_NAME = "dukcapil-laravel"
     }
     stages {
         stage('Checkout Code') {
