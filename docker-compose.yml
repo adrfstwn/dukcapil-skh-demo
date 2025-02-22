@@ -1,6 +1,7 @@
 
 services:
   frankenphp:
+    image: dukcapil-laravel:latest
     build:
       context: .
     container_name: dukcapil-laravel
