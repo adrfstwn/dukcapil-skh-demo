@@ -45,6 +45,16 @@ pipeline {
                     if docker ps -a | grep dukcapil-laravel; then
                         docker compose down || true
                     fi
+
+                    echo "Checking if old image exists..."
+                    OLD_IMAGE_ID=\$(docker images -q ${DOCKER_IMAGE_NAME})
+
+                    if [ ! -z "\$OLD_IMAGE_ID" ]; then
+                        echo "Deleting old image..."
+                        docker rmi -f \$OLD_IMAGE_ID
+                    else
+                        echo "No old image found, skipping delete step."
+                    fi
                     """
                 }
             }
