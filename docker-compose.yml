@@ -6,8 +6,6 @@ services:
       context: .
     container_name: dukcapil-laravel
     restart: always
-    ports:
-      - "8000:8000"
     networks:
       - postgres-network
       - nginx-network
